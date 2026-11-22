@@ -1,6 +1,6 @@
 package com.raishxn.gtna;
 
-import com.gtinfinityascension.gtialib.data.Int128;
+import com.typeomega.lib.data.Int128;
 
 import java.math.BigInteger;
 import java.util.Random;

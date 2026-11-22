@@ -2,8 +2,8 @@ package com.raishxn.gtna.api.capability;
 
 import net.minecraft.server.level.ServerLevel;
 
-import com.gtinfinityascension.gtialib.data.Int128;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
+import com.typeomega.lib.data.Int128;
 
 import java.util.UUID;
 

@@ -84,7 +84,6 @@ import appeng.core.definitions.AEItems;
 import appeng.crafting.execution.CraftingCpuLogic;
 import appeng.me.cluster.implementations.CraftingCPUCluster;
 import appeng.me.helpers.BaseActionSource;
-import com.gtinfinityascension.gtialib.data.Int128;
 import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.api.capability.SteamWirelessNetworkManager;
 import com.raishxn.gtna.api.data.tag.GTNATagPrefix;
@@ -141,6 +140,7 @@ import com.raishxn.gtna.common.machine.trait.GTNAMultipleRecipesLogic;
 import com.raishxn.gtna.config.GTNABalance;
 import com.raishxn.gtna.data.recipe.GTNAAtomizationRecipes;
 import com.raishxn.gtna.network.packet.SWirelessSteamStats;
+import com.typeomega.lib.data.Int128;
 
 import java.util.ArrayList;
 import java.util.List;

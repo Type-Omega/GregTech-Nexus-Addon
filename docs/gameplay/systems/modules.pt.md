@@ -16,7 +16,7 @@ Alguns multiblocos aceitam um **módulo auxiliar**: uma estrutura extra e opcion
 | Reator de Fusão Avançado | quatro módulos de tier (MK-II a MK-V) e um módulo de receitas cruzadas |
 | Nano Forge | as estruturas dos tiers 2, 3 e 4 |
 
-Modpacks podem acrescentar módulos a qualquer multibloco, do GTNA ou de outro mod, pelo KubeJS: veja [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules). O registro de módulos fica no GTIA Lib desde o GTNA 0.6.1.
+Modpacks podem acrescentar módulos a qualquer multibloco, do GTNA ou de outro mod, pelo KubeJS: veja [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules). O registro de módulos fica no TypeOmega Lib desde o GTNA 0.6.1.
 
 ## Terminal de Estruturas Nexus {#nexus-structure-terminal}
 

@@ -18,7 +18,7 @@ def main():
     core = args.core_dev_jar.resolve()
     with ZipFile(core) as jar:
         metadata = tomllib.loads(jar.read("META-INF/mods.toml").decode())
-        dependencies = {d["modId"]: d for d in metadata["dependencies"]["gtia"]}
+        dependencies = {d["modId"]: d for d in metadata["dependencies"]["typeomega"]}
         if not dependencies["gtna"]["mandatory"]:
             raise ValueError("GTIACore must require GTNA even in development")
         if any(dependencies[name]["mandatory"] for name in ("avaritia", "gtmthings")):
@@ -29,8 +29,8 @@ def main():
     pairs = [
         (example / "void_fluid_drill.json", ROOT / "run/config/gtna/balance/void_fluid_drill.json"),
         (example / "electric_void_miner.json", ROOT / "run/config/gtna/balance/electric_void_miner.json"),
-        (example / "void-fluid-datapack/data/gtia/gtceu/fluid_veins/mars_radon.json",
-         ROOT / "run/kubejs/data/gtia/gtceu/fluid_veins/mars_radon.json"),
+        (example / "void-fluid-datapack/data/typeomega/gtceu/fluid_veins/mars_radon.json",
+         ROOT / "run/kubejs/data/typeomega/gtceu/fluid_veins/mars_radon.json"),
     ]
     for source, destination in pairs:
         relative = destination.relative_to(ROOT / "run")

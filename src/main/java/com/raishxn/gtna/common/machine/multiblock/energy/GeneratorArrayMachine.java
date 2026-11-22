@@ -38,10 +38,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 
-import com.gtinfinityascension.gtialib.data.Int128;
 import com.raishxn.gtna.api.capability.WirelessEnergyManager;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
 import com.raishxn.gtna.config.GTNABalance;
+import com.typeomega.lib.data.Int128;
 
 import java.math.BigInteger;
 import java.util.List;

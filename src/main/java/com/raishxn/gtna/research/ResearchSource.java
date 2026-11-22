@@ -19,7 +19,7 @@ import java.util.Optional;
  * Loaded from {@code data/<namespace>/gtna_research_sources/<path>.json}; the id is the file's location.
  *
  * <pre>
- * {"event": "craft", "item": "gtceu:steel_ingot", "area": "gtia:metallurgy", "first": 10,
+ * {"event": "craft", "item": "gtceu:steel_ingot", "area": "typeomega:metallurgy", "first": 10,
  *  "milestones": [{"count": 100, "points": 5}, {"count": 10000, "points": 10}]}
  * </pre>
  */

@@ -58,7 +58,7 @@ GregTech Nexus Addon - a GTCEu Modern addon: wireless steam/energy networks, thr
         ordering = "AFTER"
         side = "BOTH"
     [[dependencies.${mod_id}]]
-        modId = "gtialib"
+        modId = "typeomegalib"
         mandatory = true
         versionRange = "[${gtialib_version},)"
         ordering = "AFTER"

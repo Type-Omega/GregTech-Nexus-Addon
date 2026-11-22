@@ -16,7 +16,7 @@
 | 狂飙号巨型聚变反应堆 | 四个等级模块（MK-II 至 MK-V）以及一个跨配方模块 |
 | 纳米锻炉 | 第 2、3、4 级结构 |
 
-整合包可以用 KubeJS 为任何多方块（GTNA 或其他模组的）添加模块：见 [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules)。自 GTNA 0.6.1 起，模块注册表位于 GTIA Lib 中。
+整合包可以用 KubeJS 为任何多方块（GTNA 或其他模组的）添加模块：见 [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules)。自 GTNA 0.6.1 起，模块注册表位于 TypeOmega Lib 中。
 
 ## Nexus结构终端 {#nexus-structure-terminal}
 

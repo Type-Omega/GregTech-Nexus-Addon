@@ -14,17 +14,17 @@ Packs sem nós de pesquisa podem desligar a árvore inteira com `gameplay.resear
 
 ## Para autores de pack
 
-Coloque um arquivo JSON por nó em `data/<namespace>/gtna_research/`. O id do nó é o caminho do arquivo: `data/gtia/gtna_research/lv/aluminium.json` é `gtia:lv/aluminium`.
+Coloque um arquivo JSON por nó em `data/<namespace>/gtna_research/`. O id do nó é o caminho do arquivo: `data/typeomega/gtna_research/lv/aluminium.json` é `typeomega:lv/aluminium`.
 
 ```json
 {
   "tier": 2,
   "icon": "gtceu:aluminium_ingot",
-  "prerequisites": ["gtia:lv/blast_furnace"],
+  "prerequisites": ["typeomega:lv/blast_furnace"],
   "trigger": { "type": "obtain_item", "item": "gtceu:aluminium_dust" },
   "grants": [
     { "type": "recipe_condition", "recipes": ["gtceu:electric_blast_furnace/blast_aluminium"] },
-    { "type": "flag", "id": "gtia:aluminium" }
+    { "type": "flag", "id": "typeomega:aluminium" }
   ]
 }
 ```
@@ -42,7 +42,7 @@ Regras do carregador: um nó com pré-requisito desconhecido, ciclo de pré-requ
 
 Escolha itens de gatilho que o jogador alcança **sem** o gate do próprio nó, ou o nó nunca libera. Um bom gatilho é a máquina ou o ingrediente que mostra que o jogador está pronto.
 
-Os nomes vêm de chaves de idioma: `gtna.research.node.<namespace>.<caminho com pontos>` (no exemplo, `gtna.research.node.gtia.lv.aluminium`), com uma chave `.desc` opcional para o tooltip. Sem chave, aparece o id.
+Os nomes vêm de chaves de idioma: `gtna.research.node.<namespace>.<caminho com pontos>` (no exemplo, `gtna.research.node.typeomega.lv.aluminium`), com uma chave `.desc` opcional para o tooltip. Sem chave, aparece o id.
 
 Uma receita com gate só roda para um dono cujo time tenha o nó. Receitas de bancada, do AE2 e padrões não são cobertas.
 

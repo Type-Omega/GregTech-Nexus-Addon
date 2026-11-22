@@ -1,7 +1,7 @@
 # Perguntas frequentes
 
 ??? question "O jogo para com uma mensagem de dependência faltando"
-    O GTNA 0.6.1 precisa do **GTCEu 7.5.3 ou mais novo** e do **GTIA Lib 0.5.0 ou mais novo**. Um GTCEu antigo causava erros como `NoSuchFieldError: CLUSTER_MAX_HARVESTABLES` (issue #1). Atualize os dois mods. Veja [Instalação](installation.md).
+    O GTNA 0.6.1 precisa do **GTCEu 7.5.3 ou mais novo** e do **TypeOmega Lib 0.5.0 ou mais novo**. Um GTCEu antigo causava erros como `NoSuchFieldError: CLUSTER_MAX_HARVESTABLES` (issue #1). Atualize os dois mods. Veja [Instalação](installation.md).
 
 ??? question "Os ícones dos materiais do GTNA aparecem sem textura"
     O GTNA 0.5.4 e 0.5.5 dependiam do RenderBlender para esses modelos. Atualize para a 0.5.6 ou mais nova, que desenha os efeitos sozinha.
@@ -25,7 +25,7 @@
     Não. Sem ele o Elevador a Vapor não viaja, o Olho da Harmonia só tem as dimensões do Minecraft e os programas planetários da mineração do vazio não aparecem.
 
 ??? question "Onde relato um bug?"
-    No [rastreador de issues](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues), com o `latest.log` (e a pasta `crash-reports/` se o jogo travou) e as versões do GTNA, do GTCEu e do GTIA Lib.
+    No [rastreador de issues](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues), com o `latest.log` (e a pasta `crash-reports/` se o jogo travou) e as versões do GTNA, do GTCEu e do TypeOmega Lib.
 
 ??? question "Posso traduzir a wiki ou o mod?"
     Pode, veja [Traduzir](../development/translating.md).

@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     modImplementation("com.raishxn.gtna:gtna:<versão>")
-    modImplementation("com.gtinfinityascension:gtialib:<versão>")
+    modImplementation("com.typeomega:typeomega-lib:<versão>")
 }
 ```
 
@@ -48,4 +48,4 @@ Tudo em `com.raishxn.gtna.api` é feito para addons. Classes fora de `api` podem
 
 As demais (`BEC_HATCH`, `LINE_OF_SIGHT_HATCH`, `TUNING_HATCH`…) pertencem a máquinas específicas do GTNA.
 
-O registro de módulos foi para o GTIA Lib na 0.6.1 (`com.gtinfinityascension.gtialib.module.ModuleRegistry`); o `GTNASubPatterns` continua funcionando e repassa para ele. `Int128` e os utilitários de posição de bloco foram para `com.gtinfinityascension.gtialib.data`.
+O registro de módulos foi para o TypeOmega Lib na 0.6.1 (`com.typeomega.lib.module.ModuleRegistry`); o `GTNASubPatterns` continua funcionando e repassa para ele. `Int128` e os utilitários de posição de bloco foram para `com.typeomega.lib.data`.

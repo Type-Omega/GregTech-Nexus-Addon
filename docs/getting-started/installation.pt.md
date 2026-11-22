@@ -7,7 +7,7 @@
 | Minecraft | 1.20.1 | obrigatório |
 | Forge | 47.4.1 ou mais nova | obrigatório |
 | [GregTech CEu Modern](https://www.curseforge.com/minecraft/mc-mods/gregtechceu-modern) | 7.5.3 ou mais nova | obrigatório; o Forge para com uma mensagem se for mais antiga |
-| [GTIA Lib](https://github.com/GTInfinityAscension/GTIA-Lib) | 0.5.0 ou mais nova | obrigatório desde o GTNA 0.6.1 |
+| [TypeOmega Lib](https://github.com/GTInfinityAscension/GTIA-Lib) | 0.5.0 ou mais nova | obrigatório desde o GTNA 0.6.1 |
 | [Applied Energistics 2](https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2) | para 1.20.1 (testado com 15.4.10) | obrigatório: as peças ME são sempre registradas |
 | JEI ou EMI | qualquer recente | opcional, muito recomendado: receitas e prévias de estrutura |
 | KubeJS | 2001.6.5 | opcional: [API de scripts](../development/api/kubejs.md) |
@@ -21,7 +21,7 @@ O GTCEu tem as próprias dependências (como o LDLib); instale as versões que a
 ## Passos
 
 1. Instale o Forge 47.4.1 ou mais novo para o Minecraft 1.20.1.
-2. Ponha GTCEu, GTIA Lib, Applied Energistics 2 e GTNA na pasta `mods`.
+2. Ponha GTCEu, TypeOmega Lib, Applied Energistics 2 e GTNA na pasta `mods`.
 3. Acrescente os mods opcionais que quiser.
 4. Abra o jogo uma vez. O GTNA cria o `config/gtna.yaml` e os arquivos de balanceamento em `config/gtna/balance/` (veja [Configuração](configuration.md)).
 

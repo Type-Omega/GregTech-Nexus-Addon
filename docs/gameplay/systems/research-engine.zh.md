@@ -14,17 +14,17 @@
 
 ## 整合包作者
 
-每个节点一个 JSON 文件，放在 `data/<命名空间>/gtna_research/` 下。节点 id 即文件路径：`data/gtia/gtna_research/lv/aluminium.json` 对应 `gtia:lv/aluminium`。
+每个节点一个 JSON 文件，放在 `data/<命名空间>/gtna_research/` 下。节点 id 即文件路径：`data/typeomega/gtna_research/lv/aluminium.json` 对应 `typeomega:lv/aluminium`。
 
 ```json
 {
   "tier": 2,
   "icon": "gtceu:aluminium_ingot",
-  "prerequisites": ["gtia:lv/blast_furnace"],
+  "prerequisites": ["typeomega:lv/blast_furnace"],
   "trigger": { "type": "obtain_item", "item": "gtceu:aluminium_dust" },
   "grants": [
     { "type": "recipe_condition", "recipes": ["gtceu:electric_blast_furnace/blast_aluminium"] },
-    { "type": "flag", "id": "gtia:aluminium" }
+    { "type": "flag", "id": "typeomega:aluminium" }
   ],
   "quest": "可选文本，引擎不使用"
 }
@@ -43,7 +43,7 @@
 
 触发物品应选择玩家在**不经过**该节点限制的情况下就能获得的物品，否则节点永远无法解锁。好的触发物品是能表明玩家已经准备好的机器或材料。
 
-名称来自语言键：`gtna.research.node.<命名空间>.<用点分隔的路径>`（示例中为 `gtna.research.node.gtia.lv.aluminium`），可选的 `.desc` 键用作提示。没有语言键时显示 id。
+名称来自语言键：`gtna.research.node.<命名空间>.<用点分隔的路径>`（示例中为 `gtna.research.node.typeomega.lv.aluminium`），可选的 `.desc` 键用作提示。没有语言键时显示 id。
 
 受限配方只会为队伍已解锁该节点的所有者运行。工作台配方、AE2 配方和样板不受此限制。
 

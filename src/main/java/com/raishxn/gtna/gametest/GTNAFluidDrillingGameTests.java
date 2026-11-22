@@ -479,7 +479,7 @@ public final class GTNAFluidDrillingGameTests {
             return;
         }
         var deposit = com.gregtechceu.gtceu.api.registry.GTRegistries.BEDROCK_FLUID_DEFINITIONS.get(
-                net.minecraft.resources.ResourceLocation.parse("gtia:mars_radon"));
+                net.minecraft.resources.ResourceLocation.parse("typeomega:mars_radon"));
         h.assertTrue(deposit != null && deposit.getStoredFluid().get() == GTMaterials.Radon.getFluid(),
                 "GTIA profile must load the Radon deposit");
         h.assertTrue(

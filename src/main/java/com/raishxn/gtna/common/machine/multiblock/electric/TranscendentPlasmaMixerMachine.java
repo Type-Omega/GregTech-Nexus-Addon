@@ -15,8 +15,8 @@ import net.minecraft.core.GlobalPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 
-import com.gtinfinityascension.gtialib.data.Int128;
 import com.raishxn.gtna.api.capability.WirelessEnergyManager;
+import com.typeomega.lib.data.Int128;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;

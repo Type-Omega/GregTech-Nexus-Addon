@@ -6,14 +6,14 @@ import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-import com.gtinfinityascension.gtialib.module.ModuleRegistry;
+import com.typeomega.lib.module.ModuleRegistry;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
 /**
- * Kept for addons and KubeJS scripts that used this name: the module registry now lives in GTIA Lib
+ * Kept for addons and KubeJS scripts that used this name: the module registry now lives in TypeOmega Lib
  * ({@link ModuleRegistry}) and every method here forwards to it.
  */
 public final class GTNASubPatterns {

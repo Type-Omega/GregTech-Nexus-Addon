@@ -5,7 +5,7 @@ import com.lowdragmc.lowdraglib.gui.widget.SceneWidget;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
-import com.gtinfinityascension.gtialib.data.BlockPosLongSet;
+import com.typeomega.lib.data.BlockPosLongSet;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

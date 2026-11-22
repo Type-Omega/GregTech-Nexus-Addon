@@ -2,7 +2,7 @@
 
 Short, current snapshot for anyone (person or AI session) starting work on GTNA. Keep it under ~150 lines: replace outdated lines instead of appending. History lives in git commits and `CHANGELOG.md`; the old `CONTINUITY_LEDGER.md` was retired on 2026-10-16 and is still in git history (last commit with it: `75269ab`).
 
-Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minecraft 1.20.1, Forge 47, GTCEu 7.5.3, requires **GTIA Lib 0.5.0+**.
+Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minecraft 1.20.1, Forge 47, GTCEu 7.5.3, requires **TypeOmega Lib 0.5.0+**.
 
 ## What exists
 
@@ -56,7 +56,7 @@ Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minec
 
 ## Open items
 
-- Next release (0.6.1) must say: requires GTIA Lib; fixes the client crash without JEI and 10 recipes that failed to load; single-block cover check 8.37 → 3.74 ms/tick with 2,000 furnaces; soft preview shape cache.
+- Next release (0.6.1) must say: requires TypeOmega Lib; fixes the client crash without JEI and 10 recipes that failed to load; single-block cover check 8.37 → 3.74 ms/tick with 2,000 furnaces; soft preview shape cache.
 
 - DTPF Convergence and the ISA Mill tiers (roadmap phases A and B).
 - Phases D–G of the port list (large GTO systems, GTNH-only, TST/GTNL/123Tech, GTLAdditions).

@@ -16,7 +16,7 @@ Some multiblocks accept an **auxiliary module**: an optional extra structure bui
 | Advanced Fusion Reactor | four tier modules (MK-II to MK-V) and a cross-recipe module |
 | Nano Forge | the tier 2, 3 and 4 structures |
 
-Modpacks can add modules to any multiblock, GTNA's or another mod's, with KubeJS: see [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules). The module registry lives in GTIA Lib since GTNA 0.6.1.
+Modpacks can add modules to any multiblock, GTNA's or another mod's, with KubeJS: see [`GTNAServerEvents.subPatterns`](../../development/api/kubejs.md#auxiliary-modules). The module registry lives in TypeOmega Lib since GTNA 0.6.1.
 
 ## Nexus Structure Terminal {#nexus-structure-terminal}
 

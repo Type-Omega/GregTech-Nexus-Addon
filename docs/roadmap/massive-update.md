@@ -14,7 +14,7 @@ Regra de ouro: **nada de conteúdo novo até as fases 0–2 fecharem.** Toda oti
 
 ## Fase 1 — Fechar 0.6.1 e definir escopo
 
-- [ ] 0.6.1: requisito GTIA Lib, crash sem JEI, 10 receitas, cover check 8,37 → 3,74 ms/tick, cache de preview.
+- [ ] 0.6.1: requisito TypeOmega Lib, crash sem JEI, 10 receitas, cover check 8,37 → 3,74 ms/tick, cache de preview.
 - [ ] Decidir o corte da Massive Update: fases A e B do port (DTPF Convergence, ISA Mill tiers). D–G ficam para depois.
 - [ ] Originais WIP (Lance, Stellar Containment, Antimatter Ring, Rift Gate): passam no QA P0 ou ficam atrás de config desligada.
 - [ ] PWR: entra completo ou fica fora (não anunciar).

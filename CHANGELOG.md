@@ -35,7 +35,7 @@
 - GTNA needs GTCEu 7.5.3 or newer; with an older GTCEu, Forge now stops with a missing-dependency message. The crash in [#1](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues/1) (`NoSuchFieldError: CLUSTER_MAX_HARVESTABLES` with GTNA 0.1.0 and GTCEu 7.4.1) came from that old pairing; update both mods.
 
 ### Dependencies
-- GTNA now requires [GTIA Lib](https://github.com/GTInfinityAscension/GTIA-Lib) 0.5.0 or newer. The multiblock module registry moved there (`com.gtinfinityascension.gtialib.module.ModuleRegistry`); `GTNASubPatterns` keeps working and forwards to it. `Int128`, `BlockPosLongSet` and `BlockPosHashing` moved there (`com.gtinfinityascension.gtialib.data`); addons that imported them from GTNA must update the import.
+- GTNA now requires [TypeOmega Lib](https://github.com/GTInfinityAscension/GTIA-Lib) 0.5.0 or newer. The multiblock module registry moved there (`com.typeomega.lib.module.ModuleRegistry`); `GTNASubPatterns` keeps working and forwards to it. `Int128`, `BlockPosLongSet` and `BlockPosHashing` moved there (`com.typeomega.lib.data`); addons that imported them from GTNA must update the import.
 
 ### Fixed
 - 10 recipes failed to load because they used item forms that do not exist: Space Drone MK II, MK V and MK VI asked for quadruple wires of Duranium, Americium and Darmstadtium (no cable in GTCEu); they now use Europium (UHV cable) and the UXV superconductor. Ytterbium, Thallium, Erbium, Hafnium, Rhenium and Gadolinium get a dust form, so the ore processing, stellar synthesis and rare earth recipes that output them load.

@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     modImplementation("com.raishxn.gtna:gtna:<版本>")
-    modImplementation("com.gtinfinityascension:gtialib:<版本>")
+    modImplementation("com.typeomega:typeomega-lib:<版本>")
 }
 ```
 
@@ -48,4 +48,4 @@ GTNA 还需要类路径上有 GTCEu 7.5.3+ 和 Applied Energistics 2。运行时
 
 其余能力（`BEC_HATCH`、`LINE_OF_SIGHT_HATCH`、`TUNING_HATCH`……）属于特定的 GTNA 机器。
 
-0.6.1 起模块注册表移到了 GTIA Lib（`com.gtinfinityascension.gtialib.module.ModuleRegistry`）；`GTNASubPatterns` 仍可使用并会转发过去。`Int128` 和方块坐标工具移到了 `com.gtinfinityascension.gtialib.data`。
+0.6.1 起模块注册表移到了 TypeOmega Lib（`com.typeomega.lib.module.ModuleRegistry`）；`GTNASubPatterns` 仍可使用并会转发过去。`Int128` 和方块坐标工具移到了 `com.typeomega.lib.data`。

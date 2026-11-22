@@ -14,17 +14,17 @@ Packs without research nodes can turn the whole tree off with `gameplay.research
 
 ## For pack authors
 
-Put one JSON file per node in `data/<namespace>/gtna_research/`. The node id is the file path: `data/gtia/gtna_research/lv/aluminium.json` is `gtia:lv/aluminium`.
+Put one JSON file per node in `data/<namespace>/gtna_research/`. The node id is the file path: `data/typeomega/gtna_research/lv/aluminium.json` is `typeomega:lv/aluminium`.
 
 ```json
 {
   "tier": 2,
   "icon": "gtceu:aluminium_ingot",
-  "prerequisites": ["gtia:lv/blast_furnace"],
+  "prerequisites": ["typeomega:lv/blast_furnace"],
   "trigger": { "type": "obtain_item", "item": "gtceu:aluminium_dust" },
   "grants": [
     { "type": "recipe_condition", "recipes": ["gtceu:electric_blast_furnace/blast_aluminium"] },
-    { "type": "flag", "id": "gtia:aluminium" }
+    { "type": "flag", "id": "typeomega:aluminium" }
   ],
   "quest": "optional text, not used by the engine"
 }
@@ -43,7 +43,7 @@ Rules the loader enforces: a node with an unknown prerequisite, a prerequisite c
 
 Choose trigger items the player can reach **without** the node's own gate, or the node can never unlock. A good trigger is the machine or ingredient that shows the player is ready.
 
-Names come from lang keys: `gtna.research.node.<namespace>.<path with dots>` (for the example, `gtna.research.node.gtia.lv.aluminium`), with an optional `.desc` key for the tooltip. Without a key, the id is shown.
+Names come from lang keys: `gtna.research.node.<namespace>.<path with dots>` (for the example, `gtna.research.node.typeomega.lv.aluminium`), with an optional `.desc` key for the tooltip. Without a key, the id is shown.
 
 A recipe with a gate runs only for an owner whose team holds the node. Crafting-table, AE2 and pattern recipes are not covered.
 
