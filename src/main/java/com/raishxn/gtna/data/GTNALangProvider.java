@@ -1399,6 +1399,7 @@ public class GTNALangProvider extends LanguageProvider {
         add("block.gtna.breel_plated_casing", "Breel-Plated Casing");
         add("gtna.super_heater", "Super Heating");
         add("gtna.hydraulic_manufacturing", "Hydraulic Manufacturing");
+        add("gtna.steam_void_ore", "Steam Void Ore");
         add("gtna.lava_maker", "Lava Maker");
         add("gtna.cactus_wonder", "Cactus Wonder");
         add("item.gtceu.tool.vajra", "Vajra Omnitool");

@@ -45,7 +45,7 @@ in-game validation and upcoming priorities. Features under development may chang
 ## Version and dependencies
 
 Development currently targets **Minecraft 1.20.1**, **Forge 47.4**, **GTCEu 7.5.3** and requires
-**[GTIA Lib](https://github.com/GTInfinityAscension/GTIA-Lib)** (from the next release on). See
+**[GTIA Lib](https://github.com/GTInfinityAscension/GTIA-Lib)** 0.5.0 or newer (since GTNA 0.6.1). See
 [gradle.properties](gradle.properties) and [build.gradle](build.gradle) for the exact dependency versions used by
 this checkout. Download builds from
 [GitHub Releases](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/releases).

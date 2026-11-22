@@ -434,3 +434,38 @@ tasks.register('installIntegratedOreKubeJSExample', Copy) {
 tasks.named('runClient').configure {
     dependsOn 'installIntegratedOreKubeJSExample'
 }
+
+// EN: runGameTestServer exits 0 when a gtna recipe fails to parse; this check reads the server log and fails the build.
+// PT: runGameTestServer sai com 0 quando uma receita gtna falha no parse; esta checagem lê o log do servidor e falha o build.
+// ZH: gtna 配方解析失败时 runGameTestServer 仍返回 0；此检查读取服务器日志并让构建失败。
+tasks.register('verifyGameTestLog') {
+    group = 'verification'
+    description = 'Fails on gtna recipe parse errors or an incomplete/failed GameTest batch in run/logs/latest.log.'
+    def logFile = file(project.findProperty('gameTestLog') ?: 'run/logs/latest.log')
+    doLast {
+        if (!logFile.exists()) throw new GradleException("GameTest log not found: ${logFile}")
+        def log = logFile.getText('UTF-8')
+        def parseErrors = log.readLines().findAll { it.contains('Parsing error loading recipe gtna:') }
+        def batch = (log =~ /=+ (\d+) GAME TESTS COMPLETE =+/).collect { it[1] }
+        def passed = (log =~ /All (\d+) required tests passed/).collect { it[1] }
+        def problems = []
+        if (parseErrors) problems << "${parseErrors.size()} gtna recipe parse error(s):\n  " + parseErrors.join('\n  ')
+        if (batch.size() != 1 || passed != batch || batch[0] == '0') {
+            problems << "GameTest batch not passing (complete=${batch}, required passed=${passed})"
+        }
+        if (problems) throw new GradleException('GameTest log check failed:\n' + problems.join('\n'))
+        println "[verifyGameTestLog] ${batch[0]} GameTests passed, no gtna recipe parse errors"
+    }
+}
+tasks.matching { it.name == 'runGameTestServer' }.configureEach { finalizedBy 'verifyGameTestLog' }
+
+tasks.register('gate') {
+    group = 'verification'
+    description = 'Full validation gate: spotlessCheck compileJava runUnitTests runGameTestServer verifyGameTestLog runData.'
+    dependsOn 'spotlessCheck', 'compileJava', 'runUnitTests', 'runGameTestServer', 'runData'
+}
+afterEvaluate {
+    tasks.named('runUnitTests') { mustRunAfter 'spotlessCheck', 'compileJava' }
+    tasks.named('runGameTestServer') { mustRunAfter 'runUnitTests' }
+    tasks.named('runData') { mustRunAfter 'runGameTestServer', 'verifyGameTestLog' }
+}

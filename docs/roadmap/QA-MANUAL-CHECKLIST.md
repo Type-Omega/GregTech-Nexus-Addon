@@ -3,7 +3,7 @@
 Coisas que os gates automatizados (`runUnitTests` + `runGameTestServer`) **não** cobrem:
 renderização, UI, Jade, pacotes client, drag, tooltips renderizadas. Rodar `./gradlew runClient`,
 entrar num mundo com as estruturas montadas e marcar cada item. Regressão encontrada → anotar num
-checkpoint novo do `CONTINUITY_LEDGER.md` e, quando der, transformar em gametest/contract test.
+item em aberto do `docs/STATE.md` e, quando der, transformar em gametest/contract test.
 
 ## Wireless Steam HUD
 - [ ] HUD aparece com a rede carregada: saldo, `Flow: +N / -N mB/s`, `Hatches: N drain / M feed`.

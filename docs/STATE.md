@@ -2,11 +2,11 @@
 
 Short, current snapshot for anyone (person or AI session) starting work on GTNA. Keep it under ~150 lines: replace outdated lines instead of appending. History lives in git commits and `CHANGELOG.md`; the old `CONTINUITY_LEDGER.md` was retired on 2026-10-16 and is still in git history (last commit with it: `75269ab`).
 
-Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minecraft 1.20.1, Forge 47, GTCEu 7.5.3, requires **GTIA Lib 0.4.0+**.
+Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minecraft 1.20.1, Forge 47, GTCEu 7.5.3, requires **GTIA Lib 0.5.0+**.
 
 ## What exists
 
-- **168 multiblocks.** Ports from GTO, GTL, GTNL and GTNH plus GTNA originals. Progress of the requested ports: [roadmap](roadmap/index.md) (46/86, by phase A–G). Only machines from the author's list are ported, from the exact source mod ([lista-do-autor](roadmap/lista-do-autor.md)).
+- **170 multiblocks.** Ports from GTO, GTL, GTNL and GTNH plus GTNA originals. Progress of the requested ports: [roadmap](roadmap/index.md) (46/86, by phase A–G). Only machines from the author's list are ported, from the exact source mod ([lista-do-autor](roadmap/lista-do-autor.md)).
 - **Endgame:** Eye of Harmony, Forge of Gods (Godforge chain), Nano Forge T1–T4, Bose-Einstein Condensate network, Plasma Forge, Space Elevator with modules, Dyson Sphere.
 - **Originals:** Kinetic Orbital Lance, Stellar Containment Chamber, Antimatter Collider Ring and Dimensional Rift Gate are in game and under test; the Pressurized Water Reactor (IV) is designed.
 - **Systems:** Nexus energy network (128-bit wireless energy, configurable losses), wireless steam network, ME Pattern Buffers (multi-mode, configurable capacity), module system (sub-patterns that unlock capacity or recipe types), Thread/Parallel/Overclock hatches, electric Void Miner and void fluid drilling, Steam Elevator with modules, research engine (used by GTIA only if enabled).
@@ -16,10 +16,11 @@ Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minec
 ## Validation gate
 
 ```bash
-./gradlew spotlessCheck compileJava runUnitTests runGameTestServer runData --offline
+./gradlew gate --offline
 ```
 
-- `runGameTestServer` exits 0 even when a recipe fails to parse: **grep the log** for `Parsing error loading recipe gtna:` before calling the gate green.
+- `gate` runs spotlessCheck, compileJava, runUnitTests, runGameTestServer and runData. `verifyGameTestLog` runs right after the GameTests and fails the build on `Parsing error loading recipe gtna:` or a failed batch. No manual grep is needed.
+- After adding lang keys, run `./gradlew runData` once first: `AssetLangCoverageTest` reads the generated en_us.json, and the gate runs runData last.
 - Running `runData` in the same command disables runtime dependencies (`isDataRun`), including FTB Teams and FTB Quests; for the FTB GameTests run `./gradlew runGameTestServer` on its own.
 - Create `run/eula.txt` with `eula=true` before the first GameTest run.
 

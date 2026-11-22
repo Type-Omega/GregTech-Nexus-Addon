@@ -32,6 +32,14 @@ public class GTNARecipeType {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.BATH);
 
+    /** Steam Void Ore (GTIA-D-361): the pack supplies the ores; GTNA only registers the type. */
+    public static final GTRecipeType STEAM_VOID_ORE = register("steam_void_ore",
+            com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK)
+            .setMaxIOSize(1, 6, 0, 0)
+            .setEUIO(IO.IN)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MINER);
+
     public static final String SUPERHEATER_NAME = "superheater";
     public static final GTRecipeType SUPERHEATER_RECIPES = register("super_heater", SUPERHEATER_NAME)
             .setMaxIOSize(1, 0, 0, 1)

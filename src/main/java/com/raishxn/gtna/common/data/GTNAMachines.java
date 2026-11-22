@@ -2938,45 +2938,55 @@ public class GTNAMachines {
             "voidMinerSteamGateAged", () -> REGISTRATE
                     .multiblock("void_miner_steam_gate_aged", VoidMinerSteamGateAged::new)
                     .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTRecipeTypes.DUMMY_RECIPES)
+                    .recipeType(GTNARecipeType.STEAM_VOID_ORE)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
                     .recipeModifier(VoidMinerSteamGateAged::recipeModifier)
                     .pattern(definition -> FactoryBlockPattern.start()
-                            .aisle("BBBBBBBBB", "BBBBBBBBB", "B       B", "B       B", "B       B", "BBBBBBBBB",
-                                    "BCCCCCCCB",
-                                    "BCCCCCCCB", "B       B", "B       B")
-                            .aisle("B       B", "B       B", "         ", "         ", "         ", "B   D   B",
-                                    "C  DDD  C",
-                                    "C  DDD  C", "   DDD   ", "         ")
-                            .aisle("B       B", "B       B", "         ", "    D    ", "   DDD   ", "B  DDD  B",
-                                    "C DD DD C",
-                                    "C D   D C", "  D   D  ", "         ")
-                            .aisle("B   D   B", "B   D   B", "   DDD   ", "   D D   ", "  DD DD  ", "B D   D B",
-                                    "C D   D C",
-                                    "C     D C", " D     D ", "         ")
-                            .aisle("B   D   B", "B   D   B", "   D D   ", "  D   D  ", "  D   D  ", "B D   D B",
-                                    "C     D C",
-                                    "C     D C", " D     D ", "         ")
-                            .aisle("B   D   B", "B   D   B", "   DDD   ", "   D D   ", "  DD DD  ", "B D   D B",
-                                    "C D   D C",
-                                    "C     D C", " D     D ", "         ")
-                            .aisle("B       B", "B       B", "         ", "    D    ", "   DDD   ", "B  DDD  B",
-                                    "C DD DD C",
-                                    "C D   D C", "  D   D  ", "         ")
-                            .aisle("B       B", "B       B", "         ", "         ", "         ", "B   D   B",
-                                    "C  DDD  C",
-                                    "C  DDD  C", "   DDD   ", "         ")
-                            .aisle("BBBBBBBBB", "BBBBEBBBB", "B       B", "B       B", "B       B", "BBBBBBBBB",
-                                    "BCCCCCCCB",
-                                    "BCCCCCCCB", "B       B", "B       B")
+                            // EN: "Portal house" (GTIA-D-361): the GTO ring and gallery with fireboxes, steam lines,
+                            // windows and a chimney. PT: "Casa do portal" (GTIA-D-361): o anel e a galeria do GTO com
+                            // fornalhas, linhas de vapor, janelas e chaminé. ZH: "传送门之屋"（GTIA-D-361）。
+                            .aisle("SSSSSSSSS", "BBBBBBBBB", "BBBBBBBBB", "BVVVVVVVB", "BVVVVVVVB", "BVVVVVVVB",
+                                    "BBBBBBBBB", "BFFFFFFFB", "BFFFFFFFB", "B       B", "G       G", "R        ",
+                                    "R        ", "R        ", "I        ")
+                            .aisle("SSSSSSSSS", "B       B", "B       B", "V       V", "V       V", "V       V",
+                                    "B   D   B", "F  DDD  F", "F  DDD  F", "   DDD   ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B       B", "B       B", "V       V", "V   D   V", "V  DDD  V",
+                                    "B  DDD  B", "F DD DD F", "F D   D F", "  D   D  ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B  XDX  B", "B   D   B", "V  DDD  V", "V  D D  V", "V DD DD V",
+                                    "B D   D B", "F D   D F", "F     D F", " D     D ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B IXDXI B", "BPP D PPB", "VP D D PV", "VPD   DPV", "VPD   DPV",
+                                    "B D   D B", "F     D F", "F     D F", " D     D ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B  XDX  B", "B   D   B", "V  DDD  V", "V  D D  V", "V DD DD V",
+                                    "B D   D B", "F D   D F", "F     D F", " D     D ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B       B", "B       B", "V       V", "V   D   V", "V  DDD  V",
+                                    "B  DDD  B", "F DD DD F", "F D   D F", "  D   D  ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "B       B", "B       B", "V       V", "V       V", "V       V",
+                                    "B   D   B", "F  DDD  F", "F  DDD  F", "   DDD   ", "         ", "         ",
+                                    "         ", "         ", "         ")
+                            .aisle("SSSSSSSSS", "BBBBBBBBB", "BBBBEBBBB", "B       B", "B       B", "B       B",
+                                    "BBBBBBBBB", "BFFFFFFFB", "BFFFFFFFB", "B       B", "G       G", "         ",
+                                    "         ", "         ", "         ")
                             .where(' ', any())
+                            .where('S', blocks(Blocks.STONE_BRICKS))
                             .where('B', blocks(GTBlocks.CASING_BRONZE_BRICKS.get())
                                     .or(abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
                                     .or(abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
                                     .or(abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
                                     .or(abilities(PartAbility.STEAM).setPreviewCount(1)))
-                            .where('C', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
+                            .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
                             .where('D', blocks(GTNABlocks.BREEL_PLATED_CASING.get()))
+                            .where('X', blocks(GTBlocks.FIREBOX_BRONZE.get()))
+                            .where('P', blocks(GTBlocks.CASING_BRONZE_PIPE.get()))
+                            .where('G', blocks(GTBlocks.CASING_BRONZE_GEARBOX.get()))
+                            .where('V', blocks(Blocks.GLASS))
+                            .where('R', blocks(Blocks.BRICKS))
+                            .where('I', blocks(Blocks.IRON_BARS))
                             .where('E', controller(blocks(definition.get())))
                             .build())
                     .workableCasingModel(

@@ -277,9 +277,8 @@ Detalhe em `docs/roadmap/port-audit-2026-09-21.md` e `THIRD_PARTY_NOTICES.md`.
 
 ## 14. Fechamento da era Steam (2026-09-22)
 
-> ⚠️ **Rede wireless de steam:** ainda com bugs graves. Handoff dedicado para a próxima sessão em
-> **`docs/roadmap/NEXT-SESSION-WIRELESS-STEAM.md`** (arquivos, referência GTNL, sintomas e prompt
-> pronto). A rede fica em 0 mB e inputs não enchem — investigar antes de seguir.
+> **Rede wireless de steam:** o bug de 0 mB foi resolvido em 2026-09-22 (pull dividido por fair
+> share entre os inputs com espaço; `/gtna steam` mostra fluxo e estado por hatch).
 
 Tudo o que o handoff pedia para fechar a era Steam foi implementado e **commitado** (sem push):
 

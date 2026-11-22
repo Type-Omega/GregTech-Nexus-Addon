@@ -18,7 +18,8 @@ public final class ColliderCore {
     public static final double[] MAGNET_FIELD = { 8.3, 12, 20, 45, 120 };
     public static final String[] MAGNET_NAMES = { "NbTi", "Nb3Sn", "REBCO", "neutronium", "infinity" };
     // EN: Electron beams radiate their energy away (synchrotron light grows as E^4): like LEP, they stop at 100 GeV.
-    // PT: Feixes de elétrons perdem energia irradiando (a luz síncrotron cresce com E^4): como no LEP, param em 100 GeV.
+    // PT: Feixes de elétrons perdem energia irradiando (a luz síncrotron cresce com E^4): como no LEP, param em 100
+    // GeV.
     // ZH: 电子束会辐射掉能量（同步辐射随 E^4 增长）：与 LEP 相同，束流能量上限为 100 GeV。
     public static final double ELECTRON_BEAM_GEV = 100, SYNCHROTRON_LIMIT_GEV = 104.5;
 

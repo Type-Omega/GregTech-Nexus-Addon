@@ -3,7 +3,7 @@
 Documento de referência para as próximas sessões. Complementa:
 - `auditoria-multiblocos.md`: veredito e contagem de blocos faltando por máquina;
 - `forge-of-gods-material-chain.md`: cadeia do Forge of Gods;
-- `CONTINUITY_LEDGER.md`: checkpoints, o último é o G-0199.
+- `docs/STATE.md`: estado atual (o antigo `CONTINUITY_LEDGER.md` foi aposentado em 2026-10-16).
 
 ## 0. Princípios (decisões do autor)
 

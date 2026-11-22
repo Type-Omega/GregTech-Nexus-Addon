@@ -29,8 +29,8 @@ These Botania-mana controllers are excluded: `mana_alloy_blast_smelter`, `base_m
 build, unit, GameTest and datagen gate (20/20 unit tests, 57/57 GameTests). All four still need the
 author’s in-game check.
 
-For the author's exact selection, exclusions, current gate and next action, read
-`NEXT-SESSION-PORTS-2026-09-25.md`.
+For the author's exact selection read `lista-do-autor.md`; for the current gate and state read
+`docs/STATE.md`.
 
 ## GTOCore candidates
 

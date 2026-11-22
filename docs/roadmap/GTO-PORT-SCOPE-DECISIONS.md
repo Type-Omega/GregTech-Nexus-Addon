@@ -1,7 +1,7 @@
 # Decisões de escopo — ports GTO até o Component Assembler assembly line (2026-09-25)
 
 Decisões do autor para a próxima sessão em loop. Complementa
-`GTO-FIDELITY-PORT-INVENTORY.md` e `NEXT-SESSION-PORTS-2026-09-25.md`.
+`GTO-FIDELITY-PORT-INVENTORY.md`; a seleção atual do autor está em `lista-do-autor.md`.
 
 ## Escopo INCLUÍDO (ordem de execução)
 
@@ -112,7 +112,7 @@ carcaça de máquina (GTCEu `MACHINE_CASING_*`) ou um valor fixo documentado.
 
 - Rodar o gate completo após **cada** máquina:
   `./gradlew spotlessCheck compileJava runUnitTests runGameTestServer runData --offline`.
-- Registrar checkpoint no `CONTINUITY_LEDGER.md` (G-0104 em diante) com validação e pendências.
+- Atualizar `docs/STATE.md` e o `CHANGELOG.md` com validação e pendências.
 - **Manter tudo local**: sem commit e sem push até o autor testar in-game e autorizar.
 - Texturas novas: copiar do GTOCore com atribuição **CC BY-NC-SA** em `GTNASources` e
   `THIRD_PARTY_NOTICES.md`. Modernity-GTNH só quando houver asset correspondente.

@@ -50,11 +50,8 @@ theme:
 exclude_docs: |
   STATE.md
   curseforge-*.md
-  prd/
-  fixes/
   reports/
   style/
-  update-notes/
   visualization/
   structures/
   development/pattern-buffer-task-manager.md
