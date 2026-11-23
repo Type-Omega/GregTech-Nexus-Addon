@@ -123,7 +123,7 @@ X-Nexus来自反物质对撞环；恒星约束室需要你的锻核金属来维�
 
     - 塔架核心尚未加入：结构始终按 4 个激活塔架计算。
 
-    其他问题请提交到 [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues)。
+    其他问题请提交到 [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues)。
 
 ## 界面
 

@@ -123,7 +123,7 @@ X-Nexus comes from the Antimatter Collider Ring; the Stellar Chamber needs your 
 
     - Pylon cores are not in the game: the structure always counts 4 active pylons.
 
-    Report anything else on the [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).
+    Report anything else on the [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).
 
 ## Screens
 

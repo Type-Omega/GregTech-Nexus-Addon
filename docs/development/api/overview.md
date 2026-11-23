@@ -8,7 +8,7 @@ Release jars are on the organisation's Maven:
 
 ```groovy
 repositories {
-    maven { url = 'https://gtinfinityascension.github.io/maven/' }
+    maven { url = 'https://type-omega.github.io/maven/' }
 }
 
 dependencies {

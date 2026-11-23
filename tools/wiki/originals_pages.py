@@ -142,9 +142,9 @@ def issues(lang, items):
     title = T(lang, 'Known issues', 'Problemas conhecidos', '已知问题')
     L = [f'!!! bug "{title}"\n']
     for x in items: L.append(f'    - {x}')
-    L.append('\n    ' + T(lang, 'Report anything else on the [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).',
-                         'Outros problemas: [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).',
-                         '其他问题请提交到 [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues)。') + '\n')
+    L.append('\n    ' + T(lang, 'Report anything else on the [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).',
+                         'Outros problemas: [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).',
+                         '其他问题请提交到 [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues)。') + '\n')
     return '\n'.join(L)
 
 

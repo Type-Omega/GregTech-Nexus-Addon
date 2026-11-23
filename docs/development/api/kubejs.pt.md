@@ -1,6 +1,6 @@
 # API KubeJS
 
-O GTNA funciona com o KubeJS sem nada extra: instale o KubeJS e os bindings abaixo já estão lá. Exemplos completos, prontos para rodar, estão em [`examples/kubejs/`](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/tree/main/examples/kubejs) no repositório.
+O GTNA funciona com o KubeJS sem nada extra: instale o KubeJS e os bindings abaixo já estão lá. Exemplos completos, prontos para rodar, estão em [`examples/kubejs/`](https://github.com/Type-Omega/GregTech-Nexus-Addon/tree/main/examples/kubejs) no repositório.
 
 | Recurso | Pasta do script | Para quê |
 |---|---|---|

@@ -21,4 +21,4 @@ O GTNA é um addon do GTCEu (`GTNAGTAddon`) com mod id `gtna` e classe principal
 - Todo nome visível existe em `en_us` (gerado), `pt_br` e `zh_cn`.
 - Nunca use tipos do JEI fora de `integration/jei` nem `net.minecraft.client` em código comum: clientes só com EMI e servidores dedicados precisam carregar o mod. Testes garantem as duas regras.
 - Pagamentos de energia e fluido seguem simular → cobrar → executar; saldos nunca ficam negativos.
-- As regras da organização (tamanho de arquivo, comentários-chave em três idiomas) estão nas [convenções de desenvolvimento](https://gtinfinityascension.github.io/GTIA-Dev-Doc/development/conventions/).
+- As regras da organização (tamanho de arquivo, comentários-chave em três idiomas) estão nas [convenções de desenvolvimento](https://type-omega.github.io/TypeOmega-Dev-Doc/development/conventions/).

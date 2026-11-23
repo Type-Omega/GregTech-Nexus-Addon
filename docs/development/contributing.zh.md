@@ -1,6 +1,6 @@
 # 贡献代码
 
-组织通用指南见 GTInfinityAscension 的 [CONTRIBUTING](https://github.com/GTInfinityAscension/.github/blob/main/CONTRIBUTING.md)。GTNA 的简要版本：
+组织通用指南见 Type-Omega 的 [CONTRIBUTING](https://github.com/Type-Omega/.github/blob/main/CONTRIBUTING.md)。GTNA 的简要版本：
 
 1. 除修复 bug 以外的改动，请先提交 issue。平衡和进度方面的修改需要作者批准。
 2. Fork 仓库，从 `main` 创建分支，每个 pull request 只做一件事。

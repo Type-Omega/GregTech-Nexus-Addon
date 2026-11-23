@@ -22,7 +22,7 @@ A maioria das máquinas é port, com crédito no jogo (última linha do tooltip)
 - **Twist Space Technology:** Eye of Wood.
 - **Originais do GTNA:** os quatro [multiblocos originais](originals.md) e vários sistemas.
 
-Licenças e permissões estão no [THIRD_PARTY_NOTICES.md](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md).
+Licenças e permissões estão no [THIRD_PARTY_NOTICES.md](https://github.com/Type-Omega/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md).
 
 ## Construindo estruturas grandes
 

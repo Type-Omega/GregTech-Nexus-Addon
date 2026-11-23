@@ -134,7 +134,7 @@ O Cristal de Magnetar vem da Câmara de Contenção Estelar; o Colisor precisa d
     - A massa do projétil, o regime do impacto e o divisor de salva ainda não mudam o que volta: a massa recuperada depende só de $\eta$, $E$, $H$, $r$ e $A$.
     - O banco tem um anel de capacitores ($4 \times 10^{12}$ EU); anéis extras ainda não existem, então o orçamento de massa é 800 t e o de calor, 60.
 
-    Outros problemas: [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).
+    Outros problemas: [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).
 
 ## Telas
 

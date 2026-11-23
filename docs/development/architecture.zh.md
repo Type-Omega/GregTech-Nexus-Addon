@@ -21,4 +21,4 @@ GTNA 是一个 GTCEu 附属模组（`GTNAGTAddon`），模组 id 为 `gtna`，�
 - 每个可见名称都需要 `en_us`（自动生成）、`pt_br` 和 `zh_cn`。
 - 不要在 `integration/jei` 之外引用 JEI 类型，也不要在通用代码中引用 `net.minecraft.client`：仅装 EMI 的客户端和专用服务器都必须能加载模组。测试会检查这两条规则。
 - 能量和流体的扣除遵循 模拟 → 扣费 → 执行；余额永远不会为负。
-- 组织范围的规则（文件大小、三语关键注释）见[开发约定](https://gtinfinityascension.github.io/GTIA-Dev-Doc/development/conventions/)。
+- 组织范围的规则（文件大小、三语关键注释）见[开发约定](https://type-omega.github.io/TypeOmega-Dev-Doc/development/conventions/)。

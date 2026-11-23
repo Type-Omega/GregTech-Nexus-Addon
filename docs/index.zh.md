@@ -63,4 +63,4 @@ KubeJS 绑定、可用于任何多方块的辅助模块、平衡文件以及研�
 - [配置](getting-started/configuration.md)：所有选项和平衡文件。
 - [常见问题](getting-started/faq.md)和[更新日志](changelog.md)。
 
-GTNA 是自由软件（LGPLv3），移植的素材遵循各自的许可；见[致谢](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md)。问题与反馈：[GitHub issues](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues) 或 [Discord](https://discord.gg/TW5vugknk5)。本 wiki 提供 English、Português 和简体中文版本；[欢迎参与翻译](development/translating.md)。
+GTNA 是自由软件（LGPLv3），移植的素材遵循各自的许可；见[致谢](https://github.com/Type-Omega/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md)。问题与反馈：[GitHub issues](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues) 或 [Discord](https://discord.gg/TW5vugknk5)。本 wiki 提供 English、Português 和简体中文版本；[欢迎参与翻译](development/translating.md)。

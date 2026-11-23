@@ -25,7 +25,7 @@
     Não. Sem ele o Elevador a Vapor não viaja, o Olho da Harmonia só tem as dimensões do Minecraft e os programas planetários da mineração do vazio não aparecem.
 
 ??? question "Onde relato um bug?"
-    No [rastreador de issues](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues), com o `latest.log` (e a pasta `crash-reports/` se o jogo travou) e as versões do GTNA, do GTCEu e do TypeOmega Lib.
+    No [rastreador de issues](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues), com o `latest.log` (e a pasta `crash-reports/` se o jogo travou) e as versões do GTNA, do GTCEu e do TypeOmega Lib.
 
 ??? question "Posso traduzir a wiki ou o mod?"
     Pode, veja [Traduzir](../development/translating.md).

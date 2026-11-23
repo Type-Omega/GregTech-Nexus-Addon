@@ -2,7 +2,7 @@
 
 欢迎为模组和本 wiki 提供翻译。GTNA 目前提供英语、葡萄牙语（巴西）和简体中文。新语言可以从少量内容开始，逐页增加：尚未翻译的内容会显示英文。
 
-在开始大量翻译之前，请先提交 [issue](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues) 或在 [Discord](https://discord.gg/TW5vugknk5) 打个招呼，避免两个人翻译同一部分。
+在开始大量翻译之前，请先提交 [issue](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues) 或在 [Discord](https://discord.gg/TW5vugknk5) 打个招呼，避免两个人翻译同一部分。
 
 ## 模组
 

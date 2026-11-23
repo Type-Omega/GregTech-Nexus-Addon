@@ -9,7 +9,7 @@
 ## Compilar e rodar
 
 ```bash
-git clone https://github.com/GTInfinityAscension/GregTech-Nexus-Addon.git
+git clone https://github.com/Type-Omega/GregTech-Nexus-Addon.git
 cd GregTech-Nexus-Addon
 ./gradlew build          # compila e empacota
 ./gradlew runClient      # abre um cliente de desenvolvimento

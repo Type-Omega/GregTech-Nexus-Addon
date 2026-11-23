@@ -9,7 +9,7 @@
 ## 构建与运行
 
 ```bash
-git clone https://github.com/GTInfinityAscension/GregTech-Nexus-Addon.git
+git clone https://github.com/Type-Omega/GregTech-Nexus-Addon.git
 cd GregTech-Nexus-Addon
 ./gradlew build          # 编译并打包
 ./gradlew runClient      # 启动开发客户端

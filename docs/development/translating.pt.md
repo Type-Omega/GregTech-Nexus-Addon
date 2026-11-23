@@ -2,7 +2,7 @@
 
 Traduções são bem-vindas, para o mod e para esta wiki. Hoje o GTNA tem inglês, português (Brasil) e chinês simplificado. Um idioma novo pode começar pequeno e crescer página por página: o que ainda não foi traduzido aparece em inglês.
 
-Antes de uma tradução grande, abra uma [issue](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues) ou avise no [Discord](https://discord.gg/TW5vugknk5), para duas pessoas não traduzirem a mesma coisa.
+Antes de uma tradução grande, abra uma [issue](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues) ou avise no [Discord](https://discord.gg/TW5vugknk5), para duas pessoas não traduzirem a mesma coisa.
 
 ## O mod
 

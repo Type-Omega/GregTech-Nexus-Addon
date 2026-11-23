@@ -134,7 +134,7 @@ $$
     - 弹丸质量、撞击模式和齐射分流器目前不会改变回收量：回收质量只取决于 $\eta$、$E$、$H$、$r$ 和 $A$。
     - 电容组只有一个电容环（$4 \times 10^{12}$ EU）；额外的环尚未加入，因此质量预算为 800 t，热量预算为 60。
 
-    其他问题请提交到 [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues)。
+    其他问题请提交到 [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues)。
 
 ## 界面
 

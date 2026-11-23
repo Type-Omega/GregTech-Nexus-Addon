@@ -1,6 +1,6 @@
 # Contributing code
 
-The organisation-wide guide is the [CONTRIBUTING](https://github.com/GTInfinityAscension/.github/blob/main/CONTRIBUTING.md) of GTInfinityAscension. The short version for GTNA:
+The organisation-wide guide is the [CONTRIBUTING](https://github.com/Type-Omega/.github/blob/main/CONTRIBUTING.md) of Type-Omega. The short version for GTNA:
 
 1. For anything larger than a bug fix, open an issue first. Balance and progression changes need the author's approval.
 2. Fork, branch from `main`, one topic per pull request.

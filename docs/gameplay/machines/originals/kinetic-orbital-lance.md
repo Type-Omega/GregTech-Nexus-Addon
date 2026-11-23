@@ -134,7 +134,7 @@ The Magnetar Crystal comes from the Stellar Containment Chamber; the Collider ne
     - The projectile mass, the impact regime and the salvo splitter do not change what comes back yet: the recovered mass depends only on $\eta$, $E$, $H$, $r$ and $A$.
     - The bank has one capacitor ring ($4 \times 10^{12}$ EU); extra rings are not in the game yet, so the mass budget is 800 t and the heat budget 60.
 
-    Report anything else on the [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).
+    Report anything else on the [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).
 
 ## Screens
 

@@ -7,7 +7,7 @@
 | Minecraft | 1.20.1 | required |
 | Forge | 47.4.1 or newer | required |
 | [GregTech CEu Modern](https://www.curseforge.com/minecraft/mc-mods/gregtechceu-modern) | 7.5.3 or newer | required; Forge stops with a message if it is older |
-| [TypeOmega Lib](https://github.com/GTInfinityAscension/GTIA-Lib) | 0.5.0 or newer | required since GTNA 0.6.1 |
+| [TypeOmega Lib](https://github.com/Type-Omega/TypeOmega-Lib) | 0.5.0 or newer | required since GTNA 0.6.1 |
 | [Applied Energistics 2](https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2) | for 1.20.1 (tested with 15.4.10) | required: the ME parts are always registered |
 | JEI or EMI | any recent | optional, strongly recommended: recipes and structure previews |
 | KubeJS | 2001.6.5 | optional: [scripting API](../development/api/kubejs.md) |
@@ -25,7 +25,7 @@ GTCEu needs its own dependencies (such as LDLib); install the versions its downl
 3. Add the optional mods you want.
 4. Start the game once. GTNA writes `config/gtna.yaml` and the balance files in `config/gtna/balance/` (see [Configuration](configuration.md)).
 
-Downloads: [GitHub releases](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/releases). Developers can also get release jars from the [organisation's Maven](https://gtinfinityascension.github.io/maven/).
+Downloads: [GitHub releases](https://github.com/Type-Omega/GregTech-Nexus-Addon/releases). Developers can also get release jars from the [organisation's Maven](https://type-omega.github.io/maven/).
 
 ## Servers
 

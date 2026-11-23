@@ -63,4 +63,4 @@ Bindings de KubeJS, módulos auxiliares para qualquer multibloco, arquivos de ba
 - [Configuração](getting-started/configuration.md): todas as opções e arquivos de balanceamento.
 - [Perguntas frequentes](getting-started/faq.md) e [novidades](changelog.md).
 
-O GTNA é software livre (LGPLv3), com assets portados sob as próprias licenças; veja os [créditos](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md). Dúvidas e relatos: [issues no GitHub](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues) ou [Discord](https://discord.gg/TW5vugknk5). Esta wiki existe em English, Português e 简体中文; [ajude a traduzir](development/translating.md).
+O GTNA é software livre (LGPLv3), com assets portados sob as próprias licenças; veja os [créditos](https://github.com/Type-Omega/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md). Dúvidas e relatos: [issues no GitHub](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues) ou [Discord](https://discord.gg/TW5vugknk5). Esta wiki existe em English, Português e 简体中文; [ajude a traduzir](development/translating.md).

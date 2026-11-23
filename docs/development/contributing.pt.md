@@ -1,6 +1,6 @@
 # Contribuir com código
 
-O guia geral é o [CONTRIBUTING](https://github.com/GTInfinityAscension/.github/blob/main/CONTRIBUTING.md) da GTInfinityAscension. A versão curta para o GTNA:
+O guia geral é o [CONTRIBUTING](https://github.com/Type-Omega/.github/blob/main/CONTRIBUTING.md) da Type-Omega. A versão curta para o GTNA:
 
 1. Para qualquer coisa maior que uma correção de bug, abra uma issue antes. Mudanças de balanceamento e progressão precisam da aprovação do autor.
 2. Faça um fork, crie um branch a partir do `main`, um assunto por pull request.

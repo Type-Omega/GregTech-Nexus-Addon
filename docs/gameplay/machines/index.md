@@ -22,7 +22,7 @@ Most machines are ports, credited in game on the last tooltip line and on each c
 - **Twist Space Technology:** Eye of Wood.
 - **GTNA originals:** the four [original multiblocks](originals.md) and several systems.
 
-Licences and permissions are in [THIRD_PARTY_NOTICES.md](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md).
+Licences and permissions are in [THIRD_PARTY_NOTICES.md](https://github.com/Type-Omega/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md).
 
 ## Building big structures
 

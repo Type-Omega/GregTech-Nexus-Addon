@@ -22,7 +22,7 @@ GTNA 共注册 **170 个多方块**。每个都在[图鉴](catalog/index.md)中�
 - **Twist Space Technology**：Eye of Wood。
 - **GTNA 原创**：四台[原创多方块](originals.md)以及多个系统。
 
-许可与授权见 [THIRD_PARTY_NOTICES.md](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md)。
+许可与授权见 [THIRD_PARTY_NOTICES.md](https://github.com/Type-Omega/GregTech-Nexus-Addon/blob/main/THIRD_PARTY_NOTICES.md)。
 
 ## 搭建大型结构
 

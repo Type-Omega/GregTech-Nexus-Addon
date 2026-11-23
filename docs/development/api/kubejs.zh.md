@@ -1,6 +1,6 @@
 # KubeJS API
 
-GTNA 开箱即支持 KubeJS：安装 KubeJS 后即可使用下列绑定。可直接运行的完整示例位于仓库的 [`examples/kubejs/`](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/tree/main/examples/kubejs)。
+GTNA 开箱即支持 KubeJS：安装 KubeJS 后即可使用下列绑定。可直接运行的完整示例位于仓库的 [`examples/kubejs/`](https://github.com/Type-Omega/GregTech-Nexus-Addon/tree/main/examples/kubejs)。
 
 | 功能 | 脚本目录 | 用途 |
 |---|---|---|

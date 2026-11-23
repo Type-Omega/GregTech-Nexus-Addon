@@ -25,7 +25,7 @@
     No. Without it the Steam Elevator cannot travel, the Eye of Harmony only has the Minecraft dimensions and the planetary void mining programs are missing.
 
 ??? question "Where do I report a bug?"
-    On the [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues), with `latest.log` (and `crash-reports/` if the game crashed) and the versions of GTNA, GTCEu and TypeOmega Lib.
+    On the [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues), with `latest.log` (and `crash-reports/` if the game crashed) and the versions of GTNA, GTCEu and TypeOmega Lib.
 
 ??? question "Can I translate the wiki or the mod?"
     Yes, see [Translating](../development/translating.md).

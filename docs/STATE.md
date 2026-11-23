@@ -40,7 +40,7 @@ Updated: 2026-10-16 · version **0.6.0** (+ unreleased fixes on `main`) · Minec
 - Ports prefer GTNL recipe types; GTO recipe types only for the approved exceptions.
 - Every name in en_us, pt_br and zh_cn; changelogs in English.
 - Code GTNA writes is LGPL-3.0; GTO assets are CC BY-NC-SA 4.0. Attribution in `THIRD_PARTY_NOTICES.md`.
-- Organisation code rules (file size, trilingual key comments): [conventions](https://gtinfinityascension.github.io/GTIA-Dev-Doc/development/conventions/).
+- Organisation code rules (file size, trilingual key comments): [conventions](https://type-omega.github.io/TypeOmega-Dev-Doc/development/conventions/).
 
 ## Large files to split when touched
 

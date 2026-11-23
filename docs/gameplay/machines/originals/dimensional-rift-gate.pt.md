@@ -123,7 +123,7 @@ O X-Nexus vem do Anel Colisor de Antimatéria; a Câmara Estelar precisa do seu 
 
     - Os núcleos de pilone ainda não existem: a estrutura sempre conta 4 pilones ativos.
 
-    Outros problemas: [issue tracker](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues).
+    Outros problemas: [issue tracker](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues).
 
 ## Telas
 

@@ -1,9 +1,9 @@
 site_name: GregTech Nexus Addon
-site_url: https://gtinfinityascension.github.io/GregTech-Nexus-Addon/
+site_url: https://type-omega.github.io/GregTech-Nexus-Addon/
 site_description: "Player and pack-author documentation for GregTech Nexus Addon (GTNA), a GregTech CEu Modern addon for Minecraft 1.20.1."
 site_author: Raishxn
-repo_url: https://github.com/GTInfinityAscension/GregTech-Nexus-Addon
-repo_name: GTInfinityAscension/GregTech-Nexus-Addon
+repo_url: https://github.com/Type-Omega/GregTech-Nexus-Addon
+repo_name: Type-Omega/GregTech-Nexus-Addon
 edit_uri: edit/main/docs/
 copyright: "Copyright &copy; 2024-2026 Raishxn and contributors · LGPLv3 code; see Credits for asset licenses"
 
@@ -153,7 +153,7 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/GTInfinityAscension/GregTech-Nexus-Addon
+      link: https://github.com/Type-Omega/GregTech-Nexus-Addon
     - icon: fontawesome/brands/discord
       link: https://discord.gg/TW5vugknk5
 

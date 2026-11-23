@@ -25,7 +25,7 @@
     不需要。没有它时蒸汽电梯无法出行，鸿蒙之眼只有 Minecraft 原版维度，星球虚空采矿程序也不会出现。
 
 ??? question "在哪里报告 bug？"
-    在 [issue 追踪](https://github.com/GTInfinityAscension/GregTech-Nexus-Addon/issues)中提交，附上 `latest.log`（如果崩溃，还有 `crash-reports/`）以及 GTNA、GTCEu 和 TypeOmega Lib 的版本。
+    在 [issue 追踪](https://github.com/Type-Omega/GregTech-Nexus-Addon/issues)中提交，附上 `latest.log`（如果崩溃，还有 `crash-reports/`）以及 GTNA、GTCEu 和 TypeOmega Lib 的版本。
 
 ??? question "我可以翻译 wiki 或模组吗？"
     可以，见[翻译](../development/translating.md)。
