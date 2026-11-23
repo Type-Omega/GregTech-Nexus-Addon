@@ -59,6 +59,7 @@ exclude_docs: |
   !roadmap/index*.md
   !roadmap/pressurized-water-reactor*.md
   config-examples/
+  testing/
 
 validation:
   omitted_files: warn
