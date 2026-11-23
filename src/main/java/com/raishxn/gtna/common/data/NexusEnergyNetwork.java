@@ -53,7 +53,7 @@ public class NexusEnergyNetwork extends SavedData {
         public Int128 lastLossPerTick = Int128.ZERO();
         public Int128 lastOutputPerTick = Int128.ZERO();
         public long lastTickTime = 0;
-        private DirectDebit lastDirectDebit;
+        DirectDebit lastDirectDebit;
 
         public Map<GlobalPos, ConnectionInfo> connections = new ConcurrentHashMap<>();
 
@@ -66,44 +66,32 @@ public class NexusEnergyNetwork extends SavedData {
         public int lossRemainder;
     }
 
-    public NexusEnergyNetwork() {}
+    private final TeamNetworkMigration<NetworkState> teams;
+
+    public NexusEnergyNetwork() {
+        this(FtbAwareNetworkScope.INSTANCE);
+    }
+
+    NexusEnergyNetwork(WirelessNetworkScope scope) {
+        teams = new TeamNetworkMigration<>(energyStorage, scope, NexusNetworkStateCodec::merge, (member, team) -> {
+            setDirty();
+            TeamNetworkRecords.log("energy", member, team);
+        });
+    }
 
     public NexusEnergyNetwork(CompoundTag tag) {
+        this(tag, FtbAwareNetworkScope.INSTANCE);
+    }
+
+    NexusEnergyNetwork(CompoundTag tag, WirelessNetworkScope scope) {
+        this(scope);
+        TeamNetworkRecords.load(tag, teams);
         if (!tag.contains("EnergyNetworks", Tag.TAG_LIST)) return;
 
         ListTag list = tag.getList("EnergyNetworks", Tag.TAG_COMPOUND);
         for (int i = 0; i < list.size(); i++) {
             CompoundTag entry = list.getCompound(i);
-            if (!entry.hasUUID("Owner")) continue;
-
-            NetworkState state = new NetworkState();
-            try {
-                state.energy = new BigInteger(entry.getString("Amount")).max(BigInteger.ZERO);
-            } catch (NumberFormatException ignored) {
-                state.energy = BigInteger.ZERO;
-            }
-            state.maxCapacity = Int128.fromString(entry.getString("MaxCapacity"), Int128.ZERO());
-            state.totalCapacitors = entry.getLong("TotalCapacitors");
-            state.averageTier = entry.getInt("AvgTier");
-            state.efficiency = entry.getDouble("Efficiency");
-            state.transferLimit = Int128.fromString(entry.getString("TransferLimit"), Int128.ZERO());
-            state.matrixFormed = entry.getBoolean("MatrixFormed");
-            state.unlimited = entry.getBoolean("Unlimited") && state.matrixFormed && state.totalCapacitors == 750 &&
-                    state.averageTier == 14;
-            state.matrixDimension = entry.getString("MatrixDimension");
-            state.lossRemainder = Math.max(0, Math.min(9_999, entry.getInt("LossRemainder")));
-            if (entry.contains("DirectDebit", Tag.TAG_COMPOUND)) {
-                var debit = entry.getCompound("DirectDebit");
-                var dimension = net.minecraft.resources.ResourceLocation.tryParse(debit.getString("Dimension"));
-                if (dimension != null) {
-                    state.lastDirectDebit = new DirectDebit(GlobalPos.of(ResourceKey.create(
-                            net.minecraft.core.registries.Registries.DIMENSION, dimension),
-                            net.minecraft.core.BlockPos.of(debit.getLong("Position"))),
-                            debit.getString("MachineType"), Int128.fromString(debit.getString("Amount"), Int128.ZERO()),
-                            debit.getLong("Tick"));
-                }
-            }
-            energyStorage.put(entry.getUUID("Owner"), state);
+            if (entry.hasUUID("Owner")) energyStorage.put(entry.getUUID("Owner"), NexusNetworkStateCodec.read(entry));
         }
     }
 
@@ -116,36 +104,27 @@ public class NexusEnergyNetwork extends SavedData {
     public @NotNull CompoundTag save(@NotNull CompoundTag tag) {
         ListTag list = new ListTag();
         energyStorage.forEach((uuid, state) -> {
-            CompoundTag entry = new CompoundTag();
+            CompoundTag entry = NexusNetworkStateCodec.write(state);
             entry.putUUID("Owner", uuid);
-            entry.putString("Amount", state.energy.toString());
-            entry.putString("MaxCapacity", state.maxCapacity.toString());
-            entry.putLong("TotalCapacitors", state.totalCapacitors);
-            entry.putInt("AvgTier", state.averageTier);
-            entry.putDouble("Efficiency", state.efficiency);
-            entry.putString("TransferLimit", state.transferLimit.toString());
-            entry.putBoolean("MatrixFormed", state.matrixFormed);
-            entry.putBoolean("Unlimited", state.unlimited);
-            entry.putString("MatrixDimension", state.matrixDimension);
-            entry.putInt("LossRemainder", state.lossRemainder);
-            if (state.lastDirectDebit != null) {
-                var info = state.lastDirectDebit;
-                var debit = new CompoundTag();
-                debit.putString("Dimension", info.source().dimension().location().toString());
-                debit.putLong("Position", info.source().pos().asLong());
-                debit.putString("MachineType", info.machineType());
-                debit.putString("Amount", info.amount().toString());
-                debit.putLong("Tick", info.tick());
-                entry.put("DirectDebit", debit);
-            }
             list.add(entry);
         });
         tag.put("EnergyNetworks", list);
+        TeamNetworkRecords.save(tag, teams);
         return tag;
     }
 
+    /** The key the owner's network is stored under: his FTB team, or himself (GTIA-D-386). */
+    public UUID networkOf(UUID owner) {
+        return teams.networkOf(owner);
+    }
+
+    /** The team network a player's own network was merged into, or null. */
+    public UUID migratedInto(UUID player) {
+        return teams.migratedInto(player);
+    }
+
     private NetworkState getState(UUID owner) {
-        return energyStorage.computeIfAbsent(owner, ignored -> new NetworkState());
+        return energyStorage.computeIfAbsent(teams.networkOf(owner), ignored -> new NetworkState());
     }
 
     private void handleTick(NetworkState state, long currentTime) {

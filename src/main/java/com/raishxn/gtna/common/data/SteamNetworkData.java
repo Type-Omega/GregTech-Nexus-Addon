@@ -85,9 +85,26 @@ public class SteamNetworkData extends SavedData {
         public long consumed;
     }
 
-    public SteamNetworkData() {}
+    private final TeamNetworkMigration<Long> teams;
+
+    public SteamNetworkData() {
+        this(FtbAwareNetworkScope.INSTANCE);
+    }
+
+    SteamNetworkData(WirelessNetworkScope scope) {
+        teams = new TeamNetworkMigration<>(steamStorage, scope, SteamNetworkData::mergeSteam, (member, team) -> {
+            setDirty();
+            TeamNetworkRecords.log("steam", member, team);
+        });
+    }
 
     public SteamNetworkData(CompoundTag tag) {
+        this(tag, FtbAwareNetworkScope.INSTANCE);
+    }
+
+    SteamNetworkData(CompoundTag tag, WirelessNetworkScope scope) {
+        this(scope);
+        TeamNetworkRecords.load(tag, teams);
         if (tag.contains("SteamNetworks", Tag.TAG_LIST)) {
             ListTag list = tag.getList("SteamNetworks", Tag.TAG_COMPOUND);
             for (int i = 0; i < list.size(); i++) {
@@ -97,6 +114,24 @@ public class SteamNetworkData extends SavedData {
                 }
             }
         }
+    }
+
+    // EN: Saturates instead of wrapping; a pool near 9.2e18 mB is out of reach in play.
+    // PT: Satura em vez de dar a volta; um estoque perto de 9,2e18 mB está fora do alcance no jogo.
+    // ZH: 饱和而非溢出回绕；接近 9.2e18 mB 的储量在游戏中无法达到。
+    private static Long mergeSteam(Long team, Long member) {
+        long sum = team + member;
+        return sum < 0 ? Long.MAX_VALUE : sum;
+    }
+
+    /** The key the owner's pool is stored under: his FTB team, or himself (GTIA-D-386). */
+    public UUID networkOf(UUID owner) {
+        return teams.networkOf(owner);
+    }
+
+    /** The team pool a player's own pool was merged into, or null. */
+    public UUID migratedInto(UUID player) {
+        return teams.migratedInto(player);
     }
 
     public static SteamNetworkData get(ServerLevel level) {
@@ -114,11 +149,12 @@ public class SteamNetworkData extends SavedData {
             list.add(entry);
         });
         tag.put("SteamNetworks", list);
+        TeamNetworkRecords.save(tag, teams);
         return tag;
     }
 
     public long getSteam(UUID owner) {
-        return steamStorage.getOrDefault(owner, 0L);
+        return steamStorage.getOrDefault(teams.networkOf(owner), 0L);
     }
 
     /**
@@ -130,14 +166,15 @@ public class SteamNetworkData extends SavedData {
      */
     public boolean addSteam(UUID owner, long amount) {
         if (amount == 0) return false;
-        long current = getSteam(owner);
+        UUID network = teams.networkOf(owner);
+        long current = steamStorage.getOrDefault(network, 0L);
         long next = current + amount;
         // A negative result means either an overdraft (negative amount) or a positive overflow;
         // both are rejected atomically rather than silently wrapping or voiding steam.
         if (next < 0) return false;
 
-        steamStorage.put(owner, next);
-        FlowStats stats = getFlowStats(owner);
+        steamStorage.put(network, next);
+        FlowStats stats = getFlowStats(network);
         if (amount > 0) {
             stats.added += amount;
         } else {
@@ -148,15 +185,16 @@ public class SteamNetworkData extends SavedData {
     }
 
     public void setSteam(UUID owner, long amount) {
-        steamStorage.put(owner, amount);
+        steamStorage.put(teams.networkOf(owner), amount);
         setDirty();
     }
 
     public boolean consumeSteam(UUID owner, long amount) {
-        long current = getSteam(owner);
+        UUID network = teams.networkOf(owner);
+        long current = steamStorage.getOrDefault(network, 0L);
         if (current >= amount) {
-            steamStorage.put(owner, current - amount);
-            getFlowStats(owner).consumed += amount;
+            steamStorage.put(network, current - amount);
+            getFlowStats(network).consumed += amount;
             setDirty();
             return true;
         }
@@ -165,7 +203,7 @@ public class SteamNetworkData extends SavedData {
 
     /** Lifetime added/consumed counters for the command; creates an empty entry on demand. */
     public FlowStats getFlowStats(UUID owner) {
-        return flowStats.computeIfAbsent(owner, ignored -> new FlowStats());
+        return flowStats.computeIfAbsent(teams.networkOf(owner), ignored -> new FlowStats());
     }
 
     // ------------------------------------------------------------------
@@ -177,7 +215,8 @@ public class SteamNetworkData extends SavedData {
      * returns its live entry so the caller can attach its tank level and last transfer.
      */
     public ConnectionInfo reportConnection(UUID owner, GlobalPos pos, boolean isInput, boolean isSteel, long tick) {
-        Map<GlobalPos, ConnectionInfo> map = connections.computeIfAbsent(owner, ignored -> new HashMap<>());
+        Map<GlobalPos, ConnectionInfo> map = connections.computeIfAbsent(teams.networkOf(owner),
+                ignored -> new HashMap<>());
         ConnectionInfo info = map.computeIfAbsent(pos, p -> new ConnectionInfo(p, isInput, isSteel, tick));
         info.lastSeenTick = tick;
         return info;
@@ -188,7 +227,7 @@ public class SteamNetworkData extends SavedData {
      * pruned as a side effect.
      */
     public List<ConnectionInfo> getActiveConnections(UUID owner, long nowTick, long ttl) {
-        Map<GlobalPos, ConnectionInfo> map = connections.get(owner);
+        Map<GlobalPos, ConnectionInfo> map = connections.get(teams.networkOf(owner));
         if (map == null) return List.of();
         List<ConnectionInfo> active = new ArrayList<>(map.size());
         var iterator = map.values().iterator();
@@ -209,7 +248,7 @@ public class SteamNetworkData extends SavedData {
      * from diluting the share of the ones that can actually accept steam.
      */
     public int countActiveInputsWithSpace(UUID owner, long nowTick, long ttl) {
-        Map<GlobalPos, ConnectionInfo> map = connections.get(owner);
+        Map<GlobalPos, ConnectionInfo> map = connections.get(teams.networkOf(owner));
         if (map == null) return 0;
         int count = 0;
         var iterator = map.values().iterator();

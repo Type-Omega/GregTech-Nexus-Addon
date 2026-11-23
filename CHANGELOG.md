@@ -5,6 +5,8 @@
 ### Changed
 - GTNA now requires [TypeOmega Lib](https://github.com/Type-Omega/TypeOmega-Lib) 0.6.0 or newer, the renamed GTIA Lib: Maven `com.typeomega:typeomega-lib`, mod ID `typeomegalib`, package `com.typeomega.lib`. Addons that import lib classes must update the package. TypeOmegaCore content now uses the `typeomega` namespace.
 
+- **The wireless energy network and the wireless steam network are shared by the FTB team.** With FTB Teams installed, every member of a party reads and fills one network; a solo player keeps the network he had, and without FTB Teams networks stay per player. Existing worlds migrate by themselves the first time a network is used: each member's own network is added to the team's once (EU and steam are summed, never copied), and the move is saved. A player who leaves a team leaves the energy with it and starts an empty network; a player who joins a team brings his own network into it. If two members each had a Nexus Flux Matrix, the team keeps the first matrix it sees; rebuild one to make it the team's.
+
 - The GTCEu Large Boilers (bronze, steel, titanium, tungstensteel) accept a **Wireless Steam Output Hatch** (bronze or steel) where a fluid output hatch goes, so a boiler can feed the team's wireless steam network. The hatch is still rejected by every other multiblock that takes fluid output hatches.
 
 ### New multiblocks: the naquadah reactor ladder
