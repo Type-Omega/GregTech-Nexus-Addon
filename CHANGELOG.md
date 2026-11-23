@@ -2,10 +2,14 @@
 
 ## [Unreleased]
 
-### Changed
-- GTNA now requires [TypeOmega Lib](https://github.com/Type-Omega/TypeOmega-Lib) 0.6.0 or newer, the renamed GTIA Lib: Maven `com.typeomega:typeomega-lib`, mod ID `typeomegalib`, package `com.typeomega.lib`. Addons that import lib classes must update the package. TypeOmegaCore content now uses the `typeomega` namespace.
+## [0.6.2] - 2026-11-23
 
-- **The wireless energy network and the wireless steam network are shared by the FTB team.** With FTB Teams installed, every member of a party reads and fills one network; a solo player keeps the network he had, and without FTB Teams networks stay per player. Existing worlds migrate by themselves the first time a network is used: each member's own network is added to the team's once (EU and steam are summed, never copied), and the move is saved. A player who leaves a team leaves the energy with it and starts an empty network; a player who joins a team brings his own network into it. If two members each had a Nexus Flux Matrix, the team keeps the first matrix it sees; rebuild one to make it the team's.
+### Changed
+- GTNA now requires [TypeOmega Lib](https://github.com/Type-Omega/TypeOmega-Lib) 0.6.1 or newer, the renamed GTIA Lib: Maven `com.typeomega:typeomega-lib`, mod ID `typeomegalib`, package `com.typeomega.lib`. Addons that import lib classes must update the package. TypeOmegaCore content now uses the `typeomega` namespace.
+
+- **The wireless energy network and the wireless steam network are shared by the FTB team.** With FTB Teams installed, every member of a party reads and fills one network; a solo player keeps the network he had, and without FTB Teams networks stay per player. Existing worlds migrate by themselves the first time a network is used: each member's own network is added to the team's once (EU and steam are summed, never copied), and the move is saved. A player who leaves a team leaves the energy with it and starts an empty network; a player who joins a team brings his own network into it. Each member's Nexus Flux Matrices join the team's.
+
+- **Several Nexus Flux Matrices on one network add up.** Before, the last matrix to form overwrote the network's capacity and stats. Now capacity, capacitors and transfer limit are summed, efficiency and tier are averaged by capacitor count, and one unlimited matrix makes the network unlimited. A matrix that unforms or is broken takes only its own share out of the sum; stored EU stays. Hatches work in every dimension that has a matrix. Matrices are saved with the network, so a matrix in an unloaded chunk still counts. Worlds from 0.6.1 switch to the sum the next time a matrix forms.
 
 - The GTCEu Large Boilers (bronze, steel, titanium, tungstensteel) accept a **Wireless Steam Output Hatch** (bronze or steel) where a fluid output hatch goes, so a boiler can feed the team's wireless steam network. The hatch is still rejected by every other multiblock that takes fluid output hatches.
 
