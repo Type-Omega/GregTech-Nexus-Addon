@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.gui.UITemplate;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+import com.gregtechceu.gtceu.api.machine.feature.IMachineLife;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IDisplayUIMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 
@@ -28,6 +29,7 @@ import com.raishxn.gtna.client.hud.WirelessEnergyHudBridge;
 import com.raishxn.gtna.client.renderer.BlockHighlightHandler;
 import com.raishxn.gtna.client.renderer.GTNATextures;
 import com.raishxn.gtna.common.block.NexusCapacitorBlock;
+import com.raishxn.gtna.common.data.FluxMatrices;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
 import com.raishxn.gtna.config.ConfigHolder;
 import com.raishxn.gtna.config.GTNABalance;
@@ -38,7 +40,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements IDisplayUIMachine {
+public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements IDisplayUIMachine, IMachineLife {
 
     private long totalCapacitors = 0;
     private Int128 sumCapacities = Int128.ZERO();
@@ -69,22 +71,29 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
         super.onStructureFormed();
         recalculateCapacitors();
         if (getLevel() instanceof ServerLevel serverLevel && getOwnerUUID() != null) {
-            NexusEnergyNetwork network = NexusEnergyNetwork.get(serverLevel);
-            network.setMaxCapacity(getOwnerUUID(), maxCapacity);
-            network.setMatrixStats(getOwnerUUID(), totalCapacitors, averageTier, efficiency, transferLimit, true);
-            network.setMatrixDimension(getOwnerUUID(), serverLevel.dimension());
-            network.setUnlimited(getOwnerUUID(), unlimited);
+            // EN: Every matrix of a team adds to the network instead of overwriting it (GTIA-D-426).
+            // PT: Cada matriz do time soma na rede em vez de sobrescrevê-la (GTIA-D-426).
+            // ZH: 队伍的每个矩阵都累加到网络中，而不是覆盖它（GTIA-D-426）。
+            NexusEnergyNetwork.get(serverLevel).putMatrix(getOwnerUUID(), controllerPos(serverLevel),
+                    new FluxMatrices.Matrix(totalCapacitors, averageTier, efficiency, maxCapacity, transferLimit,
+                            unlimited, serverLevel.dimension().location().toString()));
         }
+    }
+
+    private GlobalPos controllerPos(ServerLevel level) {
+        return GlobalPos.of(level.dimension(), getPos());
+    }
+
+    @Override
+    public void onMachineRemoved() {
+        if (getLevel() instanceof ServerLevel serverLevel)
+            NexusEnergyNetwork.get(serverLevel).removeMatrix(controllerPos(serverLevel));
     }
 
     @Override
     public void onStructureInvalid() {
-        if (getLevel() instanceof ServerLevel serverLevel && getOwnerUUID() != null) {
-            NexusEnergyNetwork network = NexusEnergyNetwork.get(serverLevel);
-            network.setMaxCapacity(getOwnerUUID(), Int128.ZERO());
-            network.setMatrixStats(getOwnerUUID(), 0, 0, 0.0, Int128.ZERO(), false);
-            network.setMatrixDimension(getOwnerUUID(), null);
-        }
+        if (getLevel() instanceof ServerLevel serverLevel)
+            NexusEnergyNetwork.get(serverLevel).removeMatrix(controllerPos(serverLevel));
         super.onStructureInvalid();
         unlimited = false;
         totalCapacitors = 0;
@@ -244,7 +253,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
 
         NexusEnergyNetwork network = NexusEnergyNetwork.get(serverLevel);
         Int128 energy = network.getEnergy(getOwnerUUID());
-        Int128 maxCap = maxCapacity;
+        Int128 maxCap = network.getMaxCapacity(getOwnerUUID());
         Int128 inPerTick = network.getLastInputPerTick(getOwnerUUID());
         Int128 rawInPerTick = network.getLastRawInputPerTick(getOwnerUUID());
         Int128 lossPerTick = network.getLastLossPerTick(getOwnerUUID());
@@ -253,7 +262,8 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
         textList.add(Component.literal("\u00a77Status: \u00a7aONLINE"));
 
         double fill = 0.0;
-        if (!unlimited && !maxCap.isZero()) {
+        boolean networkUnlimited = network.isUnlimited(getOwnerUUID());
+        if (!networkUnlimited && !maxCap.isZero()) {
             try {
                 fill = energy.toBigInteger().doubleValue() / maxCap.toBigInteger().doubleValue();
             } catch (Exception ignored) {
@@ -269,7 +279,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
         }
         bar.append("\u00a7b]");
 
-        if (!unlimited)
+        if (!networkUnlimited)
             textList.add(Component.literal(bar + " \u00a7f" + String.format(Locale.US, "%.1f%%", fill * 100.0)));
         textList.add(com.raishxn.gtna.common.item.NexusNetworkDisplay.energy(network, getOwnerUUID()));
         textList.add(Component.literal("\u00a77Gross Input: \u00a7f+" +

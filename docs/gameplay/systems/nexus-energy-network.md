@@ -26,6 +26,7 @@ The Matrix is a 7 × 7 frame whose middle repeats from 2 to 30 layers. Each laye
 - **Efficiency** and the **transfer** number use the average capacitor tier (or the highest one, with `machines.nexusFluxMatrix.useHighestTierForEfficiency`).
 - **750 MAX capacitors** make the network unlimited: no capacity cap and no transfer cap.
 - Energy you deposit stays as your balance even if the Matrix is broken.
+- **Several Matrices** on one network (yours, or your FTB team's) add up: capacity, capacitors and transfer are summed, and efficiency and tier are averaged by capacitor count. One unlimited Matrix makes the whole network unlimited. A Matrix that unforms or is broken takes only its own share out; hatches work in every dimension that has a Matrix.
 
 | Capacitor | EU per block | Transfer (EU/t) | Works across dimensions |
 |---|---:|---:|:---:|

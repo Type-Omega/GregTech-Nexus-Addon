@@ -234,6 +234,7 @@ tasks.register('runUnitTests') {
             'com.raishxn.gtna.UniversalFactoryBudgetTest',
             'com.raishxn.gtna.NexusWirelessLossTest',
             'com.raishxn.gtna.common.data.TeamWirelessNetworkTest',
+            'com.raishxn.gtna.common.data.FluxMatricesTest',
             'com.raishxn.gtna.GodforgeMathTest',
             'com.raishxn.gtna.ClientMixinContractTest',
             'com.raishxn.gtna.SteamBalanceTooltipTest',

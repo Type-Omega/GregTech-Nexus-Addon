@@ -32,6 +32,13 @@ final class FTBWirelessTeamTests {
         legacy.setExactEnergy(first, BigInteger.valueOf(100));
         legacy.setExactEnergy(second, BigInteger.valueOf(50));
         legacy.setExactEnergy(solo, BigInteger.valueOf(30));
+        String dimension = h.getLevel().dimension().location().toString();
+        legacy.putMatrix(first, net.minecraft.core.GlobalPos.of(h.getLevel().dimension(), h.absolutePos(
+                net.minecraft.core.BlockPos.ZERO)), new com.raishxn.gtna.common.data.FluxMatrices.Matrix(1, 1, 0.9,
+                        new Int128(1_000), new Int128(10), false, dimension));
+        legacy.putMatrix(second, net.minecraft.core.GlobalPos.of(h.getLevel().dimension(), h.absolutePos(
+                new net.minecraft.core.BlockPos(1, 0, 0))), new com.raishxn.gtna.common.data.FluxMatrices.Matrix(1, 1,
+                        0.9, new Int128(2_000), new Int128(10), false, dimension));
         CompoundTag energyTag = legacy.save(new CompoundTag());
         var legacySteam = new SteamNetworkData();
         legacySteam.setSteam(first, 2_000);
@@ -54,6 +61,8 @@ final class FTBWirelessTeamTests {
             h.assertTrue(energy.networkOf(second).equals(party.getId()) &&
                     energy.getExactEnergy(first).equals(BigInteger.valueOf(150)), "members' EU is summed");
             h.assertTrue(energy.getExactEnergy(second).equals(BigInteger.valueOf(150)), "and read by every member");
+            h.assertTrue(energy.getMaxCapacity(first).equals(new Int128(3_000)) && energy.getMatrixCount(second) == 2,
+                    "both members' Flux Matrices add up in the party (GTIA-D-426)");
             h.assertTrue(energy.getExactEnergy(first).equals(BigInteger.valueOf(150)), "never added twice");
             h.assertTrue(energy.networkOf(solo).equals(solo) &&
                     energy.getExactEnergy(solo).equals(BigInteger.valueOf(30)), "a solo player keeps his network");

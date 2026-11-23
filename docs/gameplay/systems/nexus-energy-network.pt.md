@@ -26,6 +26,7 @@ A Matrix é uma moldura de 7 × 7 cujo meio se repete de 2 a 30 camadas. Cada ca
 - A **eficiência** e o número de **transferência** usam o tier médio dos capacitores (ou o maior, com `machines.nexusFluxMatrix.useHighestTierForEfficiency`).
 - **750 capacitores MAX** deixam a rede ilimitada: sem teto de capacidade nem de transferência.
 - A energia depositada continua no seu saldo mesmo se a Matrix for quebrada.
+- **Várias Matrix** na mesma rede (sua ou do seu time do FTB) somam: capacidade, capacitores e transferência são somados, e eficiência e tier viram a média ponderada pelos capacitores. Uma Matrix ilimitada deixa a rede inteira ilimitada. Uma Matrix desformada ou quebrada tira só a parte dela; os hatches funcionam em toda dimensão que tem uma Matrix.
 
 | Capacitor | EU por bloco | Transferência (EU/t) | Funciona entre dimensões |
 |---|---:|---:|:---:|

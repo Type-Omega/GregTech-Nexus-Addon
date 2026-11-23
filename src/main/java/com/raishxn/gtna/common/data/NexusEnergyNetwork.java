@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -56,6 +57,8 @@ public class NexusEnergyNetwork extends SavedData {
         DirectDebit lastDirectDebit;
 
         public Map<GlobalPos, ConnectionInfo> connections = new ConcurrentHashMap<>();
+        /** Formed Flux Matrices by controller position; the stats below are their sum (GTIA-D-426). */
+        final Map<GlobalPos, FluxMatrices.Matrix> matrices = new LinkedHashMap<>();
 
         public long totalCapacitors = 0;
         public int averageTier = 0;
@@ -246,6 +249,36 @@ public class NexusEnergyNetwork extends SavedData {
         setDirty();
     }
 
+    /**
+     * Adds or replaces the matrix whose controller is at {@code controller}; the network's capacity and stats
+     * become the sum of its matrices (GTIA-D-426). A controller is in one network only, so it leaves any other.
+     */
+    public void putMatrix(UUID owner, GlobalPos controller, FluxMatrices.Matrix matrix) {
+        if (owner == null || controller == null || matrix == null) return;
+        UUID network = teams.networkOf(owner);
+        energyStorage.forEach((key, state) -> {
+            if (!key.equals(network) && state.matrices.remove(controller) != null)
+                NexusNetworkStateCodec.applyMatrices(state);
+        });
+        NetworkState state = getState(owner);
+        state.matrices.put(controller, matrix);
+        NexusNetworkStateCodec.applyMatrices(state);
+        setDirty();
+    }
+
+    /** Takes a matrix that unformed or was broken out of the sum of every network holding it. */
+    public void removeMatrix(GlobalPos controller) {
+        if (controller == null) return;
+        energyStorage.values().forEach(state -> {
+            if (state.matrices.remove(controller) != null) NexusNetworkStateCodec.applyMatrices(state);
+        });
+        setDirty();
+    }
+
+    public int getMatrixCount(UUID owner) {
+        return getState(owner).matrices.size();
+    }
+
     public void setMatrixDimension(UUID owner, ResourceKey<Level> dimension) {
         getState(owner).matrixDimension = dimension == null ? "" : dimension.location().toString();
         setDirty();
@@ -256,7 +289,9 @@ public class NexusEnergyNetwork extends SavedData {
         if (state.matrixDimension.isBlank()) {
             return !"MATRIX_INPUT_ONCE".equals(GTNABalance.getNexusLossApplication());
         }
-        return state.matrixDimension.equals(dimension.location().toString()) ||
+        String here = dimension.location().toString();
+        return state.matrixDimension.equals(here) ||
+                state.matrices.values().stream().anyMatch(matrix -> matrix.dimension().equals(here)) ||
                 GTNABalance.isNexusCrossDimensionEnabled(state.averageTier);
     }
 
