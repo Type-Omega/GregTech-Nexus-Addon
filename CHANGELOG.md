@@ -5,6 +5,8 @@
 ### Changed
 - GTNA now requires [TypeOmega Lib](https://github.com/Type-Omega/TypeOmega-Lib) 0.6.0 or newer, the renamed GTIA Lib: Maven `com.typeomega:typeomega-lib`, mod ID `typeomegalib`, package `com.typeomega.lib`. Addons that import lib classes must update the package. TypeOmegaCore content now uses the `typeomega` namespace.
 
+- The GTCEu Large Boilers (bronze, steel, titanium, tungstensteel) accept a **Wireless Steam Output Hatch** (bronze or steel) where a fluid output hatch goes, so a boiler can feed the team's wireless steam network. The hatch is still rejected by every other multiblock that takes fluid output hatches.
+
 ### New multiblocks: the naquadah reactor ladder
 - **Large Naquadah Reactor** (from GregTech Odyssey): burns Naquadah Fuel or Enriched Naquadah Fuel with hydrogen at 2,097,152 EU/t (UHV), or with oxygen or nitrogen plasma at 524,288 EU/t for 32 times as long. Up to 3 fluid input hatches; dynamo or laser source hatch.
 - **Naquadah Hyper Reactor** (GTNA original, 96 × 38 × 24): the best naquadah reactor. Same fuels at UEV, four times the EU per mB. Oxygen plasma gives 8x parallel, nitrogen plasma 16x (40 mB per boosted run). Hatches go in the ring around the controller.

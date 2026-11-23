@@ -16,6 +16,7 @@
     "ae2.TooltipsMixin",
     "gtceu.GTNAPlateDoubleMixin",
     "gtceu.FluidDrillLogicMixin",
+    "gtceu.LargeBoilerWirelessSteamMixin",
     "gtceu.BlockPatternAccessor",
     "gtceu.BlockPatternPreviewMapMixin",
     "gtceu.BlockPatternSparseWalkMixin",
