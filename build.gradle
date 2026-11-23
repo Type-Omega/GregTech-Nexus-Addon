@@ -33,7 +33,7 @@ repositories {
     maven {
         name = 'Type-Omega'
         url = 'https://type-omega.github.io/maven/'
-        content { includeGroup 'com.gtinfinityascension' }
+        content { includeGroup 'com.typeomega' }
     }
     mavenLocal()
     mavenCentral()
