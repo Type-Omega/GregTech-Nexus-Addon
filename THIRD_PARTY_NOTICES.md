@@ -531,6 +531,21 @@ tooltip format and implemented behavior. Each machine retains its in-game `GTNAS
 The existing source notices and license terms above continue to apply; this revision imports no
 controller implementation. See `docs/reports/multiblock-tooltips-technical-details.md`.
 
+## GTNH-style multiblock tooltips (2026-11-23)
+
+From 2026-11-23 the multiblock tooltips are rebuilt family by family with TypeOmega Lib's `MultiblockTooltip.builder()`
+(texts in `src/main/resources/assets/gtna/tooltip_lang/`). For ported machines the lines start from the original
+controller tooltip and are rewritten for GTNA: GTNA's own numbers, read from the machine logic, other wording and a
+humour line of our own. No sentence is copied unchanged.
+
+- **Large steam multiblocks** (19 machines): from the `gtnl.machine.large_steam_*.tooltip.*` and
+  `gtnl.machine.steam.high_pressure.tooltip` lines of GT: Not Leisure,
+  [ABKQPO/GT-Not-Leisure](https://github.com/ABKQPO/GT-Not-Leisure) at commit `52345d2`, whose `LICENSE.txt` is
+  LGPL-3.0 at that commit (GTNL moved to GPL-3.0 in `a90b8cb`, 2026-10-24, after the version used here; the GTNL
+  author's permission above also applies). Changes: the percentages compare against GTCEu's steam single block (or the recipe time), parallel limits
+  and speeds are GTNA's, the hatch and high-pressure rules describe GTNA's structures, and the Portuguese and Chinese
+  texts were written for GTNA.
+
 ## Simplified Chinese translation (zh_cn)
 
 `assets/gtna/lang/zh_cn.json` was written for GTNA. Where an English string is identical to one in the official Simplified

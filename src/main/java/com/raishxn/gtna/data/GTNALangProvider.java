@@ -99,6 +99,8 @@ public class GTNALangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // GTNH-style multiblock tooltips (GTIA-D-410); pt_br and zh_cn come from tools/tooltip_lang.py
+        com.raishxn.gtna.common.data.tooltip.GTNATooltipLang.texts().forEach((key, text) -> add(key, text[0]));
         // Standard multiblock tooltips (tools/apply_multiblock_tooltips.py)
         com.raishxn.gtna.common.data.GTNAMultiblockTooltipText.ENGLISH.forEach((id, lines) -> {
             for (int i = 0; i < lines.length; i++) {
@@ -382,7 +384,6 @@ public class GTNALangProvider extends LanguageProvider {
 
     private void addStaticTranslations() {
         // --- Ported-content attribution (appended to machine tooltips by GTNASources) ---
-        add("gtna.tooltip.source", "Source: %s");
         add("gtna.tooltip.block_properties", "Hardness: %s Blast Resistance: %s");
         add("gtna.jade.need_grind_ball", "Need to grind ball");
         add("gtna.ui.voiding_mode", "Voiding Mode: %s");

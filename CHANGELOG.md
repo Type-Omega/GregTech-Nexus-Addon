@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- **Multiblock tooltips move to the GTNH layout** of TypeOmega Lib (`MultiblockTooltip.builder()`): `Machine Type:` with the types in yellow, short lines with the numbers in cyan and the configurable parts in green, separators, a humour line, the origin of a port and the mod name in blue italics. First family: the 19 large steam multiblocks from GT: Not Leisure. Their parallels and speeds are read from the same numbers the recipe logic uses and follow the pack's steam balance. The speed is now compared with the steam single block of the same tier (a bronze single block runs at twice the recipe time) where GTCEu has one, and with the recipe's listed time otherwise. Texts in English, Portuguese and Chinese.
+
 ## [0.6.2] - 2026-11-23
 
 ### Changed

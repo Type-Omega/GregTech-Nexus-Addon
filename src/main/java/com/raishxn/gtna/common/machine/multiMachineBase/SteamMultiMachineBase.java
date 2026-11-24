@@ -58,9 +58,9 @@ public abstract class SteamMultiMachineBase extends WorkableMultiblockMachine
     public static final int STEEL_TIER = 2;
 
     /** GTNL parity: high pressure doubles the processing speed... */
-    private static final double HIGH_PRESSURE_DURATION_MULTIPLIER = 0.5;
+    public static final double HIGH_PRESSURE_DURATION_MULTIPLIER = 0.5;
     /** ...and doubles the steam consumption (mB steam per EU). */
-    private static final double HIGH_PRESSURE_CONVERSION_MULTIPLIER = 2.0;
+    public static final double HIGH_PRESSURE_CONVERSION_MULTIPLIER = 2.0;
 
     private final boolean isSteel;
 

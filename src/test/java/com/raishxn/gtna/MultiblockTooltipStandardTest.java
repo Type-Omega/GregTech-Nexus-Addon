@@ -26,6 +26,7 @@ public final class MultiblockTooltipStandardTest {
 
     private static final Path SOURCES = Path.of("src/main/java");
     private static final Path PT_BR = Path.of("src/main/resources/assets/gtna/lang/pt_br.json");
+    private static final Path TOOLTIP_LANG = Path.of("src/main/resources/assets/gtna/tooltip_lang");
     private static final Pattern MULTIBLOCK = Pattern
             .compile("(?:\\.multiblock|registerElevatorModule)\\(\\s*\"([a-z0-9_]+)\"");
     private static final Pattern PT_KEY = Pattern
@@ -39,6 +40,22 @@ public final class MultiblockTooltipStandardTest {
         return line.replaceAll("§.", "");
     }
 
+    /**
+     * Multiblocks migrated to the GTNH-style layout of the lib (GTIA-D-410): every one has a humour line in
+     * {@code tooltip_lang}, which {@code GTNATooltips.finish} always adds.
+     */
+    private static Set<String> migrated() throws IOException {
+        Set<String> ids = new TreeSet<>();
+        Pattern humor = Pattern.compile("\"gtna\\.machine\\.([a-z0-9_]+)\\.tooltip\\.humor\"");
+        try (Stream<Path> files = Files.list(TOOLTIP_LANG)) {
+            for (Path file : files.filter(f -> f.toString().endsWith(".json")).toList()) {
+                Matcher m = humor.matcher(Files.readString(file, StandardCharsets.UTF_8));
+                while (m.find()) ids.add(m.group(1));
+            }
+        }
+        return ids;
+    }
+
     public static void main(String[] args) throws IOException {
         Map<String, String[]> english = GTNAMultiblockTooltipText.ENGLISH;
         List<String> errors = new ArrayList<>();
@@ -50,8 +67,13 @@ public final class MultiblockTooltipStandardTest {
                 while (matcher.find()) registered.add(matcher.group(1));
             }
         }
+        Set<String> migrated = migrated();
         for (String id : registered) {
-            if (!english.containsKey(id)) errors.add(id + ": registered multiblock without a standard tooltip");
+            if (migrated.contains(id)) {
+                if (english.containsKey(id)) errors.add(id + ": migrated to the lib layout but still has old lines");
+            } else if (!english.containsKey(id)) {
+                errors.add(id + ": registered multiblock without a standard tooltip");
+            }
         }
 
         for (var entry : english.entrySet()) {
@@ -99,6 +121,7 @@ public final class MultiblockTooltipStandardTest {
         if (!errors.isEmpty()) {
             throw new AssertionError(errors.size() + " multiblock tooltip problem(s):\n" + String.join("\n", errors));
         }
-        System.out.println("[MultiblockTooltipStandardTest] " + english.size() + " standard multiblock tooltips OK");
+        System.out.println("[MultiblockTooltipStandardTest] " + english.size() + " standard and " + migrated.size() +
+                " migrated multiblock tooltips OK");
     }
 }

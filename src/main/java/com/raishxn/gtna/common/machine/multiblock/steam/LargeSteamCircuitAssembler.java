@@ -37,10 +37,10 @@ public class LargeSteamCircuitAssembler extends SteamMultiMachineBase {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             LargeSteamCircuitAssembler.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
-    private static final int MAX_PARALLELS = 4;
-    private static final int ENGRAVING_NEEDED = 16;
-    private static final int OUTPUT_MULTIPLIER = 2;
-    private static final int DURATION_MULTIPLIER = 4;
+    public static final int MAX_PARALLELS = 4;
+    public static final int ENGRAVING_NEEDED = 16;
+    public static final int OUTPUT_MULTIPLIER = 2;
+    public static final int DURATION_MULTIPLIER = 4;
 
     @Persisted
     private boolean multiplyMode = true;

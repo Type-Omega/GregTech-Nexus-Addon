@@ -30,7 +30,7 @@ public class LargeSteamAlloySmelter extends SteamMultiMachineBase {
             LargeSteamAlloySmelter.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    private int targetParallel = 64;
+    private int targetParallel = LargeSteamSpecs.ALLOY_SMELTER.defaultParallel();
 
     public LargeSteamAlloySmelter(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -55,7 +55,7 @@ public class LargeSteamAlloySmelter extends SteamMultiMachineBase {
 
         if (parallels == 0) return ModifierFunction.NULL;
 
-        double durationMultiplier = 0.57;
+        double durationMultiplier = LargeSteamSpecs.ALLOY_SMELTER.durationMultiplier();
 
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
@@ -82,7 +82,7 @@ public class LargeSteamAlloySmelter extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(64, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.ALLOY_SMELTER.maxParallel(), this.targetParallel * 2);
             }
         }
     }

@@ -37,6 +37,12 @@ public class AdjustableSteamParallelMachine extends SteamMultiMachineBase implem
     @Persisted
     private int targetParallel;
 
+    public AdjustableSteamParallelMachine(IMachineBlockEntity holder, GTRecipeType recipeType,
+                                          LargeSteamSpecs.Spec spec, boolean adjustable, Object... args) {
+        this(holder, recipeType, spec.defaultParallel(), spec.maxParallel(), spec.durationMultiplier(), adjustable,
+                args);
+    }
+
     public AdjustableSteamParallelMachine(IMachineBlockEntity holder, GTRecipeType recipeType, int defaultParallel,
                                           int maxParallel, double durationMultiplier, boolean adjustable,
                                           Object... args) {

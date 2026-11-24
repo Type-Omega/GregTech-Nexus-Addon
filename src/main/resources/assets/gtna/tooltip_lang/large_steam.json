@@ -1,0 +1,347 @@
+{
+  "gtna.tooltip.source": [
+    "Source: %s",
+    "Origem: %s",
+    "来源: %s"
+  ],
+  "gtna.tooltip.mb.steam.faster": [
+    "%s faster than a steam single-block machine of the same tier",
+    "%s mais rápida que uma máquina a vapor de bloco único do mesmo tier",
+    "比同等级的单方块蒸汽机器快%s"
+  ],
+  "gtna.tooltip.mb.steam.faster_recipe": [
+    "Finishes recipes %s faster than their listed time",
+    "Termina as receitas %s mais rápido que o tempo listado",
+    "完成配方比标注时间快%s"
+  ],
+  "gtna.tooltip.mb.steam.parallel": [
+    "Processes up to %s items at once",
+    "Processa até %s itens de uma vez",
+    "最多同时处理%s个物品"
+  ],
+  "gtna.tooltip.mb.steam.parallel.buttons": [
+    "Set the parallel in the controller: %s doubles it, %s halves it",
+    "Ajuste os paralelos no controlador: %s dobra, %s divide por dois",
+    "在控制器中设置并行：%s翻倍，%s减半"
+  ],
+  "gtna.tooltip.mb.steam.high_pressure": [
+    "Build it entirely in %s for high pressure: %s speed, %s steam",
+    "Toda em %s, roda em alta pressão: %s de velocidade, %s de vapor",
+    "全部使用%s建造即为高压模式：速度%s，蒸汽消耗%s"
+  ],
+  "gtna.tooltip.mb.steam.steel": [
+    "steel",
+    "aço",
+    "钢"
+  ],
+  "gtna.tooltip.mb.steam.hatch": [
+    "Needs exactly %s Steam Input Hatch, wired or wireless",
+    "Precisa de exatamente %s Escotilha de Entrada de Vapor, com ou sem fio",
+    "需要恰好%s个蒸汽输入仓（有线或无线）"
+  ],
+  "gtna.tooltip.mb.type.macerator": [
+    "Macerator",
+    "Macerador",
+    "研磨机"
+  ],
+  "gtna.tooltip.mb.type.furnace": [
+    "Furnace",
+    "Fornalha",
+    "熔炉"
+  ],
+  "gtna.tooltip.mb.type.alloy_smelter": [
+    "Alloy Smelter",
+    "Fundidora de Ligas",
+    "合金炉"
+  ],
+  "gtna.tooltip.mb.type.forge_hammer": [
+    "Forge Hammer",
+    "Martelo de Forja",
+    "锻造锤"
+  ],
+  "gtna.tooltip.mb.type.compressor": [
+    "Compressor",
+    "Compressor",
+    "压缩机"
+  ],
+  "gtna.tooltip.mb.type.extractor": [
+    "Extractor",
+    "Extrator",
+    "提取机"
+  ],
+  "gtna.tooltip.mb.type.ore_washer": [
+    "Ore Washer",
+    "Lavador de Minério",
+    "洗矿机"
+  ],
+  "gtna.tooltip.mb.type.circuit_assembler": [
+    "Circuit Assembler",
+    "Montadora de Circuitos",
+    "电路组装机"
+  ],
+  "gtna.tooltip.mb.type.mixer": [
+    "Mixer",
+    "Misturador",
+    "搅拌机"
+  ],
+  "gtna.tooltip.mb.type.centrifuge": [
+    "Centrifuge",
+    "Centrífuga",
+    "离心机"
+  ],
+  "gtna.tooltip.mb.type.thermal_centrifuge": [
+    "Thermal Centrifuge",
+    "Centrífuga Térmica",
+    "热力离心机"
+  ],
+  "gtna.tooltip.mb.type.chemical_bath": [
+    "Chemical Bath",
+    "Banho Químico",
+    "化学浸洗机"
+  ],
+  "gtna.tooltip.mb.type.lathe": [
+    "Lathe",
+    "Torno",
+    "车床"
+  ],
+  "gtna.tooltip.mb.type.cutter": [
+    "Cutter",
+    "Cortadora",
+    "切割机"
+  ],
+  "gtna.tooltip.mb.type.bender": [
+    "Bender",
+    "Dobradora",
+    "卷板机"
+  ],
+  "gtna.tooltip.mb.type.extruder": [
+    "Extruder",
+    "Extrusora",
+    "压模器"
+  ],
+  "gtna.tooltip.mb.type.wiremill": [
+    "Wiremill",
+    "Trefiladora",
+    "线材轧机"
+  ],
+  "gtna.tooltip.mb.type.sifter": [
+    "Sifter",
+    "Peneira",
+    "筛选机"
+  ],
+  "gtna.tooltip.mb.type.forming_press": [
+    "Forming Press",
+    "Prensa de Moldagem",
+    "冲压机床"
+  ],
+  "gtna.machine.large_steam_crusher.tooltip.purpose": [
+    "Grinds ore and stone in bulk batches",
+    "Mói minério e pedra em lotes enormes",
+    "成批研磨矿石与石头"
+  ],
+  "gtna.machine.large_steam_crusher.tooltip.humor": [
+    "Hearing protection is provided as a benefit, not as an apology.",
+    "O protetor auricular é um benefício, não um pedido de desculpas.",
+    "耳塞属于员工福利，不属于道歉。"
+  ],
+  "gtna.machine.large_steam_furnace.tooltip.purpose": [
+    "Smelts entire stockpiles in one go",
+    "Funde estoques inteiros de uma vez",
+    "一次熔炼整批库存"
+  ],
+  "gtna.machine.large_steam_furnace.tooltip.humor": [
+    "Per company policy, the break-room cookies are no longer baked here.",
+    "Por política da empresa, os biscoitos da copa não são mais assados aqui.",
+    "根据公司规定，茶水间的饼干不再在这里烤。"
+  ],
+  "gtna.machine.large_steam_alloy_smelter.tooltip.purpose": [
+    "Alloys metals in large batches",
+    "Faz ligas metálicas em grandes lotes",
+    "大批量冶炼合金"
+  ],
+  "gtna.machine.large_steam_alloy_smelter.tooltip.humor": [
+    "Bronze Age metallurgy, now with a quarterly growth target.",
+    "Metalurgia da Idade do Bronze, agora com meta de crescimento trimestral.",
+    "青铜时代的冶金术，如今背上了季度增长指标。"
+  ],
+  "gtna.machine.large_steam_hammer.tooltip.purpose": [
+    "Hammers ingots and blocks in batches",
+    "Martela lingotes e blocos em lotes",
+    "成批锻打锭与方块"
+  ],
+  "gtna.machine.large_steam_hammer.tooltip.humor": [
+    "Stop. Hammer time. Attendance is mandatory.",
+    "Pare. Hora do martelo. Presença obrigatória.",
+    "停。锤子时间。必须到场。"
+  ],
+  "gtna.machine.large_steam_compressor.tooltip.purpose": [
+    "Compresses items into plates and blocks in batches",
+    "Comprime itens em placas e blocos em lotes",
+    "成批将物品压缩成板与块"
+  ],
+  "gtna.machine.large_steam_compressor.tooltip.humor": [
+    "Under pressure, everything becomes a plate. Management calls it focus.",
+    "Sob pressão, tudo vira placa. A gerência chama isso de foco.",
+    "在压力之下，万物终成板。管理层称之为专注。"
+  ],
+  "gtna.machine.large_steam_extractor.tooltip.purpose": [
+    "Extracts fluids and materials from items in batches",
+    "Extrai fluidos e materiais de itens em lotes",
+    "成批从物品中提取流体与材料"
+  ],
+  "gtna.machine.large_steam_extractor.tooltip.humor": [
+    "Squeezes value out of everything, just like the finance department.",
+    "Espreme valor de tudo, igualzinho ao departamento financeiro.",
+    "从一切中榨出价值，跟财务部一模一样。"
+  ],
+  "gtna.machine.large_steam_ore_washer.tooltip.purpose": [
+    "Washes crushed ore in batches",
+    "Lava minério triturado em lotes",
+    "成批洗涤粉碎矿石"
+  ],
+  "gtna.machine.large_steam_ore_washer.tooltip.humor": [
+    "The cleanest ore of the Bronze Age, audited and certified.",
+    "O minério mais limpo da Idade do Bronze, auditado e certificado.",
+    "青铜时代最干净的矿石，已审计并认证。"
+  ],
+  "gtna.machine.large_steam_circuit_assembler.tooltip.purpose": [
+    "Assembles one chosen circuit with steam",
+    "Monta um circuito escolhido, a vapor",
+    "以蒸汽组装一种指定电路"
+  ],
+  "gtna.machine.large_steam_circuit_assembler.tooltip.humor": [
+    "Hand-soldered circuits, minus the hands, minus the overtime.",
+    "Circuitos soldados à mão, sem as mãos e sem as horas extras.",
+    "手工焊接的电路，不用手，也不用加班。"
+  ],
+  "gtna.machine.large_steam_mixer.tooltip.purpose": [
+    "Mixes dusts and fluids in batches",
+    "Mistura pós e fluidos em lotes",
+    "成批混合粉末与流体"
+  ],
+  "gtna.machine.large_steam_mixer.tooltip.humor": [
+    "Shaken, stirred and filed in triplicate.",
+    "Batido, mexido e protocolado em três vias.",
+    "摇匀、搅拌，并一式三份归档。"
+  ],
+  "gtna.machine.large_steam_centrifuge.tooltip.purpose": [
+    "Separates dusts and fluids in batches",
+    "Separa pós e fluidos em lotes",
+    "成批分离粉末与流体"
+  ],
+  "gtna.machine.large_steam_centrifuge.tooltip.humor": [
+    "Round and round it goes; the quarterly report says where it stops.",
+    "Gira e gira; onde para, o relatório trimestral decide.",
+    "转啊转，停在哪里，由季度报告决定。"
+  ],
+  "gtna.machine.large_steam_thermal_centrifuge.tooltip.purpose": [
+    "Spins and bakes crushed ore in batches",
+    "Gira e assa minério triturado em lotes",
+    "成批旋转并烘烤粉碎矿石"
+  ],
+  "gtna.machine.large_steam_thermal_centrifuge.tooltip.humor": [
+    "Spun and baked: the ore's worst performance review.",
+    "Girado e assado: a pior avaliação de desempenho do minério.",
+    "又转又烤：矿石最糟糕的绩效评估。"
+  ],
+  "gtna.machine.large_steam_bath.tooltip.purpose": [
+    "Bathes items in chemicals in batches",
+    "Banha itens em químicos em lotes",
+    "成批将物品浸入化学品"
+  ],
+  "gtna.machine.large_steam_bath.tooltip.humor": [
+    "A spa day for ore. Cucumber slices are not in the budget.",
+    "Um dia de spa para o minério. Rodelas de pepino não estão no orçamento.",
+    "矿石的水疗日。黄瓜片不在预算内。"
+  ],
+  "gtna.machine.large_steam_lathe.tooltip.purpose": [
+    "Turns rods and bolts in batches",
+    "Torneia varetas e parafusos em lotes",
+    "成批车削杆与螺栓"
+  ],
+  "gtna.machine.large_steam_lathe.tooltip.humor": [
+    "Turning rods since before electricity was on the roadmap.",
+    "Torneando varetas desde antes de a eletricidade entrar no roadmap.",
+    "早在电力列入路线图之前就在车杆了。"
+  ],
+  "gtna.machine.large_steam_cutting.tooltip.purpose": [
+    "Cuts items in batches",
+    "Corta itens em lotes",
+    "成批切割物品"
+  ],
+  "gtna.machine.large_steam_cutting.tooltip.humor": [
+    "Measure twice, cut sixteen times, invoice once.",
+    "Meça duas vezes, corte dezesseis, fature uma.",
+    "量两次，切十六次，开一次发票。"
+  ],
+  "gtna.machine.large_steam_bending.tooltip.purpose": [
+    "Bends plates and foils in batches",
+    "Dobra placas e folhas em lotes",
+    "成批弯曲板材与箔"
+  ],
+  "gtna.machine.large_steam_bending.tooltip.humor": [
+    "Bends metal, never the rules. Legal checked.",
+    "Dobra metal, nunca as regras. O jurídico conferiu.",
+    "只弯金属，不弯规定。法务已审核。"
+  ],
+  "gtna.machine.large_steam_extruder.tooltip.purpose": [
+    "Extrudes metal through shapes in batches",
+    "Extruda metal por moldes em lotes",
+    "成批通过模头挤压金属"
+  ],
+  "gtna.machine.large_steam_extruder.tooltip.humor": [
+    "A pasta maker for metal and regret, now ISO certified.",
+    "Uma máquina de macarrão para metal e arrependimento, agora com certificação ISO.",
+    "金属与悔恨的面条机，现已通过 ISO 认证。"
+  ],
+  "gtna.machine.large_steam_wiremill.tooltip.purpose": [
+    "Draws wires in batches",
+    "Trefila fios em lotes",
+    "成批拉制线材"
+  ],
+  "gtna.machine.large_steam_wiremill.tooltip.humor": [
+    "Thin is in. Very, very thin, like the budget.",
+    "Fino está na moda. Muito, muito fino, como o orçamento.",
+    "瘦才是美。非常非常瘦，就像预算。"
+  ],
+  "gtna.machine.large_steam_sifter.tooltip.purpose": [
+    "Sifts gems out of dust in batches",
+    "Peneira gemas do pó em lotes",
+    "成批从粉末中筛出宝石"
+  ],
+  "gtna.machine.large_steam_sifter.tooltip.humor": [
+    "Gem panning, without the river and with a safety briefing.",
+    "Garimpo de gemas, sem rio e com palestra de segurança.",
+    "淘宝石，没有河流，但有安全培训。"
+  ],
+  "gtna.machine.large_steam_forming_press.tooltip.purpose": [
+    "Presses items into shapes in batches",
+    "Prensa itens em formas em lotes",
+    "成批将物品冲压成型"
+  ],
+  "gtna.machine.large_steam_forming_press.tooltip.humor": [
+    "Pressing matters, one stamp at a time, every one approved.",
+    "Assuntos urgentes, um carimbo por vez, todos aprovados.",
+    "要事要压，一次一冲，每次都盖章批准。"
+  ],
+  "gtna.machine.large_steam_ore_washer.tooltip.water": [
+    "Water goes in through a fluid input hatch",
+    "A água entra por uma escotilha de entrada de fluidos",
+    "水通过流体输入仓输入"
+  ],
+  "gtna.machine.large_steam_circuit_assembler.tooltip.lock": [
+    "Put %s of one circuit in the input bus and press %s to lock that output",
+    "Coloque %s de um circuito no barramento de entrada e aperte %s para travar essa saída",
+    "在输入总线放入%s个同种电路并按下%s，锁定该产出"
+  ],
+  "gtna.machine.large_steam_circuit_assembler.tooltip.parallel": [
+    "Fixed at %s parallels",
+    "Fixa em %s paralelos",
+    "固定%s并行"
+  ],
+  "gtna.machine.large_steam_circuit_assembler.tooltip.multiply": [
+    "Multiply Mode: %s output, recipes take %s as long",
+    "Modo Multiplicar: saída %s, receitas levam %s o tempo",
+    "倍增模式：产出%s，配方耗时%s"
+  ]
+}

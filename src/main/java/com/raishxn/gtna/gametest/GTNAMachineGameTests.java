@@ -3845,6 +3845,8 @@ public final class GTNAMachineGameTests {
                 continue;
             }
             String path = definition.getId().getPath();
+            // Migrated to the lib layout: checked by MigratedTooltipGameTests.
+            if (com.raishxn.gtna.common.data.tooltip.GTNATooltips.has(path)) continue;
             String[] english = com.raishxn.gtna.common.data.GTNAMultiblockTooltipText.ENGLISH.get(path);
             if (english == null) {
                 helper.fail(definition.getId() + " has no standard tooltip in tools/multiblock_tooltips");

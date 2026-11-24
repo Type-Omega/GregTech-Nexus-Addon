@@ -256,12 +256,14 @@ public final class GTNASources {
 
     /** The "Source: <addon>" tooltip line for a source id. The addon name is animated on the client. */
     public static Component line(String sourceId) {
-        Component addon = Component.translatable("gtna.source." + sourceId);
-        if (FMLEnvironment.dist.isClient()) {
-            addon = GTNARainbowText.of(addon);
-        }
-        return Component.translatable("gtna.tooltip.source", addon)
+        return Component.translatable("gtna.tooltip.source", addonName(sourceId))
                 .withStyle(ChatFormatting.DARK_GRAY);
+    }
+
+    /** The addon name of a source id, animated on the client. */
+    public static Component addonName(String sourceId) {
+        Component addon = Component.translatable("gtna.source." + sourceId);
+        return FMLEnvironment.dist.isClient() ? GTNARainbowText.of(addon) : addon;
     }
 
     /** Built when the tooltip is displayed so language and rainbow timing are current. */

@@ -30,7 +30,7 @@ public class LargeSteamExtractor extends SteamMultiMachineBase {
             LargeSteamExtractor.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    private int targetParallel = 24;
+    private int targetParallel = LargeSteamSpecs.EXTRACTOR.defaultParallel();
 
     public LargeSteamExtractor(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -56,7 +56,7 @@ public class LargeSteamExtractor extends SteamMultiMachineBase {
 
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
-                .durationMultiplier(GTNASteamBalance.duration(0.57))
+                .durationMultiplier(GTNASteamBalance.duration(LargeSteamSpecs.EXTRACTOR.durationMultiplier()))
                 .parallels(parallels)
                 .build();
     }
@@ -79,7 +79,7 @@ public class LargeSteamExtractor extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(48, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.EXTRACTOR.maxParallel(), this.targetParallel * 2);
             }
         }
     }

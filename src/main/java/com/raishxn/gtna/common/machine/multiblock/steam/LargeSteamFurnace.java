@@ -29,7 +29,7 @@ public class LargeSteamFurnace extends SteamMultiMachineBase {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             LargeSteamFurnace.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
     @Persisted
-    private int targetParallel = 8;
+    private int targetParallel = LargeSteamSpecs.FURNACE.defaultParallel();
 
     public LargeSteamFurnace(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -51,7 +51,7 @@ public class LargeSteamFurnace extends SteamMultiMachineBase {
         int maxParallel = steamMachine.targetParallel;
         int parallels = ParallelLogic.getParallelAmount(machine, recipe, GTNASteamBalance.parallels(maxParallel));
         if (parallels == 0) return ModifierFunction.NULL;
-        double durationMultiplier = 0.1;
+        double durationMultiplier = LargeSteamSpecs.FURNACE.durationMultiplier();
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
                 .durationMultiplier(GTNASteamBalance.duration(durationMultiplier))
@@ -77,7 +77,7 @@ public class LargeSteamFurnace extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(128, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.FURNACE.maxParallel(), this.targetParallel * 2);
             }
         }
     }

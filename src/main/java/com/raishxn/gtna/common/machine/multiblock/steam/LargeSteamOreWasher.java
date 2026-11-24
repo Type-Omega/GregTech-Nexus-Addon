@@ -30,7 +30,7 @@ public class LargeSteamOreWasher extends SteamMultiMachineBase {
             LargeSteamOreWasher.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    private int targetParallel = 48;
+    private int targetParallel = LargeSteamSpecs.ORE_WASHER.defaultParallel();
 
     public LargeSteamOreWasher(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -56,7 +56,7 @@ public class LargeSteamOreWasher extends SteamMultiMachineBase {
 
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
-                .durationMultiplier(GTNASteamBalance.duration(0.2))
+                .durationMultiplier(GTNASteamBalance.duration(LargeSteamSpecs.ORE_WASHER.durationMultiplier()))
                 .parallels(parallels)
                 .build();
     }
@@ -79,7 +79,7 @@ public class LargeSteamOreWasher extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(96, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.ORE_WASHER.maxParallel(), this.targetParallel * 2);
             }
         }
     }

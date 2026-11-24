@@ -545,8 +545,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_MIXER = registerMachine("largeSteamMixer",
             () -> REGISTRATE
                     .multiblock("large_steam_mixer",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.MIXER_RECIPES, 64, 64,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.MIXER_RECIPES,
+                                    LargeSteamSpecs.MIXER, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.MIXER_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -582,8 +582,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_CENTRIFUGE = registerMachine(
             "largeSteamCentrifuge", () -> REGISTRATE
                     .multiblock("large_steam_centrifuge",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.CENTRIFUGE_RECIPES, 64,
-                                    64, 0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.CENTRIFUGE_RECIPES,
+                                    LargeSteamSpecs.CENTRIFUGE, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.CENTRIFUGE_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -626,7 +626,8 @@ public class GTNAMachines {
             "largeSteamThermalCentrifuge", () -> REGISTRATE
                     .multiblock("large_steam_thermal_centrifuge",
                             holder -> new AdjustableSteamParallelMachine(holder,
-                                    GTRecipeTypes.THERMAL_CENTRIFUGE_RECIPES, 64, 64, 0.5, true))
+                                    GTRecipeTypes.THERMAL_CENTRIFUGE_RECIPES,
+                                    LargeSteamSpecs.THERMAL_CENTRIFUGE, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.THERMAL_CENTRIFUGE_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -659,7 +660,7 @@ public class GTNAMachines {
             () -> REGISTRATE
                     .multiblock("large_steam_bath",
                             holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.CHEMICAL_BATH_RECIPES,
-                                    64, 64, 0.5, true))
+                                    LargeSteamSpecs.BATH, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.CHEMICAL_BATH_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -740,8 +741,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_LATHE = registerMachine("largeSteamLathe",
             () -> REGISTRATE
                     .multiblock("large_steam_lathe",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.LATHE_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.LATHE_RECIPES,
+                                    LargeSteamSpecs.LATHE, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.LATHE_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -775,8 +776,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_CUTTING = registerMachine("largeSteamCutting",
             () -> REGISTRATE
                     .multiblock("large_steam_cutting",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.CUTTER_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.CUTTER_RECIPES,
+                                    LargeSteamSpecs.CUTTING, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.CUTTER_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -811,8 +812,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_BENDING = registerMachine("largeSteamBending",
             () -> REGISTRATE
                     .multiblock("large_steam_bending",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.BENDER_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.BENDER_RECIPES,
+                                    LargeSteamSpecs.BENDING, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.BENDER_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -825,8 +826,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_EXTRUDER = registerMachine("largeSteamExtruder",
             () -> REGISTRATE
                     .multiblock("large_steam_extruder",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.EXTRUDER_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.EXTRUDER_RECIPES,
+                                    LargeSteamSpecs.EXTRUDER, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.EXTRUDER_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -839,8 +840,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_WIREMILL = registerMachine("largeSteamWiremill",
             () -> REGISTRATE
                     .multiblock("large_steam_wiremill",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.WIREMILL_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.WIREMILL_RECIPES,
+                                    LargeSteamSpecs.WIREMILL, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.WIREMILL_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -853,8 +854,8 @@ public class GTNAMachines {
     public static final MultiblockMachineDefinition LARGE_STEAM_SIFTER = registerMachine("largeSteamSifter",
             () -> REGISTRATE
                     .multiblock("large_steam_sifter",
-                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.SIFTER_RECIPES, 16, 16,
-                                    0.5, true))
+                            holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.SIFTER_RECIPES,
+                                    LargeSteamSpecs.SIFTER, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.SIFTER_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
@@ -1825,7 +1826,7 @@ public class GTNAMachines {
             "largeSteamFormingPress", () -> REGISTRATE
                     .multiblock("large_steam_forming_press",
                             holder -> new AdjustableSteamParallelMachine(holder, GTRecipeTypes.FORMING_PRESS_RECIPES,
-                                    32, 32, 0.4, true))
+                                    LargeSteamSpecs.FORMING_PRESS, true))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.FORMING_PRESS_RECIPES)
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)

@@ -29,7 +29,7 @@ public class LargeSteamCrusher extends SteamMultiMachineBase {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             LargeSteamCrusher.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
     @Persisted
-    private int targetParallel = 8;
+    private int targetParallel = LargeSteamSpecs.CRUSHER.defaultParallel();
 
     public LargeSteamCrusher(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -51,7 +51,7 @@ public class LargeSteamCrusher extends SteamMultiMachineBase {
         int maxParallel = steamMachine.targetParallel;
         int parallels = ParallelLogic.getParallelAmount(machine, recipe, GTNASteamBalance.parallels(maxParallel));
         if (parallels == 0) return ModifierFunction.NULL;
-        double durationMultiplier = 0.5;
+        double durationMultiplier = LargeSteamSpecs.CRUSHER.durationMultiplier();
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
                 .durationMultiplier(GTNASteamBalance.duration(durationMultiplier))
@@ -79,7 +79,7 @@ public class LargeSteamCrusher extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(128, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.CRUSHER.maxParallel(), this.targetParallel * 2);
             }
         }
     }
