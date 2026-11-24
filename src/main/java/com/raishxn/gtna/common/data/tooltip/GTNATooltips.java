@@ -155,7 +155,7 @@ public final class GTNATooltips {
 
     /**
      * A number that the steam balance of the pack changes: one cyan value per variant the tooltip should list, each
-     * with its label (for example "Normal" and "Journey" in the main menu).
+     * with its label when there are several; a single variant shows one number without a label.
      */
     public static Component balanced(DoubleFunction<String> format,
                                      ToDoubleFunction<GTNASteamBalance.Variant> number) {
@@ -165,7 +165,7 @@ public final class GTNATooltips {
             var variant = variants.get(i);
             if (i > 0) out.append(Component.literal(" / ").withStyle(ChatFormatting.GRAY));
             out.append(value(format.apply(number.applyAsDouble(variant))));
-            if (variant.label() != null) {
+            if (GTNASteamBalance.showsLabel(variants, variant)) {
                 out.append(Component.literal(" (" + variant.label() + ")").withStyle(ChatFormatting.GRAY));
             }
         }

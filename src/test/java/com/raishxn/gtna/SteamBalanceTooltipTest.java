@@ -15,12 +15,17 @@ public final class SteamBalanceTooltipTest {
 
             var journey = new GTNASteamBalance.Variant("Journey", 1.5, 0.75);
             GTNASteamBalance.setProvider(() -> journey);
-            check("§b▸ Parallel: up to §e64§b", true, "§b▸ Parallel: up to §e96 §7(Journey)§b", "parallels scale");
-            check("§a▸ §e2x§a speed vs. singleblock", false, "§a▸ §e2.67x §7(Journey)§a speed vs. singleblock",
+            check("§b▸ Parallel: up to §e64§b", true, "§b▸ Parallel: up to §e96§b", "parallels scale, no label alone");
+            check("§a▸ §e2x§a speed vs. singleblock", false, "§a▸ §e2.67x§a speed vs. singleblock",
                     "speed is base / duration multiplier");
             check("§b▸ Parallel: §e16§b default, adjustable up to §e16§b", true,
-                    "§b▸ Parallel: §e24 §7(Journey)§b default, adjustable up to §e24 §7(Journey)§b",
-                    "every number in a parallel line scales");
+                    "§b▸ Parallel: §e24§b default, adjustable up to §e24§b", "every number in a parallel line scales");
+
+            var only = new GTNASteamBalance.Variant("Normal", 1.0, 1.0);
+            GTNASteamBalance.setProvider(() -> only);
+            check("§b▸ Parallel: up to §e64§b", true, "§b▸ Parallel: up to §e64§b",
+                    "one labelled variant: plain number");
+            if (GTNASteamBalance.isActive()) throw new AssertionError("a neutral labelled variant changes nothing");
 
             var normal = new GTNASteamBalance.Variant("Normal", 1.0, 1.0);
             GTNASteamBalance.setProvider(new GTNASteamBalance.Provider() {

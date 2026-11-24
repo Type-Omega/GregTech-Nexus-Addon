@@ -12,7 +12,10 @@ import java.util.regex.Pattern;
  */
 public final class GTNASteamBalance {
 
-    /** One set of multipliers, with an optional label shown in tooltips (e.g. a difficulty name). */
+    /**
+     * One set of multipliers, with an optional label. Tooltips show the label only when they list several variants,
+     * to tell them apart; a single variant shows its plain numbers.
+     */
     public record Variant(String label, double parallelMultiplier, double durationMultiplier) {
 
         public int parallels(int base) {
@@ -51,8 +54,13 @@ public final class GTNASteamBalance {
     /** Whether a pack changed anything (otherwise tooltips keep their plain translated lines). */
     public static boolean isActive() {
         var variants = provider.tooltipVariants();
-        return variants.size() > 1 || variants.get(0).label() != null ||
-                variants.get(0).parallelMultiplier() != 1.0 || variants.get(0).durationMultiplier() != 1.0;
+        return variants.size() > 1 || variants.get(0).parallelMultiplier() != 1.0 ||
+                variants.get(0).durationMultiplier() != 1.0;
+    }
+
+    /** Whether a tooltip should name this variant: only when it lists more than one. */
+    public static boolean showsLabel(List<Variant> variants, Variant variant) {
+        return variants.size() > 1 && variant.label() != null;
     }
 
     /** Parallel limit after the pack's multiplier (at least 1). */
@@ -69,7 +77,7 @@ public final class GTNASteamBalance {
 
     /**
      * Rewrites the highlighted numbers of a parallel or speed line with the steam balance in effect. With several
-     * variants (no world loaded yet) every value is listed with its label.
+     * variants (no world loaded yet) every value is listed with its label; one variant gives one plain number.
      */
     public static String scaleTooltipNumbers(String text, boolean parallel) {
         List<Variant> variants = provider.tooltipVariants();
@@ -90,7 +98,7 @@ public final class GTNASteamBalance {
                         trim(base / variant.durationMultiplier());
                 if (v > 0) values.append("§7 / ");
                 values.append("§e").append(m.group(1)).append(value).append(m.group(3));
-                if (variant.label() != null) values.append(" §7(").append(variant.label()).append(")");
+                if (showsLabel(variants, variant)) values.append(" §7(").append(variant.label()).append(")");
             }
             m.appendReplacement(out, Matcher.quoteReplacement(values.toString()));
         }

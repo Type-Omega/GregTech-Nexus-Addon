@@ -135,7 +135,25 @@ public final class MigratedTooltipGameTests {
             List<String> journey = literals(shown(crusher));
             h.assertTrue(journey.contains("192") && journey.contains("700%"),
                     "the tooltip shows the balanced parallel and speed, got " + journey);
-            h.assertTrue(journey.stream().anyMatch(s -> s.contains("Journey")), "the variant label is shown");
+            h.assertFalse(journey.stream().anyMatch(s -> s.contains("Journey")), "a single variant has no label");
+
+            var normal = new GTNASteamBalance.Variant("Normal", 1.0, 1.0);
+            var fast = new GTNASteamBalance.Variant("Journey", 1.5, 0.5);
+            GTNASteamBalance.setProvider(new GTNASteamBalance.Provider() {
+
+                @Override
+                public GTNASteamBalance.Variant active() {
+                    return normal;
+                }
+
+                @Override
+                public List<GTNASteamBalance.Variant> tooltipVariants() {
+                    return List.of(normal, fast);
+                }
+            });
+            List<String> both = literals(shown(crusher));
+            h.assertTrue(both.stream().anyMatch(s -> s.contains("Normal")) &&
+                    both.stream().anyMatch(s -> s.contains("Journey")), "several variants are labelled, got " + both);
         } finally {
             GTNASteamBalance.setProvider(null);
         }

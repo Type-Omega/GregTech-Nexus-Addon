@@ -17,6 +17,7 @@
 - The GTNA originals (Kinetic Orbital Lance, Dimensional Rift Gate, Antimatter Collider Ring, Stellar Containment Chamber) and the Nexus Flux Matrix, Nexus ME Hypercore and Duration Tester list every rule of their cores: bank and bench formulas, impact regimes, aim and capsules; tuning, resonance and output formulas; beam energy, luminosity and particle yields; accretion, extraction caps, collapse and starquakes; capacitor, transfer and thread numbers. Every GTNA multiblock now uses this layout: the old generated tooltips are gone, and a GameTest and a unit test fail if a multiblock has none.
 - Multiblock tooltips keep the "Supports Multi-Amp, Laser and Wireless Hatches!" line, read from the structure pattern, and the modes of machines that switch recipe types. They show no structure section (dimensions, controller, casing and hatch counts) and no pollution line (GTIA-D-431).
 - GTNA now requires TypeOmega Lib 0.6.2.
+- Steam balance numbers in tooltips no longer carry a "(Normal)" label when the pack has a single balance; labels only appear when several variants are listed (GTIA-D-436). GTNA alone, without a pack, keeps its plain translated lines.
 
 ### Fixed
 - Tooltip lines no longer show twice: the Debug Energy, Input and Laser Hatches, the Debug Input Bus and the Thermal Conductor Hatch added their lang `.tooltip` line on top of the one GTCEu adds by itself, and the Integrated Ore Processor repeated the "Auxiliary Module" header for each KubeJS module. A GameTest fails if any GTNA item repeats a tooltip line.
