@@ -94,6 +94,5 @@ public final class GTNAResearchMachines {
             .rotationState(RotationState.ALL)
             .tier(GTValues.LuV)
             .overlayTieredHullModel("thermal_conductor_hatch")
-            .tooltips(Component.translatable("gtna.machine.thermal_conductor_hatch.tooltip"))
             .register();
 }

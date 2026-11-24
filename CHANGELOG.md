@@ -18,6 +18,9 @@
 - Multiblock tooltips keep the "Supports Multi-Amp, Laser and Wireless Hatches!" line, read from the structure pattern, and the modes of machines that switch recipe types. They show no structure section (dimensions, controller, casing and hatch counts) and no pollution line (GTIA-D-431).
 - GTNA now requires TypeOmega Lib 0.6.2.
 
+### Fixed
+- Tooltip lines no longer show twice: the Debug Energy, Input and Laser Hatches, the Debug Input Bus and the Thermal Conductor Hatch added their lang `.tooltip` line on top of the one GTCEu adds by itself, and the Integrated Ore Processor repeated the "Auxiliary Module" header for each KubeJS module. A GameTest fails if any GTNA item repeats a tooltip line.
+
 ## [0.6.2] - 2026-11-23
 
 ### Changed

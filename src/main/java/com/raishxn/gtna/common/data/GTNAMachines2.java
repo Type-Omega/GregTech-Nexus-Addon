@@ -359,7 +359,6 @@ public class GTNAMachines2 {
                         .setModel(debugPartModel(ctx.getName(), prov.models(),
                                 GTCEu.id("block/overlay/machine/overlay_creativecontainer"))))
                 .tooltips(
-                        Component.translatable("gtna.machine.debug_energy_hatch.tooltip"),
                         Component.translatable("gtna.machine.debug_part.creative_only"))
                 .register();
         DEBUG_INPUT_BUS = REGISTRATE
@@ -373,7 +372,6 @@ public class GTNAMachines2 {
                         .setModel(debugPartModel(ctx.getName(), prov.models(),
                                 GTCEu.id("block/overlay/machine/overlay_item_hatch_input"))))
                 .tooltips(
-                        Component.translatable("gtna.machine.debug_input_bus.tooltip"),
                         Component.translatable("gtna.machine.debug_part.creative_only"),
                         Component.translatable("gtceu.part_sharing.enabled"))
                 .register();
@@ -387,7 +385,6 @@ public class GTNAMachines2 {
                 .model((ctx, prov, builder) -> builder.partialState().setModel(debugPartModel(ctx.getName(),
                         prov.models(), GTCEu.id("block/overlay/machine/overlay_fluid_hatch_input"))))
                 .tooltips(
-                        Component.translatable("gtna.machine.debug_input_hatch.tooltip"),
                         Component.translatable("gtna.machine.debug_part.creative_only"),
                         Component.translatable("gtceu.part_sharing.enabled"))
                 .register();
@@ -401,7 +398,6 @@ public class GTNAMachines2 {
                 .model((ctx, prov, builder) -> builder.partialState().setModel(debugPartModel(ctx.getName(),
                         prov.models(), GTCEu.id("block/overlay/machine/overlay_laser_target"))))
                 .tooltips(
-                        Component.translatable("gtna.machine.debug_laser_hatch.tooltip"),
                         Component.translatable("gtna.machine.debug_part.creative_only"))
                 .register();
     }

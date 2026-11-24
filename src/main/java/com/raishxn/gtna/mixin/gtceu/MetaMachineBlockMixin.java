@@ -39,7 +39,13 @@ public abstract class MetaMachineBlockMixin {
             return;
         }
         tooltip.add(Component.empty());
-        tooltip.addAll(moduleTooltips);
+        // EN: The lib repeats the "Auxiliary Module" header before every KubeJS module; show each line once.
+        // PT: A lib repete o cabeçalho "Módulo auxiliar" antes de cada módulo do KubeJS; cada linha aparece uma vez.
+        // ZH: 库会在每个 KubeJS 模块前重复“辅助模块”标题；每行只显示一次。
+        java.util.Set<String> shown = new java.util.HashSet<>();
+        for (Component line : moduleTooltips) {
+            if (shown.add(line.getString())) tooltip.add(line);
+        }
         Component source = GTNASources.moduleLine(multiblock);
         if (source != null) {
             tooltip.add(source);
