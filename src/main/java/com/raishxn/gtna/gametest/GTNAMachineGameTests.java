@@ -3833,54 +3833,23 @@ public final class GTNAMachineGameTests {
     }
 
     /**
-     * Every GTNA multiblock uses the standard tooltip: {@code gtna.machine.<id>.tooltip.0..N-1} in order (Machine
-     * Type, flavor, description, bullets), at most the modes and "Supports" lines, and exactly one Source line.
-     * No structure section and no pollution line (GTIA-D-431).
+     * Every GTNA multiblock uses the lib tooltip with the full mechanics (GTIA-D-432): none may be left on the old
+     * generated layout or without a tooltip.
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void everyMultiblockUsesTheStandardTooltip(GameTestHelper helper) {
         int checked = 0;
+        java.util.List<String> missing = new java.util.ArrayList<>();
         for (com.gregtechceu.gtceu.api.machine.MachineDefinition definition : com.gregtechceu.gtceu.api.registry.GTRegistries.MACHINES) {
             if (!(definition instanceof MultiblockMachineDefinition) ||
                     !GTNACORE.MOD_ID.equals(definition.getId().getNamespace())) {
                 continue;
             }
             String path = definition.getId().getPath();
-            // Migrated to the lib layout: checked by MigratedTooltipGameTests.
-            if (com.raishxn.gtna.common.data.tooltip.GTNATooltips.has(path)) {
-                checked++;
-                continue;
-            }
-            String[] english = com.raishxn.gtna.common.data.GTNAMultiblockTooltipText.ENGLISH.get(path);
-            if (english == null) {
-                helper.fail(definition.getId() + " has no standard tooltip in tools/multiblock_tooltips");
-                return;
-            }
-            java.util.List<Component> tooltip = new java.util.ArrayList<>();
-            definition.getTooltipBuilder().accept(ItemStack.EMPTY, tooltip);
-            java.util.List<String> keys = tooltip.stream()
-                    .map(component -> component
-                            .getContents() instanceof net.minecraft.network.chat.contents.TranslatableContents contents ?
-                                    contents.getKey() : component.getString())
-                    .toList();
-            java.util.List<String> expected = new java.util.ArrayList<>();
-            for (int i = 0; i < english.length; i++) expected.add("gtna.machine." + path + ".tooltip." + i);
-            // EN: Only the modes and "Supports" lines may sit between the text and the source (GTIA-D-431).
-            // PT: Só as linhas de modos e "Suporta" podem ficar entre o texto e a origem (GTIA-D-431).
-            // ZH: 文本与来源之间只允许出现模式和“支持”两行（GTIA-D-431）。
-            helper.assertTrue(keys.size() > expected.size() && keys.subList(0, expected.size()).equals(expected) &&
-                    keys.get(keys.size() - 1).equals("gtna.tooltip.source") &&
-                    keys.subList(expected.size(), keys.size() - 1).stream()
-                            .allMatch(k -> k.equals("typeomegalib.tooltip.modes") ||
-                                    k.equals("typeomegalib.tooltip.supports")),
-                    definition.getId() + " tooltip " + keys + " should be " + expected +
-                            ", at most modes and supports, and the source");
-            helper.assertTrue(english[0].startsWith("Machine Type: ") && english[1].startsWith("§7§o"),
-                    definition.getId() + " must start with Machine Type and a flavor line");
-            helper.assertTrue(java.util.Arrays.stream(english).anyMatch(line -> line.contains("▸ ")),
-                    definition.getId() + " needs at least one bullet line");
+            if (!com.raishxn.gtna.common.data.tooltip.GTNATooltips.has(path)) missing.add(path);
             checked++;
         }
+        helper.assertTrue(missing.isEmpty(), "multiblocks still on the old tooltip layout: " + missing);
         helper.assertTrue(checked > 100, "expected every GTNA multiblock, checked " + checked);
         helper.succeed();
     }

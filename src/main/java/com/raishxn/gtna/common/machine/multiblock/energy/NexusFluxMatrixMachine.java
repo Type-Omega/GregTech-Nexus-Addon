@@ -50,7 +50,12 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
     private int averageTier = 1;
     private int maxTier = 1;
     private Int128 transferLimit = Int128.ZERO();
-    private double efficiency = 0.85;
+    /** Efficiency without capacitors, transfer base (EU/t at LV, x4 per tier) and the capacitors for unlimited. */
+    public static final double DEFAULT_EFFICIENCY = 0.85;
+    public static final long BASE_TRANSFER = 2000L;
+    public static final int MAX_CAPACITORS = 750;
+
+    private double efficiency = DEFAULT_EFFICIENCY;
     private boolean unlimited;
 
     private final List<NexusEnergyNetwork.ConnectionInfo> cachedConnections = new ArrayList<>();
@@ -103,7 +108,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
         averageTier = 1;
         maxTier = 1;
         transferLimit = Int128.ZERO();
-        efficiency = 0.85;
+        efficiency = DEFAULT_EFFICIENCY;
     }
 
     private void recalculateCapacitors() {
@@ -126,13 +131,13 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
                 }
             }
         }
-        unlimited = totalCapacitors == 750 && sumTiers == 750 * GTValues.MAX;
+        unlimited = totalCapacitors == MAX_CAPACITORS && sumTiers == MAX_CAPACITORS * GTValues.MAX;
 
         if (totalCapacitors <= 0) {
             maxCapacity = Int128.ZERO();
             averageTier = 1;
             transferLimit = Int128.ZERO();
-            efficiency = 0.85;
+            efficiency = DEFAULT_EFFICIENCY;
             return;
         }
 
@@ -155,7 +160,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
             efficiency = 1.0;
         }
 
-        long fallbackTransfer = 2000L * (long) Math.pow(4, Math.max(0, averageTier - 1));
+        long fallbackTransfer = BASE_TRANSFER * (long) Math.pow(4, Math.max(0, averageTier - 1));
         transferLimit = Int128.fromString(
                 GTNABalance.getNexusTransferLimit(averageTier, Long.toString(fallbackTransfer)),
                 new Int128(fallbackTransfer));

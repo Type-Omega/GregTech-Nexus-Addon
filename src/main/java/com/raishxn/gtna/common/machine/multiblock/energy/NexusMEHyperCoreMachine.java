@@ -40,15 +40,15 @@ public class NexusMEHyperCoreMachine extends WorkableMultiblockMachine implement
 
     private static final long MODULE_I_STORAGE = 4L * 1024L * 1024L;
 
-    private static final long MODULE_I_COPROCESSORS = 64L;
-    private static final long MODULE_II_COPROCESSORS = 4096L;
-    private static final long MODULE_III_COPROCESSORS = 262_144L;
-    private static final long MODULE_IV_COPROCESSORS = 16_777_216L;
+    public static final long MODULE_I_COPROCESSORS = 64L;
+    public static final long MODULE_II_COPROCESSORS = 4096L;
+    public static final long MODULE_III_COPROCESSORS = 262_144L;
+    public static final long MODULE_IV_COPROCESSORS = 16_777_216L;
 
-    private static final long MODULE_I_THREADS = 4L;
-    private static final long MODULE_II_THREADS = 16L;
-    private static final long MODULE_III_THREADS = 128L;
-    private static final long MODULE_IV_THREADS = 1024L;
+    public static final long MODULE_I_THREADS = 4L;
+    public static final long MODULE_II_THREADS = 16L;
+    public static final long MODULE_III_THREADS = 128L;
+    public static final long MODULE_IV_THREADS = 1024L;
 
     private long installedModules;
     private long matrixI;

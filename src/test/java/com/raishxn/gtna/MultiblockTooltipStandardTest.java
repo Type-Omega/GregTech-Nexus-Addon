@@ -1,14 +1,11 @@
 package com.raishxn.gtna;
 
-import com.raishxn.gtna.common.data.GTNAMultiblockTooltipText;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -16,11 +13,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
- * Contract of the standard multiblock tooltip ({@code tools/apply_multiblock_tooltips.py}): every multiblock id
- * registered in the sources has an entry; each entry starts with Machine Type and a flavor line, has a description
- * between two separators and at least one bullet line; pt_br has the same lines with contiguous
- * {@code gtna.machine.<id>.tooltip.N} keys (no gaps, no leftovers) and no old auto-inserted
- * {@code gtna.machine.<id>.tooltip} description. GTLCore style: {@code main()} + asserts.
+ * Every GTNA multiblock uses the GTNH-style tooltip of the lib (GTIA-D-410, D-432): each registered multiblock id has
+ * its humour line in {@code tooltip_lang} (which {@code GTNATooltips.finish} always adds), and no numbered line of the
+ * old generated layout ({@code gtna.machine.<id>.tooltip.N}) of a multiblock is left in pt_br. GTLCore style:
+ * {@code main()} + asserts.
  */
 public final class MultiblockTooltipStandardTest {
 
@@ -29,21 +25,11 @@ public final class MultiblockTooltipStandardTest {
     private static final Path TOOLTIP_LANG = Path.of("src/main/resources/assets/gtna/tooltip_lang");
     private static final Pattern MULTIBLOCK = Pattern
             .compile("(?:\\.multiblock|registerElevatorModule)\\(\\s*\"([a-z0-9_]+)\"");
-    private static final Pattern PT_KEY = Pattern
-            .compile("\"gtna\\.machine\\.([a-z0-9_]+)\\.tooltip(?:\\.(\\d+))?\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\"");
-    /** Visible characters per line (color codes excluded); separators are exempt. */
-    private static final int MAX_LINE = 72;
+    private static final Pattern OLD_KEY = Pattern
+            .compile("\"(gtna\\.machine\\.([a-z0-9_]+)\\.tooltip\\.\\d+)\"\\s*:");
 
     private MultiblockTooltipStandardTest() {}
 
-    private static String visible(String line) {
-        return line.replaceAll("§.", "");
-    }
-
-    /**
-     * Multiblocks migrated to the GTNH-style layout of the lib (GTIA-D-410): every one has a humour line in
-     * {@code tooltip_lang}, which {@code GTNATooltips.finish} always adds.
-     */
     private static Set<String> migrated() throws IOException {
         Set<String> ids = new TreeSet<>();
         Pattern humor = Pattern.compile("\"gtna\\.machine\\.([a-z0-9_]+)\\.tooltip\\.humor\"");
@@ -57,9 +43,7 @@ public final class MultiblockTooltipStandardTest {
     }
 
     public static void main(String[] args) throws IOException {
-        Map<String, String[]> english = GTNAMultiblockTooltipText.ENGLISH;
         List<String> errors = new ArrayList<>();
-
         Set<String> registered = new TreeSet<>();
         try (Stream<Path> files = Files.walk(SOURCES)) {
             for (Path file : files.filter(f -> f.toString().endsWith(".java")).toList()) {
@@ -69,59 +53,20 @@ public final class MultiblockTooltipStandardTest {
         }
         Set<String> migrated = migrated();
         for (String id : registered) {
-            if (migrated.contains(id)) {
-                if (english.containsKey(id)) errors.add(id + ": migrated to the lib layout but still has old lines");
-            } else if (!english.containsKey(id)) {
-                errors.add(id + ": registered multiblock without a standard tooltip");
+            if (!migrated.contains(id)) errors.add(id + ": still on the old tooltip layout (no lib tooltip)");
+        }
+        Matcher old = OLD_KEY.matcher(Files.readString(PT_BR, StandardCharsets.UTF_8));
+        while (old.find()) {
+            // Hatches and parts keep numbered lines; only multiblocks moved to the lib layout.
+            if (registered.contains(old.group(2))) {
+                errors.add("pt_br keeps an old numbered tooltip line: " + old.group(1));
             }
         }
-
-        for (var entry : english.entrySet()) {
-            String id = entry.getKey();
-            String[] lines = entry.getValue();
-            if (lines.length < 6 || !lines[0].startsWith("Machine Type: §e")) errors.add(id + ": no Machine Type");
-            if (lines.length < 2 || !lines[1].startsWith("§7§o")) errors.add(id + ": no flavor line");
-            long separators = Stream.of(lines).filter(line -> line.startsWith("§b§m")).count();
-            if (separators != 2) errors.add(id + ": expected 2 separators, found " + separators);
-            if (lines.length > 3 && lines[3].startsWith("§b§m")) errors.add(id + ": empty description");
-            if (Stream.of(lines).noneMatch(line -> line.contains("▸ "))) errors.add(id + ": no bullet line");
-            for (String line : lines) {
-                if (!line.startsWith("§b§m") && visible(line).length() > MAX_LINE) {
-                    errors.add(id + ": en line longer than " + MAX_LINE + ": " + visible(line));
-                }
-            }
-        }
-
-        String portuguese = Files.readString(PT_BR, StandardCharsets.UTF_8);
-        Map<String, Set<Integer>> ptIndexes = new java.util.HashMap<>();
-        Matcher matcher = PT_KEY.matcher(portuguese);
-        while (matcher.find()) {
-            String id = matcher.group(1);
-            if (!english.containsKey(id)) continue;
-            if (matcher.group(2) == null) {
-                errors.add(id + ": pt_br still has the old auto-inserted description key");
-                continue;
-            }
-            ptIndexes.computeIfAbsent(id, k -> new TreeSet<>()).add(Integer.parseInt(matcher.group(2)));
-            String value = matcher.group(3);
-            if (!value.startsWith("§b§m") && visible(value).length() > MAX_LINE) {
-                errors.add(id + ": pt_br line longer than " + MAX_LINE + ": " + visible(value));
-            }
-        }
-        for (var entry : english.entrySet()) {
-            Set<Integer> indexes = ptIndexes.getOrDefault(entry.getKey(), Set.of());
-            Set<Integer> expected = new TreeSet<>();
-            for (int i = 0; i < entry.getValue().length; i++) expected.add(i);
-            if (!indexes.equals(expected)) {
-                errors.add(entry.getKey() + ": pt_br tooltip keys " + indexes + " != " + expected);
-            }
-        }
-
         if (registered.size() < 100) errors.add("found only " + registered.size() + " registered multiblocks");
         if (!errors.isEmpty()) {
             throw new AssertionError(errors.size() + " multiblock tooltip problem(s):\n" + String.join("\n", errors));
         }
-        System.out.println("[MultiblockTooltipStandardTest] " + english.size() + " standard and " + migrated.size() +
-                " migrated multiblock tooltips OK");
+        System.out.println("[MultiblockTooltipStandardTest] " + registered.size() + " multiblocks, all on the lib " +
+                "layout (" + migrated.size() + " tooltips)");
     }
 }

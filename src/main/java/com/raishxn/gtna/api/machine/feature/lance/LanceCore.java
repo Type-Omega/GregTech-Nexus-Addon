@@ -15,6 +15,10 @@ public final class LanceCore {
     public static final double C = 2.998e8;
     public static final double TARGET_RADIUS = 5000;     // m
     public static final double BARREL_HEAT_CAPACITY = 2e9; // EU per K
+    /** Bank of one capacitor ring (EU), base and maximum rail efficiency, misfire temperature (K). */
+    public static final double BASE_BANK = 4e12;
+    public static final double BASE_EFFICIENCY = 0.35, MAX_EFFICIENCY = 0.85;
+    public static final double MISFIRE_TEMPERATURE = 2500;
 
     /** Target bodies: distance (Mm), hardness (MJ/kg), characteristic survey mass (kg), parents. */
     public enum Body {
@@ -128,7 +132,7 @@ public final class LanceCore {
     // ------------------------------------------------------------------ bench
 
     public double bankCapacity() {
-        return 4e12 * Math.pow(2, capacitorRings - 1);
+        return BASE_BANK * Math.pow(2, capacitorRings - 1);
     }
 
     public double massBudget() {
@@ -161,7 +165,7 @@ public final class LanceCore {
 
     public double efficiency() {
         double sum = fitted.stream().filter(c -> c.slot == Slot.RAIL).mapToDouble(c -> c.value).sum();
-        return Math.min(0.85, 0.35 + sum * (1 - 0.5 * inductance()));
+        return Math.min(MAX_EFFICIENCY, BASE_EFFICIENCY + sum * (1 - 0.5 * inductance()));
     }
 
     private double best(Slot slot, double fallback) {
@@ -223,7 +227,7 @@ public final class LanceCore {
         double eta = efficiency();
         linerWear += energy / linerLife;
         barrelTemperature += (1 - eta) * energy / barrelHeatCapacity();
-        if (linerWear >= 1 || barrelTemperature > 2500) {
+        if (linerWear >= 1 || barrelTemperature > MISFIRE_TEMPERATURE) {
             s.misfire = true;
             linerWear = 1;
             barrelTemperature += 400;

@@ -7,6 +7,11 @@
 
 ## Multiblocos: convenção atual (G-0240 em diante)
 
+!!! warning "Substituída em 2026-11-24"
+    Todos os multiblocos usam agora o layout GTNH da TypeOmega Lib com a mecânica completa (GTIA-D-410, D-432):
+    `common/data/tooltip/` e `assets/gtna/tooltip_lang/`. O gerador `tools/apply_multiblock_tooltips.py` e os
+    JSON de `tools/multiblock_tooltips/` foram removidos; a seção abaixo fica como histórico.
+
 Os multiblocos usam a fonte única `tools/multiblock_tooltips/*.json`, gerada por
 `tools/apply_multiblock_tooltips.py`. O padrão abaixo substitui a convenção histórica de
 `Main Function` deste documento **para multiblocos**; as demais famílias mantêm suas regras.

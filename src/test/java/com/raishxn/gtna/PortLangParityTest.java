@@ -70,7 +70,7 @@ public final class PortLangParityTest {
                 .sorted().toList();
         if (!missingStandard.isEmpty()) {
             throw new AssertionError("pt_br.json is missing " + missingStandard.size() + " multiblock tooltip " +
-                    "key(s): " + missingStandard + " - run tools/apply_multiblock_tooltips.py");
+                    "key(s): " + missingStandard + " - run tools/tooltip_lang.py");
         }
         if (standard.size() < 1000) {
             throw new AssertionError("expected at least 1000 multiblock tooltip keys in the generated en_us, " +

@@ -14,6 +14,7 @@ import com.raishxn.gtna.api.machine.feature.eyeofharmony.EyeOfHarmonyMath;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeData;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeMath;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeModuleStats;
+import com.raishxn.gtna.api.machine.feature.lance.LanceCore;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.AdvancedFusionReactorMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.BlazeBlastFurnaceMachine;
@@ -22,6 +23,7 @@ import com.raishxn.gtna.common.machine.multiblock.electric.GTNALargeTurbineMachi
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
 import com.raishxn.gtna.common.machine.multiblock.energy.GeneratorArrayMachine;
+import com.raishxn.gtna.common.machine.multiblock.energy.NexusFluxMatrixMachine;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamFlightModule;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamOilDrillModule;
 import com.raishxn.gtna.common.machine.multiblock.noenergy.DimensionallyTranscendentDirtForgeMachine;
@@ -154,6 +156,13 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("mega_distillery", 4);
         MINIMUM.put("universal_factory", 8);
         MINIMUM.put("primitive_stone_furnace", 4);
+        MINIMUM.put("kinetic_orbital_lance", 17);
+        MINIMUM.put("dimensional_rift_gate", 14);
+        MINIMUM.put("antimatter_collider_ring", 12);
+        MINIMUM.put("stellar_containment_chamber", 14);
+        MINIMUM.put("nexus_flux_matrix", 7);
+        MINIMUM.put("nexus_me_hypercore", 7);
+        MINIMUM.put("duration_tester", 4);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -328,6 +337,20 @@ public final class MechanicTooltipGameTests {
         h.assertTrue(forge.contains(String.format(java.util.Locale.ROOT, "%,d",
                 DimensionallyTranscendentDirtForgeMachine.MAX_PARALLEL)), "dirt forge parallels: " + forge);
         h.assertTrue(text("dimensionally_transcendent_steam_oven").contains("100x"), "steam oven is 100x faster");
+        h.succeed();
+    }
+
+    /** Lance and Flux Matrix numbers come from LanceCore and the matrix. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void originalNumbersMatchTheCores(GameTestHelper h) {
+        var core = new LanceCore();
+        h.assertTrue(core.bankCapacity() >= LanceCore.BASE_BANK, "one ring holds at least the base bank");
+        String lance = text("kinetic_orbital_lance");
+        for (String needed : new String[] { "up to 85%", "2,500 K", "1,048,576 CWU/t" }) {
+            h.assertTrue(lance.contains(needed), "Lance tooltip lacks '" + needed + "': " + lance);
+        }
+        h.assertTrue(text("nexus_flux_matrix").contains(NexusFluxMatrixMachine.MAX_CAPACITORS + " MAX capacitors"),
+                "flux matrix unlimited rule");
         h.succeed();
     }
 

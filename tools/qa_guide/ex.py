@@ -6,7 +6,7 @@ zh=json.load(open('src/main/resources/assets/gtna/lang/zh_cn.json'))
 src=open(B+'GTNASources.java').read()
 srcmap=dict(re.findall(r'Map\.entry\("([a-z0-9_]+)",\s*([A-Z_]+)\)',src))
 gt=''.join(open(f).read() for f in glob.glob('src/main/java/com/raishxn/gtna/gametest/*.java'))
-tt=open(B+'GTNAMultiblockTooltipText.java').read()+open('src/main/java/com/raishxn/gtna/data/GTNALangProvider.java').read()
+tt=open('src/main/java/com/raishxn/gtna/data/GTNALangProvider.java').read()+''.join(open(f).read() for f in glob.glob('src/main/resources/assets/gtna/tooltip_lang/*.json'))
 pat=re.compile(r'(?:\.multiblock|registerElevatorModule|\bbec)\(\s*"([a-z0-9_]+)"')
 out=[]
 for f in sorted(glob.glob(B+'*.java')):

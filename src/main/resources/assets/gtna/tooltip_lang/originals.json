@@ -1,0 +1,437 @@
+{
+  "gtna.tooltip.mb.type.kinetic_orbital_lance": [
+    "Orbital Mining",
+    "Mineração Orbital",
+    "轨道采矿"
+  ],
+  "gtna.tooltip.mb.type.dimensional_rift_gate": [
+    "Rift Opening",
+    "Abertura de Fenda",
+    "裂隙开启"
+  ],
+  "gtna.tooltip.mb.type.antimatter_collider_ring": [
+    "Particle Collider",
+    "Colisor de Partículas",
+    "粒子对撞机"
+  ],
+  "gtna.tooltip.mb.type.stellar_containment_chamber": [
+    "Stellar Containment",
+    "Contenção Estelar",
+    "恒星约束"
+  ],
+  "gtna.tooltip.mb.type.nexus_flux_matrix": [
+    "Wireless Energy Storage",
+    "Armazenamento de Energia Sem Fio",
+    "无线能量存储"
+  ],
+  "gtna.tooltip.mb.type.nexus_me_hypercore": [
+    "ME Crafting Computer",
+    "Computador de Crafting ME",
+    "ME合成计算机"
+  ],
+  "gtna.tooltip.mb.type.duration_tester": [
+    "Developer Tool",
+    "Ferramenta de Desenvolvimento",
+    "开发工具"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.purpose": [
+    "Fires projectiles at moons and asteroids from a capacitor bank and recovers the fragments in capsules",
+    "Dispara projéteis em luas e asteroides com um banco de capacitores e recupera os fragmentos em cápsulas",
+    "以电容组向卫星与小行星发射弹丸，并用返回舱回收碎片"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.charge": [
+    "The bank charges from the Nexus network at %s",
+    "O banco carrega pela rede Nexus a %s",
+    "电容组从Nexus网络以%s充能"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.bank": [
+    "Bank: %s × 2^(capacitor rings − 1)",
+    "Banco: %s × 2^(anéis de capacitor − 1)",
+    "电容组容量：%s×2^(电容环数−1)"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.budget": [
+    "Barrel bench budget: mass 600 + 200 × rings t, heat 40 + 20 × rings; one part per slot, rails up to 8",
+    "Orçamento da bancada do cano: massa 600 + 200 × anéis t, calor 40 + 20 × anéis; uma peça por slot, até 8 trilhos",
+    "炮管工作台预算：质量600+200×环数吨，热量40+20×环数；每槽一件，导轨最多8条"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.efficiency": [
+    "Efficiency: %s + the rails' sum × (1 − inductance / 2), up to %s",
+    "Eficiência: %s + soma dos trilhos × (1 − indutância / 2), até %s",
+    "效率：%s+导轨总和×(1−电感/2)，最高%s"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.rails": [
+    "Each rail adds 1/8 of the bank's inductance limit",
+    "Cada trilho adiciona 1/8 do limite de indutância do banco",
+    "每条导轨占电容组电感上限的1/8"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.shot": [
+    "A shot fires the whole bank: v = √(2 × efficiency × energy / projectile mass)",
+    "Um disparo usa o banco inteiro: v = √(2 × eficiência × energia / massa do projétil)",
+    "每次射击释放整个电容组：v=√(2×效率×能量/弹丸质量)"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.regimes": [
+    "Impact by energy per kg against the body's hardness: fragmentation, impact melt (10x), vaporisation (200x), relativistic (5,000x)",
+    "Impacto pela energia por kg contra a dureza do corpo: fragmentação, fusão por impacto (10x), vaporização (200x), relativístico (5.000x)",
+    "按单位质量能量与天体硬度判定撞击：碎裂、撞击熔融（10倍）、汽化（200倍）、相对论（5,000倍）"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.recovered": [
+    "Recovered mass = 20% × shot energy / hardness × capsule recovery × accuracy",
+    "Massa recuperada = 20% × energia do disparo / dureza × recuperação da cápsula × precisão",
+    "回收质量=20%×射击能量/硬度×返回舱回收率×精度"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.aim": [
+    "Aim error ∝ 1/√CWU: it asks up to %s CWU/t from the Computation Data Hatch; without one the aim is blind",
+    "Erro de mira ∝ 1/√CWU: pede até %s CWU/t da Computation Data Hatch; sem ela a mira fica cega",
+    "瞄准误差∝1/√CWU：向算力数据仓请求最多%s CWU/t，没有则无法瞄准"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.survey": [
+    "A body is targetable when every parent body is surveyed to 100%",
+    "Um corpo pode ser alvo quando todos os corpos-pai estão 100% pesquisados",
+    "所有母天体勘测达100%后，该天体才可被瞄准"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.nexus": [
+    "Nexus-1's crust breaks only under a Magnetar Slug",
+    "A crosta de Nexus-1 só quebra com um Magnetar Slug",
+    "Nexus-1的地壳只能被磁星弹击穿"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.capsules": [
+    "Capsules return in 30 × ln(1 + distance / 50 Mm) seconds",
+    "As cápsulas voltam em 30 × ln(1 + distância / 50 Mm) segundos",
+    "返回舱在30×ln(1+距离/50 Mm)秒后返回"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.heat": [
+    "Barrel heat capacity: %s; the lost energy heats it, coolant cools it every second",
+    "Capacidade térmica do cano: %s; a energia perdida o aquece, o refrigerante o esfria a cada segundo",
+    "炮管热容：%s；损失的能量使其升温，冷却液每秒降温"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.misfire": [
+    "A worn-out liner or a barrel above %s misfires and heats it 400 K more",
+    "Um liner gasto ou um cano acima de %s falha o disparo e esquenta mais 400 K",
+    "衬管磨损殆尽或炮管超过%s时哑火，并再升温400 K"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.drift": [
+    "A hot barrel drifts off target",
+    "Um cano quente desvia do alvo",
+    "炮管过热会偏离目标"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.liner": [
+    "Worn liners are swapped from the Barrel Liner Hatch: naquadah alloy 5e13 EU of life, neutronium 2e14",
+    "Liners gastos são trocados pela Barrel Liner Hatch: liga de naquadah 5e13 EU de vida, neutrônio 2e14",
+    "磨损的衬管由衬管仓自动更换：硅岩合金寿命5e13 EU，中子素2e14"
+  ],
+  "gtna.machine.kinetic_orbital_lance.tooltip.humor": [
+    "Asteroid mining, the loud way. Type Omega notified the neighbours by memo.",
+    "Mineração de asteroides do jeito barulhento. A Type Omega avisou os vizinhos por memorando.",
+    "用最响的方式开采小行星。Type Omega已发备忘录通知邻居。"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.purpose": [
+    "Opens rifts to seeded dimensions; tune frequency, phase and amplitude until the rift holds",
+    "Abre fendas para dimensões semeadas; ajuste frequência, fase e amplitude até a fenda estabilizar",
+    "开启通往种子维度的裂隙；调节频率、相位与振幅直至裂隙稳定"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.cycle": [
+    "It runs once per second",
+    "Roda uma vez por segundo",
+    "每秒运行一次"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.tuning": [
+    "Each seed hides an optimum: 1 to 1,000 THz, 0 to 360°, 0 to 100%",
+    "Cada semente esconde um ótimo: 1 a 1.000 THz, 0 a 360°, 0 a 100%",
+    "每个种子隐藏一个最佳点：1至1,000 THz、0至360°、0至100%"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.resonance": [
+    "Resonance R (0 to 1) grows as the three knobs near the optimum",
+    "A ressonância R (0 a 1) cresce conforme os três controles se aproximam do ótimo",
+    "三个旋钮越接近最佳点，共振R（0至1）越高"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.probes": [
+    "Each Rift Probe from the input bus narrows the tolerances",
+    "Cada Rift Probe do barramento de entrada estreita as tolerâncias",
+    "输入总线中的每个裂隙探针都会收窄容差"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.harmonics": [
+    "A seed held resonant can be recorded as a musical harmonic",
+    "Uma semente mantida em ressonância pode ser gravada como harmônico musical",
+    "保持共振的种子可被记录为音乐泛音"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.chord": [
+    "Loaded harmonics form a chord: consonance 1 / log2(p × q), 0.3 neutral",
+    "Os harmônicos carregados formam um acorde: consonância 1 / log2(p × q), 0,3 neutro",
+    "装载的泛音构成和弦：协和度1/log2(p×q)，0.3为中性"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.exotic": [
+    "SpaceTime from the fluid hatches holds the rift stable; more is needed at higher resonance and depth",
+    "SpaceTime das escotilhas de fluido mantém a fenda estável; mais é preciso com ressonância e profundidade maiores",
+    "流体仓中的时空维持裂隙稳定，共振与深度越高需求越多"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.output": [
+    "Output per second: R² × D^1.5 × S / 100",
+    "Saída por segundo: R² × D^1,5 × S / 100",
+    "每秒产出：R²×D^1.5×S/100"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.depth": [
+    "Each Depth Anchor from the input bus deepens the rift by one",
+    "Cada Depth Anchor do barramento de entrada aprofunda a fenda em um",
+    "输入总线中的每个深度锚使裂隙加深一层"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.biomes": [
+    "The rift's biome drops its own resources into the output buses",
+    "O bioma da fenda solta os próprios recursos nos barramentos de saída",
+    "裂隙生物群系的资源掉落至输出总线"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.atlas": [
+    "Seeds closer than 1 in tuning space are linked in the atlas",
+    "Sementes a menos de 1 no espaço de ajuste ficam ligadas no atlas",
+    "调谐空间中距离小于1的种子在图鉴中相连"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.collapse": [
+    "Stability at 0 collapses the rift",
+    "Estabilidade em 0 colapsa a fenda",
+    "稳定度降至0时裂隙坍塌"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.dissonance": [
+    "Dissonant chords dig deeper but cost more exotic matter",
+    "Acordes dissonantes cavam mais fundo, mas custam mais matéria exótica",
+    "不协和的和弦挖得更深，但消耗更多奇异物质"
+  ],
+  "gtna.machine.dimensional_rift_gate.tooltip.humor": [
+    "Every seed is somewhere. Most of them bite. Type Omega insures none of them.",
+    "Toda semente está em algum lugar. A maioria morde. A Type Omega não segura nenhuma.",
+    "每个种子都在某处，大多会咬人。Type Omega一个都不承保。"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.purpose": [
+    "Accelerates counter-rotating beams and collides them for exotic particles",
+    "Acelera feixes em sentidos opostos e os colide para obter partículas exóticas",
+    "加速反向旋转的粒子束并对撞以获得奇异粒子"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.cycle": [
+    "It runs once per second",
+    "Roda uma vez por segundo",
+    "每秒运行一次"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.energy": [
+    "Beam energy: p = 0.3 × B × ρ, ring radius %s",
+    "Energia do feixe: p = 0,3 × B × ρ, raio do anel %s",
+    "束流能量：p=0.3×B×ρ，环半径%s"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.luminosity": [
+    "Luminosity: f_rev × n_b × N² / (4π σ²)",
+    "Luminosidade: f_rev × n_b × N² / (4π σ²)",
+    "亮度：f_rev×n_b×N²/(4πσ²)"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.significance": [
+    "Significance = (s / √b) × √(integrated luminosity)",
+    "Significância = (s / √b) × √(luminosidade integrada)",
+    "显著性=(s/√b)×√(积分亮度)"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.yield": [
+    "Particle yield: 10% before evidence, 40% from 3σ, 100% from 5σ",
+    "Rendimento da partícula: 10% antes de evidência, 40% a partir de 3σ, 100% a partir de 5σ",
+    "粒子产率：证据前10%，3σ起40%，5σ起100%"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.proposals": [
+    "Beam-time proposals unlock stronger magnets and traps",
+    "Propostas de tempo de feixe liberam ímãs e armadilhas mais fortes",
+    "束流时间提案解锁更强的磁体与陷阱"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.electrons": [
+    "The electron-positron proposal adds electron beams up to %s",
+    "A proposta elétron-pósitron adiciona feixes de elétrons até %s",
+    "正负电子提案增加最高%s的电子束"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.helium": [
+    "Liquid helium from the fluid hatches cools the superconducting magnets",
+    "Hélio líquido das escotilhas de fluido resfria os ímãs supercondutores",
+    "流体仓中的液氦冷却超导磁体"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.traps": [
+    "Antiprotons fill Penning traps powered by the Nexus network",
+    "Antiprótons enchem armadilhas de Penning alimentadas pela rede Nexus",
+    "反质子充入由Nexus网络供能的彭宁阱"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.quench": [
+    "Missing helium quenches the magnets",
+    "Falta de hélio faz os ímãs perderem a supercondução",
+    "液氦不足时磁体失超"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.annihilate": [
+    "Unpowered traps annihilate their antimatter",
+    "Armadilhas sem energia aniquilam a antimatéria",
+    "断电的陷阱会湮灭其中的反物质"
+  ],
+  "gtna.machine.antimatter_collider_ring.tooltip.humor": [
+    "Two beams, one ring, zero room for error in the Type Omega safety manual.",
+    "Dois feixes, um anel, zero margem para erro no manual de segurança da Type Omega.",
+    "两束粒子，一个环，Type Omega安全手册里没有犯错余地。"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.purpose": [
+    "Holds a neutron star in field bands and extracts its spin energy into the Nexus network",
+    "Prende uma estrela de nêutrons em faixas de campo e extrai a energia da rotação para a rede Nexus",
+    "以场带约束中子星，提取其自转能量送入Nexus网络"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.cycle": [
+    "It runs once per second",
+    "Roda uma vez por segundo",
+    "每秒运行一次"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.mass": [
+    "Mass from the fluid hatches accretes and spins the star up; 15% leaves as binding energy",
+    "Massa das escotilhas de fluido é acretada e acelera a estrela; 15% sai como energia de ligação",
+    "流体仓中的物质被吸积并加快自转，15%以结合能形式散失"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.spin": [
+    "Rotational energy feeds the extraction and the magnetic dipole braking",
+    "A energia rotacional alimenta a extração e a frenagem do dipolo magnético",
+    "自转能量用于提取与磁偶极制动"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.extraction": [
+    "The bands draw a continuous EU/t upkeep from the network",
+    "As faixas consomem uma manutenção contínua de EU/t da rede",
+    "场带持续从网络消耗EU/t维持"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.cap": [
+    "Extraction cap: 2^(55 + band tier) EU/t as a neutron star (half until the millisecond region), 2^62 as a black hole",
+    "Teto de extração: 2^(55 + tier da faixa) EU/t como estrela de nêutrons (metade até a região de milissegundo), 2^62 como buraco negro",
+    "提取上限：中子星为2^(55+场带等级) EU/t（进入毫秒区前减半），黑洞为2^62"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.quakes": [
+    "Spin changes cause starquakes; decoding one unlocks containment equipment",
+    "Mudanças de rotação causam terremotos estelares; decodificar um libera equipamento de contenção",
+    "自转变化引发星震，解析星震可解锁约束设备"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.regions": [
+    "Regions of the mass-period diagram the star visits each unlock something",
+    "Regiões do diagrama massa-período que a estrela visita liberam algo cada uma",
+    "恒星到访质量-周期图的每个区域都会解锁内容"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.collapse": [
+    "Above %s (%s with exotic matter) it collapses into a black hole",
+    "Acima de %s (%s com matéria exótica) colapsa em buraco negro",
+    "超过%s（奇异物质下为%s）时坍缩为黑洞"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.black_hole": [
+    "A black hole gives Penrose extraction from its ergosphere, spin up to %s",
+    "Um buraco negro dá extração de Penrose pela ergosfera, rotação até %s",
+    "黑洞可通过能层进行彭罗斯提取，自旋最高%s"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.bands": [
+    "Band tiers rise as quakes are decoded",
+    "Os tiers das faixas sobem conforme os terremotos são decodificados",
+    "随着星震被解析，场带等级提升"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.kepler": [
+    "Spinning below the Kepler period tears the star apart",
+    "Girar abaixo do período de Kepler despedaça a estrela",
+    "自转快于开普勒周期会撕裂恒星"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.magnetar": [
+    "A magnetar event inverts the bands for 10 minutes",
+    "Um evento de magnetar inverte as faixas por 10 minutos",
+    "磁星事件使场带反转10分钟"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.unpowered": [
+    "Unpowered bands during a quake damage the containment",
+    "Faixas sem energia durante um terremoto danificam a contenção",
+    "星震时场带断电会损坏约束"
+  ],
+  "gtna.machine.stellar_containment_chamber.tooltip.humor": [
+    "It spins seven hundred times a second. Type Omega asks you not to touch it.",
+    "Gira setecentas vezes por segundo. A Type Omega pede que não toque.",
+    "每秒自转七百圈。Type Omega请您勿触碰。"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.purpose": [
+    "A massive wireless energy storage that feeds the team's Nexus network",
+    "Um armazenamento de energia sem fio enorme que alimenta a rede Nexus do time",
+    "为团队Nexus网络供能的巨型无线能量存储"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.capacitors": [
+    "Capacity is the sum of its Nexus capacitors",
+    "A capacidade é a soma dos capacitores Nexus",
+    "容量为其Nexus电容之和"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.efficiency": [
+    "Efficiency follows the capacitor tier (config), %s without capacitors",
+    "A eficiência segue o tier dos capacitores (config), %s sem capacitores",
+    "效率随电容等级变化（配置），无电容时为%s"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.transfer": [
+    "Transfer limit: %s × 4^(average tier − 1) unless the config sets one",
+    "Limite de transferência: %s × 4^(tier médio − 1), a menos que a config defina outro",
+    "传输上限：%s×4^(平均等级−1)，配置另有设定时除外"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.unlimited": [
+    "%s MAX capacitors: unlimited storage and transfer",
+    "%s capacitores MAX: armazenamento e transferência ilimitados",
+    "%s个MAX电容：存储与传输无限"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.team": [
+    "Every matrix of a team adds to the same network",
+    "Toda matriz de um time soma na mesma rede",
+    "同一团队的所有矩阵累加至同一网络"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.balance": [
+    "Deposited energy stays as the network's balance",
+    "A energia depositada fica como saldo da rede",
+    "存入的能量作为网络余额保留"
+  ],
+  "gtna.machine.nexus_flux_matrix.tooltip.humor": [
+    "Infinite power, if Type Omega approves the battery budget.",
+    "Energia infinita, se a Type Omega aprovar o orçamento das baterias.",
+    "无限能量，前提是Type Omega批准电池预算。"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.purpose": [
+    "An ME computer lattice whose modules form one shared crafting CPU",
+    "Uma rede de computador ME cujos módulos formam uma CPU de crafting compartilhada",
+    "ME计算机阵列，所有模块组成一个共享合成CPU"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.slots": [
+    "Up to %s modules or AE2 Crafting Units in the core",
+    "Até %s módulos ou Crafting Units do AE2 no núcleo",
+    "核心最多容纳%s个模块或AE2合成单元"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.threads": [
+    "Threads per module: %s, %s, %s, %s (tiers I to IV)",
+    "Threads por módulo: %s, %s, %s, %s (tiers I a IV)",
+    "每个模块线程数：%s、%s、%s、%s（I至IV级）"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.coprocessors": [
+    "Co-processors per module: %s at tier I up to %s at tier IV",
+    "Coprocessadores por módulo: %s no tier I até %s no tier IV",
+    "每个模块协处理器：I级%s，至IV级%s"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.shared": [
+    "Every module adds to one crafting CPU",
+    "Todo módulo soma numa única CPU de crafting",
+    "所有模块并入同一个合成CPU"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.transcendent": [
+    "All slots with tier IV: Transcendent Mode, unlimited storage and CPUs",
+    "Todos os slots com tier IV: Modo Transcendente, armazenamento e CPUs ilimitados",
+    "所有槽位均为IV级时进入超越模式，存储与CPU无限"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.interface": [
+    "Needs exactly one Crafting CPU Interface",
+    "Precisa de exatamente uma Crafting CPU Interface",
+    "需要且仅需一个合成CPU接口"
+  ],
+  "gtna.machine.nexus_me_hypercore.tooltip.humor": [
+    "Can it run Crysis? Type Omega had it craft Crysis instead.",
+    "Roda Crysis? A Type Omega mandou ele fabricar o Crysis.",
+    "能运行孤岛危机吗？Type Omega让它直接合成了一份。"
+  ],
+  "gtna.machine.duration_tester.tooltip.purpose": [
+    "A test machine for the Duration and Accelerate Hatches with Assembler and Circuit Assembler recipes",
+    "Uma máquina de teste das Escotilhas de Duração e Aceleração com receitas de Montadora e Montadora de Circuitos",
+    "用组装机与电路组装机配方测试时长仓与加速仓的机器"
+  ],
+  "gtna.machine.duration_tester.tooltip.dev": [
+    "For development; not meant for survival",
+    "Para desenvolvimento; não é para o modo sobrevivência",
+    "仅供开发，不用于生存模式"
+  ],
+  "gtna.machine.duration_tester.tooltip.humor": [
+    "If you are reading this, you found the Type Omega dev room.",
+    "Se você está lendo isto, achou a sala de dev da Type Omega.",
+    "如果你读到了这行字，说明你找到了Type Omega的开发室。"
+  ]
+}

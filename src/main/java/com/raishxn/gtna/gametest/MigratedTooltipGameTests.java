@@ -171,7 +171,8 @@ public final class MigratedTooltipGameTests {
 
     /** Machines of the tooltip preview page (design/core in the pack workspace). */
     private static final String[] PREVIEW = { "large_steam_crusher", "steam_manufacturer", "mega_alloy_blast_smelter",
-            "nano_forge", "eye_of_harmony", "forge_of_gods", "kinetic_orbital_lance" };
+            "nano_forge", "eye_of_harmony", "forge_of_gods", "kinetic_orbital_lance", "large_naquadah_reactor",
+            "cracker_hub" };
 
     /**
      * Writes the shown lines of the preview machines, as text with colour per segment, to
