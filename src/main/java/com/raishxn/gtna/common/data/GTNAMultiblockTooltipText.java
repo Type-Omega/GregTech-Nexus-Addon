@@ -466,20 +466,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Circuit §e1§b random, §e2§b fish, §e3§b junk, §e4§b treasure",
                 "§c▸ Needs bait to fish",
         });
-        ENGLISH.put("forge_of_gods", new String[] {
-                "Machine Type: §eStellar Forge",
-                "§7§oAlso known as Godforge or Gorge for short.",
-                "§b§m                                                        ",
-                "§7A massive structure harnessing the heat,",
-                "§7gravity and spin of a §6stabilized neutron§7",
-                "§7§6star§7 for material processing.",
-                "§b§m                                                        ",
-                "§a▸ Extensive §eupgrade tree§a: modules, heat, speed",
-                "§a▸ Click the controller logo for the full guide",
-                "§b▸ §e8§b module slots, up to §e16§b with upgrades",
-                "§b▸ Upgrades require §emilestones and/or materials§b",
-                "§c▸ All module EU comes from §ewireless energy§c",
-        });
         ENGLISH.put("fuel_cell_generator", new String[] {
                 "Machine Type: §eFuel Cell",
                 "§7§oA battery that drinks fuel and remembers how tired it is.",
@@ -560,52 +546,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Thread Hatch: several recipes at once",
                 "§b▸ Coil temperature must reach the recipe's",
                 "§c▸ All glass blocks must be the same tier",
-        });
-        ENGLISH.put("godforge_exotic_module", new String[] {
-                "Machine Type: §eExotic Matter Producer",
-                "§7§oBreaking the building blocks of reality, responsibly.",
-                "§b§m                                                        ",
-                "§7The final Godforge module: breaks matter",
-                "§7apart into §6exotic mixtures§7 like Quark-Gluon",
-                "§7Plasma and Magmatter.",
-                "§b§m                                                        ",
-                "§a▸ Specialized in §eunique materials§a",
-                "§b▸ Quark-Gluon Plasma is available right away",
-                "§c▸ Magmatter needs a fully upgraded Godforge",
-                "§c▸ Must be part of a Godforge to work",
-        });
-        ENGLISH.put("godforge_molten_module", new String[] {
-                "Machine Type: §eBlast Smelter",
-                "§7§oSkip the ingot. Go straight to soup.",
-                "§b§m                                                        ",
-                "§7The second Godforge module: melts materials",
-                "§7straight into their §6liquid§7 form.",
-                "§b§m                                                        ",
-                "§a▸ Specialized in §eparallel§a processing",
-                "§b▸ Outputs solids if no liquid form exists",
-                "§c▸ Must be part of a Godforge to work",
-        });
-        ENGLISH.put("godforge_plasma_module", new String[] {
-                "Machine Type: §ePlasma Fabricator",
-                "§7§oIonize first, ask questions never.",
-                "§b§m                                                        ",
-                "§7The third Godforge module: infuses materials",
-                "§7with heat until they become §6plasma§7.",
-                "§b§m                                                        ",
-                "§a▸ Specialized in §eenergy and overclock§a efficiency",
-                "§b▸ Some plasmas need forge upgrades",
-                "§c▸ Must be part of a Godforge to work",
-        });
-        ENGLISH.put("godforge_smelting_module", new String[] {
-                "Machine Type: §eBlast Furnace, Furnace",
-                "§7§oSmelting, but the furnace is a neutron star.",
-                "§b§m                                                        ",
-                "§7The first Godforge module: smelts like a",
-                "§7§6furnace or blast furnace§7 at extreme heat.",
-                "§b§m                                                        ",
-                "§a▸ Specialized in §espeed§a and high heat levels",
-                "§b▸ Pick furnace or blast mode in the GUI",
-                "§c▸ Must be part of a Godforge to work",
         });
         ENGLISH.put("greenhouse", new String[] {
                 "Machine Type: §eGreenhouse",

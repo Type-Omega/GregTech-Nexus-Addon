@@ -7,9 +7,9 @@ package com.raishxn.gtna.api.machine.feature.godforge;
  */
 public final class GodforgeOverclock {
 
-    private static final int HEAT_DISCOUNT_THRESHOLD = 900;
-    private static final int HEAT_OVERCLOCK_THRESHOLD = 1800;
-    private static final double DURATION_DECREASE_PER_HEAT_OC = 4;
+    public static final int HEAT_DISCOUNT_THRESHOLD = 900;
+    public static final int HEAT_OVERCLOCK_THRESHOLD = 1800;
+    public static final double DURATION_DECREASE_PER_HEAT_OC = 4;
 
     public long recipeEUt;
     public long machineVoltage;

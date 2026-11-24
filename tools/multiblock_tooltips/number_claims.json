@@ -1183,22 +1183,6 @@
    }
   ]
  },
- "forge_of_gods": {
-  "8": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/godforge/GodforgeMath.java",
-    "pattern": "int max = 8;",
-    "expr": "8 base"
-   }
-  ],
-  "16": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/godforge/GodforgeMath.java",
-    "pattern": "max \\+= 4;\\s*if \\(data\\.isUpgradeActive\\(END\\)\\) max \\+= 4;",
-    "expr": "8 + 4 + 4"
-   }
-  ]
- },
  "dimensionally_transcendent_plasma_forge": {
   "50": [
    {

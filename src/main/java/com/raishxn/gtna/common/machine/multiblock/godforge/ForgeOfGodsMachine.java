@@ -56,7 +56,7 @@ public class ForgeOfGodsMachine extends WorkableMultiblockMachine
             WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
 
     public static final String MODULES_KEY = "gtna_godforge_modules";
-    private static final int UPDATE_PERIOD = 100;
+    public static final int UPDATE_PERIOD = 100;
 
     private final GodforgeData data = new GodforgeData();
     private final List<BlockPos> modulePositions = new ArrayList<>();

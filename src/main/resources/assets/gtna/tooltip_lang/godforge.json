@@ -1,0 +1,257 @@
+{
+  "gtna.tooltip.mb.type.stellar_forge": [
+    "Stellar Forge",
+    "Forja Estelar",
+    "恒星熔炉"
+  ],
+  "gtna.tooltip.mb.type.smelting_module": [
+    "Stellar Smelter",
+    "Fundição Estelar",
+    "恒星冶炼"
+  ],
+  "gtna.tooltip.mb.type.molten_module": [
+    "Stellar Melter",
+    "Derretedor Estelar",
+    "恒星熔融"
+  ],
+  "gtna.tooltip.mb.type.plasma_module": [
+    "Plasma Fabricator",
+    "Fabricador de Plasma",
+    "等离子制造机"
+  ],
+  "gtna.tooltip.mb.type.exotic_module": [
+    "Exotic Matter Forge",
+    "Forja de Matéria Exótica",
+    "奇异物质熔炉"
+  ],
+  "gtna.tooltip.mb.godforge.wireless": [
+    "All EU comes straight from the owner's wireless network",
+    "Todo o EU vem direto da rede wireless do dono",
+    "所有EU直接来自所有者的无线网络"
+  ],
+  "gtna.tooltip.mb.godforge.heat": [
+    "Heat = %s + log_%s(fuel factor) × 1,000",
+    "Calor = %s + log_%s(fator de combustível) × 1.000",
+    "热量 = %s + log_%s(燃料系数) × 1,000"
+  ],
+  "gtna.tooltip.mb.godforge.part": [
+    "Module of the Forge of Gods: works only while connected to a lit Forge",
+    "Módulo da Forja dos Deuses: só funciona conectado a uma Forja acesa",
+    "神之熔炉的模块：只有连接到已点燃的熔炉时才能工作"
+  ],
+  "gtna.tooltip.mb.godforge.unlock": [
+    "Connects only after the %s upgrade",
+    "Só conecta depois da melhoria %s",
+    "需要%s升级后才能连接"
+  ],
+  "gtna.tooltip.mb.godforge.parallel": [
+    "Base parallels: %s; fuel, heat and upgrade count raise it through upgrades",
+    "Paralelos base: %s; combustível, calor e número de melhorias aumentam por meio de melhorias",
+    "基础并行：%s；通过升级，燃料、热量与升级数量可提高并行"
+  ],
+  "gtna.tooltip.mb.godforge.voltage": [
+    "Processing voltage: %s; upgrades raise it or make it configurable",
+    "Tensão de processamento: %s; melhorias aumentam ou a tornam configurável",
+    "处理电压：%s；升级可提高电压或使其可配置"
+  ],
+  "gtna.tooltip.mb.godforge.overclock": [
+    "Overclocks have no tier limit: %s faster and %s the EU each",
+    "Overclocks sem limite de tier: %s mais rápido e %s o EU cada",
+    "超频不受等级限制：每次加速%s，EU为%s"
+  ],
+  "gtna.tooltip.mb.godforge.threads": [
+    "A Thread Hatch up to %s adds threads; later upgrades raise that tier",
+    "Uma Escotilha de Threads até %s adiciona threads; melhorias posteriores sobem esse tier",
+    "最高%s的线程仓可增加线程；后续升级会提高该等级"
+  ],
+  "gtna.tooltip.mb.godforge.heat_bonus": [
+    "Heat above the recipe: %s EU per %s (multiplicative) and one %s overclock per %s",
+    "Calor acima da receita: %s de EU a cada %s (multiplicativo) e um overclock de %s a cada %s",
+    "热量高于配方：每%2$s EU%1$s（乘算），每%4$s一次%3$s超频"
+  ],
+  "gtna.tooltip.mb.godforge.heat_cap": [
+    "Heat bonuses count up to %s (%s with %s)",
+    "Os bônus de calor contam até %s (%s com %s)",
+    "热量加成最多计算到%s（%s时为%s）"
+  ],
+  "gtna.tooltip.mb.godforge.too_hot": [
+    "A recipe hotter than the module does not start, and stops if the heat drops below it",
+    "Uma receita mais quente que o módulo não começa, e para se o calor cair abaixo dela",
+    "高于模块热量的配方不会启动；热量降到配方以下时会停止"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.purpose": [
+    "Harnesses the heat, gravity and spin of a stabilized neutron star to feed its modules",
+    "Aproveita o calor, a gravidade e o giro de uma estrela de nêutrons estabilizada para alimentar seus módulos",
+    "利用稳定中子星的热量、引力与自转为其模块供能"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.modules": [
+    "Holds %s modules, %s more with %s and %s more with %s",
+    "Comporta %s módulos, mais %s com %s e mais %s com %s",
+    "可容纳%s个模块，%3$s后再加%2$s个，%5$s后再加%4$s个"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.update": [
+    "Recomputes the heat, parallels and bonuses of every module each %s",
+    "Recalcula calor, paralelos e bônus de cada módulo a cada %s",
+    "每%s重新计算所有模块的热量、并行与加成"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.startup": [
+    "Boots with Star Fuel from an input bus: factor × %s × %s^factor items",
+    "Liga com Combustível Estelar de um barramento de entrada: fator × %s × %s^fator itens",
+    "从输入总线投入恒星燃料启动：系数 × %s × %s^系数 个"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.fuel_cap": [
+    "Fuel factor up to %s; upgrades raise the cap",
+    "Fator de combustível até %s; melhorias sobem o limite",
+    "燃料系数最高%s；升级可提高上限"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.residue": [
+    "Dimensionally Transcendent Residue: factor × %s × %s^factor per second",
+    "Resíduo Dimensionalmente Transcendente: fator × %s × %s^fator por segundo",
+    "超维度残留物：每秒 系数 × %s × %s^系数"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.stellar_plasma": [
+    "Condensed Raw Stellar Plasma Mixture: factor × %s × %s^factor per second",
+    "Mistura Condensada de Plasma Estelar Bruto: fator × %s × %s^fator por segundo",
+    "浓缩粗制恒星等离子混合物：每秒 系数 × %s × %s^系数"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.magmatter": [
+    "Constrained Star Matter: factor / %s per second",
+    "Matéria Estelar Contida: fator / %s por segundo",
+    "约束恒星物质：每秒 系数 / %s"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.battery": [
+    "Battery Charging doubles the fuel use and stores half of it",
+    "Carregar a bateria dobra o consumo de combustível e guarda metade",
+    "电池充能会使燃料消耗翻倍，并储存其中一半"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.out_of_fuel": [
+    "Short on fuel, the stored fuel drains; at zero the modules disconnect and it needs Star Fuel again",
+    "Sem combustível, o estoque esvazia; no zero os módulos desconectam e ela precisa de Combustível Estelar de novo",
+    "燃料不足时储存燃料会减少；归零后模块断开，需要重新投入恒星燃料"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.upgrades": [
+    "%s upgrades in a tree, bought with Graviton Shards and materials",
+    "%s melhorias em árvore, compradas com Fragmentos de Gráviton e materiais",
+    "%s项树状升级，用引力子碎片和材料购买"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.milestones": [
+    "Four milestones (charge, conversion, catalyst, composition) give n(n+1)/2 shards at level n",
+    "Quatro marcos (carga, conversão, catalisador, composição) dão n(n+1)/2 fragmentos no nível n",
+    "四个里程碑（充能、转化、催化、组成）在第n级给予n(n+1)/2个碎片"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.inversion": [
+    "With all four milestones at level 7, Inversion starts and they keep growing",
+    "Com os quatro marcos no nível 7, começa a Inversão e eles continuam crescendo",
+    "四个里程碑都达到7级后开启反转，里程碑继续增长"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.logo": [
+    "Click the logo in the controller GUI for the full guide",
+    "Clique no logo na interface do controlador para o guia completo",
+    "点击控制器界面中的标志查看完整指南"
+  ],
+  "gtna.machine.forge_of_gods.tooltip.humor": [
+    "Also known as Godforge, or Gorge for short. Facilities asks that nobody touch the star.",
+    "Também chamada de Godforge, ou Gorge para os íntimos. A manutenção pede que ninguém encoste na estrela.",
+    "又名神铸，简称神锻。后勤部请大家不要摸那颗星星。"
+  ],
+  "gtna.machine.godforge_smelting_module.tooltip.purpose": [
+    "Smelts like a furnace or a blast furnace, at star temperatures; the method is set in the GUI",
+    "Funde como fornalha ou alto-forno, em temperatura de estrela; o método é escolhido na interface",
+    "以恒星温度像熔炉或高炉一样冶炼；方式在界面中选择"
+  ],
+  "gtna.machine.godforge_smelting_module.tooltip.specialty": [
+    "Specialised in speed and high heat",
+    "Especializado em velocidade e calor alto",
+    "专精于速度与高热量"
+  ],
+  "gtna.machine.godforge_smelting_module.tooltip.humor": [
+    "The first module. Marketing calls it a toaster with a neutron star.",
+    "O primeiro módulo. O marketing chama de torradeira com estrela de nêutrons.",
+    "第一个模块。市场部称它为带中子星的烤面包机。"
+  ],
+  "gtna.machine.godforge_smelting_module.tooltip.voltage_cap": [
+    "Recipes above the processing voltage do not run",
+    "Receitas acima da tensão de processamento não rodam",
+    "高于处理电压的配方不会运行"
+  ],
+  "gtna.machine.godforge_molten_module.tooltip.purpose": [
+    "Melts materials straight into their liquid form",
+    "Derrete materiais direto para a forma líquida",
+    "将材料直接熔化为液态"
+  ],
+  "gtna.machine.godforge_molten_module.tooltip.specialty": [
+    "Specialised in parallel processing",
+    "Especializado em processamento paralelo",
+    "专精于并行处理"
+  ],
+  "gtna.machine.godforge_molten_module.tooltip.humor": [
+    "Second module. Every metal leaves as soup.",
+    "Segundo módulo. Todo metal sai como sopa.",
+    "第二个模块。所有金属都变成汤离开。"
+  ],
+  "gtna.machine.godforge_molten_module.tooltip.solid": [
+    "A material without a liquid form comes out solid",
+    "Um material sem forma líquida sai sólido",
+    "没有液态的材料会以固体输出"
+  ],
+  "gtna.machine.godforge_plasma_module.tooltip.purpose": [
+    "Ionizes materials into plasma with extreme heat",
+    "Ioniza materiais em plasma com calor extremo",
+    "以极端高温将材料电离为等离子体"
+  ],
+  "gtna.machine.godforge_plasma_module.tooltip.specialty": [
+    "Specialised in energy and overclock efficiency",
+    "Especializado em eficiência de energia e de overclock",
+    "专精于能量与超频效率"
+  ],
+  "gtna.machine.godforge_plasma_module.tooltip.humor": [
+    "Third module. The fire department has stopped returning our calls.",
+    "Terceiro módulo. Os bombeiros pararam de atender nossas ligações.",
+    "第三个模块。消防队已经不接我们的电话了。"
+  ],
+  "gtna.machine.godforge_plasma_module.tooltip.plasma_tier": [
+    "Plasma tier %s at first; %s and %s unlock the higher tiers",
+    "Tier de plasma %s no início; %s e %s liberam os tiers maiores",
+    "初始等离子等级为%s；%s和%s解锁更高等级"
+  ],
+  "gtna.machine.godforge_plasma_module.tooltip.multi_step": [
+    "Multi-step plasmas need %s",
+    "Plasmas de várias etapas precisam de %s",
+    "多步等离子需要%s"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.purpose": [
+    "Breaks apart the building blocks of matter into exotic mixtures",
+    "Desmonta os blocos fundamentais da matéria em misturas exóticas",
+    "将物质的基本构成拆解为奇异混合物"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.specialty": [
+    "Specialised in unique materials",
+    "Especializado em materiais únicos",
+    "专精于独特材料"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.humor": [
+    "Fourth and final module. Legal reviewed Magmatter and left early.",
+    "Quarto e último módulo. O jurídico revisou a Magmatéria e saiu mais cedo.",
+    "第四也是最后一个模块。法务审完磁物质就提前下班了。"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.recipe": [
+    "Each run asks for %s random plasmas and fluids and takes %s before bonuses",
+    "Cada ciclo pede %s plasmas e fluidos aleatórios e leva %s antes dos bônus",
+    "每次运行随机需要%s种等离子与流体，加成前耗时%s"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.output": [
+    "Makes %s of Quark-Gluon Plasma per parallel, or %s of Magmatter",
+    "Faz %s de Plasma de Quarks e Glúons por paralelo, ou %s de Magmatéria",
+    "每并行产出%s夸克胶子等离子体，或%s磁物质"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.magmatter": [
+    "Magmatter mode needs %s",
+    "O modo Magmatéria precisa de %s",
+    "磁物质模式需要%s"
+  ],
+  "gtna.machine.godforge_exotic_module.tooltip.isolated": [
+    "Other upgrades only affect it after %s, and then square-rooted",
+    "Outras melhorias só o afetam depois de %s, e com raiz quadrada",
+    "其他升级要在%s后才生效，且取平方根"
+  ]
+}

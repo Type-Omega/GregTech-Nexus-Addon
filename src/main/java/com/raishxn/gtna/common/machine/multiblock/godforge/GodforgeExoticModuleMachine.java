@@ -56,6 +56,8 @@ public class GodforgeExoticModuleMachine extends GodforgeModuleMachine {
 
     public static final int NUMBER_OF_INPUTS = 7;
     public static final int RECIPE_DURATION = 200;
+    /** mB of Quark-Gluon Plasma or of Magmatter made per parallel. */
+    public static final long QGP_PER_PARALLEL = 1000L, MAGMATTER_PER_PARALLEL = 576L;
 
     /** GTNH {@code plasmaGTMaterialList} with its weights; materials missing in GTCEu are skipped. */
     private static final Map<String, Integer> QGP_WEIGHTS = new LinkedHashMap<>();
@@ -234,7 +236,7 @@ public class GodforgeExoticModuleMachine extends GodforgeModuleMachine {
         consumeInputs();
         godforgeStats().powerTally = godforgeStats().powerTally.add(energy);
         godforgeStats().recipeTally += parallel;
-        outputAmount = (magmatterMode ? 576L : 1000L) * parallel;
+        outputAmount = (magmatterMode ? MAGMATTER_PER_PARALLEL : QGP_PER_PARALLEL) * parallel;
         duration = calc.calculatedDuration();
         progress = 0;
         running = true;

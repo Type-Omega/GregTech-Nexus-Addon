@@ -43,8 +43,10 @@ public final class GodforgeModuleStats {
         this.type = type;
     }
 
+    public static final double HEAT_EU_DISCOUNT = 0.95, IMKG_HEAT_EU_DISCOUNT = 0.92;
+
     /** Heat energy discount per overclock: 0.92 with IMKG, otherwise 0.95. */
     public double heatEnergyDiscount() {
-        return upgrade83 ? 0.92 : 0.95;
+        return upgrade83 ? IMKG_HEAT_EU_DISCOUNT : HEAT_EU_DISCOUNT;
     }
 }

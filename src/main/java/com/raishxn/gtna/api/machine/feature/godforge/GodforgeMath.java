@@ -14,6 +14,22 @@ import static com.raishxn.gtna.api.machine.feature.godforge.GodforgeUpgrade.*;
  */
 public final class GodforgeMath {
 
+    // EN: GTNH balance numbers, kept as upstream; the module and controller tooltips read them too.
+    // PT: Números de balanço do GTNH, iguais ao original; as tooltips do controlador e dos módulos os leem.
+    // ZH: GTNH 平衡数值，与上游一致；控制器和模块的提示也读取这些值。
+    public static final int BASE_HEAT = 12601;
+    public static final double HEAT_LOG_BASE = 1.5;
+    public static final int BASE_OC_HEAT_CAP = 15000;
+    public static final int CNTI_OC_HEAT_CAP = 30000;
+    public static final long BASE_VOLTAGE = 2_000_000_000L;
+    public static final int BASE_MODULES = 8;
+    public static final int MODULES_PER_RING = 4;
+    public static final int BASE_FUEL_CAP = 5;
+    public static final double RESIDUE_PER_FACTOR = 300, RESIDUE_GROWTH = 1.15;
+    public static final double STELLAR_PLASMA_PER_FACTOR = 2, STELLAR_PLASMA_GROWTH = 1.08;
+    public static final float MAGMATTER_DIVISOR = 25f;
+    public static final double STARTUP_FUEL_PER_FACTOR = 25, STARTUP_FUEL_GROWTH = 1.2;
+
     private GodforgeMath() {}
 
     /** Same as {@code GTUtility.powInt}: exponentiation by squaring, exact for bases 2 and 4. */
@@ -43,20 +59,23 @@ public final class GodforgeMath {
     public static double fuelConsumption(GodforgeData data) {
         double upgradeFactor = data.isUpgradeActive(STEM) ? 0.8 : 1;
         int fuelFactor = data.fuelConsumptionFactor;
-        if (data.selectedFuelType == 0) return fuelFactor * 300 * powInt(1.15, fuelFactor) * upgradeFactor;
-        if (data.selectedFuelType == 1) return fuelFactor * 2 * powInt(1.08, fuelFactor) * upgradeFactor;
-        return fuelFactor / 25f * upgradeFactor;
+        if (data.selectedFuelType == 0)
+            return fuelFactor * RESIDUE_PER_FACTOR * powInt(RESIDUE_GROWTH, fuelFactor) * upgradeFactor;
+        if (data.selectedFuelType == 1)
+            return fuelFactor * STELLAR_PLASMA_PER_FACTOR * powInt(STELLAR_PLASMA_GROWTH, fuelFactor) *
+                    upgradeFactor;
+        return fuelFactor / MAGMATTER_DIVISOR * upgradeFactor;
     }
 
     /** Stellar Fuel items needed to light the star. */
     public static int startupFuelConsumption(GodforgeData data) {
         int fuelFactor = data.fuelConsumptionFactor;
-        double value = Math.max(fuelFactor * 25 * powInt(1.2, fuelFactor), 1);
+        double value = Math.max(fuelFactor * STARTUP_FUEL_PER_FACTOR * powInt(STARTUP_FUEL_GROWTH, fuelFactor), 1);
         return (int) Math.min(value, Integer.MAX_VALUE);
     }
 
     public static int maxFuelFactor(GodforgeData data) {
-        int fuelCap = 5;
+        int fuelCap = BASE_FUEL_CAP;
         int fuelType = data.selectedFuelType;
         if (data.isUpgradeActive(TSE)) {
             if (fuelType == 0) {
@@ -98,8 +117,8 @@ public final class GodforgeMath {
     }
 
     public static void maxHeat(GodforgeModuleStats module, GodforgeData data, int fuelFactor) {
-        double logBase = 1.5;
-        int baseHeat = 12601;
+        double logBase = HEAT_LOG_BASE;
+        int baseHeat = BASE_HEAT;
         if (data.isUpgradeActive(SEFCP)) logBase = module.type == Type.SMELTING ? 1.12 : 1.18;
         int recipeHeat = baseHeat + (int) (Math.log(fuelFactor) / Math.log(logBase) * 1000);
         module.heatForOC = overclockHeat(module, data, recipeHeat);
@@ -111,8 +130,8 @@ public final class GodforgeMath {
             double exponent = module.type == Type.SMELTING ? 0.85 : 0.8;
             return recipeHeat > 30000 ? (int) Math.floor(30000 + Math.pow(recipeHeat - 30000, exponent)) : recipeHeat;
         }
-        if (data.isUpgradeActive(CNTI)) return Math.min(recipeHeat, 30000);
-        return Math.min(recipeHeat, 15000);
+        if (data.isUpgradeActive(CNTI)) return Math.min(recipeHeat, CNTI_OC_HEAT_CAP);
+        return Math.min(recipeHeat, BASE_OC_HEAT_CAP);
     }
 
     public static void speedBonus(GodforgeModuleStats module, GodforgeData data) {
@@ -185,7 +204,7 @@ public final class GodforgeMath {
     }
 
     public static void processingVoltage(GodforgeModuleStats module, GodforgeData data, int fuelFactor) {
-        long voltage = 2_000_000_000L;
+        long voltage = BASE_VOLTAGE;
         if (data.isUpgradeActive(GISS)) voltage += effectiveFuelFactor(fuelFactor) * 100_000_000L;
         if (data.isUpgradeActive(NGMS)) voltage *= (long) powInt(4, data.ringAmount);
         module.processingVoltage = voltage;
@@ -397,9 +416,9 @@ public final class GodforgeMath {
 
     /** Maximum number of modules: 8, +4 with CD, +4 with END. */
     public static int maxModuleCount(GodforgeData data) {
-        int max = 8;
-        if (data.isUpgradeActive(CD)) max += 4;
-        if (data.isUpgradeActive(END)) max += 4;
+        int max = BASE_MODULES;
+        if (data.isUpgradeActive(CD)) max += MODULES_PER_RING;
+        if (data.isUpgradeActive(END)) max += MODULES_PER_RING;
         return max;
     }
 }

@@ -10,6 +10,9 @@ import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.raishxn.gtna.api.machine.feature.eyeofharmony.EyeOfHarmonyMath;
+import com.raishxn.gtna.api.machine.feature.godforge.GodforgeData;
+import com.raishxn.gtna.api.machine.feature.godforge.GodforgeMath;
+import com.raishxn.gtna.api.machine.feature.godforge.GodforgeModuleStats;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 
@@ -33,6 +36,11 @@ public final class MechanicTooltipGameTests {
     static {
         MINIMUM.put("eye_of_harmony", 22);
         MINIMUM.put("mega_alloy_blast_smelter", 7);
+        MINIMUM.put("forge_of_gods", 16);
+        MINIMUM.put("godforge_smelting_module", 13);
+        MINIMUM.put("godforge_molten_module", 13);
+        MINIMUM.put("godforge_plasma_module", 11);
+        MINIMUM.put("godforge_exotic_module", 12);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -86,6 +94,25 @@ public final class MechanicTooltipGameTests {
                 "+5% success chance", "-40% at the lowest tier", "0-24", "14,400" }) {
             h.assertTrue(text.contains(needed), "Eye of Harmony tooltip lacks '" + needed + "': " + text);
         }
+        h.succeed();
+    }
+
+    /** The base module numbers in the tooltips are what GodforgeMath gives a Forge with no upgrades. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void godforgeModuleNumbersMatchTheMath(GameTestHelper h) {
+        var data = new GodforgeData();
+        var smelting = new GodforgeModuleStats(GodforgeModuleStats.Type.SMELTING);
+        GodforgeMath.maxHeat(smelting, data);
+        GodforgeMath.maxParallel(smelting, data);
+        h.assertTrue(smelting.heat == GodforgeMath.BASE_HEAT, "fuel factor 1 gives the base heat");
+        String text = text("godforge_smelting_module");
+        for (String needed : new String[] { "Base parallels: " + String.format(java.util.Locale.ROOT, "%,d",
+                smelting.calculatedMaxParallel), "12,601 K", "-5% EU per 900 K", "15,000 K",
+                "2,000,000,000 EU/t" }) {
+            h.assertTrue(text.contains(needed), "Smelting module tooltip lacks '" + needed + "': " + text);
+        }
+        h.assertTrue(text("forge_of_gods").contains("Holds " + GodforgeMath.maxModuleCount(data) + " modules"),
+                "the Forge lists the module slots GodforgeMath allows");
         h.succeed();
     }
 
