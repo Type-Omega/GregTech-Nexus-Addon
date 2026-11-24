@@ -43,9 +43,48 @@ public final class PreviewBenchCommand {
         com.raishxn.gtna.common.item.terminal.NexusAutoBuilder.autoBuild(player, controller, terminal);
         GTNACORE.LOGGER.info("[GTNA perf] dev build {} at {}: {} ms", id, pos, (System.nanoTime() - t0) / 1_000_000);
         lastBuilt = pos;
+        server.tell(new net.minecraft.server.TickTask(server.getTickCount() + 100, () -> GTNACORE.LOGGER
+                .info("[GTNA dev] {} formed after build: {}", id, controller.isFormed())));
     }
 
     private static net.minecraft.core.BlockPos lastBuilt;
+
+    private static void placeMEStorage(net.minecraft.server.level.ServerLevel level, net.minecraft.core.BlockPos origin,
+                                       int slices) {
+        var rows = new java.util.ArrayList<String[]>();
+        for (var aisle : com.raishxn.gtna.common.data.multiblock.TextAisles
+                .load(com.raishxn.gtna.common.data.multiblock.MEStorageStructure.RESOURCE))
+            for (int i = 0; i < (aisle.repeats() ? slices : 1); i++) rows.add(aisle.rows());
+        int depth = rows.size();
+        boolean[] hatch = { false };
+        for (int a = 0; a < depth; a++)
+            for (int r = 0; r < rows.get(a).length; r++)
+                for (int c = 0; c < rows.get(a)[r].length(); c++) {
+                    var block = switch (rows.get(a)[r].charAt(c)) {
+                        case 'A' -> com.gregtechceu.gtceu.common.data.GTBlocks.COMPUTER_HEAT_VENT.get();
+                        case 'D' -> hatch[0] ? com.gregtechceu.gtceu.common.data.GTBlocks.COMPUTER_CASING.get() :
+                                com.raishxn.gtna.common.data.GTNAMachines2.ME_STORAGE_ACCESS_HATCH.getBlock();
+                        case 'B' -> com.gregtechceu.gtceu.common.data.GTBlocks.COMPUTER_CASING.get();
+                        case 'C' -> com.raishxn.gtna.common.data.GTNABlocks.ABS_CYAN_CASING.get();
+                        case 'E' -> com.raishxn.gtna.common.data.GTNAMachines.ME_STORAGE.getBlock();
+                        case 'F' -> com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper.getBlock(
+                                com.gregtechceu.gtceu.api.data.tag.TagPrefix.frameGt,
+                                com.gregtechceu.gtceu.common.data.GTMaterials.Titanium);
+                        case 'G' -> com.gregtechceu.gtceu.common.data.GTBlocks.HIGH_POWER_CASING.get();
+                        case 'H' -> com.raishxn.gtna.common.data.GTNABlocks.LITHIUM_OXIDE_CERAMIC_HEAT_RESISTANT_SHOCK_RESISTANT_MECHANICAL_CUBE
+                                .get();
+                        case 'L' -> com.gregtechceu.gtceu.common.data.GTBlocks.LAMPS
+                                .get(net.minecraft.world.item.DyeColor.CYAN).get();
+                        case 'V' -> com.gregtechceu.gtceu.common.data.GTBlocks.CASING_LAMINATED_GLASS.get();
+                        case 'c' -> com.raishxn.gtna.common.data.GTNABlocks.T3_ME_STORAGE_CORE.get();
+                        default -> null;
+                    };
+                    if (rows.get(a)[r].charAt(c) == 'D') hatch[0] = true;
+                    if (block != null) level.setBlock(origin.offset(c, r, depth - 1 - a), block.defaultBlockState(),
+                            3);
+                }
+    }
+
     private static int FPS_LEFT;
 
     public static void fpsTick(net.minecraftforge.event.TickEvent.ClientTickEvent event) {
@@ -155,6 +194,19 @@ public final class PreviewBenchCommand {
                     var id = GTNACORE.id(com.mojang.brigadier.arguments.StringArgumentType.getString(ctx, "id"));
                     var uuid = mc.player.getUUID();
                     server.execute(() -> devBuild(server, uuid, id));
+                    return 1;
+                })));
+        // /gtna_dev_place_me <slices>: places an ME Storage block by block from its text aisles, facing north,
+        // 8 blocks north of the player (screenshots; the GameTests build it the same way).
+        event.getDispatcher().register(Commands.literal("gtna_dev_place_me").then(Commands
+                .argument("slices", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 128))
+                .executes(ctx -> {
+                    var mc = net.minecraft.client.Minecraft.getInstance();
+                    var server = mc.getSingleplayerServer();
+                    if (server == null || mc.player == null) return 0;
+                    int slices = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "slices");
+                    var at = mc.player.blockPosition().north(8 + 6 + slices);
+                    server.execute(() -> placeMEStorage(server.overworld(), at, slices));
                     return 1;
                 })));
         // /gtna_dev_swap <machine id>: breaks a casing of the last dev build and places that machine in the hole.

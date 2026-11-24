@@ -47,13 +47,19 @@ public final class ColliderFx {
             float off = beam == 0 ? 0.45f : -0.45f;
             FxDraw.ribbon(shader, new Matrix4f(m).translate(0, 0, off),
                     FxDraw.arc(r, 0, 2 * Math.PI, segments), 1.6f, 1f);
+            // EN: the beam runs inside the ring's tube; a wide faint sheath shows the ring is energised from outside.
+            // PT: o feixe corre dentro do tubo do anel; uma bainha larga e fraca mostra de fora que o anel está ativo.
+            // ZH: 光束在环管内运行；一层宽而淡的光鞘让外部也能看出环已通能。
+            var sheath = FxDraw.fx(6, time, col[0], col[1], col[2], 0.3f, speed * 0.5f, dir, 0.08f, 0);
+            FxDraw.ribbon(sheath, new Matrix4f(m).translate(0, 0, off * 6), FxDraw.arc(r, 0, 2 * Math.PI, segments),
+                    16f, 1f);
         }
         float pulse = 0.5f + 0.5f * (float) Math.sin(time * 9);
         for (double a : IP) {
             Matrix4f at = new Matrix4f(m).translate((float) Math.cos(a) * r, (float) Math.sin(a) * r, 0);
             var flash = FxDraw.fx(7, time, 1f, 0.6f, 0.95f, 0.7f + 0.3f * pulse, 0, 0, 0, 0);
             if (flash != null)
-                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(at).scale(1.6f + 1.4f * pulse * (0.4f + energy)),
+                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(at).scale(4.5f + 3.5f * pulse * (0.4f + energy)),
                         projection, flash);
         }
         var additive = StellarShaders.additiveColor();

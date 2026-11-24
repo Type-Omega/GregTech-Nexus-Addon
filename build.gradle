@@ -151,6 +151,8 @@ legacyForge {
             if (project.hasProperty('quickPlay')) programArguments.addAll('--quickPlaySingleplayer', project.quickPlay)
             // ./gradlew runClient -PrenderShowcase: renders show sample data (screenshots without a factory).
             if (project.hasProperty('renderShowcase')) systemProperty('gtna.renderShowcase', 'true')
+            if (project.hasProperty('windowSize')) programArguments.addAll('--width', project.windowSize.split('x')[0],
+                    '--height', project.windowSize.split('x')[1])
         }
         server {
             server()

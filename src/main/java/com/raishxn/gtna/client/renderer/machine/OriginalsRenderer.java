@@ -79,7 +79,7 @@ public final class OriginalsRenderer {
             RenderSystem.depthMask(false);
             RenderSystem.disableCull();
             for (var m : QUEUE.values()) {
-                if (m.isInValid() || !m.isFormed()) continue;
+                if (m.isInValid() || !m.isFormed() && !MachineRenders.SHOWCASE) continue;
                 // EN: effects only; the captured parts above are blocks and draw at every level (GTIA-D-434, U11).
                 // PT: só os efeitos; as peças capturadas acima são blocos e aparecem em todo nível (GTIA-D-434, U11).
                 // ZH: 这里只画特效；上面捕获的部件是方块，任何等级都会绘制（GTIA-D-434，U11）。
@@ -404,7 +404,7 @@ public final class OriginalsRenderer {
                            int overlay) {
             if (machine.getLevel() == null) return;
             OriginalsSound.track(machine);
-            if (machine.isFormed() || machine instanceof LanceMachine l && l.isCaptured())
+            if (machine.isFormed() || MachineRenders.SHOWCASE || machine instanceof LanceMachine l && l.isCaptured())
                 QUEUE.put(machine.getPos().immutable(), machine);
         }
     }
@@ -422,7 +422,7 @@ public final class OriginalsRenderer {
 
         @Override
         public boolean shouldRender(ColliderRingMachine machine, Vec3 cameraPos) {
-            return machine.isBeamOn() || machine.isCaptured() || MachineRenders.SHOWCASE && machine.isFormed();
+            return machine.isBeamOn() || machine.isCaptured() || MachineRenders.SHOWCASE;
         }
 
         @Override

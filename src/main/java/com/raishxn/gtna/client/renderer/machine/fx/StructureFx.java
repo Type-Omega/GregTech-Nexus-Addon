@@ -74,16 +74,19 @@ public final class StructureFx {
         float[] col = TIER[Math.max(0, Math.min(TIER.length - 1, m.renderTier() - 1))];
         if (MachineRenders.SHOWCASE && m.renderTier() <= 1) col = TIER[7];
         float height = maxY - minY + 1;
-        List<Vector3f> axis = List.of(new Vector3f(centre.x, minY - 0.5f, centre.z),
-                new Vector3f(centre.x, maxY + 0.5f, centre.z));
-        var column = FxDraw.fx(9, time, col[0], col[1], col[2], 0.9f, Math.max(0.04f, fill), height * 0.6f, 0, 0);
+        // EN: the capacitors fill the column, so the plasma glows on the four faces between them and the glass.
+        // PT: os capacitores enchem a coluna, então o plasma brilha nas quatro faces entre eles e o vidro.
+        // ZH: 电容填满了柱体，因此等离子体在电容与玻璃之间的四个面上发光。
+        var column = FxDraw.fx(9, time, col[0], col[1], col[2], 0.95f, Math.max(0.04f, fill), height * 0.6f, 0, 0);
         if (column == null) return;
-        FxDraw.ribbon(column, at, axis, 4.6f, 1 / height);
-        if (MachineRenders.high()) {
-            var inner = FxDraw.fx(9, time * 1.7f, 1f, 1f, 1f, 0.6f, Math.max(0.04f, fill), height * 1.3f, 0, 0);
-            FxDraw.ribbon(inner, at, axis, 1.8f, 1 / height);
+        float half = 2.56f, y0 = minY - 0.5f, y1 = maxY + 0.5f;
+        for (int side = 0; side < 4; side++) {
+            float a = (float) (side * Math.PI / 2);
+            float cx = (float) Math.cos(a), cz = (float) Math.sin(a);
+            Matrix4f face = new Matrix4f(at).translate(centre.x + cx * half, (y0 + y1) / 2, centre.z + cz * half)
+                    .rotateY((float) (-a + Math.PI / 2)).scale(half, (y1 - y0) / 2, 1);
+            FxMeshes.draw(FxMeshes.quad(), face, projection, column);
         }
-
         // Arcs from the top of the plasma to the toroid's nodes (the orange lamps above the column).
         Vector3f top = new Vector3f(centre.x, minY - 0.5f + height * fill, centre.z);
         List<Vector3f> nodes = new ArrayList<>();

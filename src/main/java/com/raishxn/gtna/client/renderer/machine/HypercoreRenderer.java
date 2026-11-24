@@ -52,7 +52,9 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
 
     private static final Map<BlockPos, NexusMEHyperCoreMachine> QUEUE = new LinkedHashMap<>();
     private static final Map<BlockPos, float[]> PULSES = new HashMap<>();
-    /** Lattice centre and interface positions as (up, left, forward) offsets from the controller. */
+    /**
+     * Hologram centre (above the lattice) and interface positions as (up, left, forward) offsets from the controller.
+     */
     private static int[] centre;
     private static List<int[]> interfaces;
 
@@ -63,7 +65,7 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
 
     @Override
     public boolean shouldRender(NexusMEHyperCoreMachine machine, Vec3 cameraPos) {
-        return machine.isFormed() && MachineRenders.effects();
+        return (machine.isFormed() || MachineRenders.SHOWCASE) && MachineRenders.effects();
     }
 
     @Override
@@ -84,7 +86,8 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
     @Override
     public void render(NexusMEHyperCoreMachine machine, float partialTicks, PoseStack poseStack,
                        MultiBufferSource buffer, int light, int overlay) {
-        if (machine.getLevel() != null && machine.isFormed()) QUEUE.put(machine.getPos().immutable(), machine);
+        if (machine.getLevel() != null && (machine.isFormed() || MachineRenders.SHOWCASE))
+            QUEUE.put(machine.getPos().immutable(), machine);
     }
 
     private static int[] centre() {
@@ -109,7 +112,12 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
         double[] sum = new double[3];
         for (int[] p : cores) for (int i = 0; i < 3; i++) sum[i] += p[i];
         int n = Math.max(1, cores.size());
-        centre = new int[] { (int) Math.round(sum[0] / n) - q[0], (int) Math.round(sum[1] / n) - q[1],
+        int top = 0;
+        for (String[] aisle : aisles) top = Math.max(top, aisle.length - 1);
+        // EN: the lattice is closed, so the hologram floats above its roof, over the centre of the cores.
+        // PT: a treliça é fechada, então o holograma flutua acima do teto, sobre o centro dos núcleos.
+        // ZH: 晶格是封闭的，因此全息影像悬浮在顶部之上、核心中心的正上方。
+        centre = new int[] { top - q[0] + 16, (int) Math.round(sum[1] / n) - q[1],
                 (int) Math.round(sum[2] / n) - q[2] };
         interfaces = new ArrayList<>();
         for (int[] p : ports) interfaces.add(new int[] { p[0] - q[0], p[1] - q[1], p[2] - q[2] });
@@ -132,7 +140,7 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
             RenderSystem.depthMask(false);
             RenderSystem.disableCull();
             for (var m : QUEUE.values()) {
-                if (m.isInValid() || !m.isFormed()) continue;
+                if (m.isInValid() || !m.isFormed() && !MachineRenders.SHOWCASE) continue;
                 BlockPos c = at(m, centre());
                 if (!MachineRenders.inReach(c, cam, REACH)) continue;
                 pose.pushPose();
