@@ -133,7 +133,7 @@ public class EyeOfHarmonyRenderer extends DynamicRender<EyeOfHarmonyMachine, Eye
 
     @Override
     public int getViewDistance() {
-        return 256;
+        return MachineRenders.reach(256);
     }
 
     @Override

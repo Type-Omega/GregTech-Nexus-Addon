@@ -149,6 +149,8 @@ legacyForge {
             systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
             // ./gradlew runClient -PquickPlay="New World" opens that save directly (smoke tests).
             if (project.hasProperty('quickPlay')) programArguments.addAll('--quickPlaySingleplayer', project.quickPlay)
+            // ./gradlew runClient -PrenderShowcase: renders show sample data (screenshots without a factory).
+            if (project.hasProperty('renderShowcase')) systemProperty('gtna.renderShowcase', 'true')
         }
         server {
             server()

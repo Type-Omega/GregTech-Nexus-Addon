@@ -43,7 +43,7 @@ public class LineOfSightBeamRenderer extends DynamicRender<LineOfSightHatchPartM
 
     @Override
     public boolean shouldRender(LineOfSightHatchPartMachine machine, Vec3 cameraPos) {
-        return machine.canRenderBeam();
+        return MachineRenders.effects() && machine.canRenderBeam();
     }
 
     @Override
@@ -116,7 +116,7 @@ public class LineOfSightBeamRenderer extends DynamicRender<LineOfSightHatchPartM
 
     @Override
     public int getViewDistance() {
-        return 256;
+        return MachineRenders.reach(256);
     }
 
     @Override

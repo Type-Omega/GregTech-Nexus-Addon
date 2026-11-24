@@ -1,6 +1,8 @@
 #version 150
 
-// Modes: 0 neutron star surface, 1 corona, 2 pulsar beam, 3 accretion disk, 4 black hole, 5 rift horizon.
+// Modes: 0 neutron star surface, 1 corona, 2 pulsar beam, 3 accretion disk, 4 black hole, 5 rift horizon,
+// 6 particle beam in a tube, 7 hot flash, 8 hologram, 9 plasma column, 10 lens rim.
+// Rift is reused as free parameters by modes 6-10 (see each mode).
 uniform float Time;
 uniform float Mode;
 uniform vec4 Tint;
@@ -78,6 +80,54 @@ void main() {
         col += tint * ripple * 0.15 * (1.0 - r);
         col += vec3(1.0) * pow(max(0.0, 1.0 - r), 6.0) * 1.5;
         fragColor = vec4(col, (0.55 + 0.45 * s) * smoothstep(rim, rim * 0.85, r) * Tint.a);
+    } else if (mode == 6) {
+        // Beam on a camera-facing ribbon: uv.x across (0..1), uv.y along. Hot white core on the axis, coloured sheath
+        // at the edges, bunches streaming at Rift.x speed in the direction Rift.y (-1 or 1), Rift.z bunches per unit.
+        float across = 1.0 - abs(uv.x * 2.0 - 1.0);
+        float core = pow(across, 6.0);
+        float sheath = pow(across, 1.2) * (1.0 - core);
+        float along = uv.y * Rift.z;
+        float bunch = 0.55 + 0.45 * sin(along * 6.2832 - Time * Rift.x * Rift.y * 6.0);
+        float turb = noise(vec3(uv.x * 8.0, along * 3.0 - Time * Rift.x * Rift.y * 2.0, Time * 0.5));
+        vec3 col = mix(Tint.rgb, vec3(1.0), core * 0.85) * (0.35 + 0.9 * bunch) + Tint.rgb * sheath * 0.6 * turb;
+        float a = (0.1 * sheath + core + 0.4 * sheath * turb) * (0.6 + 0.4 * bunch) * Tint.a;
+        fragColor = vec4(col * a, a);
+    } else if (mode == 7) {
+        // Hot flash: white-hot in the middle, the tint at the rim, flickering.
+        float hot = pow(facing, 3.0);
+        float n = noise(objPos * 6.0 + vec3(Time * 4.0));
+        vec3 col = mix(Tint.rgb, vec3(1.0, 0.97, 0.9), hot) * (0.8 + 0.4 * n);
+        float a = (0.15 + 0.85 * hot) * Tint.a;
+        fragColor = vec4(col * a, a);
+    } else if (mode == 8) {
+        // Hologram: fresnel edges, scanlines rolling up the object, flicker and grain.
+        float edge = pow(1.0 - facing, 2.0);
+        float scan = 0.65 + 0.35 * sin(objPos.y * Rift.x - Time * 6.0);
+        float grain = noise(vec3(gl_FragCoord.xy * 0.35, Time * 20.0));
+        float flicker = 0.92 + 0.08 * sin(Time * 37.0) * sin(Time * 11.0);
+        float a = (0.18 + 0.82 * edge) * scan * flicker * (0.85 + 0.15 * grain) * Tint.a;
+        fragColor = vec4(mix(Tint.rgb, vec3(1.0), edge * 0.4) * a, a);
+    } else if (mode == 9) {
+        // Plasma column on a camera-facing ribbon: uv.x across, uv.y is height 0..1, filled up to Rift.x (the
+        // charge); rising turbulent plasma with a bright meniscus at the top of the fill.
+        float fill = Rift.x;
+        if (uv.y > fill) discard;
+        float rise = noise(vec3(uv.x * 10.0, uv.y * Rift.y - Time * 1.6, Time * 0.4)) * 0.6 +
+                     noise(vec3(uv.x * 23.0, uv.y * Rift.y * 2.2 - Time * 3.1, Time)) * 0.4;
+        float core = pow(1.0 - abs(uv.x * 2.0 - 1.0), 1.6);
+        float top = smoothstep(fill - 0.04, fill, uv.y);
+        vec3 col = mix(Tint.rgb * 0.7, vec3(1.0), core * 0.6 + top * 0.7) * (0.5 + 0.9 * rise);
+        float a = (0.35 + 0.65 * core) * (0.6 + 0.4 * rise) * Tint.a;
+        fragColor = vec4(col * a, a);
+    } else if (mode == 10) {
+        // Lens rim of the rift: a thin bright ring with shimmering light bent around the horizon.
+        vec2 c = uv - 0.5;
+        float r = length(c) * 2.0;
+        float ring = exp(-pow((r - 0.86) * 18.0, 2.0)) + 0.35 * exp(-pow((r - 0.93) * 9.0, 2.0));
+        float shimmer = 0.6 + 0.4 * noise(vec3(atan(c.y, c.x) * 3.0, r * 10.0, Time * 1.5));
+        float a = ring * shimmer * Tint.a;
+        if (a < 0.003) discard;
+        fragColor = vec4(mix(Tint.rgb, vec3(1.0), 0.5) * a, a);
     } else {
         // Event horizon with a thin photon ring at the silhouette.
         float ring = smoothstep(0.25, 0.0, facing) * 0.9;

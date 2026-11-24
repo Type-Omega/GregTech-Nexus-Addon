@@ -107,6 +107,7 @@ public class StellarChamberRenderer extends DynamicRender<StellarChamberMachine,
             for (var machine : QUEUE.values()) {
                 if (machine.isInValid() || !machine.isStarRunning()) continue;
                 BlockPos c = machine.center();
+                if (!MachineRenders.inReach(c, camera, 256)) continue;
                 pose.pushPose();
                 pose.translate(c.getX() + 0.5 - camera.x, c.getY() + 0.5 - camera.y, c.getZ() + 0.5 - camera.z);
                 draw(machine, pose, projection);
@@ -184,14 +185,18 @@ public class StellarChamberRenderer extends DynamicRender<StellarChamberMachine,
             drawMesh(cone(), new Matrix4f(axis).rotateX((float) Math.PI), projection, shader);
             var lines = StellarShaders.additiveColor();
             RenderSystem.setShader(lines != null ? () -> lines : GameRenderer::getPositionColorShader);
-            fieldLines(axis, 0.56f, 0.73f, 1f);
+            if (MachineRenders.high()) fieldLines(axis, 0.56f, 0.73f, 1f);
         }
         RenderSystem.disableCull();
         shader.safeGetUniform("Mode").set(3f);
         shader.safeGetUniform("Tint").set(r, g, b, star.hole() ? 1.6f : 1f);
         drawMesh(disk(), new Matrix4f(center).rotateX(0.25f), projection, shader);
         RenderSystem.enableCull();
-        LENSES.add(new float[] { center.m30(), center.m31(), center.m32(), star.hole() ? 1.4f : 1f });
+        // EN: the screen-space lens is the most expensive pass; LOW skips it (LOD).
+        // PT: a lente em espaço de tela é a passada mais cara; o LOW a pula (LOD).
+        // ZH: 屏幕空间透镜是最耗性能的一步；LOW 会跳过（LOD）。
+        if (MachineRenders.high())
+            LENSES.add(new float[] { center.m30(), center.m31(), center.m32(), star.hole() ? 1.4f : 1f });
     }
 
     private static void drawMesh(VertexBuffer mesh, Matrix4f model, Matrix4f projection,

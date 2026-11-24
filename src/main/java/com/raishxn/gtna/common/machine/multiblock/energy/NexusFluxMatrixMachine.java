@@ -63,8 +63,77 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
     @com.lowdragmc.lowdraglib.syncdata.annotation.Persisted
     private java.util.UUID ownerUUID = null;
 
+    protected static final com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder MANAGED_FIELD_HOLDER = new com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder(
+            NexusFluxMatrixMachine.class,
+            WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
+
+    /** For the plasma column (GTIA-D-434): network fill 0..1, average tier, flow sign and floors built. */
+    @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
+    private float renderFill;
+    @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
+    private int renderTier = 1, renderFlow, renderFloors;
+    @org.jetbrains.annotations.Nullable
+    private com.gregtechceu.gtceu.api.machine.TickableSubscription renderSync;
+
     public NexusFluxMatrixMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
+    }
+
+    @Override
+    public com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder getFieldHolder() {
+        return MANAGED_FIELD_HOLDER;
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (!isRemote()) renderSync = subscribeServerTick(() -> {
+            if (getOffsetTimer() % 20 == 0) syncRender();
+        });
+    }
+
+    @Override
+    public void onUnload() {
+        if (renderSync != null) {
+            renderSync.unsubscribe();
+            renderSync = null;
+        }
+        super.onUnload();
+    }
+
+    private void syncRender() {
+        if (!isFormed() || !(getLevel() instanceof ServerLevel level) || getOwnerUUID() == null) {
+            renderFill = 0;
+            return;
+        }
+        var network = NexusEnergyNetwork.get(level);
+        var owner = getOwnerUUID();
+        if (network.isUnlimited(owner)) renderFill = 1;
+        else {
+            var max = network.getMaxCapacity(owner);
+            renderFill = max.isZero() ? 0 : (float) Math.min(1, network.getEnergy(owner).toBigInteger().doubleValue() /
+                    max.toBigInteger().doubleValue());
+        }
+        int in = network.getLastInputPerTick(owner).compareTo(network.getLastOutputPerTick(owner));
+        renderFlow = Integer.signum(in);
+        renderTier = averageTier;
+    }
+
+    public float renderFill() {
+        return renderFill;
+    }
+
+    public int renderTier() {
+        return renderTier;
+    }
+
+    public int renderFlow() {
+        return renderFlow;
+    }
+
+    /** Capacitor floors of the formed structure (0 when not formed). */
+    public int renderFloors() {
+        return renderFloors;
     }
 
     public java.util.UUID getOwnerUUID() {
@@ -75,6 +144,18 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
     public void onStructureFormed() {
         super.onStructureFormed();
         recalculateCapacitors();
+        var cache = getMultiblockState().getCache();
+        if (cache != null && !cache.isEmpty()) {
+            int low = Integer.MAX_VALUE, high = Integer.MIN_VALUE;
+            for (var pos : cache) {
+                low = Math.min(low, pos.getY());
+                high = Math.max(high, pos.getY());
+            }
+            // EN: everything but the repeated floors is 13 blocks tall (Tesla Coil, GTIA-D-437).
+            // PT: tudo menos os andares repetidos tem 13 blocos de altura (Bobina de Tesla, GTIA-D-437).
+            // ZH: 除重复层外整体高 13 格（特斯拉线圈，GTIA-D-437）。
+            renderFloors = Math.max(0, high - low + 1 - 13);
+        }
         if (getLevel() instanceof ServerLevel serverLevel && getOwnerUUID() != null) {
             // EN: Every matrix of a team adds to the network instead of overwriting it (GTIA-D-426).
             // PT: Cada matriz do time soma na rede em vez de sobrescrevê-la (GTIA-D-426).
@@ -100,6 +181,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
         if (getLevel() instanceof ServerLevel serverLevel)
             NexusEnergyNetwork.get(serverLevel).removeMatrix(controllerPos(serverLevel));
         super.onStructureInvalid();
+        renderFloors = 0;
         unlimited = false;
         totalCapacitors = 0;
         sumCapacities = Int128.ZERO();

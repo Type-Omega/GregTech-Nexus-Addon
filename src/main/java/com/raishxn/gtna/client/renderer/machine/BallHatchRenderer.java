@@ -98,7 +98,7 @@ public class BallHatchRenderer extends DynamicRender<BallHatchPartMachine, BallH
 
     @Override
     public int getViewDistance() {
-        return 64;
+        return MachineRenders.reach(64);
     }
 
     @Override

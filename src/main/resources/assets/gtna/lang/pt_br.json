@@ -2793,6 +2793,7 @@
   "config.gtna.option.itemGlowEdge": "Bordas Brilhantes de Itens",
   "config.gtna.option.itemShaderEffects": "Efeitos de Shader em Itens",
   "config.gtna.option.itemEffectSpeed": "Velocidade dos Efeitos de Item (%)",
+  "config.gtna.option.machineRenders": "Renders de Máquinas (OFF / LOW / HIGH)",
   "block.gtna.degenerate_matter_core": "Núcleo de Matéria Degenerada",
   "block.gtna.stellar_containment_chamber": "Câmara de Contenção Estelar",
   "gtna.machine.stellar_containment_chamber.lit": "§bEstrela acesa",

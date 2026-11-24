@@ -58,9 +58,13 @@ public class GTNAEnergyHatches {
             .recipeType(GTRecipeTypes.DUMMY_RECIPES)
             .appearanceBlock(() -> com.gregtechceu.gtceu.common.data.GTBlocks.CASING_STEEL_SOLID.get())
             .pattern(com.raishxn.gtna.common.data.multiblock.NexusFluxMatrixStructure::create)
-            .workableCasingModel(
+            .modelProperty(com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties.RECIPE_LOGIC_STATUS,
+                    com.gregtechceu.gtceu.api.machine.trait.RecipeLogic.Status.IDLE)
+            .model(com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel(
                     GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/implosion_compressor"))
+                    .andThen(builder -> builder.addDynamicRenderer(
+                            com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.FluxRender::new)))
             .register();
 
     public static void init() {

@@ -1033,6 +1033,7 @@
   "config.gtna.option.largeSteamWiremill": "Large Steam Wiremill",
   "config.gtna.option.leapForwardOneBlastFurnace": "Leap Forward One Blast Furnace",
   "config.gtna.option.liquefactionFurnace": "Liquefaction Furnace",
+  "config.gtna.option.machineRenders": "Machine Renders (OFF / LOW / HIGH)",
   "config.gtna.option.machineToggles": "Machine Toggles",
   "config.gtna.option.machines": "Machines",
   "config.gtna.option.maxTransferTierMAX": "MAX Tier Transfer Limit",

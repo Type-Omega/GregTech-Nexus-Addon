@@ -16,7 +16,8 @@ import java.util.Deque;
  * Development aid for driving a test client without the keyboard: every line of {@code gtna_dev_commands.txt} in the
  * game directory runs as a chat command, one per second; {@code close} closes the open screen, {@code inv} opens the
  * inventory, {@code lang <code>} switches the language, {@code mouse <x> <y>} moves the cursor, {@code shot <name>}
- * saves a screenshot, {@code wait <s>} pauses. Only outside production.
+ * saves a screenshot, {@code renders off|low|high} sets the machine render level, {@code emi <category>} opens an
+ * EMI category of GTNA, {@code wait <s>} pauses. Only outside production.
  */
 public final class DevCommandFile {
 
@@ -56,6 +57,11 @@ public final class DevCommandFile {
         if (line.equals("close")) mc.setScreen(null);
         else if (line.equals("inv"))
             mc.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(mc.player));
+        else if (line.startsWith("renders "))
+            com.raishxn.gtna.client.renderer.machine.MachineRenders.override = com.raishxn.gtna.config.ClientConfig.MachineRenderLevel
+                    .valueOf(line.substring(8).trim().toUpperCase(java.util.Locale.ROOT));
+        else if (line.startsWith("emi ") && net.minecraftforge.fml.ModList.get().isLoaded("emi"))
+            com.raishxn.gtna.integration.emi.OriginalsEmiPlugin.show(GTNACORE.id(line.substring(4).trim()));
         else if (line.startsWith("wait ")) cooldown = 20 * Integer.parseInt(line.substring(5).trim());
         else if (line.startsWith("lang ")) {
             // Wiki screenshots in every language without restarting the client.

@@ -246,10 +246,10 @@ public final class SteamWiringContractTest {
      * of the sampler is covered by {@code wirelessSteamHudSnapshotReportsNetworkState}.
      */
     private static void checkWirelessSteamHudWiring() throws IOException {
-        Path config = Path.of("src/main/java/com/raishxn/gtna/config/ConfigHolder.java");
+        Path config = Path.of("src/main/java/com/raishxn/gtna/config/ClientConfig.java");
         String configSource = Files.readString(config, StandardCharsets.UTF_8);
         if (!configSource.contains("public boolean wirelessSteamHud = false")) {
-            throw new AssertionError("the wireless steam HUD must default to off in ConfigHolder.Client " +
+            throw new AssertionError("the wireless steam HUD must default to off in ClientConfig " +
                     "(GTOCore wirelessEnergyHUDEnabled parity), so it never surprises a player who did not ask " +
                     "for it");
         }

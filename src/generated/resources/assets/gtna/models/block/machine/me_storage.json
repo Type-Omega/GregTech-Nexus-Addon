@@ -1,5 +1,10 @@
 {
   "parent": "minecraft:block/block",
+  "dynamic_renders": [
+    {
+      "type": "gtna:me_storage/render"
+    }
+  ],
   "loader": "gtceu:machine",
   "machine": "gtna:me_storage",
   "texture_overrides": {

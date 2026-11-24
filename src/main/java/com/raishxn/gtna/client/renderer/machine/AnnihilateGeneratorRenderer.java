@@ -91,7 +91,7 @@ public class AnnihilateGeneratorRenderer extends DynamicRender<ArtificialStarMac
 
     @Override
     public int getViewDistance() {
-        return 512;
+        return MachineRenders.reach(512);
     }
 
     @Override

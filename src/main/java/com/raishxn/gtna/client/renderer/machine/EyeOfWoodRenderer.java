@@ -87,7 +87,7 @@ public class EyeOfWoodRenderer extends DynamicRender<EyeOfWoodMachine, EyeOfWood
 
     @Override
     public int getViewDistance() {
-        return 256;
+        return MachineRenders.reach(256);
     }
 
     @Override

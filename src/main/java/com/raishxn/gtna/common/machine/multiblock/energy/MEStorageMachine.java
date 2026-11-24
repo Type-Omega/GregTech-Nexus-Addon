@@ -59,6 +59,9 @@ public class MEStorageMachine extends WorkableMultiblockMachine implements IDisp
     private boolean accessOnline;
     @DescSynced
     private String accessMode = "";
+    /** Storage cores of the formed structure, for the cell lights (GTIA-D-434). */
+    @DescSynced
+    private int renderCores;
 
     @Nullable
     private GTNAMEStorageAccessPartMachine accessPart;
@@ -87,6 +90,26 @@ public class MEStorageMachine extends WorkableMultiblockMachine implements IDisp
     public void onStructureFormed() {
         super.onStructureFormed();
         configureAccessHatch();
+        renderCores = 0;
+        if (getLevel() != null && getMultiblockState().cache != null)
+            for (BlockPos pos : getMultiblockState().getCache())
+                if (getLevel().getBlockState(pos).getBlock() instanceof MEStorageCoreBlock core &&
+                        !core.isCraftingCore())
+                    renderCores++;
+    }
+
+    public int renderCores() {
+        return renderCores;
+    }
+
+    /** Used share of the capacity, 0..1 (1 when infinite and holding anything). */
+    public float renderUsage() {
+        if (infinite) return usedBytes > 0 ? 1 : 0;
+        return capacityBytes <= 0 ? 0 : (float) Math.min(1, (double) usedBytes / capacityBytes);
+    }
+
+    public boolean renderOnline() {
+        return accessOnline;
     }
 
     @Override

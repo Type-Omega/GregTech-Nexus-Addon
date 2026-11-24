@@ -1,5 +1,10 @@
 {
   "parent": "minecraft:block/block",
+  "dynamic_renders": [
+    {
+      "type": "gtna:nexus_molecular_forge/render"
+    }
+  ],
   "loader": "gtceu:machine",
   "machine": "gtna:nexus_molecular_forge",
   "texture_overrides": {

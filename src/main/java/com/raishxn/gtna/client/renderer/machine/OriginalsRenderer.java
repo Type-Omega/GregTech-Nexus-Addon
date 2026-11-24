@@ -16,11 +16,13 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.serialization.Codec;
 import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.api.machine.feature.rift.RiftCore;
+import com.raishxn.gtna.client.renderer.machine.fx.ColliderFx;
+import com.raishxn.gtna.client.renderer.machine.fx.LanceFx;
+import com.raishxn.gtna.client.renderer.machine.fx.RiftFx;
 import com.raishxn.gtna.common.machine.multiblock.originals.ColliderRingMachine;
 import com.raishxn.gtna.common.machine.multiblock.originals.LanceMachine;
 import com.raishxn.gtna.common.machine.multiblock.originals.OriginalMachine;
@@ -76,17 +78,19 @@ public final class OriginalsRenderer {
             RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
             RenderSystem.depthMask(false);
             RenderSystem.disableCull();
-            // A ShaderInstance applies its own blend mode: the vanilla position_color one would turn blending off.
-            var additive = StellarShaders.additiveColor();
-            RenderSystem.setShader(additive != null ? () -> additive : GameRenderer::getPositionColorShader);
             for (var m : QUEUE.values()) {
                 if (m.isInValid() || !m.isFormed()) continue;
+                // EN: effects only; the captured parts above are blocks and draw at every level (GTIA-D-434, U11).
+                // PT: só os efeitos; as peças capturadas acima são blocos e aparecem em todo nível (GTIA-D-434, U11).
+                // ZH: 这里只画特效；上面捕获的部件是方块，任何等级都会绘制（GTIA-D-434，U11）。
+                int reach = m instanceof LanceMachine ? 768 : 384;
+                if (!MachineRenders.inReach(m.getPos(), cam, reach)) continue;
                 pose.pushPose();
-                if (m instanceof ColliderRingMachine c && c.isBeamOn()) collider(c, pose, cam, time);
-                else if (m instanceof RiftGateMachine r && r.isRiftOpen()) {
-                    rift(r, pose, cam, projection);
-                    RenderSystem.setShader(additive != null ? () -> additive : GameRenderer::getPositionColorShader);
-                } else if (m instanceof LanceMachine l) lance(l, pose, cam, time);
+                if (m instanceof ColliderRingMachine c && (c.isBeamOn() || MachineRenders.SHOWCASE)) ColliderFx.draw(c,
+                        frame(c, pose, cam, c.offset(ColliderRingMachine.CENTER_UP, ColliderRingMachine.CENTER_BACK)),
+                        projection, time);
+                else if (m instanceof RiftGateMachine r && r.isRiftOpen()) rift(r, pose, cam, projection);
+                else if (m instanceof LanceMachine l) lance(l, pose, cam, projection, time);
                 pose.popPose();
             }
         } finally {
@@ -105,26 +109,6 @@ public final class OriginalsRenderer {
         var rot = new Quaternionf().rotationTo(new Vector3f(0, 0, 1),
                 new Vector3f(back.getStepX(), back.getStepY(), back.getStepZ()));
         return new Matrix4f(pose.last().pose()).rotate(rot);
-    }
-
-    private static void collider(ColliderRingMachine c, PoseStack pose, Vec3 cam, float time) {
-        Matrix4f m = frame(c, pose, cam, c.offset(ColliderRingMachine.CENTER_UP, ColliderRingMachine.CENTER_BACK));
-        BufferBuilder buf = Tesselator.getInstance().getBuilder();
-        buf.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-        float speed = 1.2f + 2.5f * (float) c.beamEnergyShare();
-        double r = ColliderRingMachine.RING_RADIUS - 2;
-        for (int beam = 0; beam < 2; beam++) {
-            float dir = beam == 0 ? 1 : -1;
-            float cr = beam == 0 ? 1f : 0.5f, cg = beam == 0 ? 0.5f : 0.85f, cb = 1f;
-            for (int k = 0; k < 40; k++) {
-                double a = dir * (time * speed - k * 0.02);
-                float size = 1.4f * (1 - k / 40f), alpha = 0.9f * (1 - k / 40f);
-                billboard(buf, m, (float) (Math.cos(a) * r), (float) (Math.sin(a) * r), 0, size, cr, cg, cb, alpha);
-            }
-        }
-        float pulse = 0.5f + 0.5f * (float) Math.sin(time * 2.2);
-        sphereGlow(buf, m, 9 + 2 * pulse, 0.65f, 0.4f, 1f, 0.25f + 0.25f * pulse);
-        Tesselator.getInstance().end();
     }
 
     @org.jetbrains.annotations.Nullable
@@ -149,6 +133,7 @@ public final class OriginalsRenderer {
             amp = (float) Math.min(1, Math.max(0, v[2] / 100));
         }
         drawHorizon(m, projection, col, strength, time, seed, freq, phase, amp);
+        RiftFx.draw(r, new Matrix4f(m), projection, col, strength, time);
     }
 
     private static void drawHorizon(Matrix4f m, Matrix4f projection, float[] col, float strength, float time,
@@ -206,9 +191,18 @@ public final class OriginalsRenderer {
         };
     }
 
-    private static void lance(LanceMachine l, PoseStack pose, Vec3 cam, float time) {
+    private static void lance(LanceMachine l, PoseStack pose, Vec3 cam, Matrix4f projection, float time) {
         int since = l.secondsSinceShot();
-        if (since > 2) return;
+        double[] v = l.view();
+        double charge = v.length > 1 && v[1] > 0 ? v[0] / v[1] : 0;
+        double landing = v.length > 0 ? v[v.length - 1] : -1;
+        if (landing >= 0) {
+            pose.pushPose();
+            BlockPos ground = l.offset(0, LanceMachine.MUZZLE_BACK / 2);
+            pose.translate(ground.getX() + 0.5 - cam.x, ground.getY() + 0.5 - cam.y, ground.getZ() + 0.5 - cam.z);
+            LanceFx.capsule(new Matrix4f(pose.last().pose()), projection, landing, time);
+            pose.popPose();
+        }
         BlockPos muzzle = l.offset(LanceMachine.MUZZLE_UP, LanceMachine.MUZZLE_BACK);
         BlockPos pivot = PIVOTS.get(l.getPos());
         float[] yaw = YAW.get(l.getPos());
@@ -222,65 +216,8 @@ public final class OriginalsRenderer {
             m = new Matrix4f(pose.last().pose()).rotate(new Quaternionf().rotationTo(new Vector3f(0, 0, 1),
                     new Vector3f(back.getStepX(), back.getStepY(), back.getStepZ())));
         } else m = frame(l, pose, cam, muzzle);
-        // The shot fills the bore (about 11 blocks of radius): a layered beam from the breech out past the muzzle,
-        // a muzzle flash and shock rings, over three seconds. secondsSinceShot counts whole seconds (0..2).
-        float t = since + (time % 1);
-        float grow = Math.min(1, t / 0.15f), fade = t < 1.2f ? 1 : Math.max(0, 1 - (t - 1.2f) / 1.8f);
-        if (fade <= 0) return;
-        BufferBuilder buf = Tesselator.getInstance().getBuilder();
-        buf.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-        float reach = 1500 * grow, breech = -LANCE_BORE_DEPTH;
-        float pulse = 0.85f + 0.15f * (float) Math.sin(time * 40);
-        cylinder(buf, m, LANCE_BORE * 0.95f, breech, reach, 0.25f, 0.9f, 1f, 0.18f * fade);
-        cylinder(buf, m, LANCE_BORE * 0.6f, breech, reach, 0.45f, 1f, 0.95f, 0.35f * fade * pulse);
-        cylinder(buf, m, LANCE_BORE * 0.25f, breech, reach, 0.9f, 1f, 1f, 0.9f * fade);
-        // Muzzle flash and expanding shock rings.
-        float flash = Math.max(0, 1 - t * 1.5f);
-        sphereGlow(buf, m, LANCE_BORE * (1.5f + 2.5f * flash), 0.7f, 1f, 0.9f, flash);
-        for (int k = 0; k < 3; k++) {
-            float rt = t - k * 0.25f;
-            if (rt <= 0) continue;
-            float r = LANCE_BORE + rt * 45, a = Math.max(0, 0.6f - rt * 0.35f);
-            ring(buf, m, r - 1.5f, r + 1.5f, 2 + k * 6 + rt * 10, 0.6f, 1f, 0.9f, a);
-        }
-        Tesselator.getInstance().end();
-    }
-
-    /** Inner radius of the lance's barrel and how far the bore runs back from the muzzle, in blocks. */
-    private static final float LANCE_BORE = 10.5f, LANCE_BORE_DEPTH = 150;
-
-    /** Open cylinder along +Z in {@code m}. */
-    private static void cylinder(BufferBuilder buf, Matrix4f m, float r, float z0, float z1, float red, float green,
-                                 float blue, float alpha) {
-        int seg = 32;
-        for (int i = 0; i < seg; i++) {
-            double a0 = 2 * Math.PI * i / seg, a1 = 2 * Math.PI * (i + 1) / seg;
-            float x0 = (float) Math.cos(a0) * r, y0 = (float) Math.sin(a0) * r;
-            float x1 = (float) Math.cos(a1) * r, y1 = (float) Math.sin(a1) * r;
-            buf.vertex(m, x0, y0, z0).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, x1, y1, z0).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, x1, y1, z1).color(red, green, blue, alpha * 0.4f).endVertex();
-            buf.vertex(m, x0, y0, z0).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, x1, y1, z1).color(red, green, blue, alpha * 0.4f).endVertex();
-            buf.vertex(m, x0, y0, z1).color(red, green, blue, alpha * 0.4f).endVertex();
-        }
-    }
-
-    /** Flat ring facing +Z at depth {@code z}. */
-    private static void ring(BufferBuilder buf, Matrix4f m, float r0, float r1, float z, float red, float green,
-                             float blue, float alpha) {
-        int seg = 48;
-        for (int i = 0; i < seg; i++) {
-            double a0 = 2 * Math.PI * i / seg, a1 = 2 * Math.PI * (i + 1) / seg;
-            float c0 = (float) Math.cos(a0), s0 = (float) Math.sin(a0), c1 = (float) Math.cos(a1),
-                    s1 = (float) Math.sin(a1);
-            buf.vertex(m, c0 * r0, s0 * r0, z).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, c1 * r0, s1 * r0, z).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, c1 * r1, s1 * r1, z).color(red, green, blue, 0).endVertex();
-            buf.vertex(m, c0 * r0, s0 * r0, z).color(red, green, blue, alpha).endVertex();
-            buf.vertex(m, c1 * r1, s1 * r1, z).color(red, green, blue, 0).endVertex();
-            buf.vertex(m, c0 * r1, s0 * r1, z).color(red, green, blue, 0).endVertex();
-        }
+        if (since <= 2) LanceFx.shot(m, since, time);
+        else LanceFx.charge(m, charge, time);
     }
 
     // ------------------------------------------------------------------ captured parts
@@ -448,57 +385,6 @@ public final class OriginalsRenderer {
         return level.getShade(side, true);
     }
 
-    // ------------------------------------------------------------------ primitives
-
-    private static void quad(BufferBuilder b, Matrix4f m, float x0, float y0, float x1, float y1, float x2, float y2,
-                             float x3, float y3, float r, float g, float bl, float a) {
-        quad(b, m, x0, y0, x1, y1, x2, y2, x3, y3, r, g, bl, a, 0, 0, 0, 0);
-    }
-
-    private static void quad(BufferBuilder b, Matrix4f m, float x0, float y0, float x1, float y1, float x2, float y2,
-                             float x3, float y3, float r, float g, float bl, float a, float z0, float z1, float z2,
-                             float z3) {
-        float[][] v = { { x0, y0, z0 }, { x1, y1, z1 }, { x2, y2, z2 }, { x3, y3, z3 } };
-        for (int k : new int[] { 0, 1, 2, 0, 2, 3 })
-            b.vertex(m, v[k][0], v[k][1], v[k][2]).color(Math.min(1, r), Math.min(1, g), Math.min(1, bl), a)
-                    .endVertex();
-    }
-
-    private static void billboard(BufferBuilder b, Matrix4f m, float x, float y, float z, float s, float r, float g,
-                                  float bl, float a) {
-        for (int plane = 0; plane < 3; plane++) {
-            float[][] v = switch (plane) {
-                case 0 -> new float[][] { { -s, -s, 0 }, { s, -s, 0 }, { s, s, 0 }, { -s, s, 0 } };
-                case 1 -> new float[][] { { -s, 0, -s }, { s, 0, -s }, { s, 0, s }, { -s, 0, s } };
-                default -> new float[][] { { 0, -s, -s }, { 0, s, -s }, { 0, s, s }, { 0, -s, s } };
-            };
-            for (int k : new int[] { 0, 1, 2, 0, 2, 3 })
-                b.vertex(m, x + v[k][0], y + v[k][1], z + v[k][2]).color(r, g, bl, a).endVertex();
-        }
-    }
-
-    private static void sphereGlow(BufferBuilder b, Matrix4f m, float radius, float r, float g, float bl, float a) {
-        int seg = 32;
-        for (int plane = 0; plane < 3; plane++) {
-            for (int i = 0; i < seg; i++) {
-                double a0 = 2 * Math.PI * i / seg, a1 = 2 * Math.PI * (i + 1) / seg;
-                float[] p0 = ring(plane, a0, radius), p1 = ring(plane, a1, radius);
-                b.vertex(m, 0, 0, 0).color(r, g, bl, a).endVertex();
-                b.vertex(m, p0[0], p0[1], p0[2]).color(r, g, bl, 0f).endVertex();
-                b.vertex(m, p1[0], p1[1], p1[2]).color(r, g, bl, 0f).endVertex();
-            }
-        }
-    }
-
-    private static float[] ring(int plane, double a, float radius) {
-        float c = (float) Math.cos(a) * radius, s = (float) Math.sin(a) * radius;
-        return switch (plane) {
-            case 0 -> new float[] { c, s, 0 };
-            case 1 -> new float[] { c, 0, s };
-            default -> new float[] { 0, c, s };
-        };
-    }
-
     // ------------------------------------------------------------------ the three dynamic renders
 
     abstract static class Base<M extends OriginalMachine, R extends Base<M, R>> extends DynamicRender<M, R> {
@@ -536,7 +422,7 @@ public final class OriginalsRenderer {
 
         @Override
         public boolean shouldRender(ColliderRingMachine machine, Vec3 cameraPos) {
-            return machine.isBeamOn() || machine.isCaptured();
+            return machine.isBeamOn() || machine.isCaptured() || MachineRenders.SHOWCASE && machine.isFormed();
         }
 
         @Override
@@ -580,7 +466,7 @@ public final class OriginalsRenderer {
 
         @Override
         public boolean shouldRender(LanceMachine machine, Vec3 cameraPos) {
-            return machine.secondsSinceShot() <= 2 || machine.isCaptured();
+            return machine.isFormed() || machine.isCaptured();
         }
 
         @Override

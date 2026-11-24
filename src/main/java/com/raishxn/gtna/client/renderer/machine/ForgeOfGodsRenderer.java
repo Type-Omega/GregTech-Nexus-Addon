@@ -134,7 +134,9 @@ public class ForgeOfGodsRenderer extends DynamicRender<ForgeOfGodsMachine, Forge
                 BlockPos pos = machine.getPos();
                 poseStack.pushPose();
                 poseStack.translate(pos.getX() - camera.x, pos.getY() - camera.y, pos.getZ() - camera.z);
-                drawForge(machine, queued.partialTicks(), poseStack, projection);
+                BlockPos star = pos.relative(machine.getFrontFacing().getOpposite(), STAR_DISTANCE);
+                drawForge(machine, queued.partialTicks(), poseStack, projection,
+                        MachineRenders.inReach(star, camera, 512));
                 poseStack.popPose();
             }
         } finally {
@@ -149,7 +151,7 @@ public class ForgeOfGodsRenderer extends DynamicRender<ForgeOfGodsMachine, Forge
 
     /** GTNH {@code RenderForgeOfGods.renderTileEntityAt}: opaque star, rings, transparent star shells, beam. */
     private static void drawForge(ForgeOfGodsMachine machine, float partialTicks, PoseStack poseStack,
-                                  Matrix4f projection) {
+                                  Matrix4f projection, boolean effects) {
         ShaderInstance starShader = GodforgeShaders.star();
         ShaderInstance beamShader = GodforgeShaders.beam();
         Level level = machine.getLevel();
@@ -181,12 +183,14 @@ public class ForgeOfGodsRenderer extends DynamicRender<ForgeOfGodsMachine, Forge
         RenderSystem.depthMask(true);
         RenderSystem.disableCull();
         starShader.safeGetUniform("Gamma").set(state.gamma);
-        renderStarLayer(starShader, center, projection, state, 1f, STAR_LAYER_0, radius,
+        if (effects) renderStarLayer(starShader, center, projection, state, 1f, STAR_LAYER_0, radius,
                 new Vector3f(0, 1, 1).normalize(), 130 + starTimer % 360000);
 
-        // 2) Rings: solid and depth writing.
+        // 2) Rings: solid and depth writing. They are blocks taken out of the world, so every render level draws
+        // them (GTIA-D-434, U11).
         RenderSystem.enableCull();
         renderRings(machine, level, state, center, projection, axis, timer, rings);
+        if (!effects) return;
 
         // 3) Transparent star shells: depth tested, no depth write.
         RenderSystem.disableCull();
@@ -195,8 +199,11 @@ public class ForgeOfGodsRenderer extends DynamicRender<ForgeOfGodsMachine, Forge
         RenderSystem.depthMask(false);
         renderStarLayer(starShader, center, projection, state, 0.4f, STAR_LAYER_1, radius * 1.02f,
                 new Vector3f(1, 1, 0).normalize(), -49 + starTimer % 360000);
-        renderStarLayer(starShader, center, projection, state, 0.2f, STAR_LAYER_2, radius * 1.04f,
-                new Vector3f(1, 0, 1).normalize(), 67 + starTimer % 360000);
+        // EN: LOW keeps one transparent shell of the two (LOD).
+        // PT: o LOW mantém uma das duas cascas transparentes (LOD).
+        // ZH: LOW 只保留两层透明外壳中的一层（LOD）。
+        if (MachineRenders.high()) renderStarLayer(starShader, center, projection, state, 0.2f, STAR_LAYER_2,
+                radius * 1.04f, new Vector3f(1, 0, 1).normalize(), 67 + starTimer % 360000);
 
         // 4) Beam.
         renderBeam(machine, beamShader, center, projection, beamRotation, state, timer, radius, rings);

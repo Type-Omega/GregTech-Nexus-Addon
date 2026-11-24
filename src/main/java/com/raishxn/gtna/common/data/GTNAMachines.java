@@ -3326,9 +3326,12 @@ public class GTNAMachines {
                     .recipeType(GTRecipeTypes.DUMMY_RECIPES)
                     .appearanceBlock(GTNABlocks.OXIDATION_RESISTANT_HASTELLOY_N_MECHANICAL_CASING)
                     .pattern(com.raishxn.gtna.common.data.multiblock.NexusAssemblyForgeStructure::create)
-                    .workableCasingModel(
+                    .modelProperty(GTMachineModelProperties.RECIPE_LOGIC_STATUS, RecipeLogic.Status.IDLE)
+                    .model(createWorkableCasingMachineModel(
                             GTNACORE.id("block/casings/oxidation_resistant_hastelloy_n_mechanical_casing"),
                             GTCEu.id("block/multiblock/fusion_reactor"))
+                            .andThen(builder -> builder.addDynamicRenderer(
+                                    com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.ForgeRender::new)))
                     .register());
 
     public static final MultiblockMachineDefinition NEXUS_ME_HYPERCORE = registerMachine("nexusMeHypercore",
@@ -3340,9 +3343,12 @@ public class GTNAMachines {
                     .recipeType(GTRecipeTypes.DUMMY_RECIPES)
                     .appearanceBlock(GCYMBlocks.CASING_NONCONDUCTING)
                     .pattern(GTNAMachines::createNexusMEHyperCorePattern)
-                    .workableCasingModel(
+                    .modelProperty(GTMachineModelProperties.RECIPE_LOGIC_STATUS, RecipeLogic.Status.IDLE)
+                    .model(createWorkableCasingMachineModel(
                             GTCEu.id("block/casings/gcym/nonconducting_casing"),
                             GTCEu.id("block/multiblock/assembly_line"))
+                            .andThen(builder -> builder.addDynamicRenderer(
+                                    com.raishxn.gtna.client.renderer.machine.HypercoreRenderer::new)))
                     .register());
 
     public static final MultiblockMachineDefinition ME_STORAGE = registerMachine("meStorage",
@@ -3354,9 +3360,12 @@ public class GTNAMachines {
                     .recipeType(GTRecipeTypes.DUMMY_RECIPES)
                     .appearanceBlock(GTBlocks.COMPUTER_CASING)
                     .pattern(com.raishxn.gtna.common.data.multiblock.MEStorageStructure::create)
-                    .workableCasingModel(
+                    .modelProperty(GTMachineModelProperties.RECIPE_LOGIC_STATUS, RecipeLogic.Status.IDLE)
+                    .model(createWorkableCasingMachineModel(
                             GTCEu.id("block/casings/hpca/computer_casing/back"),
                             GTCEu.id("block/multiblock/fusion_reactor"))
+                            .andThen(builder -> builder.addDynamicRenderer(
+                                    com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.StorageRender::new)))
                     .register());
 
     private static BlockPattern createArtificialStarPattern(MultiblockMachineDefinition definition) {

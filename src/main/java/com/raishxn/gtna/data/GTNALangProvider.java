@@ -2158,6 +2158,7 @@ public class GTNALangProvider extends LanguageProvider {
         add("config.gtna.option.itemGlowEdge", "Item Glow Edges");
         add("config.gtna.option.itemShaderEffects", "Item Shader Effects");
         add("config.gtna.option.itemEffectSpeed", "Item Effect Speed (%)");
+        add("config.gtna.option.machineRenders", "Machine Renders (OFF / LOW / HIGH)");
 
         // Accelerate Hatch
         add("config.gtna.option.accelerateHatchMultiplier", "Accelerate Hatch Speed");
@@ -2229,7 +2230,7 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.command.steam.set", "§b[GTNA] §fSet the balance to §b%s§f mB.");
         add("gtna.command.steam.add_failed", "§c[GTNA] Could not add that amount to the network.");
 
-        // Wireless steam network HUD (client overlay, off by default; see ConfigHolder.Client)
+        // Wireless steam network HUD (client overlay, off by default; see ClientConfig)
         add("gtna.hud.wireless_steam.name", "Wireless Steam HUD");
         add("gtna.hud.wireless_energy.name", "Wireless Energy HUD");
         add("gtna.hud.wireless_energy.balance", "§bWireless Energy§7: §f%s§7 / §f%s §7EU");

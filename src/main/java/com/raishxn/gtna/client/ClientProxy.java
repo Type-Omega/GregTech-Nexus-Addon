@@ -56,6 +56,14 @@ public class ClientProxy extends CommonProxy {
                 com.raishxn.gtna.client.renderer.machine.OriginalsRenderer::onRenderLevelStage);
         MinecraftForge.EVENT_BUS.addListener(
                 com.raishxn.gtna.client.renderer.machine.StellarChamberRenderer::onRenderLevelStage);
+        var ignoredHypercore = com.raishxn.gtna.client.renderer.machine.HypercoreRenderer.TYPE;
+        var ignoredFlux = com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.FluxRender.TYPE;
+        var ignoredStorage = com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.StorageRender.TYPE;
+        var ignoredForge = com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers.ForgeRender.TYPE;
+        MinecraftForge.EVENT_BUS.addListener(
+                com.raishxn.gtna.client.renderer.machine.NexusStructureRenderers::onRenderLevelStage);
+        MinecraftForge.EVENT_BUS.addListener(
+                com.raishxn.gtna.client.renderer.machine.HypercoreRenderer::onRenderLevelStage);
         net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus()
                 .addListener((net.minecraftforge.client.event.RegisterShadersEvent event) -> {
                     try {

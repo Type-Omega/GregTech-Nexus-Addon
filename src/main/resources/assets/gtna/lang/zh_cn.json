@@ -2778,6 +2778,7 @@
   "config.gtna.option.itemGlowEdge": "物品发光边缘",
   "config.gtna.option.itemShaderEffects": "物品着色器特效",
   "config.gtna.option.itemEffectSpeed": "物品特效速度（%）",
+  "config.gtna.option.machineRenders": "机器渲染（OFF / LOW / HIGH）",
   "block.gtna.degenerate_matter_core": "简并物质核心",
   "block.gtna.stellar_containment_chamber": "恒星约束舱",
   "gtna.machine.stellar_containment_chamber.lit": "§b恒星已点燃",

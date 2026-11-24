@@ -14,6 +14,8 @@ import com.lowdragmc.lowdraglib.gui.modular.ModularUI;
 import com.lowdragmc.lowdraglib.gui.widget.ComponentPanelWidget;
 import com.lowdragmc.lowdraglib.gui.widget.DraggableScrollableWidgetGroup;
 import com.lowdragmc.lowdraglib.gui.widget.LabelWidget;
+import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
+import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -28,6 +30,7 @@ import com.raishxn.gtna.common.data.GTNABlocks;
 import com.raishxn.gtna.common.machine.multiblock.part.ae.GTNACraftingCPUInterfacePartMachine;
 import com.raishxn.gtna.utils.Registries;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -50,15 +53,28 @@ public class NexusMEHyperCoreMachine extends WorkableMultiblockMachine implement
     public static final long MODULE_III_THREADS = 128L;
     public static final long MODULE_IV_THREADS = 1024L;
 
+    protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
+            NexusMEHyperCoreMachine.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
+
     private long installedModules;
+    @DescSynced
     private long matrixI;
+    @DescSynced
     private long matrixII;
+    @DescSynced
     private long matrixIII;
+    @DescSynced
     private long matrixIV;
+    /** Busy crafting CPUs, sampled every second for the holographic core (GTIA-D-434). */
+    @DescSynced
+    private int busyCpus;
+    @Nullable
+    private TickableSubscription renderSync;
     private long totalStorageBytes;
     private long totalCoProcessors;
     private long totalThreads;
     private int highestModuleTier;
+    @DescSynced
     private boolean transcendentMode;
     private TickableSubscription interfaceSyncSubscription;
     private int interfaceSyncTicks;
@@ -68,9 +84,26 @@ public class NexusMEHyperCoreMachine extends WorkableMultiblockMachine implement
     }
 
     @Override
+    public ManagedFieldHolder getFieldHolder() {
+        return MANAGED_FIELD_HOLDER;
+    }
+
+    @Override
     public void onLoad() {
         super.onLoad();
         scheduleInterfaceSync();
+        if (!isRemote()) renderSync = subscribeServerTick(() -> {
+            if (getOffsetTimer() % 20 == 0) busyCpus = isFormed() ? getBusyCpuCount() : 0;
+        });
+    }
+
+    /** Modules installed per tier (I to IV), for the holographic core. */
+    public long[] modulesByTier() {
+        return new long[] { matrixI, matrixII, matrixIII, matrixIV };
+    }
+
+    public int busyCpus() {
+        return busyCpus;
     }
 
     @Override
@@ -78,6 +111,10 @@ public class NexusMEHyperCoreMachine extends WorkableMultiblockMachine implement
         if (interfaceSyncSubscription != null) {
             interfaceSyncSubscription.unsubscribe();
             interfaceSyncSubscription = null;
+        }
+        if (renderSync != null) {
+            renderSync.unsubscribe();
+            renderSync = null;
         }
         super.onUnload();
     }

@@ -54,6 +54,11 @@ public class NexusMolecularForgeMachine extends WorkableElectricMultiblockMachin
     private int activeBatchDuration;
     private long pendingBatchStartTick = -1L;
     private long pendingBatchLastChangeTick = -1L;
+    /** The item the holographic forge shows (GTIA-D-434) and the game time until which it shows it. */
+    @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
+    private ItemStack renderItem = ItemStack.EMPTY;
+    @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
+    private long renderUntil;
 
     public NexusMolecularForgeMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -97,6 +102,11 @@ public class NexusMolecularForgeMachine extends WorkableElectricMultiblockMachin
             total += part.getLoadedPatternCount();
         }
         return total;
+    }
+
+    /** What the hologram shows, or empty when nothing was forged in the last seconds. */
+    public ItemStack renderItem() {
+        return getLevel() != null && getLevel().getGameTime() < renderUntil ? renderItem : ItemStack.EMPTY;
     }
 
     public long getQueuedItemCount() {
@@ -217,6 +227,11 @@ public class NexusMolecularForgeMachine extends WorkableElectricMultiblockMachin
         long eut = Math.max(1L, Math.min(maxEUt, totalItems));
         int duration = Math.max(1, (int) Math.ceil(totalItems / (double) eut));
 
+        renderItem = outputs.object2LongEntrySet().iterator().next().getKey().copyWithCount(1);
+        // EN: a batch takes a few ticks; the hologram stays three seconds so it can be seen.
+        // PT: um lote leva poucos ticks; o holograma fica três segundos para dar para ver.
+        // ZH: 一批只需几刻；全息影像保留三秒以便看清。
+        if (getLevel() != null) renderUntil = getLevel().getGameTime() + Math.max(60, duration);
         activeBatchItemCount = totalItems;
         activeBatchDistinctOutputs = outputs.size();
         activeBatchEUt = eut;
