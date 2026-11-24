@@ -2,18 +2,25 @@ package com.raishxn.gtna.gametest;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity;
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.raishxn.gtna.common.data.GTNABlocks;
 import com.raishxn.gtna.common.data.GTNAEnergyHatches;
 import com.raishxn.gtna.common.data.NexusEnergyNetwork;
+import com.raishxn.gtna.common.data.multiblock.NexusFluxMatrixStructure;
 import com.raishxn.gtna.common.machine.multiblock.energy.NexusFluxMatrixMachine;
 import com.typeomega.lib.data.Int128;
 
@@ -24,24 +31,57 @@ import java.util.UUID;
 @PrefixGameTestTemplate(false)
 public final class NexusMatrixUnlimitedGameTests {
 
+    /** Builds the Tesla Coil matrix (GTIA-D-437) with {@code floors} floors; capacitors from {@code capacitor}. */
+    static TextAislePlacer.Placed buildMatrix(GameTestHelper helper, int floors, Block capacitor) {
+        var placed = TextAislePlacer.place(helper, NexusFluxMatrixStructure.RESOURCE, new BlockPos(2, 1, 2), true,
+                floors, 'B', (symbol, pos) -> switch (symbol) {
+                    case 'A', 'H' -> GTBlocks.CASING_STEEL_SOLID.get();
+                    case 'B' -> GTNAEnergyHatches.NEXUS_FLUX_MATRIX.getBlock();
+                    case 'C' -> GTNABlocks.BOROSILICATE_GLASS_BLOCK.get();
+                    case 'D' -> capacitor;
+                    case 'F' -> ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel);
+                    case 'G' -> GTBlocks.CASING_STEEL_GEARBOX.get();
+                    case 'L' -> GTBlocks.LAMPS.get(DyeColor.ORANGE).get();
+                    case 'P' -> GTBlocks.CASING_STEEL_PIPE.get();
+                    default -> null;
+                });
+        machine(helper, placed).setFrontFacing(Direction.NORTH);
+        return placed;
+    }
+
+    static NexusFluxMatrixMachine machine(GameTestHelper helper, TextAislePlacer.Placed placed) {
+        return (NexusFluxMatrixMachine) ((MetaMachineBlockEntity) helper.getBlockEntity(placed.controller()))
+                .getMetaMachine();
+    }
+
+    @GameTest(template = "empty_48", timeoutTicks = 100)
+    public static void teslaCoilMatrixFormsWithTwoFloors(GameTestHelper helper) {
+        var placed = buildMatrix(helper, NexusFluxMatrixStructure.MIN_FLOORS, GTNABlocks.NEXUS_CAPACITOR_LV.get());
+        var machine = machine(helper, placed);
+        helper.assertTrue(placed.of('D').size() ==
+                NexusFluxMatrixStructure.MIN_FLOORS * NexusFluxMatrixStructure.CAPACITORS_PER_FLOOR,
+                "each floor holds 25 capacitors, got " + placed.of('D').size());
+        helper.assertTrue(machine.checkPatternWithLock(), "the two-floor Tesla Coil matrix forms");
+        helper.succeed();
+    }
+
+    @GameTest(template = "empty_48", timeoutTicks = 100)
+    public static void teslaCoilMatrixWithoutToroidDoesNotForm(GameTestHelper helper) {
+        var placed = buildMatrix(helper, NexusFluxMatrixStructure.MIN_FLOORS, GTNABlocks.NEXUS_CAPACITOR_LV.get());
+        var machine = machine(helper, placed);
+        for (var pos : placed.of('G')) {
+            if (pos.getY() > placed.controller().getY() + 4) helper.setBlock(pos, Blocks.AIR);
+        }
+        helper.assertFalse(machine.checkPatternWithLock(), "a matrix without its discharge toroid must not form");
+        helper.succeed();
+    }
+
     @GameTest(template = "empty_48", timeoutTicks = 100)
     public static void nexus750MaxCapacitorsRequireCompleteRealMatrix(GameTestHelper helper) throws Exception {
-        var controller = new BlockPos(10, 3, 10);
-        for (int layer = 0; layer < 32; layer++) {
-            for (int row = 0; row < 7; row++) for (int col = 0; col < 7; col++) {
-                var pos = controller.offset(col - 3, layer, 6 - row);
-                if (layer == 0 && row == 6 && col == 3)
-                    helper.setBlock(pos, GTNAEnergyHatches.NEXUS_FLUX_MATRIX.getBlock());
-                else if (layer == 0 || layer == 31 || ((row == 0 || row == 6) && (col == 0 || col == 6)))
-                    helper.setBlock(pos, GTBlocks.CASING_STEEL_SOLID.get());
-                else if (row == 0 || row == 6 || col == 0 || col == 6)
-                    helper.setBlock(pos, GTNABlocks.BOROSILICATE_GLASS_BLOCK.get());
-                else helper.setBlock(pos, GTNABlocks.NEXUS_CAPACITOR_MAX.get());
-            }
-        }
-        var machine = (NexusFluxMatrixMachine) ((MetaMachineBlockEntity) helper.getBlockEntity(controller))
-                .getMetaMachine();
-        machine.setFrontFacing(Direction.NORTH);
+        var placed = buildMatrix(helper, NexusFluxMatrixStructure.MAX_FLOORS, GTNABlocks.NEXUS_CAPACITOR_MAX.get());
+        helper.assertTrue(placed.of('D').size() == NexusFluxMatrixMachine.MAX_CAPACITORS,
+                "30 floors hold exactly MAX_CAPACITORS, got " + placed.of('D').size());
+        var machine = machine(helper, placed);
         var owner = UUID.randomUUID();
         var ownerField = NexusFluxMatrixMachine.class.getDeclaredField("ownerUUID");
         ownerField.setAccessible(true);
@@ -52,14 +92,14 @@ public final class NexusMatrixUnlimitedGameTests {
         helper.assertTrue(
                 machine.isUnlimited() && network.isUnlimited(owner) && network.getTotalCapacitors(owner) == 750,
                 "all 750 internal MAX capacitors activate unlimited storage/transfer");
-        var changed = controller.offset(-2, 1, 5);
+        var changed = placed.of('D').get(0);
         helper.setBlock(changed, GTNABlocks.NEXUS_CAPACITOR_OPV.get());
         helper.assertTrue(machine.checkPatternWithLock(), "mixed-tier matrix remains valid");
         machine.onStructureFormed();
         helper.assertTrue(!machine.isUnlimited() && !network.isUnlimited(owner),
                 "one lower-tier capacitor disables unlimited mode");
-        helper.setBlock(changed, net.minecraft.world.level.block.Blocks.AIR);
-        helper.setBlock(controller.offset(10, 1, 5), GTNABlocks.NEXUS_CAPACITOR_MAX.get());
+        helper.setBlock(changed, Blocks.AIR);
+        helper.setBlock(placed.controller().offset(0, 0, -3), GTNABlocks.NEXUS_CAPACITOR_MAX.get());
         helper.assertTrue(machine.checkPatternWithLock(), "749-capacitor matrix remains valid");
         machine.onStructureFormed();
         helper.assertTrue(!machine.isUnlimited() && network.getTotalCapacitors(owner) == 749,

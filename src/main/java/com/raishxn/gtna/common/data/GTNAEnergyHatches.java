@@ -5,8 +5,6 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
-import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
-import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import net.minecraft.network.chat.Component;
@@ -18,8 +16,6 @@ import com.raishxn.gtna.common.machine.multiblock.part.energy.WirelessEnergyHatc
 import java.util.Locale;
 
 import static com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties.IS_FORMED;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
-import static com.gregtechceu.gtceu.api.pattern.Predicates.controller;
 import static com.raishxn.gtna.api.registry.GTNARegistry.REGISTRATE;
 
 public class GTNAEnergyHatches {
@@ -61,39 +57,7 @@ public class GTNAEnergyHatches {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.DUMMY_RECIPES)
             .appearanceBlock(() -> com.gregtechceu.gtceu.common.data.GTBlocks.CASING_STEEL_SOLID.get())
-            .pattern(definition -> FactoryBlockPattern
-                    .start(com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.RIGHT,
-                            com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.FRONT,
-                            com.gregtechceu.gtceu.api.pattern.util.RelativeDirection.UP)
-                    .aisle("AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAABAAA")
-                    .aisle("ACCCCCA", "CDDDDDC", "CDDDDDC", "CDDDDDC", "CDDDDDC", "CDDDDDC", "ACCCCCA")
-                    .setRepeatable(2, 30)
-                    .aisle("AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA", "AAAAAAA")
-                    .where('A', blocks(com.gregtechceu.gtceu.common.data.GTBlocks.CASING_STEEL_SOLID.get())
-                            .or(Predicates
-                                    .abilities(com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.OUTPUT_ENERGY)
-                                    .setPreviewCount(1))
-                            .or(Predicates
-                                    .abilities(com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.INPUT_ENERGY)
-                                    .setPreviewCount(1)))
-                    .where('B', controller(blocks(definition.get())))
-                    .where('C', blocks(GTNABlocks.BOROSILICATE_GLASS_BLOCK.get()))
-                    .where('D', Predicates.air().or(blocks(
-                            GTNABlocks.NEXUS_CAPACITOR_LV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_MV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_HV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_EV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_IV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_LUV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_ZPM.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_UV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_UHV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_UEV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_UIV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_UXV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_OPV.get(),
-                            GTNABlocks.NEXUS_CAPACITOR_MAX.get())))
-                    .build())
+            .pattern(com.raishxn.gtna.common.data.multiblock.NexusFluxMatrixStructure::create)
             .workableCasingModel(
                     GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
                     GTCEu.id("block/multiblock/implosion_compressor"))

@@ -1,0 +1,310 @@
+# Nexus Flux Matrix, "Tesla Coil" (GTIA-D-437, proposal B). Aisles bottom-up, rows back to front.
+# The repeated floor holds 25 capacitors: 2 to 30 floors, up to 750 capacitors.
+aisle
+|                     |
+|                     |
+|  F               F  |
+|   F  GGGGGGGGG  F   |
+|    FGAAAAAAAAAGF    |
+|    GFAAAAAAAAAFG    |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|   GAAAAAAAAAAAAAG   |
+|    GFAAAAAAAAAFG    |
+|    FGAAAAAAAAAGF    |
+|   F  GGGGGGGGG  F   |
+|  F               F  |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|   F             F   |
+|    F  AAAAAAA  F    |
+|     FAAAHHHAAAF     |
+|     AAAAAAAAAAA     |
+|    AAA       AAA    |
+|    LA         AL    |
+|    AA         AA    |
+|    AA         AA    |
+|    AA         AA    |
+|    LA         AL    |
+|    AAA       AAA    |
+|     AAAAAAAAAAA     |
+|     FAAAHHHAAAF     |
+|    F  AAAAAAA  F    |
+|   F             F   |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|    F           F    |
+|     F GGHHHGG F     |
+|      GAAAAAAAG      |
+|     GA       AG     |
+|     G         G     |
+|     G         G     |
+|     G         G     |
+|     G         G     |
+|     G         G     |
+|     GA       AG     |
+|      GAAAAAAAG      |
+|     F GGHBHGG F     |
+|    F           F    |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|    F           F    |
+|     F AAHHHAA F     |
+|      AAAAAAAAA      |
+|     AAAAAAAAAAA     |
+|     AAA     AAA     |
+|     AAA     AAA     |
+|     AAA     AAA     |
+|     AAA     AAA     |
+|     AAA     AAA     |
+|     AAAAAAAAAAA     |
+|      AAAAAAAAA      |
+|     F AAHHHAA F     |
+|    F           F    |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|     F         F     |
+|                     |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|       AAAAAAA       |
+|                     |
+|     F         F     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle repeat 2 30
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|     P         P     |
+|                     |
+|       ACCCCCA       |
+|       CDDDDDC       |
+|       CDDDDDC       |
+|       CDDDDDC       |
+|       CDDDDDC       |
+|       CDDDDDC       |
+|       ACCCCCA       |
+|                     |
+|     P         P     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|    PP         PP    |
+|     P         P     |
+|                     |
+|       GGGGGGG       |
+|       GAAAAAG       |
+|       GAAAAAG       |
+|       GAAAAAG       |
+|       GAAAAAG       |
+|       GAAAAAG       |
+|       GGGGGGG       |
+|                     |
+|     P         P     |
+|    PP         PP    |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|    P           P    |
+|                     |
+|                     |
+|                     |
+|                     |
+|         AAA         |
+|         APA         |
+|         AAA         |
+|                     |
+|                     |
+|                     |
+|                     |
+|    P           P    |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|   P             P   |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|          P          |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|   P             P   |
+|                     |
+|                     |
+|                     |
+aisle
+|        GGGGG        |
+|      GGGGGGGGG      |
+|    GGGGG F GGGGG    |
+|   GGG    F    GGG   |
+|  GGG     F     GGG  |
+|  GG      F      GG  |
+| GG       F       GG |
+| GG       F       GG |
+|GGG       F       GGG|
+|GG        F        GG|
+|GGFFFFFFFFGFFFFFFFFGG|
+|GG        F        GG|
+|GGG       F       GGG|
+| GG       F       GG |
+| GG       F       GG |
+|  GG      F      GG  |
+|  GGG     F     GGG  |
+|   GGG    F    GGG   |
+|    GGGGG F GGGGG    |
+|      GGGGGGGGG      |
+|        GGGGG        |
+aisle
+|        GGGGG        |
+|      LGGGGGGGL      |
+|    GGGGG   GGGGG    |
+|   GGG         GGG   |
+|  GGG           GGG  |
+|  GG             GG  |
+| LG               GL |
+| GG               GG |
+|GGG               GGG|
+|GG                 GG|
+|GG        P        GG|
+|GG                 GG|
+|GGG               GGG|
+| GG               GG |
+| LG               GL |
+|  GG             GG  |
+|  GGG           GGG  |
+|   GGG         GGG   |
+|    GGGGG   GGGGG    |
+|      LGGGGGGGL      |
+|        GGGGG        |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|          P          |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|          P          |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|          L          |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
