@@ -11,6 +11,42 @@ import java.util.Objects;
  */
 public final class EyeOfHarmonyMath {
 
+    // EN: Balance numbers of the GTNH Eye of Harmony, kept as in upstream; the controller tooltip reads them too.
+    // PT: Números de balanço do Eye of Harmony do GTNH, mantidos como no original; a tooltip do controlador os lê.
+    // ZH: GTNH 鸿蒙之眼的平衡数值，与上游一致；控制器提示也读取这些值。
+    /** Highest field generator tier, zero based (nine tiers). */
+    public static final int MAX_FIELD_TIER = 8;
+    public static final int MAX_PLANET_TIER = 9;
+    /** Time factor per Spacetime Compression tier above the recipe (multiplicative). */
+    public static final double COMPRESSION_TIME_FACTOR = 0.97;
+    /** Time factor per Time Dilation tier (multiplicative). */
+    public static final double ACCELERATION_TIME_FACTOR = 0.5;
+    /** Success chance lost per Time Dilation tier (additive). */
+    public static final double ACCELERATION_CHANCE_LOSS = 0.0925;
+    /** Success chance gained per Stabilisation tier (additive). */
+    public static final double STABILISATION_CHANCE_GAIN = 0.05;
+    /** Yield lost per Stabilisation tier (additive). */
+    public static final double STABILISATION_YIELD_LOSS = 0.05;
+    /** Output EU lost per Stabilisation tier below the highest (additive). */
+    public static final double STABILISATION_EU_LOSS = 0.05;
+    /** Base chance lost per planet tier. */
+    public static final double PLANET_CHANCE_LOSS = 0.05;
+    public static final long BASE_SECONDS = 18_000L;
+    /** Run time grows by this factor per planet tier. */
+    public static final double PLANET_TIME_GROWTH = 1.4;
+    /** Hydrogen and Helium each, in mB, per planet tier plus one. */
+    public static final long GAS_PER_TIER = 1_000_000_000L;
+    /** EU charged per tick of the base run time, on top of the plasma cost. */
+    public static final long EU_PER_BASE_TICK = (1L << 19) + 100_000_000_000L;
+    /** Output EU = startup EU x (RETURN_BASE + planet tier / RETURN_TIER_DIVISOR). */
+    public static final double RETURN_BASE = 0.6;
+    public static final double RETURN_TIER_DIVISOR = 10.0;
+    public static final long FAILURE_SPACETIME = 14_400L;
+    public static final double OVERFLOW_SCALE = 30;
+    public static final int MAX_CIRCUIT = 24;
+    /** Each circuit level multiplies the startup EU by 4 (a two-bit shift). */
+    public static final int CIRCUIT_COST_FACTOR = 4;
+
     private EyeOfHarmonyMath() {}
 
     /** Plasma cost must come from the audited output catalog, not a guessed constant. */
@@ -18,7 +54,8 @@ public final class EyeOfHarmonyMath {
                           long helium, long startupEU, long returnEU, double baseChance) {
 
         public Program {
-            if (rocketTier < 0 || rocketTier > 9 || requiredCompression < 0 || requiredCompression > 8 ||
+            if (rocketTier < 0 || rocketTier > MAX_PLANET_TIER || requiredCompression < 0 ||
+                    requiredCompression > MAX_FIELD_TIER ||
                     baseTicks <= 0 || hydrogen <= 0 || helium <= 0 || startupEU <= 0 || returnEU < 0 ||
                     !Double.isFinite(baseChance) || baseChance < 0 || baseChance > 1) {
                 throw new IllegalArgumentException("Invalid planetary program");
@@ -37,12 +74,13 @@ public final class EyeOfHarmonyMath {
         public static Program planet(int blockRocketTier, long plasmaEU) {
             if (plasmaEU < 0) throw new IllegalArgumentException("Negative plasma cost");
             long ticks = Math.multiplyExact(miningSeconds(blockRocketTier), 20L);
-            long cost = Math.addExact(plasmaEU, Math.multiplyExact(ticks, (1L << 19) + 100_000_000_000L));
+            long cost = Math.addExact(plasmaEU, Math.multiplyExact(ticks, EU_PER_BASE_TICK));
             int recipeTier = recipeTier(blockRocketTier);
-            long gas = Math.multiplyExact(1_000_000_000L, blockRocketTier + 1L);
+            long gas = Math.multiplyExact(GAS_PER_TIER, blockRocketTier + 1L);
             // Preserve the upstream floating point multiplication followed by long truncation.
-            return new Program(recipeTier, Math.min(8, recipeTier), ticks, gas, gas, cost,
-                    (long) (cost * (0.6 + blockRocketTier / 10.0)), 1.0 - 0.05 * blockRocketTier);
+            return new Program(recipeTier, Math.min(MAX_FIELD_TIER, recipeTier), ticks, gas, gas, cost,
+                    (long) (cost * (RETURN_BASE + blockRocketTier / RETURN_TIER_DIVISOR)),
+                    1.0 - PLANET_CHANCE_LOSS * blockRocketTier);
         }
 
         public static int recipeTier(int blockRocketTier) {
@@ -50,22 +88,23 @@ public final class EyeOfHarmonyMath {
         }
 
         public static long miningSeconds(int blockRocketTier) {
-            if (blockRocketTier < 0 || blockRocketTier > 9) throw new IllegalArgumentException("Rocket tier 0-9");
+            if (blockRocketTier < 0 || blockRocketTier > MAX_PLANET_TIER)
+                throw new IllegalArgumentException("Rocket tier 0-9");
             // GTUtility.powInt(1.4, tier): same multiplication order, truncated like the upstream cast.
-            double base = 1.4, result = 1;
+            double base = PLANET_TIME_GROWTH, result = 1;
             for (int exponent = blockRocketTier; exponent > 0; exponent >>= 1) {
                 if ((exponent & 1) == 1) result *= base;
                 base *= base;
             }
-            return (long) (18_000L * result);
+            return (long) (BASE_SECONDS * result);
         }
     }
 
     public record Fields(int compression, int acceleration, int stabilisation) {
 
         public Fields {
-            if (compression < 0 || compression > 8 || acceleration < 0 || acceleration > 8 ||
-                    stabilisation < 0 || stabilisation > 8) {
+            if (compression < 0 || compression > MAX_FIELD_TIER || acceleration < 0 ||
+                    acceleration > MAX_FIELD_TIER || stabilisation < 0 || stabilisation > MAX_FIELD_TIER) {
                 throw new IllegalArgumentException("Unformed or invalid fields");
             }
         }
@@ -117,26 +156,28 @@ public final class EyeOfHarmonyMath {
         if (hydrogen < program.hydrogen || helium < program.helium) {
             throw new IllegalArgumentException("Insufficient gas");
         }
-        int circuit = Math.max(0, Math.min(24, circuitSetting));
+        int circuit = Math.max(0, Math.min(MAX_CIRCUIT, circuitSetting));
         double hydrogenPenalty = overflowPenalty(hydrogen, program.hydrogen);
         double heliumPenalty = overflowPenalty(helium, program.helium);
-        double baseChance = program.baseChance - fields.acceleration * 0.0925 + fields.stabilisation * 0.05;
+        double baseChance = program.baseChance - fields.acceleration * ACCELERATION_CHANCE_LOSS +
+                fields.stabilisation * STABILISATION_CHANCE_GAIN;
         double pity = history.pity == Double.MIN_VALUE ? baseChance : history.pity;
         // Upstream compares BEFORE applying overflow and uses exact double equality.
         double chance = baseChance == history.lastChance && pity >= 1 ? 1 : baseChance;
         chance = clamp(chance - hydrogenPenalty - heliumPenalty);
-        double yield = clamp(1 - fields.stabilisation * 0.05 - hydrogenPenalty - heliumPenalty);
-        int duration = (int) Math.max(program.baseTicks * Math.pow(2, -fields.acceleration) *
+        double yield = clamp(1 - fields.stabilisation * STABILISATION_YIELD_LOSS - hydrogenPenalty - heliumPenalty);
+        int duration = (int) Math.max(program.baseTicks * Math.pow(ACCELERATION_TIME_FACTOR, fields.acceleration) *
                 compressionDiscount(fields.compression - program.requiredCompression) * Math.pow(2, -circuit), 1);
         BigInteger debit = startupDebit(program, circuit);
-        BigInteger credit = BigInteger.valueOf((long) (program.returnEU * (1 - (8 - fields.stabilisation) * 0.05)));
+        BigInteger credit = BigInteger.valueOf(
+                (long) (program.returnEU * (1 - (MAX_FIELD_TIER - fields.stabilisation) * STABILISATION_EU_LOSS)));
         return new Plan(program, fields, circuit, hydrogen, helium, duration, debit, credit,
                 hydrogenPenalty, heliumPenalty, chance, yield, new History(history.lastChance, pity));
     }
 
     /** Shared by controller quotes and execution so balance changes cannot desynchronize the UI. */
     public static BigInteger startupDebit(Program program, int circuitSetting) {
-        int circuit = Math.max(0, Math.min(24, circuitSetting));
+        int circuit = Math.max(0, Math.min(MAX_CIRCUIT, circuitSetting));
         // GTNH: each circuit level multiplies the startup cost by 4 (4^24 at circuit 24).
         return BigInteger.valueOf(program.startupEU).shiftLeft(2 * circuit);
     }
@@ -149,20 +190,20 @@ public final class EyeOfHarmonyMath {
                 plan.historyAtStart.lastChance == plan.chance ?
                         plan.historyAtStart.pity + (1 - plan.chance) * plan.chance : plan.chance;
         long failedSpaceTime = success ? 0 :
-                (long) (plan.chance * 14_400L * Math.pow(2, plan.program.rocketTier + 1));
+                (long) (plan.chance * FAILURE_SPACETIME * Math.pow(2, plan.program.rocketTier + 1));
         return new Result(success, failedSpaceTime, plan.creditEU, new History(plan.chance, pity));
     }
 
     public static double overflowPenalty(long stored, long required) {
         if (required <= 0 || stored < required) throw new IllegalArgumentException("Insufficient gas");
         double excess = (double) stored / required - 1;
-        double scaled = 30 * excess;
+        double scaled = OVERFLOW_SCALE * excess;
         return 1 - Math.exp(-(scaled * scaled));
     }
 
     private static double compressionDiscount(int exponent) {
         // Same multiplication order as GTUtility.powInt, preserving duration truncation boundaries.
-        double base = 0.97;
+        double base = COMPRESSION_TIME_FACTOR;
         double result = 1;
         while (exponent > 0) {
             if ((exponent & 1) == 1) result *= base;

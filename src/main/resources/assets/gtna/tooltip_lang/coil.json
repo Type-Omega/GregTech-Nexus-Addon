@@ -1,0 +1,57 @@
+{
+  "gtna.tooltip.mb.type.alloy_blast_smelter": [
+    "Alloy Blast Smelter",
+    "Fundidor de Ligas por Explosão",
+    "合金冶炼炉"
+  ],
+  "gtna.tooltip.mb.coil.heating_coil": [
+    "Heating Coil",
+    "Bobina de Aquecimento",
+    "加热线圈"
+  ],
+  "gtna.tooltip.mb.coil.heat": [
+    "Heat = %s temperature + %s per voltage tier above MV",
+    "Calor = temperatura da %s + %s por tier de tensão acima de MV",
+    "热量 = %s温度 + 每高于MV一个电压等级%s"
+  ],
+  "gtna.tooltip.mb.coil.discount": [
+    "%s EU usage per %s of heat above the recipe (multiplicative)",
+    "%s de uso de EU a cada %s de calor acima da receita (multiplicativo)",
+    "EU消耗%s（每高于配方%s热量，乘算）"
+  ],
+  "gtna.tooltip.mb.coil.perfect": [
+    "Every %s of heat above the recipe makes one overclock perfect (%s faster instead of %s, for %s the EU)",
+    "Cada %s de calor acima da receita torna um overclock perfeito (%s mais rápido em vez de %s, por %s o EU)",
+    "每高于配方%s热量，一次超频变为无损超频（加速%s而非%s，EU为%s）"
+  ],
+  "gtna.tooltip.mb.coil.too_cold": [
+    "Heat below the recipe temperature: the recipe does not start",
+    "Calor abaixo da temperatura da receita: a receita não começa",
+    "热量低于配方温度：配方不会启动"
+  ],
+  "gtna.tooltip.mb.voltage_gate": [
+    "Recipe voltage above the energy hatch tier: the recipe does not start",
+    "Tensão da receita acima do tier da escotilha de energia: a receita não começa",
+    "配方电压高于能源仓等级：配方不会启动"
+  ],
+  "gtna.tooltip.mb.parallel_hatch": [
+    "Parallels come from a Parallel Hatch (%s at most)",
+    "Os paralelos vêm de uma Escotilha de Paralelo (no máximo %s)",
+    "并行数来自并行仓（最多%s个）"
+  ],
+  "gtna.machine.mega_alloy_blast_smelter.tooltip.purpose": [
+    "Runs Alloy Blast Smelter recipes in a coiled shell",
+    "Roda receitas do Fundidor de Ligas por Explosão numa carcaça com bobinas",
+    "在带线圈的外壳中运行合金冶炼炉配方"
+  ],
+  "gtna.machine.mega_alloy_blast_smelter.tooltip.bonus": [
+    "%s EU usage and %s recipe time on every recipe",
+    "%s de uso de EU e %s de tempo em toda receita",
+    "所有配方EU消耗%s，耗时%s"
+  ],
+  "gtna.machine.mega_alloy_blast_smelter.tooltip.humor": [
+    "The Alloy Blast Smelter, but it went to the gym. Its coils now bill by the kelvin.",
+    "O Fundidor de Ligas, mas ele foi para a academia. As bobinas agora cobram por kelvin.",
+    "去过健身房的合金冶炼炉。它的线圈现在按开尔文计费。"
+  ]
+}

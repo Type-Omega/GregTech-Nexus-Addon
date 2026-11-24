@@ -440,29 +440,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Parallel set by the §eParallel Hatch§b",
                 "§c▸ Needs a §eMuffler Hatch§c",
         });
-        ENGLISH.put("eye_of_harmony", new String[] {
-                "Machine Type: §eCosmos Simulation",
-                "§7§oThe universe is big. You built a bigger one.",
-                "§b§m                                                        ",
-                "§7Creates a §6miniature universe§7 and extracts",
-                "§7its resources through regular item and",
-                "§7fluid ports.",
-                "§b§m                                                        ",
-                "§a▸ Circuit §e0-24§a: each step halves the time",
-                "§a▸ Startup EU comes from the wireless network",
-                "§a▸ Compression above recipe tier: §e-3%§a time per tier",
-                "§a▸ Acceleration: §e50%§a less time per field tier",
-                "§a▸ Stabilisation: §e+5§a percentage points of success per tier",
-                "§b▸ Startup EU = base x §e4^circuit§b",
-                "§b▸ Overworld: §e1,000,000§b buckets of H and He each",
-                "§b▸ Return EU does not scale with circuit overclocks",
-                "§b▸ Repeated failures under unchanged conditions build §epity§b",
-                "§c▸ Uses all buffered gas at startup",
-                "§c▸ No regular energy hatches",
-                "§c▸ Acceleration: §e-9.25§c percentage points of success/tier",
-                "§c▸ Stabilisation: §e-5%§c material yield per tier",
-                "§c▸ Excess buffered H/He lowers §esuccess chance and yield§c",
-        });
         ENGLISH.put("eye_of_wood", new String[] {
                 "Machine Type: §eOre Condenser",
                 "§7§oThe Eye of Harmony's rustic cousin from the countryside.",
@@ -970,18 +947,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Up to §e128§b storage sections",
                 "§c▸ Needs exactly §eone§c ME Storage Access,",
                 "§c▸ Big Storage Access or IO Port Hatch",
-        });
-        ENGLISH.put("mega_alloy_blast_smelter", new String[] {
-                "Machine Type: §eAlloy Blast Smelter",
-                "§7§oThe Alloy Blast Smelter, but it went to the gym.",
-                "§b§m                                                        ",
-                "§7Runs §6Alloy Blast Smelter§7 recipes in a coiled",
-                "§7shell with a Parallel Hatch.",
-                "§b§m                                                        ",
-                "§a▸ §e0.8x§a EU cost",
-                "§a▸ §e0.6x§a recipe duration",
-                "§b▸ Parallel set by the §eParallel Hatch§b",
-                "§c▸ Coils must meet the recipe temperature",
         });
         ENGLISH.put("mega_brewer", new String[] {
                 "Machine Type: §eBrewery, Fermenter",

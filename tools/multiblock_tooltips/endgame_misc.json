@@ -179,64 +179,6 @@
       ]
     }
   },
-  "eye_of_harmony": {
-    "type": "Cosmos Simulation",
-    "flavor": "The universe is big. You built a bigger one.",
-    "desc": [
-      "Creates a *miniature universe* and extracts",
-      "its resources through regular item and",
-      "fluid ports."
-    ],
-    "pro": [
-      "Circuit *0-24*: each step halves the time",
-      "Startup EU comes from the wireless network",
-      "Compression above recipe tier: *-3%* time per tier",
-      "Acceleration: *50%* less time per field tier",
-      "Stabilisation: *+5* percentage points of success per tier"
-    ],
-    "num": [
-      "Startup EU = base x *4^circuit*",
-      "Overworld: *1,000,000* buckets of H and He each",
-      "Return EU does not scale with circuit overclocks",
-      "Repeated failures under unchanged conditions build *pity*"
-    ],
-    "con": [
-      "Uses all buffered gas at startup",
-      "No regular energy hatches",
-      "Acceleration: *-9.25* percentage points of success/tier",
-      "Stabilisation: *-5%* material yield per tier",
-      "Excess buffered H/He lowers *success chance and yield*"
-    ],
-    "pt": {
-      "type": "Simulação do Cosmos",
-      "flavor": "O universo é grande. Você construiu um maior.",
-      "desc": [
-        "Cria um *universo em miniatura* e extrai seus",
-        "recursos pelas portas normais de itens e",
-        "fluidos."
-      ],
-      "pro": [
-        "Circuito *0-24*: cada passo corta o tempo pela metade",
-        "O EU de partida vem da rede wireless",
-        "Compressão acima do tier da receita: *-3%* tempo por tier",
-        "Aceleração: *50%* menos tempo por tier do campo",
-        "Estabilização: *+5* pontos percentuais de sucesso por tier"
-      ],
-      "num": [
-        "EU de partida = base x *4^circuito*",
-        "Overworld: *1.000.000* baldes de H e de He",
-        "O EU devolvido não aumenta com o overclock do circuito",
-        "Falhas seguidas nas mesmas condições acumulam *pity*"
-      ],
-      "con": [
-        "Consome todo o gás armazenado na partida",
-        "Sem hatches de energia normais",
-        "Aceleração: *-9,25* pontos percentuais de sucesso/tier",
-        "Estabilização: *-5%* rendimento de materiais por tier",
-        "H/He em excesso reduz *chance de sucesso e rendimento*"
-      ]
-    }
-  },
   "dimensionally_transcendent_plasma_forge": {
     "type": "Plasma Forge, DTPF",
     "flavor": "Transcending dimensional boundaries since 2015.",

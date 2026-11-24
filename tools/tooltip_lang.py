@@ -13,6 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "src/main/resources/assets/gtna"
 MANAGED = Path(__file__).resolve().parent / "tooltip_lang_keys.txt"
+# %s or a positional %2$s, so a language can reorder the arguments.
+PLACEHOLDER = re.compile(r"%(?:\d+\$)?s")
 
 
 def load():
@@ -23,7 +25,7 @@ def load():
                 raise SystemExit(f"{f.name}: {key} needs en, pt and zh")
             if key in texts:
                 raise SystemExit(f"{f.name}: {key} declared twice")
-            if any(v.count("%s") != value[0].count("%s") for v in value):
+            if any(len(PLACEHOLDER.findall(v)) != len(PLACEHOLDER.findall(value[0])) for v in value):
                 raise SystemExit(f"{f.name}: {key} has a different number of %s per language")
             texts[key] = value
     return texts

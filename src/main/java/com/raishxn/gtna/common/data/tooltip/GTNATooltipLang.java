@@ -17,7 +17,7 @@ import java.util.Map;
 public final class GTNATooltipLang {
 
     /** Files under tooltip_lang, without the extension, one per migrated machine family. */
-    public static final String[] FILES = { "large_steam", "steam_utility", "steam_reactors" };
+    public static final String[] FILES = { "large_steam", "steam_utility", "steam_reactors", "endgame", "coil" };
 
     private static Map<String, String[]> texts;
 

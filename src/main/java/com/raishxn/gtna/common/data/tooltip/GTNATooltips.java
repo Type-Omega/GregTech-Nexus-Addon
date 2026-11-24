@@ -56,6 +56,8 @@ public final class GTNATooltips {
         LargeSteamTooltips.register();
         SteamUtilityTooltips.register();
         SteamReactorTooltips.register();
+        EndgameTooltips.register();
+        CoilTooltips.register();
     }
 
     static void register(String path, Supplier<List<Component>> tooltip) {

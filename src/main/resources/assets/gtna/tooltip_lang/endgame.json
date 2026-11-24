@@ -1,0 +1,152 @@
+{
+  "gtna.tooltip.mb.type.spacetime_manipulator": [
+    "Spacetime Manipulator",
+    "Manipulador de Espaço-Tempo",
+    "时空操纵器"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.purpose": [
+    "Folds a pocket of spacetime that is bigger on the inside and mines a whole planet out of it",
+    "Dobra um bolso de espaço-tempo maior por dentro que por fora e minera um planeta inteiro dele",
+    "折叠出一个内部比外部更大的时空口袋，并从中开采整颗行星"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.fields": [
+    "Three field generators, %s tiers each:",
+    "Três geradores de campo, %s tiers cada:",
+    "三种场发生器，每种%s个等级："
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.compression_name": [
+    "Spacetime Compression",
+    "Compressão do Espaço-Tempo",
+    "时空压缩"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.compression": [
+    "%s: sets the highest recipe tier; %s time per tier above the recipe (multiplicative)",
+    "%s: define o tier máximo de receita; %s de tempo por tier acima da receita (multiplicativo)",
+    "%s：决定最高配方等级；每高于配方一级，耗时%s（乘算）"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.dilation_name": [
+    "Time Dilation",
+    "Dilatação do Tempo",
+    "时间膨胀"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.dilation": [
+    "%s: %s time per tier (multiplicative), %s success chance per tier (additive)",
+    "%s: %s de tempo por tier (multiplicativo), %s de chance de sucesso por tier (aditivo)",
+    "%s：每级耗时%s（乘算），每级成功率%s（加算）"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.stabilisation_name": [
+    "Stabilisation",
+    "Estabilização",
+    "稳定"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.stabilisation": [
+    "%s: %s success chance per tier (additive), %s yield per tier (additive)",
+    "%s: %s de chance de sucesso por tier (aditivo), %s de rendimento por tier (aditivo)",
+    "%s：每级成功率%s（加算），每级产量%s（加算）"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.stabilisation_eu": [
+    "Low stabilisation also cuts the output EU: %s at the lowest tier, %s per tier above it",
+    "Estabilização baixa também corta o EU de saída: %s no menor tier, %s por tier acima dele",
+    "低稳定等级还会削减输出EU：最低级时%s，每高一级%s"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.planet_block": [
+    "Planet Block",
+    "Bloco de Planeta",
+    "行星方块"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.planet": [
+    "Put a %s in the controller's planet slot to pick the program",
+    "Coloque um %s no espaço de planeta do controlador para escolher o programa",
+    "将%s放入控制器的行星槽以选择程序"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.chance": [
+    "Base success chance: %s on the Overworld, %s less per planet tier",
+    "Chance base de sucesso: %s no Overworld, %s a menos por tier de planeta",
+    "基础成功率：主世界为%s，每级行星降低%s"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.time": [
+    "Base time: %s, multiplied by %s per planet tier",
+    "Tempo base: %s, multiplicado por %s a cada tier de planeta",
+    "基础耗时：%s，每级行星乘以%s"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.gas": [
+    "Needs %s of Hydrogen and of Helium per planet tier plus one",
+    "Precisa de %s de Hidrogênio e de Hélio por tier de planeta mais um",
+    "每（行星等级+1）需要氢和氦各%s"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.success": [
+    "On success: everything the recipe viewer lists, fluids at %s yield before penalties",
+    "No sucesso: tudo o que o visualizador de receitas lista, fluidos com %s de rendimento antes das penalidades",
+    "成功时：产出配方查看器列出的全部物品，流体在惩罚前为%s产量"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.failure": [
+    "On failure: Spacetime = chance × %s × 2^(recipe tier + 1), plus the output EU",
+    "Na falha: Espaço-Tempo = chance × %s × 2^(tier da receita + 1), mais o EU de saída",
+    "失败时：时空 = 成功率 × %s × 2^(配方等级 + 1)，并照常输出EU"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.pity": [
+    "Repeated failures under the same conditions build pity until a success; it resets on success or on any change",
+    "Falhas seguidas nas mesmas condições acumulam pena até um sucesso; zera no sucesso ou em qualquer mudança",
+    "相同条件下连续失败会累积保底直到成功；成功或任何变化时重置"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.buffer": [
+    "While idle it pulls Hydrogen and Helium into its buffer every %s and uses all of it at the start",
+    "Parada, ela puxa Hidrogênio e Hélio para o buffer a cada %s e usa tudo no início",
+    "空闲时每%s将氢和氦吸入内部缓存，启动时全部消耗"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.overflow": [
+    "Storing more gas than the minimum cuts the success chance and the yield hard",
+    "Guardar mais gás que o mínimo corta muito a chance de sucesso e o rendimento",
+    "储存超过最低需求的气体会大幅降低成功率和产量"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.overflow_ratio": [
+    "Overflow = stored gas / required gas − 1, for each gas",
+    "Excesso = gás guardado / gás exigido − 1, para cada gás",
+    "溢出比 = 储存量 / 需求量 − 1（每种气体分别计算）"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.overflow_penalty": [
+    "Penalty per gas = 1 − exp(−(%s × overflow)²)",
+    "Penalidade por gás = 1 − exp(−(%s × excesso)²)",
+    "每种气体惩罚 = 1 − exp(−(%s × 溢出比)²)"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.data_stick": [
+    "Data Stick",
+    "Pendrive de Dados",
+    "数据棒"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.wireless": [
+    "Takes the startup EU straight from the owner's wireless network; a %s rebinds the owner",
+    "Tira o EU de partida direto da rede wireless do dono; um %s troca o dono",
+    "启动EU直接从所有者的无线网络扣除；用%s可重新绑定所有者"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.circuit": [
+    "Programmed Circuit %s in an input bus: each step halves the time and costs %s the startup EU",
+    "Circuito Programado %s num barramento de entrada: cada passo corta o tempo pela metade e custa %s o EU de partida",
+    "输入总线中放入编程电路%s：每级耗时减半，启动EU变为%s"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.startup": [
+    "Startup EU = planet plasma cost + %s EU per tick of base time",
+    "EU de partida = custo de plasma do planeta + %s EU por tick de tempo base",
+    "启动EU = 行星等离子消耗 + 每tick基础耗时%s EU"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.return": [
+    "Output EU = startup EU × (%s + planet tier / %s); the circuit does not change it",
+    "EU de saída = EU de partida × (%s + tier do planeta / %s); o circuito não o altera",
+    "输出EU = 启动EU × (%s + 行星等级 / %s)；不受电路影响"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.no_hatch": [
+    "Accepts no energy hatch: every EU goes through the wireless network",
+    "Não aceita escotilha de energia: todo EU passa pela rede wireless",
+    "不接受能源仓：所有EU都经由无线网络"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.no_parallel": [
+    "One universe at a time: this port has no Astral Array parallels",
+    "Um universo por vez: este port não tem paralelos de Astral Array",
+    "一次一个宇宙：此移植没有星阵并行"
+  ],
+  "gtna.machine.eye_of_harmony.tooltip.humor": [
+    "Certified Time Lord compliant. Legal is still reading the warranty on the universe.",
+    "Certificado conforme pelos Senhores do Tempo. O jurídico ainda está lendo a garantia do universo.",
+    "已通过时间领主合规认证。法务部还在读这个宇宙的保修条款。"
+  ]
+}

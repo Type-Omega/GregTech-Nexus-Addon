@@ -181,42 +181,6 @@
       ]
     }
   },
-  "mega_alloy_blast_smelter": {
-    "type": "Alloy Blast Smelter",
-    "flavor": "The Alloy Blast Smelter, but it went to the gym.",
-    "desc": [
-      "Runs *Alloy Blast Smelter* recipes in a coiled",
-      "shell with a Parallel Hatch."
-    ],
-    "pro": [
-      "*0.8x* EU cost",
-      "*0.6x* recipe duration"
-    ],
-    "num": [
-      "Parallel set by the *Parallel Hatch*"
-    ],
-    "con": [
-      "Coils must meet the recipe temperature"
-    ],
-    "pt": {
-      "type": "Fundidora de Ligas a Alto-Forno",
-      "flavor": "A Alloy Blast Smelter, só que foi para a academia.",
-      "desc": [
-        "Roda receitas da *Alloy Blast Smelter* numa",
-        "carcaça com bobinas e um Parallel Hatch."
-      ],
-      "pro": [
-        "Custo de EU *0,8x*",
-        "Duração da receita *0,6x*"
-      ],
-      "num": [
-        "Paralelos definidos pelo *Parallel Hatch*"
-      ],
-      "con": [
-        "As bobinas precisam da temperatura da receita"
-      ]
-    }
-  },
   "fishing_ground": {
     "type": "Fishing Ground",
     "flavor": "Like eating fish? The whole office does now.",

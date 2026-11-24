@@ -725,22 +725,6 @@
    }
   ]
  },
- "mega_alloy_blast_smelter": {
-  "0.8": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/electric/MegaAlloyBlastSmelterMachine.java",
-    "pattern": "\\.eutMultiplier\\(0\\.8\\)",
-    "expr": "0.8 EU"
-   }
-  ],
-  "0.6": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/electric/MegaAlloyBlastSmelterMachine.java",
-    "pattern": "\\.durationMultiplier\\(0\\.6\\)",
-    "expr": "0.6 duration"
-   }
-  ]
- },
  "fishing_ground": {
   "1": [
    {
@@ -1212,64 +1196,6 @@
     "file": "src/main/java/com/raishxn/gtna/api/machine/feature/godforge/GodforgeMath.java",
     "pattern": "max \\+= 4;\\s*if \\(data\\.isUpgradeActive\\(END\\)\\) max \\+= 4;",
     "expr": "8 + 4 + 4"
-   }
-  ]
- },
- "eye_of_harmony": {
-  "0": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "Math\\.min\\(24, circuitSetting\\)",
-    "expr": "circuit 0-24"
-   }
-  ],
-  "24": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "Math\\.min\\(24, circuitSetting\\)",
-    "expr": "circuit 0-24"
-   }
-  ],
-  "4": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "shiftLeft\\(2 \\* circuit\\)",
-    "expr": "x4 per circuit level"
-   }
-  ],
-  "1000000": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "1_000_000_000L, blockRocketTier \\+ 1L",
-    "expr": "10^9 mB x (tier+1); Overworld = 1,000,000 buckets"
-   }
-  ],
-  "3": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "double base = 0\\.97;",
-    "expr": "compression time multiplier 0.97 per excess tier"
-   }
-  ],
-  "50": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "Math\\.pow\\(2, -fields\\.acceleration\\)",
-    "expr": "time halved per acceleration tier"
-   }
-  ],
-  "5": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "fields\\.stabilisation \\* 0\\.05",
-    "expr": "stabilisation adds 5 percentage points of chance and removes 5% yield per tier"
-   }
-  ],
-  "9.25": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/api/machine/feature/eyeofharmony/EyeOfHarmonyMath.java",
-    "pattern": "fields\\.acceleration \\* 0\\.0925",
-    "expr": "acceleration removes 9.25 percentage points of chance per tier"
    }
   ]
  },

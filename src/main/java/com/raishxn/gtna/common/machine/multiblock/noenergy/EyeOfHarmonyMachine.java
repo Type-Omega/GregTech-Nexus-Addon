@@ -63,6 +63,8 @@ import java.util.UUID;
 public class EyeOfHarmonyMachine extends WorkableMultiblockMachine implements IDisplayUIMachine, IFancyUIMachine,
                                  com.gregtechceu.gtceu.api.machine.feature.IMachineLife {
 
+    /** Ticks between two pulls of Hydrogen and Helium from the input hatches while idle. */
+    public static final int GAS_POLL_TICKS = 20;
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             EyeOfHarmonyMachine.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
     @DescSynced
@@ -246,7 +248,7 @@ public class EyeOfHarmonyMachine extends WorkableMultiblockMachine implements ID
     }
 
     public void tickPlanetary() {
-        tickPlanetary(getOffsetTimer() % 20 == 0);
+        tickPlanetary(getOffsetTimer() % GAS_POLL_TICKS == 0);
     }
 
     /** Controlled input-poll boundary also used by deterministic GameTests. */
@@ -418,11 +420,11 @@ public class EyeOfHarmonyMachine extends WorkableMultiblockMachine implements ID
             // The virtual GTCEu circuit slot is the modern counterpart of an input-bus circuit.
             var virtual = bus.getCircuitInventory().getStackInSlot(0);
             if (IntCircuitBehaviour.isIntegratedCircuit(virtual))
-                return Math.min(24, IntCircuitBehaviour.getCircuitConfiguration(virtual));
+                return Math.min(EyeOfHarmonyMath.MAX_CIRCUIT, IntCircuitBehaviour.getCircuitConfiguration(virtual));
             for (int slot = 0; slot < bus.getInventory().getSlots(); slot++) {
                 var stack = bus.getInventory().getStackInSlot(slot);
                 if (IntCircuitBehaviour.isIntegratedCircuit(stack))
-                    return Math.min(24, IntCircuitBehaviour.getCircuitConfiguration(stack));
+                    return Math.min(EyeOfHarmonyMath.MAX_CIRCUIT, IntCircuitBehaviour.getCircuitConfiguration(stack));
             }
         }
         return 0;
