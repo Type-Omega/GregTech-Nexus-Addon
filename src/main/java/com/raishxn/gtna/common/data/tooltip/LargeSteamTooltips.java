@@ -106,7 +106,7 @@ final class LargeSteamTooltips {
         return Math.round(fraction * 100) + "%";
     }
 
-    private static String times(double factor) {
+    static String times(double factor) {
         return (factor == Math.rint(factor) ? String.valueOf((long) factor) :
                 String.format(Locale.ROOT, "%.2f", factor)) + "x";
     }

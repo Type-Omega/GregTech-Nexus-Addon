@@ -1,3 +1,16 @@
+gtna.machine.compact_hyper_pressure_reactor.tooltip.humor
+gtna.machine.compact_hyper_pressure_reactor.tooltip.parallel
+gtna.machine.compact_hyper_pressure_reactor.tooltip.purpose
+gtna.machine.hyper_pressure_reactor.tooltip.energy
+gtna.machine.hyper_pressure_reactor.tooltip.humor
+gtna.machine.hyper_pressure_reactor.tooltip.parallel
+gtna.machine.hyper_pressure_reactor.tooltip.purpose
+gtna.machine.infernal_coke_oven.tooltip.cooling
+gtna.machine.infernal_coke_oven.tooltip.humor
+gtna.machine.infernal_coke_oven.tooltip.parallel
+gtna.machine.infernal_coke_oven.tooltip.purpose
+gtna.machine.infernal_coke_oven.tooltip.speed
+gtna.machine.infernal_coke_oven.tooltip.steam
 gtna.machine.large_steam_alloy_smelter.tooltip.humor
 gtna.machine.large_steam_alloy_smelter.tooltip.purpose
 gtna.machine.large_steam_bath.tooltip.humor
@@ -76,6 +89,7 @@ gtna.tooltip.mb.type.bender
 gtna.tooltip.mb.type.centrifuge
 gtna.tooltip.mb.type.chemical_bath
 gtna.tooltip.mb.type.circuit_assembler
+gtna.tooltip.mb.type.coke_oven
 gtna.tooltip.mb.type.compressor
 gtna.tooltip.mb.type.cracker
 gtna.tooltip.mb.type.cutter
@@ -84,6 +98,7 @@ gtna.tooltip.mb.type.extruder
 gtna.tooltip.mb.type.forge_hammer
 gtna.tooltip.mb.type.forming_press
 gtna.tooltip.mb.type.furnace
+gtna.tooltip.mb.type.high_pressure_reactor
 gtna.tooltip.mb.type.hydraulic_manufacturing
 gtna.tooltip.mb.type.item_storage
 gtna.tooltip.mb.type.lathe

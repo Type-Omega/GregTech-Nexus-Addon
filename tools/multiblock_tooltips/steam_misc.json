@@ -67,44 +67,6 @@
       ]
     }
   },
-  "infernal_coke_oven": {
-    "type": "Infernal Coke",
-    "flavor": "Hell's kitchen, but for coal.",
-    "desc": [
-      "A coke oven that *gets faster the longer* it",
-      "runs, and grows stronger every 10 minutes."
-    ],
-    "pro": [
-      "Speed ramps *+1%* every 5 s, up to *10x*",
-      "Every *10 min*: *+16* parallel"
-    ],
-    "num": [
-      "Parallel: starts at *8*, up to *256*"
-    ],
-    "con": [
-      "Steam: *6,400* L/s base, *+1,600* L/s per stage",
-      "Speed bonus decays while idle"
-    ],
-    "pt": {
-      "type": "Coque Infernal",
-      "flavor": "A cozinha do inferno, mas para carvão.",
-      "desc": [
-        "Um forno de coque que *acelera quanto mais tempo*",
-        "trabalha, e fica mais forte a cada 10 minutos."
-      ],
-      "pro": [
-        "Velocidade sobe *+1%* a cada 5 s, até *10x*",
-        "A cada *10 min*: *+16* paralelos"
-      ],
-      "num": [
-        "Paralelos: começa em *8*, até *256*"
-      ],
-      "con": [
-        "Vapor: *6.400* L/s base, *+1.600* L/s por estágio",
-        "O bônus de velocidade cai quando parada"
-      ]
-    }
-  },
   "primitive_distillation_tower": {
     "type": "Distillation Tower",
     "flavor": "Moonshine technology, scaled up for oil.",
@@ -291,72 +253,6 @@
       "con": [
         "Estrutura mais alta = ciclo mais lento"
       ]
-    }
-  },
-  "hyper_pressure_reactor": {
-    "type": "High Pressure Reactor",
-    "flavor": "Pressure makes diamonds. It also makes this.",
-    "desc": [
-      "A pressure-based fluid reaction chamber",
-      "that runs on *pure logic*."
-    ],
-    "pro": [
-      "Needs no Energy or Steam"
-    ],
-    "num": [
-      "Parallel: *1*"
-    ],
-    "con": [
-      "The Compact version has *512* parallel"
-    ],
-    "pt": {
-      "type": "Reator de Alta Pressão",
-      "flavor": "Pressão faz diamantes. Também faz isto.",
-      "desc": [
-        "Uma câmara de reação de fluidos por pressão",
-        "que funciona com *pura lógica*."
-      ],
-      "pro": [
-        "Não precisa de Energia nem de Vapor"
-      ],
-      "num": [
-        "Paralelos: *1*"
-      ],
-      "con": [
-        "A versão Compacta tem *512* paralelos"
-      ]
-    }
-  },
-  "compact_hyper_pressure_reactor": {
-    "type": "High Pressure Reactor",
-    "flavor": "All the pressure, a fraction of the footprint.",
-    "desc": [
-      "An extreme-density fluid processor that",
-      "makes *Dense Supercritical Steam* from",
-      "basic resources."
-    ],
-    "pro": [
-      "Needs no Energy or Steam"
-    ],
-    "num": [
-      "Parallel: up to *512*"
-    ],
-    "con": [],
-    "pt": {
-      "type": "Reator de Alta Pressão",
-      "flavor": "Toda a pressão, numa fração do espaço.",
-      "desc": [
-        "Um processador de fluidos de densidade extrema",
-        "que faz *Vapor Supercrítico Denso* a partir",
-        "de recursos básicos."
-      ],
-      "pro": [
-        "Não precisa de Energia nem de Vapor"
-      ],
-      "num": [
-        "Paralelos: até *512*"
-      ],
-      "con": []
     }
   },
   "void_miner_steam_gate_aged": {

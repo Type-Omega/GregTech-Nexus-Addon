@@ -62,7 +62,7 @@ public final class MigratedTooltipGameTests {
             }
             checked++;
         }
-        h.assertTrue(checked >= 28, "expected the 28 steam multiblocks, checked " + checked);
+        h.assertTrue(checked >= 31, "expected the 31 steam multiblocks, checked " + checked);
         h.succeed();
     }
 
@@ -90,6 +90,16 @@ public final class MigratedTooltipGameTests {
             h.assertTrue(journey.stream().anyMatch(s -> s.contains("Journey")), "the variant label is shown");
         } finally {
             GTNASteamBalance.setProvider(null);
+        }
+        h.succeed();
+    }
+
+    /** The Infernal Coke Oven reads its ramp from the machine: +1% every 5 s up to 10x, 8 to 256 parallels. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void infernalCokeOvenShowsItsRamp(GameTestHelper h) {
+        List<String> plain = literals(GTNATooltips.build("infernal_coke_oven"));
+        for (String expected : new String[] { "5 s", "1%", "10x", "8", "16", "10 min", "256", "320 mB", "80 mB" }) {
+            h.assertTrue(plain.contains(expected), "coke oven tooltip lacks " + expected + ": " + plain);
         }
         h.succeed();
     }

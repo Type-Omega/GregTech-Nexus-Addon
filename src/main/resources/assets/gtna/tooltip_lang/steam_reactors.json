@@ -1,0 +1,69 @@
+{
+  "gtna.tooltip.mb.type.coke_oven": ["Coke Oven", "Forno de Coque", "焦炉"],
+  "gtna.tooltip.mb.type.high_pressure_reactor": ["High Pressure Reactor", "Reator de Alta Pressão", "高压反应堆"],
+  "gtna.machine.infernal_coke_oven.tooltip.purpose": [
+    "Cokes fuel in bulk and heats up the longer it runs",
+    "Faz coque em massa e esquenta quanto mais tempo trabalha",
+    "大批量炼焦，连续运行越久温度越高"
+  ],
+  "gtna.machine.infernal_coke_oven.tooltip.speed": [
+    "Every %s of continuous work: %s faster, up to %s",
+    "A cada %s de trabalho contínuo: %s mais rápido, até %s",
+    "每连续运行%s：速度提升%s，最高%s"
+  ],
+  "gtna.machine.infernal_coke_oven.tooltip.parallel": [
+    "Parallel starts at %s and gains %s every %s of work, up to %s",
+    "Os paralelos começam em %s e ganham %s a cada %s de trabalho, até %s",
+    "并行起始为%s，每工作%s增加%s，最高%s"
+  ],
+  "gtna.machine.infernal_coke_oven.tooltip.steam": [
+    "Burns %s of steam per tick, plus %s per stage",
+    "Gasta %s de vapor por tick, mais %s por estágio",
+    "每刻消耗%s蒸汽，每阶段再加%s"
+  ],
+  "gtna.machine.infernal_coke_oven.tooltip.cooling": [
+    "While idle it cools down and loses its bonus little by little",
+    "Parada, ela esfria e perde o bônus aos poucos",
+    "停机时会逐渐冷却并失去加成"
+  ],
+  "gtna.machine.infernal_coke_oven.tooltip.humor": [
+    "Works better than a clay oven. HR asks that you stop calling it infernal.",
+    "Funciona melhor que um forno de barro. O RH pede que parem de chamá-lo de infernal.",
+    "比黏土炉好用。人事部请大家别再叫它地狱炉了。"
+  ],
+  "gtna.machine.hyper_pressure_reactor.tooltip.purpose": [
+    "Combines steam with hot fluids to reach higher temperatures",
+    "Combina vapor com fluidos quentes para chegar a temperaturas maiores",
+    "将蒸汽与高温流体结合，达到更高温度"
+  ],
+  "gtna.machine.hyper_pressure_reactor.tooltip.parallel": [
+    "One recipe at a time; the Compact version runs %s",
+    "Uma receita por vez; a versão Compacta roda %s",
+    "一次一个配方；紧凑型可同时运行%s个"
+  ],
+  "gtna.machine.hyper_pressure_reactor.tooltip.energy": [
+    "Needs neither EU nor a steam hatch: the steam is in the recipe",
+    "Não precisa de EU nem de escotilha de vapor: o vapor vem na receita",
+    "无需EU也无需蒸汽仓：蒸汽就在配方里"
+  ],
+  "gtna.machine.hyper_pressure_reactor.tooltip.humor": [
+    "Fusion? With steam? Legal has asked us to stop using that word.",
+    "Fusão? A vapor? O jurídico pediu para pararmos de usar essa palavra.",
+    "聚变？用蒸汽？法务要求我们别再用这个词。"
+  ],
+  "gtna.machine.compact_hyper_pressure_reactor.tooltip.purpose": [
+    "Breel and steam amalgamated into one block of pure pressure",
+    "Breel e vapor amalgamados em um bloco de pressão pura",
+    "把布瑞尔与蒸汽熔成一整块纯粹的压力"
+  ],
+  "gtna.machine.compact_hyper_pressure_reactor.tooltip.parallel": [
+    "Runs up to %s recipes at once",
+    "Roda até %s receitas de uma vez",
+    "最多同时运行%s个配方"
+  ],
+  "gtna.machine.compact_hyper_pressure_reactor.tooltip.humor": [
+    "For all your pressure needs, including the quarterly review.",
+    "Para todas as suas necessidades de pressão, inclusive a avaliação trimestral.",
+    "满足您的一切压力需求，包括季度考核。"
+  ]
+}

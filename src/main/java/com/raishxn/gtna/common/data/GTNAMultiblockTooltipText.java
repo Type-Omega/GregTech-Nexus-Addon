@@ -203,17 +203,6 @@ public final class GTNAMultiblockTooltipText {
                 "§c▸ Liquid Ice: §e2^(tier-2) x 10§c mB/s",
                 "§c▸ Consumes Liquid Ice when each recipe starts",
         });
-        ENGLISH.put("compact_hyper_pressure_reactor", new String[] {
-                "Machine Type: §eHigh Pressure Reactor",
-                "§7§oAll the pressure, a fraction of the footprint.",
-                "§b§m                                                        ",
-                "§7An extreme-density fluid processor that",
-                "§7makes §6Dense Supercritical Steam§7 from",
-                "§7basic resources.",
-                "§b§m                                                        ",
-                "§a▸ Needs no Energy or Steam",
-                "§b▸ Parallel: up to §e512§b",
-        });
         ENGLISH.put("component_assembler", new String[] {
                 "Machine Type: §eComponent Assembly",
                 "§7§oYour first salary won't cover one of its parts.",
@@ -696,17 +685,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Accepts Laser Hatches",
                 "§b▸ Parallel set by the §eParallel Hatch§b",
         });
-        ENGLISH.put("hyper_pressure_reactor", new String[] {
-                "Machine Type: §eHigh Pressure Reactor",
-                "§7§oPressure makes diamonds. It also makes this.",
-                "§b§m                                                        ",
-                "§7A pressure-based fluid reaction chamber",
-                "§7that runs on §6pure logic§7.",
-                "§b§m                                                        ",
-                "§a▸ Needs no Energy or Steam",
-                "§b▸ Parallel: §e1§b",
-                "§c▸ The Compact version has §e512§c parallel",
-        });
         ENGLISH.put("hyper_reactor", new String[] {
                 "Machine Type: §eGenerator",
                 "§7§oBurns hyper fuel. Do not ask what is hyper about it.",
@@ -767,19 +745,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Circuit §e1§b passive, §e2§b hostile, §e3§b boss, §e4§b dragon",
                 "§b▸ Base tiers: §eLV§b / §eMV§b / §eZPM§b / §eUHV§b",
                 "§c▸ EU/t: §e1,000§c / §e2,560§c / §e32k§c / §e120k§c per circuit",
-        });
-        ENGLISH.put("infernal_coke_oven", new String[] {
-                "Machine Type: §eInfernal Coke",
-                "§7§oHell's kitchen, but for coal.",
-                "§b§m                                                        ",
-                "§7A coke oven that §6gets faster the longer§7 it",
-                "§7runs, and grows stronger every 10 minutes.",
-                "§b§m                                                        ",
-                "§a▸ Speed ramps §e+1%§a every 5 s, up to §e10x§a",
-                "§a▸ Every §e10 min§a: §e+16§a parallel",
-                "§b▸ Parallel: starts at §e8§b, up to §e256§b",
-                "§c▸ Steam: §e6,400§c L/s base, §e+1,600§c L/s per stage",
-                "§c▸ Speed bonus decays while idle",
         });
         ENGLISH.put("infinity_fluid_drilling_rig", new String[] {
                 "Machine Type: §eFluid Drilling",

@@ -35,6 +35,9 @@ import javax.annotation.Nonnull;
 public class HyperPressureReactor extends WorkableMultiblockMachine
                                   implements ITieredMachine, IDisplayUIMachine, IFancyUIMachine {
 
+    /** Recipes the Compact Hyper Pressure Reactor runs at once; the large one runs one. */
+    public static final int COMPACT_PARALLEL = 512;
+
     public HyperPressureReactor(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
     }
@@ -48,7 +51,7 @@ public class HyperPressureReactor extends WorkableMultiblockMachine
     public static ModifierFunction recipeModifier(MetaMachine machine, @Nonnull GTRecipe recipe) {
         if (machine instanceof HyperPressureReactor) {
             boolean isCompact = machine.getDefinition() == GTNAMachines.COMPACT_HYPER_PRESSURE_REACTOR;
-            int maxParallel = isCompact ? 512 : 1;
+            int maxParallel = isCompact ? COMPACT_PARALLEL : 1;
 
             int parallels = ParallelLogic.getParallelAmountWithoutEU(machine, recipe, maxParallel);
 

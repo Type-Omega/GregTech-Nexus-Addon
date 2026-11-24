@@ -24,64 +24,6 @@
    }
   ]
  },
- "infernal_coke_oven": {
-  "1": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "continuousWorkingTicks / 100\\.0\\) \\* 0\\.01",
-    "expr": "+1% per 100 ticks (5 s)"
-   }
-  ],
-  "5": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "continuousWorkingTicks / 100\\.0\\) \\* 0\\.01",
-    "expr": "100 ticks = 5 s"
-   }
-  ],
-  "10": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "Math\\.min\\(10\\.0, bonus\\)[\\s\\S]*|TICKS_PER_STAGE = 10 \\* 60 \\* 20",
-    "expr": "bonus cap 10x; stage every 10 min"
-   }
-  ],
-  "16": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "PARALLEL_INCREASE = 16",
-    "expr": "PARALLEL_INCREASE"
-   }
-  ],
-  "8": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "BASE_PARALLEL = 8",
-    "expr": "BASE_PARALLEL"
-   }
-  ],
-  "256": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "MAX_PARALLEL_CAP = 256",
-    "expr": "MAX_PARALLEL_CAP"
-   }
-  ],
-  "6400": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "BASE_STEAM_PER_TICK = 320",
-    "expr": "320/t x 20 = 6,400 L/s"
-   }
-  ],
-  "1600": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/InfernalCokeOven.java",
-    "pattern": "STEAM_INCREASE_PER_STAGE = 80",
-    "expr": "80/t x 20 = 1,600 L/s"
-   }
-  ]
- },
  "primitive_distillation_tower": {
   "75": [
    {
@@ -161,31 +103,6 @@
     "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/LeapForwardBlastFurnace.java",
     "pattern": "TICKS_PER_LAYER = 400",
     "expr": "400 ticks = 20 s per layer (base 400)"
-   }
-  ]
- },
- "hyper_pressure_reactor": {
-  "1": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/HyperPressureReactor.java",
-    "pattern": "isCompact \\? 512 : 1",
-    "expr": "parallel 1 (compact 512)"
-   }
-  ],
-  "512": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/HyperPressureReactor.java",
-    "pattern": "isCompact \\? 512 : 1",
-    "expr": "compact 512"
-   }
-  ]
- },
- "compact_hyper_pressure_reactor": {
-  "512": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/noenergy/HyperPressureReactor.java",
-    "pattern": "isCompact \\? 512 : 1",
-    "expr": "compact 512"
    }
   ]
  },

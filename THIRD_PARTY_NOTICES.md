@@ -551,6 +551,10 @@ humour line of our own. No sentence is copied unchanged.
   machines credit "SteamIsTheNumber", their author in GT: New Horizons. Changes: GTNA's parallels and casing rules,
   the steam cost, capacity and cycle read from GTNA's code, new wording and humour lines, Portuguese and Chinese
   written for GTNA.
+- **Infernal Coke Oven, Hyper Pressure Reactor, Compact Hyper Pressure Reactor**: from the
+  `gtnl.machine.steam_infernal_coke_oven`, `steam_fusion_reactor` and `high_pressure_steam_fusion_reactor` lines of
+  GTNL `52345d2` (LGPL-3.0). Changes: GTNA's ramp, parallel and steam numbers from the machine code (GTNL says
+  "up to 600%" and "256 recipes"; GTNA's are 10x and 512), new wording, humour, Portuguese and Chinese.
 
 ## Simplified Chinese translation (zh_cn)
 

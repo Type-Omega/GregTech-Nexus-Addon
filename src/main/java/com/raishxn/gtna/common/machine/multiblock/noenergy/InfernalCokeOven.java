@@ -50,14 +50,19 @@ public class InfernalCokeOven extends WorkableMultiblockMachine implements IDisp
     @DescSynced
     private long continuousWorkingTicks = 0;
 
-    // Constantes
-    private static final int TICKS_PER_STAGE = 10 * 60 * 20; // 10 min
-    private static final int BASE_PARALLEL = 8;
-    private static final int PARALLEL_INCREASE = 16;
-    private static final int MAX_PARALLEL_CAP = 256;
+    /** Ticks of continuous work per stage (10 min); each stage adds parallel and steam cost. */
+    public static final int TICKS_PER_STAGE = 10 * 60 * 20;
+    public static final int BASE_PARALLEL = 8;
+    public static final int PARALLEL_INCREASE = 16;
+    public static final int MAX_PARALLEL_CAP = 256;
 
-    private static final long BASE_STEAM_PER_TICK = 320;
-    private static final long STEAM_INCREASE_PER_STAGE = 80;
+    public static final long BASE_STEAM_PER_TICK = 320;
+    public static final long STEAM_INCREASE_PER_STAGE = 80;
+
+    /** Every SPEED_STEP_TICKS of continuous work the speed grows by SPEED_STEP, up to MAX_SPEED. */
+    public static final int SPEED_STEP_TICKS = 100;
+    public static final double SPEED_STEP = 0.01;
+    public static final double MAX_SPEED = 10.0;
 
     public InfernalCokeOven(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -107,8 +112,8 @@ public class InfernalCokeOven extends WorkableMultiblockMachine implements IDisp
     }
 
     public double getSpeedBonus() {
-        double bonus = 1.0 + ((double) continuousWorkingTicks / 100.0) * 0.01;
-        return Math.min(10.0, bonus);
+        double bonus = 1.0 + ((double) continuousWorkingTicks / SPEED_STEP_TICKS) * SPEED_STEP;
+        return Math.min(MAX_SPEED, bonus);
     }
 
     @Nullable
