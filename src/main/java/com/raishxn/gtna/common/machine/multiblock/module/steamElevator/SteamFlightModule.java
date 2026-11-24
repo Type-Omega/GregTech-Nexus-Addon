@@ -35,15 +35,23 @@ public class SteamFlightModule extends SteamElevatorModuleMachine {
         super(holder, tier);
     }
 
+    public static int rangeFor(int tier) {
+        return RANGE * Math.max(1, tier);
+    }
+
+    /** GTNL: mTier * V[5] * max(overclockCount, 1), steam per tick. */
+    public static long upkeepFor(int tier) {
+        return (long) tier * GTValues.V[5];
+    }
+
     @Override
     public int getEffectRange() {
-        return RANGE * Math.max(1, getModuleTier());
+        return rangeFor(getModuleTier());
     }
 
     @Override
     public long getSteamUpkeep() {
-        // GTNL: mTier * V[5] * max(overclockCount, 1).
-        return (long) getModuleTier() * GTValues.V[5];
+        return upkeepFor(getModuleTier());
     }
 
     @Override

@@ -36,7 +36,9 @@ import java.util.List;
  */
 public class SteamBeaconModule extends SteamElevatorModuleMachine {
 
-    private static final int EFFECT_DURATION = 300;
+    public static final int EFFECT_DURATION = 300;
+    /** The effects are reapplied every this many ticks. */
+    public static final int REFRESH_TICKS = 40;
 
     /** GTNL's 12 effects minus the three with no 1.20.1 equivalent. */
     private static final List<MobEffect> ALL_EFFECTS = List.of(
@@ -64,7 +66,11 @@ public class SteamBeaconModule extends SteamElevatorModuleMachine {
 
     @Override
     public int getEffectRange() {
-        return switch (getModuleTier()) {
+        return rangeFor(getModuleTier());
+    }
+
+    public static int rangeFor(int tier) {
+        return switch (tier) {
             case 1 -> 64;
             case 2 -> 128;
             case 3 -> 256;
@@ -72,9 +78,23 @@ public class SteamBeaconModule extends SteamElevatorModuleMachine {
         };
     }
 
+    /** GTNL: at most {@code tier + 2} of the configured effects are active. */
+    public static int maxEffectsFor(int tier) {
+        return Math.min(effectTypes(), tier + 2);
+    }
+
+    /** GTNL: machineEffectsCount * V[3] * max(1, maxEffectLevel * 2), steam per tick. */
+    public static long upkeepFor(int effects, int tier) {
+        return (long) effects * GTValues.V[3] * Math.max(1, tier * 2);
+    }
+
+    public static int effectTypes() {
+        return ALL_EFFECTS.size();
+    }
+
     /** GTNL: at most {@code mTier + 2} of the configured effects are active. */
     private int maxEffects() {
-        return Math.min(ALL_EFFECTS.size(), getModuleTier() + 2);
+        return maxEffectsFor(getModuleTier());
     }
 
     /** The default selection: the first {@link #maxEffects()} effects. */
@@ -112,8 +132,7 @@ public class SteamBeaconModule extends SteamElevatorModuleMachine {
 
     @Override
     public long getSteamUpkeep() {
-        // GTNL: machineEffectsCount * V[3] * max(1, maxEffectLevel * 2).
-        return (long) effectCount() * GTValues.V[3] * Math.max(1, getModuleTier() * 2);
+        return upkeepFor(effectCount(), getModuleTier());
     }
 
     private List<MobEffect> effects() {
@@ -131,7 +150,7 @@ public class SteamBeaconModule extends SteamElevatorModuleMachine {
     public void onElevatorTick(SteamElevator elevator) {
         if (!consumeSteam(getSteamUpkeep())) return;
         if (!(getLevel() instanceof ServerLevel level)) return;
-        if (++counter % 40 != 0) return;
+        if (++counter % REFRESH_TICKS != 0) return;
 
         double range = getEffectRange();
         if (range <= 0) return;

@@ -76,6 +76,10 @@ public class SteamElevator extends WorkableMultiblockMachine implements IDisplay
             { 0, 8, -5 }, { 0, 8, -3 }, { 0, 8, -1 },
     };
 
+    public static int moduleSlots() {
+        return MODULE_OFFSETS.length;
+    }
+
     private final List<SteamElevatorModuleMachine> modules = new ArrayList<>();
     private final List<NotifiableFluidTank> steamTanks = new ArrayList<>();
 

@@ -64,12 +64,31 @@ public class SteamOilDrillModule extends SteamElevatorModuleMachine {
         return GTValues.V[index] * 30L / 32L;
     }
 
+    /** Base cycle of the first tier (GTNL tier 2); higher tiers divide it. */
+    public static final int BASE_CYCLE_TICKS = 1200;
+    public static final int BASE_YIELD = 250;
+    /** Each roll gives the base yield times 1 to this. */
+    public static final int MAX_ROLL_MULTIPLIER = 4;
+
+    public static int cycleTicksFor(int tier) {
+        return Math.max(1, BASE_CYCLE_TICKS / (tier - 1));
+    }
+
+    public static int baseYieldFor(int tier) {
+        return BASE_YIELD * (1 << Math.max(0, tier - 2));
+    }
+
+    /** Yield rolls per cycle: one for tier I, three for tier III. */
+    public static int rollsFor(int tier) {
+        return tier - 1;
+    }
+
     private int cycleTicks() {
-        return Math.max(1, 1200 / (getModuleTier() - 1));
+        return cycleTicksFor(getModuleTier());
     }
 
     private int baseYield() {
-        return 250 * (1 << Math.max(0, getModuleTier() - 2));
+        return baseYieldFor(getModuleTier());
     }
 
     @Override
@@ -87,8 +106,8 @@ public class SteamOilDrillModule extends SteamElevatorModuleMachine {
         if (fluid == null) return;
 
         int amount = 0;
-        for (int i = 0; i < getModuleTier() - 1; i++) {
-            amount += baseYield() * (1 + level.random.nextInt(4));
+        for (int i = 0; i < rollsFor(getModuleTier()); i++) {
+            amount += baseYield() * (1 + level.random.nextInt(MAX_ROLL_MULTIPLIER));
         }
         FluidStack produced = new FluidStack(fluid, amount);
         if (!canInsertFluid(produced)) return;

@@ -59,7 +59,7 @@ public class SteamOreProcessorModule extends SteamElevatorModuleMachine {
 
     /** GTNL {@code RECIPE_EUT}. */
     public static final long STEAM_UPKEEP = 128;
-    private static final int MAX_MODE = 6;
+    public static final int MAX_MODE = 6;
     /** GTNL {@code getRecipeTickTime(mode)}: modes 0..6. */
     private static final int[] MODE_TICKS = { 600, 300, 200, 400, 340, 640, 20 };
 

@@ -34,8 +34,13 @@ public class SteamGreenhouseModule extends SteamElevatorModuleMachine {
     /** GTNL {@code getWaterUsage()}. */
     public static final int WATER_PER_OPERATION = 16_000;
     public static final int RANGE = 16;
+    /** GTNL getIndustrialFarmEUt(), steam per tick. */
+    public static final long STEAM_UPKEEP = 8192L;
+    /** Crops grown per cycle at most, and the height searched above and below the module. */
+    public static final int MAX_GROWN = 16;
+    public static final int VERTICAL_RANGE = 4;
     /** GTNL tooltip: "Fixed operation time of 60 seconds". */
-    private static final int CYCLE_TICKS = 1200;
+    public static final int CYCLE_TICKS = 1200;
 
     @Persisted
     @DescSynced
@@ -57,8 +62,7 @@ public class SteamGreenhouseModule extends SteamElevatorModuleMachine {
 
     @Override
     public long getSteamUpkeep() {
-        // GTNL getIndustrialFarmEUt().
-        return 8192L;
+        return STEAM_UPKEEP;
     }
 
     @Override
@@ -91,12 +95,13 @@ public class SteamGreenhouseModule extends SteamElevatorModuleMachine {
 
         BlockPos origin = getPos();
         int grown = 0;
-        for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-RANGE, -4, -RANGE), origin.offset(RANGE, 4, RANGE))) {
+        for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-RANGE, -VERTICAL_RANGE, -RANGE),
+                origin.offset(RANGE, VERTICAL_RANGE, RANGE))) {
             BlockState state = level.getBlockState(pos);
             if (!(state.getBlock() instanceof BonemealableBlock bonemealable)) continue;
             if (!bonemealable.isValidBonemealTarget(level, pos, state, false)) continue;
             bonemealable.performBonemeal(level, level.random, pos, state);
-            if (++grown >= 16) break;
+            if (++grown >= MAX_GROWN) break;
         }
     }
 

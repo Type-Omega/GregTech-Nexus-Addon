@@ -37,9 +37,13 @@ public class SteamWeatherModule extends SteamElevatorModuleMachine {
     /** The GTNL tooltip's "large" cost per weather change. */
     public static final long WEATHER_STEAM_COST = 1_000_000L;
 
+    public static int durationFor(int tier) {
+        return WEATHER_TIME * Math.max(1, tier);
+    }
+
     /** Ticks a single charge covers at this tier: tier I = 1 h, II = 2 h, III = 3 h. */
     private int weatherTime() {
-        return WEATHER_TIME * Math.max(1, getModuleTier());
+        return durationFor(getModuleTier());
     }
 
     /** The weather currently being forced, or {@link #MODE_OFF} when nothing is active. */

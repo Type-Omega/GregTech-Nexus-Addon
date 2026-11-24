@@ -1,6 +1,5 @@
 package com.raishxn.gtna.common.machine.multiblock.module.steamElevator;
 
-import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
 import com.lowdragmc.lowdraglib.gui.widget.LabelWidget;
@@ -43,9 +42,11 @@ public class SteamBeeBreedingModule extends SteamElevatorModuleMachine {
             SteamBeeBreedingModule.class, SteamElevatorModuleMachine.MANAGED_FIELD_HOLDER);
 
     /** GTNL {@code mMaxProgresstime}. */
-    private static final int CYCLE_TICKS = 12000;
+    public static final int CYCLE_TICKS = 12000;
     /** GTNL consumes 2 x 64 royal jelly; the Productive Bees equivalent is honey treats. */
-    private static final int FEED_CONSUMED = 128;
+    public static final int FEED_CONSUMED = 128;
+    /** GTNL: V[LuV] steam per tick; a literal so the tooltip reads it without loading Productive Bees. */
+    public static final long STEAM_UPKEEP = 131_072L;
 
     @Persisted
     @DescSynced
@@ -62,8 +63,7 @@ public class SteamBeeBreedingModule extends SteamElevatorModuleMachine {
 
     @Override
     public long getSteamUpkeep() {
-        // GTNL: GTValues.V[6].
-        return GTValues.V[6];
+        return STEAM_UPKEEP;
     }
 
     @Override

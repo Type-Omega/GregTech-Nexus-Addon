@@ -29,19 +29,27 @@ public class SteamMonsterRepellentModule extends SteamElevatorModuleMachine {
 
     private record Field(ServerLevel level, BlockPos pos, int range, long tick) {}
 
+    /** GTNL SteamMonsterRepellentModule#mRange. */
+    public static int rangeFor(int tier) {
+        return 1 << (5 + tier);
+    }
+
+    public static long upkeepFor(int tier) {
+        return tier * GTValues.V[3];
+    }
+
     public SteamMonsterRepellentModule(IMachineBlockEntity holder, int tier) {
         super(holder, tier);
     }
 
     @Override
     public int getEffectRange() {
-        // GTNL SteamMonsterRepellentModule#mRange.
-        return 1 << (5 + getModuleTier());
+        return rangeFor(getModuleTier());
     }
 
     @Override
     public long getSteamUpkeep() {
-        return getModuleTier() * GTValues.V[3];
+        return upkeepFor(getModuleTier());
     }
 
     @Override

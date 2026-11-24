@@ -1,0 +1,452 @@
+{
+  "gtna.tooltip.mb.type.steam_elevator": [
+    "Steam Elevator",
+    "Elevador a Vapor",
+    "蒸汽楼梯"
+  ],
+  "gtna.tooltip.mb.type.elevator_module": [
+    "Steam Elevator Module",
+    "Módulo do Elevador a Vapor",
+    "蒸汽楼梯模块"
+  ],
+  "gtna.tooltip.mb.elevator.attached": [
+    "Works only while formed in a slot of a formed Steam Elevator",
+    "Só funciona formado num slot de um Elevador a Vapor formado",
+    "仅在已成型的蒸汽楼梯槽位中成型时工作"
+  ],
+  "gtna.tooltip.mb.elevator.upkeep": [
+    "Steam upkeep: %s per tick, from its own steam hatches first, then from the elevator's",
+    "Manutenção de vapor: %s por tick, primeiro das próprias escotilhas de vapor, depois das do elevador",
+    "蒸汽维持：每tick %s，先取自身蒸汽仓，不足部分取自楼梯"
+  ],
+  "gtna.tooltip.mb.elevator.no_steam": [
+    "Without the steam for the whole upkeep it stops; it never pays part of it",
+    "Sem vapor para a manutenção inteira ele para; nunca paga só uma parte",
+    "蒸汽不足以支付全部维持时停止，绝不只付一部分"
+  ],
+  "gtna.tooltip.mb.elevator.full": [
+    "Outputs that do not fit the output bus or hatch stop the cycle",
+    "Saídas que não cabem no barramento ou escotilha de saída param o ciclo",
+    "产物无法放入输出总线或输出仓时，本轮停止"
+  ],
+  "gtna.tooltip.mb.elevator.flight.purpose": [
+    "Grants creative flight to players within its range",
+    "Concede voo criativo aos jogadores dentro do alcance",
+    "为范围内的玩家提供创造模式飞行"
+  ],
+  "gtna.tooltip.mb.elevator.flight.range": [
+    "Range: %s (%s per module tier)",
+    "Alcance: %s (%s por tier do módulo)",
+    "范围：%s（每级模块%s）"
+  ],
+  "gtna.tooltip.mb.elevator.flight.revoke": [
+    "Leaving the range or stopping the module takes the flight away",
+    "Sair do alcance ou parar o módulo retira o voo",
+    "离开范围或模块停止时收回飞行"
+  ],
+  "gtna.tooltip.mb.elevator.flight.safe": [
+    "Players who already fly from another source are never touched",
+    "Jogadores que já voam por outra fonte nunca são afetados",
+    "已通过其他来源飞行的玩家不受影响"
+  ],
+  "gtna.tooltip.mb.elevator.flight.not_ported": [
+    "GTNL's Blood Magic flight potion and overclock count are replaced by vanilla flight",
+    "A poção de voo do Blood Magic e a contagem de overclock do GTNL viraram voo vanilla",
+    "GTNL的血魔法飞行药水与超频次数改为原版飞行"
+  ],
+  "gtna.tooltip.mb.elevator.weather.purpose": [
+    "Forces the weather of its dimension",
+    "Força o clima da dimensão",
+    "强制改变所在维度的天气"
+  ],
+  "gtna.tooltip.mb.elevator.weather.circuit": [
+    "Circuit in the input bus: %s clear, %s rain, %s thunder",
+    "Circuito no barramento de entrada: %s limpo, %s chuva, %s tempestade",
+    "输入总线中的电路：%s晴天，%s雨天，%s雷暴"
+  ],
+  "gtna.tooltip.mb.elevator.weather.cost": [
+    "Each change costs %s of steam, paid at once",
+    "Cada troca custa %s de vapor, pagos de uma vez",
+    "每次更改一次性消耗%s蒸汽"
+  ],
+  "gtna.tooltip.mb.elevator.weather.duration": [
+    "The weather lasts %s",
+    "O clima dura %s",
+    "天气持续%s"
+  ],
+  "gtna.tooltip.mb.elevator.weather.keep": [
+    "While the circuit asks for the same weather, nothing more is charged until it runs out",
+    "Enquanto o circuito pede o mesmo clima, nada mais é cobrado até ele acabar",
+    "电路保持请求同一天气时，在其结束前不再收费"
+  ],
+  "gtna.tooltip.mb.elevator.weather.not_ported": [
+    "GTNL's cloud and crystal costs are replaced by steam",
+    "Os custos de nuvem e cristal do GTNL viraram vapor",
+    "GTNL的云朵与水晶消耗改为蒸汽"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.purpose": [
+    "Pumps the bedrock fluid vein of its chunk",
+    "Bombeia o veio de fluido de bedrock do chunk",
+    "抽取所在区块的基岩流体矿脉"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.cycle": [
+    "Cycle: %s",
+    "Ciclo: %s",
+    "周期：%s"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.yield": [
+    "Per cycle: %s rolls of %s × 1 to %s",
+    "Por ciclo: %s sorteios de %s × 1 a %s",
+    "每周期：%s次抽取，每次%s×1至%s"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.output": [
+    "The fluid goes to its fluid output hatch",
+    "O fluido vai para a escotilha de saída de fluido",
+    "流体输出至其流体输出仓"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.no_vein": [
+    "A chunk without a fluid vein yields nothing",
+    "Um chunk sem veio de fluido não rende nada",
+    "无流体矿脉的区块没有产出"
+  ],
+  "gtna.tooltip.mb.elevator.oil_drill.not_ported": [
+    "GTNL's underground-oil table is replaced by GTCEu's bedrock fluid veins",
+    "A tabela de petróleo subterrâneo do GTNL virou os veios de fluido de bedrock do GTCEu",
+    "GTNL的地下石油表改为GTCEu的基岩流体矿脉"
+  ],
+  "gtna.tooltip.mb.elevator.entity_crusher.purpose": [
+    "Turns a mob spawner into that mob's drops",
+    "Transforma um spawner no drop daquele mob",
+    "将刷怪笼转化为对应生物的掉落物"
+  ],
+  "gtna.tooltip.mb.elevator.entity_crusher.catalyst": [
+    "A vanilla spawner holding a mob, in the input bus, is a catalyst and is never consumed",
+    "Um spawner vanilla com um mob, no barramento de entrada, é catalisador e nunca é consumido",
+    "输入总线中装有生物的原版刷怪笼作为催化剂，不会消耗"
+  ],
+  "gtna.tooltip.mb.elevator.entity_crusher.cycle": [
+    "Cycle: %s; each cycle rolls the mob's loot table once",
+    "Ciclo: %s; cada ciclo sorteia a loot table do mob uma vez",
+    "周期：%s，每周期抽取一次该生物的战利品表"
+  ],
+  "gtna.tooltip.mb.elevator.entity_crusher.double": [
+    "Each drop doubles with a %s chance, plus %s per identical spawner in the bus, up to %s",
+    "Cada drop dobra com %s de chance, mais %s por spawner idêntico no barramento, até %s",
+    "每个掉落物有%s几率翻倍，总线中每个相同刷怪笼+%s，最高%s"
+  ],
+  "gtna.tooltip.mb.elevator.entity_crusher.not_ported": [
+    "EnderIO powered spawners are replaced by vanilla spawner items",
+    "Os powered spawners do EnderIO viraram itens de spawner vanilla",
+    "EnderIO动力刷怪笼改为原版刷怪笼物品"
+  ],
+  "gtna.tooltip.mb.elevator.monster_repellent.purpose": [
+    "Stops hostile mobs from spawning around it",
+    "Impede que mobs hostis nasçam ao redor",
+    "阻止周围生成敌对生物"
+  ],
+  "gtna.tooltip.mb.elevator.monster_repellent.range": [
+    "Radius: %s, 2^(5 + module tier)",
+    "Raio: %s, 2^(5 + tier do módulo)",
+    "半径：%s，即2^(5+模块等级)"
+  ],
+  "gtna.tooltip.mb.elevator.monster_repellent.running": [
+    "Only while it runs; mobs already there stay",
+    "Só enquanto roda; mobs que já estão lá ficam",
+    "仅在运行时有效，已存在的生物不会消失"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.purpose": [
+    "Gives beacon effects to the players within its range",
+    "Dá efeitos de sinalizador aos jogadores dentro do alcance",
+    "为范围内的玩家提供信标效果"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.range": [
+    "Range: %s",
+    "Alcance: %s",
+    "范围：%s"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.level": [
+    "Effect level: %s",
+    "Nível dos efeitos: %s",
+    "效果等级：%s"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.effects": [
+    "Up to %s of the %s effects at once, picked in the module screen",
+    "Até %s dos %s efeitos ao mesmo tempo, escolhidos na tela do módulo",
+    "最多同时启用%s种效果（共%s种），在模块界面中选择"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.list": [
+    "Speed, Strength, Jump Boost, Resistance, Regeneration, Night Vision, Haste, Fire Resistance, Water Breathing, Slow Falling",
+    "Velocidade, Força, Super Pulo, Resistência, Regeneração, Visão Noturna, Pressa, Resistência ao Fogo, Respiração Aquática, Queda Lenta",
+    "速度、力量、跳跃提升、抗性提升、生命恢复、夜视、急迫、抗火、水下呼吸、缓降"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.refresh": [
+    "Every %s it renews %s of each effect",
+    "A cada %s renova %s de cada efeito",
+    "每%s刷新一次，每种效果持续%s"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.upkeep": [
+    "Steam upkeep: %s per tick for each active effect, from its own steam hatches first, then from the elevator's",
+    "Manutenção de vapor: %s por tick por efeito ativo, primeiro das próprias escotilhas, depois das do elevador",
+    "蒸汽维持：每个启用的效果每tick %s，先取自身蒸汽仓，再取楼梯"
+  ],
+  "gtna.tooltip.mb.elevator.beacon.not_ported": [
+    "Warp Ward and Vis Regen (Thaumcraft) are not ported; Feather Feet becomes Slow Falling",
+    "Warp Ward e Vis Regen (Thaumcraft) não foram portados; Feather Feet virou Queda Lenta",
+    "未移植神秘时代的扭曲防护与灵气再生，轻盈之足改为缓降"
+  ],
+  "gtna.machine.steam_elevator.tooltip.purpose": [
+    "A modular steam tower: the modules in its slots do the work",
+    "Uma torre a vapor modular: os módulos nos slots fazem o trabalho",
+    "模块化蒸汽塔：由槽位中的模块完成工作"
+  ],
+  "gtna.machine.steam_elevator.tooltip.slots": [
+    "%s module slots; only fully formed modules count",
+    "%s slots de módulo; só módulos totalmente formados contam",
+    "%s个模块槽位，只计入完全成型的模块"
+  ],
+  "gtna.machine.steam_elevator.tooltip.free": [
+    "The elevator itself burns no steam and is always on once formed",
+    "O elevador em si não queima vapor e fica sempre ligado depois de formado",
+    "楼梯本身不消耗蒸汽，成型后始终运行"
+  ],
+  "gtna.machine.steam_elevator.tooltip.pool": [
+    "Its steam input hatches feed every attached module",
+    "As escotilhas de entrada de vapor dele alimentam todos os módulos conectados",
+    "其蒸汽输入仓为所有连接的模块供汽"
+  ],
+  "gtna.machine.steam_elevator.tooltip.io": [
+    "Each module keeps its own item and fluid buses and hatches",
+    "Cada módulo mantém os próprios barramentos e escotilhas de item e fluido",
+    "每个模块拥有各自的物品与流体总线及仓室"
+  ],
+  "gtna.machine.steam_elevator.tooltip.set_out": [
+    "Set out: the screen button opens Ad Astra's planet selection",
+    "Partir: o botão da tela abre a seleção de planetas do Ad Astra",
+    "出发：界面按钮打开Ad Astra的星球选择"
+  ],
+  "gtna.machine.steam_elevator.tooltip.not_ported": [
+    "GTNL's wireless steam modes are not ported: it needs a steam hatch (a Wireless Steam Input Hatch works)",
+    "Os modos de vapor sem fio do GTNL não foram portados: precisa de uma escotilha de vapor (a Wireless Steam Input Hatch serve)",
+    "未移植GTNL的无线蒸汽模式：需要蒸汽仓（无线蒸汽输入仓亦可）"
+  ],
+  "gtna.machine.steam_elevator.tooltip.humor": [
+    "Stairway to the Sky? Type Omega reminds you to hold on to your top hat.",
+    "Escadaria para o céu? A Type Omega lembra: segure a cartola.",
+    "通往天空的阶梯？Type Omega提醒您扶好礼帽。"
+  ],
+  "gtna.machine.steam_elevator_flight_module_i.tooltip.humor": [
+    "I believe I can fly. Steam billed by Type Omega per metre.",
+    "Eu acredito que posso voar. Vapor cobrado pela Type Omega por metro.",
+    "我相信我能飞。蒸汽由Type Omega按米计费。"
+  ],
+  "gtna.machine.steam_elevator_flight_module_ii.tooltip.humor": [
+    "Twice the range, twice the bragging rights, one Type Omega invoice.",
+    "O dobro do alcance, o dobro da ostentação, uma fatura da Type Omega.",
+    "双倍范围，双倍炫耀，一张Type Omega账单。"
+  ],
+  "gtna.machine.steam_elevator_flight_module_iii.tooltip.humor": [
+    "Icarus would have loved this. Type Omega's insurance would not.",
+    "Ícaro teria adorado. O seguro da Type Omega, não.",
+    "伊卡洛斯会爱上它，Type Omega的保险部门不会。"
+  ],
+  "gtna.machine.steam_elevator_weather_module_i.tooltip.humor": [
+    "Rain dance, but with pipes and a Type Omega service contract.",
+    "Dança da chuva, mas com canos e um contrato de serviço da Type Omega.",
+    "求雨舞，配上管道和Type Omega服务合同。"
+  ],
+  "gtna.machine.steam_elevator_weather_module_ii.tooltip.humor": [
+    "The forecast is whatever Type Omega's client wants it to be.",
+    "A previsão do tempo é o que o cliente da Type Omega quiser.",
+    "天气预报就是Type Omega客户想要的样子。"
+  ],
+  "gtna.machine.steam_elevator_weather_module_iii.tooltip.humor": [
+    "Thor called. Type Omega put him on hold.",
+    "Thor ligou. A Type Omega o deixou na espera.",
+    "雷神来电，Type Omega让他稍候。"
+  ],
+  "gtna.machine.steam_elevator_greenhouse_module.tooltip.purpose": [
+    "Speeds up the bone-mealable crops around it",
+    "Acelera as plantações que aceitam farinha de osso ao redor",
+    "加速周围可施骨粉作物的生长"
+  ],
+  "gtna.machine.steam_elevator_greenhouse_module.tooltip.cycle": [
+    "Every %s: %s of Water from its input hatch, up to %s crops grown",
+    "A cada %s: %s de Água da escotilha de entrada, até %s plantações crescem",
+    "每%s：消耗输入仓中%s水，最多催熟%s株作物"
+  ],
+  "gtna.machine.steam_elevator_greenhouse_module.tooltip.area": [
+    "Area: %s blocks around, %s above and below",
+    "Área: %s blocos ao redor, %s acima e abaixo",
+    "范围：周围%s格，上下%s格"
+  ],
+  "gtna.machine.steam_elevator_greenhouse_module.tooltip.not_ported": [
+    "GTNL's CropsNH farm (seeds and drop tables) is not ported",
+    "A fazenda CropsNH do GTNL (sementes e tabelas de drop) não foi portada",
+    "未移植GTNL的CropsNH农场（种子与掉落表）"
+  ],
+  "gtna.machine.steam_elevator_greenhouse_module.tooltip.humor": [
+    "The farmer's secret to fortune, now under a Type Omega licence.",
+    "O segredo da fortuna do fazendeiro, agora sob licença da Type Omega.",
+    "农夫的致富秘诀，现由Type Omega授权。"
+  ],
+  "gtna.machine.steam_elevator_oil_drill_module_i.tooltip.humor": [
+    "Extracts oil with steam power.",
+    "Extrai petróleo com força a vapor.",
+    "霉菌来袭！"
+  ],
+  "gtna.machine.steam_elevator_oil_drill_module_ii.tooltip.humor": [
+    "Advanced steam oil extraction.",
+    "Extração avançada de petróleo a vapor.",
+    "地底两万里"
+  ],
+  "gtna.machine.steam_elevator_oil_drill_module_iii.tooltip.humor": [
+    "Elite steam oil extraction.",
+    "Extração de elite de petróleo a vapor.",
+    "上知天文，下至地里"
+  ],
+  "gtna.machine.steam_elevator_entity_crusher_module_i.tooltip.humor": [
+    "Smelting mobs with high-temperature steam. Type Omega calls it pest control.",
+    "Derretendo mobs com vapor de alta temperatura. A Type Omega chama de controle de pragas.",
+    "用高温蒸汽熔炼生物，Type Omega称之为害虫防治。"
+  ],
+  "gtna.machine.steam_elevator_entity_crusher_module_ii.tooltip.humor": [
+    "Faster crushing. The mobs did not vote for this; Type Omega's board did.",
+    "Esmagamento mais rápido. Os mobs não votaram nisso; o conselho da Type Omega, sim.",
+    "粉碎更快。生物没投赞成票，Type Omega董事会投了。"
+  ],
+  "gtna.machine.steam_elevator_entity_crusher_module_iii.tooltip.humor": [
+    "Industrial-grade mob disposal. Very efficient. Type Omega declines to comment.",
+    "Descarte de mobs em escala industrial. Muito eficiente. A Type Omega não comenta.",
+    "工业级生物处理，非常高效。Type Omega不予置评。"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.purpose": [
+    "Runs a whole ore-processing chain inside one module",
+    "Roda uma cadeia inteira de processamento de minério dentro de um módulo",
+    "在一个模块内完成整条矿石处理链"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.chains": [
+    "Circuit 1 to 7 picks the chain: macerate, then wash or bath, then thermal centrifuge, sift or centrifuge",
+    "Circuito 1 a 7 escolhe a cadeia: macerar, depois lavar ou banho químico, depois centrífuga térmica, peneira ou centrífuga",
+    "电路1至7选择处理链：粉碎后洗矿或化学浸洗，再热力离心、筛选或离心"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.fluids": [
+    "Circuit 1 needs no fluid; 2 to 4 take Distilled Water, 5 to 7 the ore's own washing fluid, from the input hatch",
+    "Circuito 1 não usa fluido; 2 a 4 usam Água Destilada, 5 a 7 o fluido de lavagem do próprio minério, da escotilha de entrada",
+    "电路1不需要流体；2至4消耗蒸馏水，5至7消耗该矿石自身的浸洗流体，取自输入仓"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.parallel": [
+    "Parallels: %s × 2^circuit, up to %s",
+    "Paralelos: %s × 2^circuito, até %s",
+    "并行数：%s×2^电路，最高%s"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.times": [
+    "Cycle by circuit, 0 to %s: %s",
+    "Ciclo por circuito, de 0 a %s: %s",
+    "各电路周期（0至%s）：%s"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.inputs": [
+    "Takes ores, raw ores and crushed ores; ingots and pure dusts are skipped",
+    "Aceita minérios, minérios brutos e triturados; lingotes e pós puros são ignorados",
+    "接受矿石、粗矿和粉碎矿石，跳过锭与纯净粉"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.upkeep": [
+    "Steam upkeep: %s per tick × 2^circuit, from its own steam hatches first, then from the elevator's",
+    "Manutenção de vapor: %s por tick × 2^circuito, primeiro das próprias escotilhas, depois das do elevador",
+    "蒸汽维持：每tick %s×2^电路，先取自身蒸汽仓，再取楼梯"
+  ],
+  "gtna.machine.steam_elevator_ore_processor_module.tooltip.humor": [
+    "The whole ore line in one box. Type Omega patented the box.",
+    "A linha de minério inteira numa caixa. A Type Omega patenteou a caixa.",
+    "整条矿石产线装进一个盒子，Type Omega为盒子申请了专利。"
+  ],
+  "gtna.machine.steam_elevator_monster_repellent_module_i.tooltip.humor": [
+    "It drives away monsters with loud noise.",
+    "Ele espanta monstros com barulho alto.",
+    "它通过发出巨大的噪音来赶走怪物...和你一天的好心情."
+  ],
+  "gtna.machine.steam_elevator_monster_repellent_module_ii.tooltip.humor": [
+    "You can't hear it, but the monsters hear it loud and clear.",
+    "Você não ouve, mas os monstros ouvem alto e claro.",
+    "你听不到它，但怪物听得一清二楚."
+  ],
+  "gtna.machine.steam_elevator_monster_repellent_module_iii.tooltip.humor": [
+    "This machine makes monsters alert and run away on their own.",
+    "Esta máquina deixa os monstros alertas e eles fogem sozinhos.",
+    "这机器让怪物自己报警跑路."
+  ],
+  "gtna.machine.steam_elevator_beacon_module_i.tooltip.humor": [
+    "Basic Beacon.",
+    "Sinalizador básico.",
+    "村民向您分享了原始信标技术！"
+  ],
+  "gtna.machine.steam_elevator_beacon_module_ii.tooltip.humor": [
+    "Advanced Beacon.",
+    "Sinalizador avançado.",
+    "将蒸汽嬗变成药水分子..."
+  ],
+  "gtna.machine.steam_elevator_beacon_module_iii.tooltip.humor": [
+    "Elite Beacon.",
+    "Sinalizador de elite.",
+    "宇宙没有义务让你理解...喵！"
+  ],
+  "gtna.machine.steam_elevator_apiary_module.tooltip.purpose": [
+    "Houses a colony that turns honeycomb into more comb and honey",
+    "Abriga uma colônia que transforma favo de mel em mais favo e mel",
+    "容纳蜂群，将蜜脾转化为更多蜜脾与蜂蜜"
+  ],
+  "gtna.machine.steam_elevator_apiary_module.tooltip.cycle": [
+    "Every %s: %s honeycomb + %s of Water give %s honeycomb and %s honey bottle",
+    "A cada %s: %s favo de mel + %s de Água dão %s favos e %s garrafa de mel",
+    "每%s：%s个蜜脾+%s水产出%s个蜜脾和%s瓶蜂蜜"
+  ],
+  "gtna.machine.steam_elevator_apiary_module.tooltip.colony": [
+    "Base colony: %s bees; the upkeep is paid per bee slot",
+    "Colônia base: %s abelhas; a manutenção é paga por vaga de abelha",
+    "基础蜂群：%s只，维持按蜂位计费"
+  ],
+  "gtna.machine.steam_elevator_apiary_module.tooltip.not_ported": [
+    "Forestry bees and their product tables are replaced by vanilla honeycomb",
+    "As abelhas do Forestry e suas tabelas de produtos viraram favo de mel vanilla",
+    "林业蜜蜂及其产物表改为原版蜜脾"
+  ],
+  "gtna.machine.steam_elevator_apiary_module.tooltip.humor": [
+    "High pressure makes the bees work harder. Type Omega HR says the union is pending.",
+    "Pressão alta faz as abelhas trabalharem mais. O RH da Type Omega diz que o sindicato está pendente.",
+    "高压让蜜蜂更卖力。Type Omega人事部称工会尚在审批。"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.purpose": [
+    "Copies a Productive Bees bee",
+    "Copia uma abelha do Productive Bees",
+    "复制一只Productive Bees蜜蜂"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.queen": [
+    "A Productive Bees spawn egg in the input bus is the queen; it is never consumed",
+    "Um ovo de spawn do Productive Bees no barramento de entrada é a rainha; nunca é consumido",
+    "输入总线中的Productive Bees刷怪蛋作为蜂后，不会消耗"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.cycle": [
+    "Every %s it spends %s Honey Treats and outputs a new egg of the same bee",
+    "A cada %s gasta %s Honey Treats e entrega um novo ovo da mesma abelha",
+    "每%s消耗%s个蜂蜜零食，产出一枚同种蜜蜂的新蛋"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.idle": [
+    "Without a queen or enough Honey Treats the cycle resets",
+    "Sem rainha ou sem Honey Treats suficientes o ciclo reinicia",
+    "没有蜂后或蜂蜜零食不足时周期重置"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.requires": [
+    "Exists only with Productive Bees installed",
+    "Só existe com o Productive Bees instalado",
+    "仅在安装Productive Bees时存在"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.not_ported": [
+    "GTNL's Forestry queen and royal jelly are replaced by Productive Bees eggs and Honey Treats",
+    "A rainha do Forestry e a geleia real do GTNL viraram ovos e Honey Treats do Productive Bees",
+    "GTNL的林业蜂后与蜂王浆改为Productive Bees刷怪蛋与蜂蜜零食"
+  ],
+  "gtna.machine.steam_elevator_bee_breeding_module.tooltip.humor": [
+    "Let the bees feel the scorching love, as specified in the Type Omega handbook.",
+    "Que as abelhas sintam o amor escaldante, como manda o manual da Type Omega.",
+    "让蜜蜂感受炽热的爱，正如Type Omega手册所规定。"
+  ]
+}

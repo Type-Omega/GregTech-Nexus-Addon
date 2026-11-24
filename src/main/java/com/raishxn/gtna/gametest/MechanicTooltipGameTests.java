@@ -18,6 +18,8 @@ import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.AdvancedFusionReactorMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
+import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamFlightModule;
+import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamOilDrillModule;
 import com.raishxn.gtna.data.recipe.GTNANaquadahReactorRecipes;
 
 import java.util.LinkedHashMap;
@@ -58,6 +60,19 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("naquadah_hyper_reactor", 13);
         MINIMUM.put("component_assembly_line", 8);
         MINIMUM.put("advanced_fusion_reactor", 15);
+        MINIMUM.put("steam_elevator", 7);
+        for (String t : new String[] { "i", "ii", "iii" }) {
+            MINIMUM.put("steam_elevator_flight_module_" + t, 8);
+            MINIMUM.put("steam_elevator_weather_module_" + t, 7);
+            MINIMUM.put("steam_elevator_oil_drill_module_" + t, 9);
+            MINIMUM.put("steam_elevator_entity_crusher_module_" + t, 10);
+            MINIMUM.put("steam_elevator_monster_repellent_module_" + t, 6);
+            MINIMUM.put("steam_elevator_beacon_module_" + t, 10);
+        }
+        MINIMUM.put("steam_elevator_greenhouse_module", 8);
+        MINIMUM.put("steam_elevator_ore_processor_module", 10);
+        MINIMUM.put("steam_elevator_apiary_module", 8);
+        MINIMUM.put("steam_elevator_bee_breeding_module", 9);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -164,6 +179,22 @@ public final class MechanicTooltipGameTests {
         for (String needed : new String[] { "10,000,000 EU per energy input at LuV", "up to UEV", "10,000 EU" }) {
             h.assertTrue(fusion.contains(needed), "Advanced Fusion tooltip lacks '" + needed + "': " + fusion);
         }
+        h.succeed();
+    }
+
+    /** Steam Elevator module numbers are the per-tier formulas the modules run. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void steamElevatorModuleNumbersMatchTheFormulas(GameTestHelper h) {
+        String flight = text("steam_elevator_flight_module_iii");
+        h.assertTrue(flight.contains("Range: " + SteamFlightModule.rangeFor(3) + " m"), "flight III range: " + flight);
+        String drill = text("steam_elevator_oil_drill_module_ii");
+        for (String needed : new String[] { "Cycle: " + SteamOilDrillModule.cycleTicksFor(3) / 20 + " s",
+                SteamOilDrillModule.rollsFor(3) + " rolls of " + SteamOilDrillModule.baseYieldFor(3) + " mB" }) {
+            h.assertTrue(drill.contains(needed), "oil drill II tooltip lacks '" + needed + "': " + drill);
+        }
+        h.assertTrue(text("steam_elevator_monster_repellent_module_ii").contains("Radius: 128 m"),
+                "repellent II radius is 2^(5 + 2)");
+        h.assertTrue(text("steam_elevator_weather_module_iii").contains("lasts 3 h"), "weather III lasts 3 h");
         h.succeed();
     }
 

@@ -51,12 +51,20 @@ public class SteamEntityCrusherModule extends SteamElevatorModuleMachine {
 
     /** Higher tiers run faster and burn more steam (tier I/II/III = 400/200/100 ticks). */
     private int cycleTicks() {
-        return Math.max(1, CYCLE_TICKS >> Math.max(0, getModuleTier() - 1));
+        return cycleTicksFor(getModuleTier());
     }
 
-    private static final double BASE_DOUBLING_CHANCE = 2.0;
-    private static final double CHANCE_PER_SPAWNER = 0.5;
-    private static final double MAX_DOUBLING_CHANCE = 34.0;
+    public static final double BASE_DOUBLING_CHANCE = 2.0;
+    public static final double CHANCE_PER_SPAWNER = 0.5;
+    public static final double MAX_DOUBLING_CHANCE = 34.0;
+
+    public static int cycleTicksFor(int tier) {
+        return Math.max(1, CYCLE_TICKS >> Math.max(0, tier - 1));
+    }
+
+    public static long upkeepFor(int tier) {
+        return STEAM_UPKEEP << Math.max(0, tier - 1);
+    }
 
     @Persisted
     @DescSynced
@@ -79,7 +87,7 @@ public class SteamEntityCrusherModule extends SteamElevatorModuleMachine {
 
     @Override
     public long getSteamUpkeep() {
-        return STEAM_UPKEEP << Math.max(0, getModuleTier() - 1);
+        return upkeepFor(getModuleTier());
     }
 
     @Override

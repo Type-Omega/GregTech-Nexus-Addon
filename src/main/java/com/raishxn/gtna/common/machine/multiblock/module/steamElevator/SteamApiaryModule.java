@@ -40,10 +40,13 @@ public class SteamApiaryModule extends SteamElevatorModuleMachine {
     /** GTNL apiary water feed; the greenhouse also consumes water from a hatch. */
     public static final int WATER_PER_CYCLE = 1000;
     /** GTNL {@code mMaxProgresstime}: 300 seconds. */
-    private static final int CYCLE_TICKS = 6000;
-    private static final int COMBS_CONSUMED = 1;
-    private static final int COMBS_PRODUCED = 2;
-    private static final int HONEY_PRODUCED = 1;
+    public static final int CYCLE_TICKS = 6000;
+    public static final int COMBS_CONSUMED = 1;
+    public static final int COMBS_PRODUCED = 2;
+    public static final int HONEY_PRODUCED = 1;
+    /** GTNL base colony size (mMaxSlots); the upkeep is V[EV] per bee slot. */
+    public static final int BASE_COLONY = 8;
+    public static final long STEAM_UPKEEP = GTValues.V[4] * BASE_COLONY;
 
     @Persisted
     @DescSynced
@@ -60,8 +63,7 @@ public class SteamApiaryModule extends SteamElevatorModuleMachine {
 
     @Override
     public long getSteamUpkeep() {
-        // GTNL: GTValues.V[4] * mMaxSlots at the base 8-bee colony.
-        return GTValues.V[4] * 8L;
+        return STEAM_UPKEEP;
     }
 
     @Override
