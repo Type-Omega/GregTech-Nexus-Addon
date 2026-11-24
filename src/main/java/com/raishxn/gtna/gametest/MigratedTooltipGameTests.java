@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Multiblocks migrated to the GTNH-style tooltip of the lib (GTIA-D-410, D-428, D-429, D-430). */
+/** Multiblocks migrated to the GTNH-style tooltip of the lib (GTIA-D-410, D-428, D-429, D-431). */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class MigratedTooltipGameTests {
@@ -70,42 +70,35 @@ public final class MigratedTooltipGameTests {
     }
 
     /**
-     * Every GTNA multiblock shows the structure section read from its pattern (GTIA-D-430): dimensions, the
-     * controller, at least one block and the hatches, always visible and before the mod line.
+     * No GTNA multiblock shows a structure section or a pollution line (GTIA-D-431): dimensions, controller, block
+     * counts and hatch counts stay out of the tooltip. The "Supports ...!" line and the modes stay.
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 200)
-    public static void everyMultiblockShowsItsStructure(GameTestHelper h) {
-        List<String> missing = new ArrayList<>();
+    public static void noMultiblockShowsItsStructure(GameTestHelper h) {
+        List<String> shownStructure = new ArrayList<>();
         int checked = 0;
         for (MachineDefinition definition : GTRegistries.MACHINES) {
-            if (!(definition instanceof MultiblockMachineDefinition multi) ||
+            if (!(definition instanceof MultiblockMachineDefinition) ||
                     !GTNACORE.MOD_ID.equals(definition.getId().getNamespace()) ||
                     !GTNAMultiblockTooltips.has(definition.getId().getPath())) {
                 continue;
             }
-            String path = definition.getId().getPath();
-            List<String> keys = keys(shown(definition));
-            StructureInfo info = GTNATooltips.structure(multi);
-            if (info == null) {
-                missing.add(path + " (pattern unreadable)");
-            } else if (!keys.contains("typeomegalib.tooltip.structure.dimensions") ||
-                    !keys.contains("typeomegalib.tooltip.structure.header")) {
-                        missing.add(path + " (no structure section)");
-                    } else
-                if (info.blocks().isEmpty() || info.controller() == null) {
-                    missing.add(path + " (no blocks or controller)");
+            for (String k : keys(shown(definition))) {
+                if (k.startsWith("typeomegalib.tooltip.structure.") || k.equals("typeomegalib.tooltip.pollution")) {
+                    shownStructure.add(definition.getId().getPath() + " " + k);
                 }
+            }
             checked++;
         }
         dumpPreview();
-        h.assertTrue(missing.isEmpty(), "multiblocks without a structure section: " + missing);
+        h.assertTrue(shownStructure.isEmpty(), "multiblocks showing a structure or pollution line: " + shownStructure);
         h.assertTrue(checked >= 160, "expected about 170 GTNA multiblocks, checked " + checked);
         h.succeed();
     }
 
-    /** The Large Steam Macerator structure comes from its pattern: steam hatch in the casings, buses counted. */
+    /** The Large Steam Macerator keeps the "Supports" line from its pattern, but no structure section. */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
-    public static void largeSteamCrusherStructureComesFromThePattern(GameTestHelper h) {
+    public static void largeSteamCrusherHasNoStructureSection(GameTestHelper h) {
         MachineDefinition crusher = GTRegistries.MACHINES
                 .get(new ResourceLocation(GTNACORE.MOD_ID, "large_steam_crusher"));
         if (!(crusher instanceof MultiblockMachineDefinition multi)) {
@@ -113,13 +106,11 @@ public final class MigratedTooltipGameTests {
             return;
         }
         StructureInfo info = GTNATooltips.structure(multi);
-        h.assertTrue(info != null, "crusher pattern unreadable");
-        h.assertTrue(info.abilities().contains("steam"), "crusher takes a steam hatch, got " + info.abilities());
-        h.assertTrue(info.blocks().get(0).count().max() > 0, "crusher counts its casings");
+        h.assertTrue(info != null && info.abilities().contains("steam"), "crusher pattern is still readable");
         List<String> keys = keys(shown(crusher));
-        int structure = keys.indexOf("typeomegalib.tooltip.structure.header");
-        int humor = keys.indexOf("gtna.machine.large_steam_crusher.tooltip.humor");
-        h.assertTrue(structure >= 0 && structure < humor, "structure comes before the humour line");
+        h.assertFalse(keys.contains("typeomegalib.tooltip.structure.header") ||
+                keys.contains("typeomegalib.tooltip.structure.dimensions"), "no structure section, got " + keys);
+        h.assertTrue(keys.contains("gtna.machine.large_steam_crusher.tooltip.humor"), "humour line stays");
         h.succeed();
     }
 

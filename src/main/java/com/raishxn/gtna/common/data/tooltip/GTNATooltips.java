@@ -97,7 +97,7 @@ public final class GTNATooltips {
         return MultiblockTooltip.builder().machineType(trs);
     }
 
-    /** The mechanics read from the machine, the structure section and the humour, origin and mod lines. */
+    /** The modes and the "Supports ...!" line read from the machine, then the humour, origin and mod lines. */
     public static List<Component> finish(MultiblockTooltipBuilder builder, String id) {
         machine(builder, id);
         String source = GTNASources.sourceOf(id);
@@ -107,8 +107,8 @@ public final class GTNATooltips {
     }
 
     /**
-     * Lines every GTNA multiblock gets from its definition (GTIA-D-430): the modes when it switches recipe types,
-     * then the structure section read from its pattern and the "Supports ...!" line. Always shown, without Shift.
+     * Lines every GTNA multiblock gets from its definition: the modes when it switches recipe types and the
+     * "Supports ...!" line read from its pattern. No structure section and no pollution line (GTIA-D-431).
      */
     public static MultiblockTooltipBuilder machine(MultiblockTooltipBuilder builder, String id) {
         if (!(GTRegistries.MACHINES
@@ -117,11 +117,14 @@ public final class GTNATooltips {
         }
         builder.modes(GtceuPatterns.modes(definition));
         StructureInfo info = structure(definition);
-        if (info != null) builder.separator().structure(info).hatches(info);
+        // EN: Only the "Supports" line is taken from the pattern; the structure section is off (GTIA-D-431).
+        // PT: Só a linha "Suporta" vem do padrão; a seção de estrutura está desligada (GTIA-D-431).
+        // ZH: 只从结构模式读取“支持”一行；结构部分已关闭（GTIA-D-431）。
+        if (info != null) builder.hatches(info);
         return builder;
     }
 
-    /** The section {@link #machine} adds, for machines that keep the older numbered lines. */
+    /** The lines {@link #machine} adds, for machines that keep the older numbered lines. */
     public static List<Component> machineSection(String id) {
         return machine(MultiblockTooltip.section(), id).build();
     }

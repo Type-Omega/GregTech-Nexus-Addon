@@ -3834,7 +3834,8 @@ public final class GTNAMachineGameTests {
 
     /**
      * Every GTNA multiblock uses the standard tooltip: {@code gtna.machine.<id>.tooltip.0..N-1} in order (Machine
-     * Type, flavor, description, bullets), the structure section and exactly one Source line.
+     * Type, flavor, description, bullets), at most the modes and "Supports" lines, and exactly one Source line.
+     * No structure section and no pollution line (GTIA-D-431).
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void everyMultiblockUsesTheStandardTooltip(GameTestHelper helper) {
@@ -3861,15 +3862,16 @@ public final class GTNAMachineGameTests {
                     .toList();
             java.util.List<String> expected = new java.util.ArrayList<>();
             for (int i = 0; i < english.length; i++) expected.add("gtna.machine." + path + ".tooltip." + i);
-            // EN: The structure section read from the pattern (GTIA-D-430) sits between the lines and the source.
-            // PT: A seção de estrutura lida do padrão (GTIA-D-430) fica entre as linhas e a origem.
-            // ZH: 从结构模式读取的结构部分（GTIA-D-430）位于各行与来源之间。
-            helper.assertTrue(keys.size() > expected.size() + 1 &&
-                    keys.subList(0, expected.size()).equals(expected) &&
+            // EN: Only the modes and "Supports" lines may sit between the text and the source (GTIA-D-431).
+            // PT: Só as linhas de modos e "Suporta" podem ficar entre o texto e a origem (GTIA-D-431).
+            // ZH: 文本与来源之间只允许出现模式和“支持”两行（GTIA-D-431）。
+            helper.assertTrue(keys.size() > expected.size() && keys.subList(0, expected.size()).equals(expected) &&
                     keys.get(keys.size() - 1).equals("gtna.tooltip.source") &&
-                    keys.contains("typeomegalib.tooltip.structure.dimensions"),
+                    keys.subList(expected.size(), keys.size() - 1).stream()
+                            .allMatch(k -> k.equals("typeomegalib.tooltip.modes") ||
+                                    k.equals("typeomegalib.tooltip.supports")),
                     definition.getId() + " tooltip " + keys + " should be " + expected +
-                            ", the structure section and the source");
+                            ", at most modes and supports, and the source");
             helper.assertTrue(english[0].startsWith("Machine Type: ") && english[1].startsWith("§7§o"),
                     definition.getId() + " must start with Machine Type and a flavor line");
             helper.assertTrue(java.util.Arrays.stream(english).anyMatch(line -> line.contains("▸ ")),
