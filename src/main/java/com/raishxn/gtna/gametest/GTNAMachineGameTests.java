@@ -3834,7 +3834,7 @@ public final class GTNAMachineGameTests {
 
     /**
      * Every GTNA multiblock uses the standard tooltip: {@code gtna.machine.<id>.tooltip.0..N-1} in order (Machine
-     * Type, flavor, description, bullets) followed by exactly one Source line, and nothing else.
+     * Type, flavor, description, bullets), the structure section and exactly one Source line.
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
     public static void everyMultiblockUsesTheStandardTooltip(GameTestHelper helper) {
@@ -3861,8 +3861,15 @@ public final class GTNAMachineGameTests {
                     .toList();
             java.util.List<String> expected = new java.util.ArrayList<>();
             for (int i = 0; i < english.length; i++) expected.add("gtna.machine." + path + ".tooltip." + i);
-            expected.add("gtna.tooltip.source");
-            helper.assertTrue(keys.equals(expected), definition.getId() + " tooltip " + keys + " != " + expected);
+            // EN: The structure section read from the pattern (GTIA-D-430) sits between the lines and the source.
+            // PT: A seção de estrutura lida do padrão (GTIA-D-430) fica entre as linhas e a origem.
+            // ZH: 从结构模式读取的结构部分（GTIA-D-430）位于各行与来源之间。
+            helper.assertTrue(keys.size() > expected.size() + 1 &&
+                    keys.subList(0, expected.size()).equals(expected) &&
+                    keys.get(keys.size() - 1).equals("gtna.tooltip.source") &&
+                    keys.contains("typeomegalib.tooltip.structure.dimensions"),
+                    definition.getId() + " tooltip " + keys + " should be " + expected +
+                            ", the structure section and the source");
             helper.assertTrue(english[0].startsWith("Machine Type: ") && english[1].startsWith("§7§o"),
                     definition.getId() + " must start with Machine Type and a flavor line");
             helper.assertTrue(java.util.Arrays.stream(english).anyMatch(line -> line.contains("▸ ")),

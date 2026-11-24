@@ -270,7 +270,13 @@ dependencies {
     if (project.hasProperty('gtiaDevJar')) {
         runtimeOnly files(project.property('gtiaDevJar'))
     }
-    def isDataRun =gradle.startParameter.taskNames.any { it.toLowerCase(java.util.Locale.ROOT).contains("rundata") }
+    // EN: gate runs runData too, so it loads the data-run classpath (the dev-only mods crash datagen).
+    // PT: O gate também roda o runData, então usa o classpath de data run (os mods só de dev quebram o datagen).
+    // ZH: gate 也会执行 runData，因此使用数据生成的类路径（仅开发用的模组会让数据生成崩溃）。
+    def isDataRun = gradle.startParameter.taskNames.any {
+        def task = it.toLowerCase(java.util.Locale.ROOT)
+        task.contains("rundata") || task == "gate" || task.endsWith(":gate")
+    }
 
     compileOnly("org.jetbrains:annotations:26.0.1")
     // Mixin

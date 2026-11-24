@@ -1,6 +1,7 @@
 package com.raishxn.gtna.gametest;
 
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 
 import net.minecraft.gametest.framework.GameTest;
@@ -17,16 +18,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.api.steam.GTNASteamBalance;
+import com.raishxn.gtna.common.data.GTNAMultiblockTooltips;
 import com.raishxn.gtna.common.data.GTNASources;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.steam.LargeSteamSpecs;
+import com.typeomega.lib.tooltip.StructureInfo;
 
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Multiblocks migrated to the GTNH-style tooltip of the lib (GTIA-D-410, D-428, D-429). */
+/** Multiblocks migrated to the GTNH-style tooltip of the lib (GTIA-D-410, D-428, D-429, D-430). */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class MigratedTooltipGameTests {
@@ -56,13 +59,67 @@ public final class MigratedTooltipGameTests {
             h.assertTrue(sources == (GTNASources.sourceOf(path) != null ? 1 : 0),
                     path + " must credit its origin exactly once, got " + sources);
             for (String k : keys(tooltip)) {
-                h.assertFalse(k.contains("structure") || k.contains("shift"), path + " uses " + k + " (GTIA-D-428)");
-                if (k.startsWith("typeomegalib.")) continue;
+                h.assertFalse(k.contains("shift"), path + " uses " + k + " (GTIA-D-428)");
+                if (!k.startsWith("gtna.")) continue;
                 h.assertTrue(en.has(k) && pt.has(k) && zh.has(k), path + ": " + k + " missing in en/pt/zh");
             }
             checked++;
         }
         h.assertTrue(checked >= 31, "expected the 31 steam multiblocks, checked " + checked);
+        h.succeed();
+    }
+
+    /**
+     * Every GTNA multiblock shows the structure section read from its pattern (GTIA-D-430): dimensions, the
+     * controller, at least one block and the hatches, always visible and before the mod line.
+     */
+    @GameTest(template = TEMPLATE, timeoutTicks = 200)
+    public static void everyMultiblockShowsItsStructure(GameTestHelper h) {
+        List<String> missing = new ArrayList<>();
+        int checked = 0;
+        for (MachineDefinition definition : GTRegistries.MACHINES) {
+            if (!(definition instanceof MultiblockMachineDefinition multi) ||
+                    !GTNACORE.MOD_ID.equals(definition.getId().getNamespace()) ||
+                    !GTNAMultiblockTooltips.has(definition.getId().getPath())) {
+                continue;
+            }
+            String path = definition.getId().getPath();
+            List<String> keys = keys(shown(definition));
+            StructureInfo info = GTNATooltips.structure(multi);
+            if (info == null) {
+                missing.add(path + " (pattern unreadable)");
+            } else if (!keys.contains("typeomegalib.tooltip.structure.dimensions") ||
+                    !keys.contains("typeomegalib.tooltip.structure.header")) {
+                        missing.add(path + " (no structure section)");
+                    } else
+                if (info.blocks().isEmpty() || info.controller() == null) {
+                    missing.add(path + " (no blocks or controller)");
+                }
+            checked++;
+        }
+        dumpPreview();
+        h.assertTrue(missing.isEmpty(), "multiblocks without a structure section: " + missing);
+        h.assertTrue(checked >= 160, "expected about 170 GTNA multiblocks, checked " + checked);
+        h.succeed();
+    }
+
+    /** The Large Steam Macerator structure comes from its pattern: steam hatch in the casings, buses counted. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void largeSteamCrusherStructureComesFromThePattern(GameTestHelper h) {
+        MachineDefinition crusher = GTRegistries.MACHINES
+                .get(new ResourceLocation(GTNACORE.MOD_ID, "large_steam_crusher"));
+        if (!(crusher instanceof MultiblockMachineDefinition multi)) {
+            h.succeed();
+            return;
+        }
+        StructureInfo info = GTNATooltips.structure(multi);
+        h.assertTrue(info != null, "crusher pattern unreadable");
+        h.assertTrue(info.abilities().contains("steam"), "crusher takes a steam hatch, got " + info.abilities());
+        h.assertTrue(info.blocks().get(0).count().max() > 0, "crusher counts its casings");
+        List<String> keys = keys(shown(crusher));
+        int structure = keys.indexOf("typeomegalib.tooltip.structure.header");
+        int humor = keys.indexOf("gtna.machine.large_steam_crusher.tooltip.humor");
+        h.assertTrue(structure >= 0 && structure < humor, "structure comes before the humour line");
         h.succeed();
     }
 
@@ -134,6 +191,42 @@ public final class MigratedTooltipGameTests {
                     "the storage tank still uses its numbered lines, got " + tooltip.get(0));
         }
         h.succeed();
+    }
+
+    /** Machines of the tooltip preview page (design/core in the pack workspace). */
+    private static final String[] PREVIEW = { "large_steam_crusher", "steam_manufacturer", "mega_alloy_blast_smelter",
+            "nano_forge", "eye_of_harmony", "forge_of_gods" };
+
+    /**
+     * Writes the shown lines of the preview machines, as text with colour per segment, to
+     * {@code tooltip-preview.json} in the run folder, for the HTML preview. The run folder is not versioned.
+     */
+    private static void dumpPreview() {
+        com.google.gson.JsonObject out = new com.google.gson.JsonObject();
+        for (String path : PREVIEW) {
+            MachineDefinition definition = GTRegistries.MACHINES.get(new ResourceLocation(GTNACORE.MOD_ID, path));
+            if (definition == null) continue;
+            com.google.gson.JsonArray lines = new com.google.gson.JsonArray();
+            for (Component line : shown(definition)) {
+                com.google.gson.JsonArray segments = new com.google.gson.JsonArray();
+                line.visit((style, text) -> {
+                    com.google.gson.JsonObject seg = new com.google.gson.JsonObject();
+                    seg.addProperty("text", text);
+                    if (style.getColor() != null) seg.addProperty("color", style.getColor().serialize());
+                    if (style.isItalic()) seg.addProperty("italic", true);
+                    if (style.isBold()) seg.addProperty("bold", true);
+                    segments.add(seg);
+                    return java.util.Optional.empty();
+                }, net.minecraft.network.chat.Style.EMPTY);
+                lines.add(segments);
+            }
+            out.add(path, lines);
+        }
+        try {
+            java.nio.file.Files.writeString(java.nio.file.Path.of("tooltip-preview.json"), out.toString());
+        } catch (java.io.IOException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     private static List<Component> shown(MachineDefinition definition) {

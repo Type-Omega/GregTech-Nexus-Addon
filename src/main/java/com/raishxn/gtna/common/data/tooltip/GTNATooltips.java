@@ -1,18 +1,30 @@
 package com.raishxn.gtna.common.data.tooltip;
 
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 
+import com.mojang.logging.LogUtils;
+import com.raishxn.gtna.GTNACORE;
+import com.raishxn.gtna.api.machine.multiblock.GTNAPartAbility;
 import com.raishxn.gtna.api.steam.GTNASteamBalance;
 import com.raishxn.gtna.common.data.GTNASources;
 import com.typeomega.lib.lang.Tr;
 import com.typeomega.lib.tooltip.MultiblockTooltip;
 import com.typeomega.lib.tooltip.MultiblockTooltipBuilder;
+import com.typeomega.lib.tooltip.StructureInfo;
+import com.typeomega.lib.tooltip.structure.GtceuPatterns;
+import org.slf4j.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.DoubleFunction;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
@@ -29,7 +41,9 @@ public final class GTNATooltips {
     /** Shown in blue italics on the last line, as the mod list names the mod. */
     public static final String MOD_NAME = "GregTech: Nexus Addon";
 
+    private static final Logger LOGGER = LogUtils.getLogger();
     private static final Map<String, Supplier<List<Component>>> TOOLTIPS = new LinkedHashMap<>();
+    private static final Set<String> UNREADABLE = ConcurrentHashMap.newKeySet();
     private static boolean initialised;
 
     private GTNATooltips() {}
@@ -38,6 +52,7 @@ public final class GTNATooltips {
     public static synchronized void init() {
         if (initialised) return;
         initialised = true;
+        GtceuPatterns.registerAbilities(GTNAPartAbility.class);
         LargeSteamTooltips.register();
         SteamUtilityTooltips.register();
         SteamReactorTooltips.register();
@@ -82,12 +97,45 @@ public final class GTNATooltips {
         return MultiblockTooltip.builder().machineType(trs);
     }
 
-    /** The humour line, the origin of a port and the mod name that close every tooltip. */
+    /** The mechanics read from the machine, the structure section and the humour, origin and mod lines. */
     public static List<Component> finish(MultiblockTooltipBuilder builder, String id) {
+        machine(builder, id);
         String source = GTNASources.sourceOf(id);
         builder.humor(own(id, "humor"));
         if (source != null) builder.line(GTNATooltipLang.tr("gtna.tooltip.source"), GTNASources.addonName(source));
         return builder.mod(MOD_NAME).build();
+    }
+
+    /**
+     * Lines every GTNA multiblock gets from its definition (GTIA-D-430): the modes when it switches recipe types,
+     * then the structure section read from its pattern and the "Supports ...!" line. Always shown, without Shift.
+     */
+    public static MultiblockTooltipBuilder machine(MultiblockTooltipBuilder builder, String id) {
+        if (!(GTRegistries.MACHINES
+                .get(new ResourceLocation(GTNACORE.MOD_ID, id)) instanceof MultiblockMachineDefinition definition)) {
+            return builder;
+        }
+        builder.modes(GtceuPatterns.modes(definition));
+        StructureInfo info = structure(definition);
+        if (info != null) builder.separator().structure(info).hatches(info);
+        return builder;
+    }
+
+    /** The section {@link #machine} adds, for machines that keep the older numbered lines. */
+    public static List<Component> machineSection(String id) {
+        return machine(MultiblockTooltip.section(), id).build();
+    }
+
+    /** The pattern summary, or {@code null} when the pattern can't be read (logged once). */
+    public static StructureInfo structure(MultiblockMachineDefinition definition) {
+        String id = definition.getId().toString();
+        if (UNREADABLE.contains(id)) return null;
+        try {
+            return GtceuPatterns.of(definition);
+        } catch (RuntimeException e) {
+            if (UNREADABLE.add(id)) LOGGER.warn("Cannot read the structure of {} for its tooltip", id, e);
+            return null;
+        }
     }
 
     /**

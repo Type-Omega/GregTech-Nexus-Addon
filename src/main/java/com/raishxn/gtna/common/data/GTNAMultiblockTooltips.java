@@ -69,6 +69,7 @@ public final class GTNAMultiblockTooltips {
                     }
                     components.add(line);
                 }
+                components.addAll(GTNATooltips.machineSection(path));
                 components.add(GTNASources.line(sourceId));
             });
         }
