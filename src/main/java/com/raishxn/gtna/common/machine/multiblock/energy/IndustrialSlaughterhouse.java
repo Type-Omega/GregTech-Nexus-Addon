@@ -58,6 +58,11 @@ public class IndustrialSlaughterhouse extends WorkableElectricMultipleRecipesMac
             "goat" };
     private static final String[] MOB_LIST_HOSTILE = new String[] { "zombie", "skeleton", "creeper", "spider",
             "enderman", "witch", "blaze" };
+    /** Lowest tier and output multiplier base of each circuit mode: passive, hostile, bosses, dragon. */
+    public static final int PASSIVE_TIER = GTValues.LV, PASSIVE_BASE = 2;
+    public static final int HOSTILE_TIER = GTValues.MV, HOSTILE_BASE = 2;
+    public static final int BOSS_TIER = GTValues.ZPM, BOSS_BASE = 3;
+    public static final int DRAGON_TIER = GTValues.UHV, DRAGON_BASE = 5;
     private static final String[] BOSS_MOBS = new String[] { "warden", "wither", "elder_guardian" };
 
     public IndustrialSlaughterhouse(IMachineBlockEntity holder, Object... args) {
@@ -86,22 +91,22 @@ public class IndustrialSlaughterhouse extends WorkableElectricMultipleRecipesMac
         switch (circuit) {
             case 2 -> {
                 currentMobList = MOB_LIST_HOSTILE;
-                baseTier = GTValues.MV;
-                multiplierBase = 2;
+                baseTier = HOSTILE_TIER;
+                multiplierBase = HOSTILE_BASE;
             }
             case 3 -> {
                 currentMobList = BOSS_MOBS;
-                baseTier = GTValues.ZPM;
-                multiplierBase = 3;
+                baseTier = BOSS_TIER;
+                multiplierBase = BOSS_BASE;
             }
             case 4 -> {
-                baseTier = GTValues.UHV;
-                multiplierBase = 5;
+                baseTier = DRAGON_TIER;
+                multiplierBase = DRAGON_BASE;
             }
             default -> {
                 currentMobList = MOB_LIST_PASSIVE;
-                baseTier = GTValues.LV;
-                multiplierBase = 2;
+                baseTier = PASSIVE_TIER;
+                multiplierBase = PASSIVE_BASE;
             }
         }
 

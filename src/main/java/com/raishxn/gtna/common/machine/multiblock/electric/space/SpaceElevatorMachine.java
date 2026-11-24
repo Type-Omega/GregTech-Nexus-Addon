@@ -43,6 +43,9 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
     public static final String POWER_MODULE_KEY = "gtna_power_module_tier";
     public static final String MODULES_KEY = "gtna_space_elevator_modules";
     public static final int MAX_SPOOLS = 256;
+    /** Upkeep cycle and CWU/t per tier above ZPM. */
+    public static final int CYCLE_TICKS = 400;
+    public static final int CWU_PER_TIER = 128;
 
     @Persisted
     private int spoolCount;
@@ -169,8 +172,8 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
     @Nullable
     GTRecipe upkeepRecipe() {
         if (getTier() <= GTValues.ZPM) return null;
-        GTRecipe recipe = GTRecipeBuilder.ofRaw().duration(400)
-                .CWUt(128 * (getTier() - GTValues.ZPM))
+        GTRecipe recipe = GTRecipeBuilder.ofRaw().duration(CYCLE_TICKS)
+                .CWUt(CWU_PER_TIER * (getTier() - GTValues.ZPM))
                 .EUt(GTValues.VA[getTier()])
                 .buildRawRecipe();
         return RecipeHelper.matchContents(this, recipe).isSuccess() ? recipe : null;

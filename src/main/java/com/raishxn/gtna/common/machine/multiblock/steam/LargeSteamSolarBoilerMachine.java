@@ -37,9 +37,9 @@ import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.IMPORT_FL
 
 public class LargeSteamSolarBoilerMachine extends WorkableMultiblockMachine implements IDisplayUIMachine {
 
-    private static final int MAX_SIDE = 63;
-    private static final int MAX_BACK = 125;
-    private static final int TICK_INTERVAL = 20;
+    public static final int MAX_SIDE = 63;
+    public static final int MAX_BACK = 125;
+    public static final int TICK_INTERVAL = 20;
 
     private int lDist;
     private int rDist;

@@ -169,21 +169,6 @@ public final class MigratedTooltipGameTests {
         h.succeed();
     }
 
-    /** A machine that was not migrated keeps the old layout and is not claimed by the lib builder. */
-    @GameTest(template = TEMPLATE, timeoutTicks = 20)
-    public static void unmigratedMachinesKeepTheOldLayout(GameTestHelper h) {
-        h.assertFalse(GTNATooltips.has("large_steam_storage_tank"), "the storage tank is not migrated yet");
-        h.assertTrue(GTNATooltips.build("large_steam_storage_tank") == null, "no lib tooltip for it");
-        MachineDefinition tank = GTRegistries.MACHINES
-                .get(new ResourceLocation(GTNACORE.MOD_ID, "large_steam_storage_tank"));
-        if (tank != null) {
-            List<Component> tooltip = shown(tank);
-            h.assertTrue(key(tooltip.get(0)).equals("gtna.machine.large_steam_storage_tank.tooltip.0"),
-                    "the storage tank still uses its numbered lines, got " + tooltip.get(0));
-        }
-        h.succeed();
-    }
-
     /** Machines of the tooltip preview page (design/core in the pack workspace). */
     private static final String[] PREVIEW = { "large_steam_crusher", "steam_manufacturer", "mega_alloy_blast_smelter",
             "nano_forge", "eye_of_harmony", "forge_of_gods", "kinetic_orbital_lance" };

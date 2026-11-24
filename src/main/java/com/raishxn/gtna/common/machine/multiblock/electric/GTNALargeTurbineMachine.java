@@ -76,9 +76,19 @@ public class GTNALargeTurbineMachine extends WorkableElectricMultiblockMachine i
             GTNALargeTurbineMachine.class, WorkableElectricMultiblockMachine.MANAGED_FIELD_HOLDER);
 
     /** GTOCore normal-config high-speed values ({@code TurbineMachine}). */
-    private static final float HIGH_SPEED_OUTPUT_MULTIPLIER = 3.0F;
-    private static final int HIGH_SPEED_ROTOR_DAMAGE = 10;
-    private static final float HIGH_SPEED_MACHINE_FAULT = 8.0F;
+    public static final float HIGH_SPEED_OUTPUT_MULTIPLIER = 3.0F;
+    public static final int HIGH_SPEED_ROTOR_DAMAGE = 10;
+    public static final float HIGH_SPEED_MACHINE_FAULT = 8.0F;
+    /** Base output: V[tier] times this ({@code special} turbines use the higher one). */
+    public static final double SPECIAL_OUTPUT = 2.5;
+    public static final double NORMAL_OUTPUT = 2;
+    /** GTO's non-mega module bonus: output, efficiency and high-speed damage factors. */
+    public static final double MODULE_OUTPUT = 2;
+    public static final double MODULE_EFFICIENCY = 1.2;
+    public static final double MODULE_DAMAGE = 2;
+    /** Construction tiers of the two ports. */
+    public static final int ROCKET_TIER = GTValues.EV;
+    public static final int SUPERCRITICAL_TIER = GTValues.IV;
 
     /** GTOCore {@code gui/overlay/high_speed_mode.png} (CC BY-NC-SA 4.0), two 16x16 states. */
     private static final ResourceTexture HIGH_SPEED_MODE = new ResourceTexture(
@@ -101,7 +111,7 @@ public class GTNALargeTurbineMachine extends WorkableElectricMultiblockMachine i
         super(holder);
         this.turbineTier = tier;
         this.machineId = machineId;
-        this.baseEUOutput = (long) (GTValues.V[tier] * (special ? 2.5 : 2));
+        this.baseEUOutput = (long) (GTValues.V[tier] * (special ? SPECIAL_OUTPUT : NORMAL_OUTPUT));
     }
 
     @Override
@@ -124,9 +134,9 @@ public class GTNALargeTurbineMachine extends WorkableElectricMultiblockMachine i
         }
         // GTO: formedAmount > 0 (a turbine module matched) grants the non-mega module bonus.
         if (gtna$formedModuleCount() > 0) {
-            extraOutput = 2;
-            extraDamage = 2;
-            extraEfficiency = 1.2;
+            extraOutput = MODULE_OUTPUT;
+            extraDamage = MODULE_DAMAGE;
+            extraEfficiency = MODULE_EFFICIENCY;
         } else {
             extraOutput = 1;
             extraDamage = 1;

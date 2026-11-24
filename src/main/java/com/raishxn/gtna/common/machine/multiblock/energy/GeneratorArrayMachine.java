@@ -59,9 +59,9 @@ public class GeneratorArrayMachine extends WorkableElectricMultiblockMachine {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             GeneratorArrayMachine.class, WorkableElectricMultiblockMachine.MANAGED_FIELD_HOLDER);
 
-    private static final int MAX_GENERATORS = 4;
-    private static final double OUTPUT_MULTIPLIER = 1.3;
-    private static final int WIRELESS_LOSS_PERCENT = 5;
+    public static final int MAX_GENERATORS = 4;
+    public static final double OUTPUT_MULTIPLIER = 1.3;
+    public static final int WIRELESS_LOSS_PERCENT = 5;
 
     @Persisted
     private boolean wirelessMode;

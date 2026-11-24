@@ -12,18 +12,6 @@ public final class GTNAMultiblockTooltipText {
     public static final Map<String, String[]> ENGLISH = new LinkedHashMap<>();
 
     static {
-        ENGLISH.put("advanced_hyper_reactor", new String[] {
-                "Machine Type: §eGenerator",
-                "§7§oThe Hyper Reactor, after a long talk with an echo.",
-                "§b§m                                                        ",
-                "§7Burns §6concentrated hyper fuels§7; its boosters",
-                "§7can be set per recipe.",
-                "§b§m                                                        ",
-                "§a▸ Dynamo or Laser Source Hatch",
-                "§b▸ Booster plasma: §e16x§b parallel by default",
-                "§b▸ Booster plasma is consumed once before a boosted run",
-                "§c▸ Booster and fuel are set per recipe (pack/KubeJS)",
-        });
         ENGLISH.put("advanced_integrated_ore_processor", new String[] {
                 "Machine Type: §eIntegrated Ore Processing",
                 "§7§oWhy process one ore when you can process all of them?",
@@ -34,27 +22,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Runs §emultiple different recipes§a at once",
                 "§b▸ Max parallel: §e2,147,483,647§b",
                 "§c▸ Only accepts §eLaser§c Energy Hatches",
-        });
-        ENGLISH.put("analysis_and_research_center", new String[] {
-                "Machine Type: §eResearch",
-                "§7§oFeed it scans, get insight. Sometimes the insight you wanted.",
-                "§b§m                                                        ",
-                "§7Turns §6scan data§7 into §6research data§7 with",
-                "§7computation from the research network.",
-                "§b§m                                                        ",
-                "§a▸ Two modes: data analysis and data integration",
-                "§b▸ Each run yields §eone§b output, picked by its chance",
-                "§c▸ Needs a §eComputation Data Hatch§c and CWU/t",
-        });
-        ENGLISH.put("annihilate_generator", new String[] {
-                "Machine Type: §eAnnihilation Generator",
-                "§7§oLet there be light. Lots of it.",
-                "§b§m                                                        ",
-                "§7An §6artificial star§7 that generates power",
-                "§7from annihilation recipes.",
-                "§b§m                                                        ",
-                "§a▸ §ePerfect overclock§a: duration /4 per tier",
-                "§b▸ Outputs through Laser or up to §e16§b Dynamo Hatches",
         });
         ENGLISH.put("antimatter_collider_ring", new String[] {
                 "Machine Type: §eParticle Collider",
@@ -70,39 +37,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Antiprotons fill §ePenning traps§b (wireless EU)",
                 "§c▸ Missing helium §equenches§c the magnets",
                 "§c▸ Unpowered traps §eannihilate§c their antimatter",
-        });
-        ENGLISH.put("assembler_module", new String[] {
-                "Machine Type: §eSpace Assembly",
-                "§7§oPlug it into a Space Elevator and look up.",
-                "§b§m                                                        ",
-                "§7Assembles parts in orbit, where §6zero gravity§7",
-                "§7helps the tiniest tolerances.",
-                "§b§m                                                        ",
-                "§a▸ Parallel: §e4^(Power Module MK - 1)§a",
-                "§b▸ Works only while its Space Elevator runs",
-        });
-        ENGLISH.put("brick_kiln", new String[] {
-                "Machine Type: §eBrick Firing",
-                "§7§oBricks: the original building block.",
-                "§b§m                                                        ",
-                "§7Fires §6bricks and ceramics§7 from compressed",
-                "§7clay and coal.",
-                "§b§m                                                        ",
-                "§a▸ Runs without an energy hatch",
-        });
-        ENGLISH.put("data_center", new String[] {
-                "Machine Type: §eData Bank",
-                "§7§oEvery research note, cooled by NICH and served at the speed of light.",
-                "§b§m                                                        ",
-                "§7A large §6Data Bank§7 that shares research data",
-                "§7with Assembly Lines over optical cables.",
-                "§b§m                                                        ",
-                "§a▸ Many Optical Data Hatches",
-                "§a▸ Chains with other Data Banks",
-                "§b▸ Up to §e16§b transmission and §e4§b reception hatches",
-                "§b▸ Data/Optical Hatches: §e1,920§b EU/t each normally",
-                "§c▸ Needs NICH Cooling Components in its walls",
-                "§c▸ With optical reception: §e30,720§c EU/t per data hatch",
         });
         ENGLISH.put("dimensional_rift_gate", new String[] {
                 "Machine Type: §eRift Opening",
@@ -160,29 +94,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Accepts Thread and Overclock Hatches",
                 "§c▸ Development use only",
         });
-        ENGLISH.put("dyson_sphere_launch_silo", new String[] {
-                "Machine Type: §eDyson Sphere",
-                "§7§oOne module at a time, until the sun is wearing a coat.",
-                "§b§m                                                        ",
-                "§7Launches §6swarm modules§7 into orbit of the",
-                "§7planet it stands on.",
-                "§b§m                                                        ",
-                "§a▸ Each launch adds a module, or repairs a damaged swarm",
-                "§b▸ Launch time grows with the planet's distance",
-                "§c▸ Only on a planet's surface, not in orbit",
-        });
-        ENGLISH.put("dyson_sphere_receiving_station", new String[] {
-                "Machine Type: §eGenerator",
-                "§7§oAll that sunlight was going to waste anyway.",
-                "§b§m                                                        ",
-                "§7Collects the power of the planet's §6Dyson swarm§7",
-                "§7and sends it out as a laser.",
-                "§b§m                                                        ",
-                "§a▸ Output grows with the modules in orbit",
-                "§b▸ Needs computation and liquid helium",
-                "§b▸ A heavily damaged swarm gives less power",
-                "§c▸ Each run may damage the swarm",
-        });
         ENGLISH.put("electric_void_miner", new String[] {
                 "Machine Type: §eVoid Mining",
                 "§7§oMining nothing and getting everything. Physics is optional.",
@@ -197,51 +108,6 @@ public final class GTNAMultiblockTooltipText {
                 "§c▸ Needs Drilling Fluid every operation",
                 "§c▸ EV tier has no parallel",
         });
-        ENGLISH.put("fuel_cell_generator", new String[] {
-                "Machine Type: §eFuel Cell",
-                "§7§oA battery that drinks fuel and remembers how tired it is.",
-                "§b§m                                                        ",
-                "§7Charges §6redox-flow electrolytes§7 with fuel, moves",
-                "§7charge between them and discharges them as EU.",
-                "§b§m                                                        ",
-                "§a▸ Three modes: absorption, transfer, release",
-                "§a▸ Better §emembrane electrodes§a raise the efficiency",
-                "§b▸ Release: up to §e50§b parallel",
-                "§b▸ Idle recovery: §e600 mB/t§b Distilled Water",
-                "§b▸ Recovers §e15%§b of lost efficiency per tick",
-                "§b▸ Transfer swaps the inputs' §echarge states§b",
-                "§c▸ Each release run has a §e0.35%§c chance to use up the membrane",
-                "§c▸ Absorption needs equal §eanolyte and catholyte§c amounts",
-                "§c▸ Energy transfer loses efficiency according to the recipe",
-                "§c▸ Absorption efficiency decays per run, based on the membrane",
-        });
-        ENGLISH.put("generator_array", new String[] {
-                "Machine Type: §eGenerator Array",
-                "§7§oFour generators walk into a bar. Only one bill.",
-                "§b§m                                                        ",
-                "§7Runs up to four matching GTCEu §6generators§7",
-                "§7with their normal fuel recipes.",
-                "§b§m                                                        ",
-                "§a▸ Output §e1.3x§a per installed generator",
-                "§a▸ Wireless output to the owner's Flux Matrix",
-                "§b▸ Up to §e4§b generators of one type and tier",
-                "§b▸ Steam Turbine, Gas Turbine, Combustion Gen.",
-                "§c▸ Fuel use scales with output",
-                "§c▸ Wireless output loses §e5%§c",
-        });
-        ENGLISH.put("hyper_reactor", new String[] {
-                "Machine Type: §eGenerator",
-                "§7§oBurns hyper fuel. Do not ask what is hyper about it.",
-                "§b§m                                                        ",
-                "§7Turns §6hyper fuels§7 into huge amounts of EU;",
-                "§7a booster plasma multiplies each run.",
-                "§b§m                                                        ",
-                "§a▸ Builds in any direction",
-                "§a▸ Dynamo or Laser Source Hatch",
-                "§b▸ Booster plasma: §e16x§b parallel by default",
-                "§b▸ Booster plasma is consumed once before a boosted run",
-                "§c▸ Booster and fuel are set per recipe (pack/KubeJS)",
-        });
         ENGLISH.put("incubator", new String[] {
                 "Machine Type: §eIncubator",
                 "§7§oGrowing ore veins in a petri dish. Science!",
@@ -254,29 +120,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ §e10,000§b mB Biomass and Milk per culture",
                 "§b▸ Produces §e64§b essences per culture",
                 "§c▸ Needs Biomass and Milk every culture",
-        });
-        ENGLISH.put("industrial_slaughterhouse", new String[] {
-                "Machine Type: §eIndustrial Slaughter",
-                "§7§oNo mobs were harmed in this tooltip. Many were in the machine.",
-                "§b§m                                                        ",
-                "§7Virtual mob processing: drops §6scale with§7",
-                "§7§6voltage tier§7, picked by circuit.",
-                "§b§m                                                        ",
-                "§a▸ Bosses §ex3§a drops/tier, Dragon §ex5§a drops/tier",
-                "§b▸ Circuit §e1§b passive, §e2§b hostile, §e3§b boss, §e4§b dragon",
-                "§b▸ Base tiers: §eLV§b / §eMV§b / §eZPM§b / §eUHV§b",
-                "§c▸ EU/t: §e1,000§c / §e2,560§c / §e32k§c / §e120k§c per circuit",
-        });
-        ENGLISH.put("infinity_fluid_drilling_rig", new String[] {
-                "Machine Type: §eFluid Drilling",
-                "§7§oBetter than Minecraft's infinite water. Barely legal.",
-                "§b§m                                                        ",
-                "§7Drills fluids from §6self-regenerating§7 veins",
-                "§7under the bedrock.",
-                "§b§m                                                        ",
-                "§a▸ Vein depletion rate: §e0§a",
-                "§b▸ Output: §e256x§b at ZPM, §e384x§b at UV",
-                "§c▸ Needs a ZPM or better energy supply",
         });
         ENGLISH.put("integrated_ore_processor", new String[] {
                 "Machine Type: §eIntegrated Ore Processing",
@@ -309,74 +152,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Capsules return after the §etravel time§b",
                 "§c▸ A worn liner §emisfires§c",
                 "§c▸ A hot barrel §edrifts§c off target",
-        });
-        ENGLISH.put("large_steam_solar_boiler", new String[] {
-                "Machine Type: §eSolar Boiler",
-                "§7§oFree steam, courtesy of a very large star.",
-                "§b§m                                                        ",
-                "§7An expandable solar steam field made of",
-                "§7§6solar boiling cells§7.",
-                "§b§m                                                        ",
-                "§a▸ Steam output scales with §esunlit cells§a",
-                "§b▸ Grows up to §e63§b blocks sideways, §e125§b back",
-                "§c▸ Cells must stay sunlit to count",
-        });
-        ENGLISH.put("large_steam_storage_tank", new String[] {
-                "Machine Type: §eSteam Storage",
-                "§7§oHot air, stored responsibly.",
-                "§b§m                                                        ",
-                "§7An industrial §6steam reservoir§7 that buffers",
-                "§7your boilers for the whole factory.",
-                "§b§m                                                        ",
-                "§a▸ Smooths out boiler output spikes",
-                "§b▸ Capacity: §e120,000,000§b mB of Steam",
-                "§c▸ Stores Steam only",
-        });
-        ENGLISH.put("leap_forward_one_blast_furnace", new String[] {
-                "Machine Type: §ePrimitive Blast Furnace",
-                "§7§oA great leap forward in primitive technology.",
-                "§b§m                                                        ",
-                "§7A primitive blast furnace that grows: every",
-                "§7extra layer §6doubles§7 the parallel, but slows",
-                "§7the cycle down.",
-                "§b§m                                                        ",
-                "§a▸ Parallel §edoubles§a with each extra layer",
-                "§b▸ Max parallel: §e32,000§b",
-                "§b▸ Cycle: §e20 s§b +§e20 s§b per extra layer",
-                "§c▸ Taller structure = slower cycle",
-        });
-        ENGLISH.put("lightning_rod", new String[] {
-                "Machine Type: §eArc Generator",
-                "§7§oCalls lightning on purpose. The neighbours have questions.",
-                "§b§m                                                        ",
-                "§7Channels §6arc discharges§7 to forge what heat alone",
-                "§7cannot, with lightning crackling at its tip.",
-                "§b§m                                                        ",
-                "§a▸ Thread Hatch: several recipes at once",
-                "§a▸ Accepts Laser Hatches",
-                "§b▸ Parallel set by the §eParallel Hatch§b",
-        });
-        ENGLISH.put("liquefaction_furnace", new String[] {
-                "Machine Type: §eLiquefaction",
-                "§7§oEverything is a liquid if you heat it enough.",
-                "§b§m                                                        ",
-                "§7Melts items into §6fluids§7 once the coils",
-                "§7reach the recipe temperature.",
-                "§b§m                                                        ",
-                "§a▸ Extension tower: Parallel and Accelerate Hatches",
-                "§c▸ Coils must meet the recipe temperature",
-        });
-        ENGLISH.put("me_storage", new String[] {
-                "Machine Type: §eME Storage",
-                "§7§oMore bytes than you will ever need. Probably.",
-                "§b§m                                                        ",
-                "§7An expandable §6ME storage§7 multiblock: repeat",
-                "§7the core slice to add storage sections.",
-                "§b§m                                                        ",
-                "§a▸ Grows with the structure",
-                "§b▸ Up to §e128§b storage sections",
-                "§c▸ Needs exactly §eone§c ME Storage Access,",
-                "§c▸ Big Storage Access or IO Port Hatch",
         });
         ENGLISH.put("mega_distillery", new String[] {
                 "Machine Type: §eDistillery, Distillation",
@@ -416,41 +191,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Threads per module: §e4§b / §e16§b / §e128§b / §e1,024§b",
                 "§c▸ Needs exactly §eone§c Crafting CPU Interface",
         });
-        ENGLISH.put("nexus_molecular_forge", new String[] {
-                "Machine Type: §eAE2 Mass Crafting",
-                "§7§oIngredients? Where we're going, we don't need ingredients.",
-                "§b§m                                                        ",
-                "§7An ultra-fast AE2 forge that queues jobs from",
-                "§7§6Nexus Craft Pattern Hatches§7 and builds them",
-                "§7in giant batches.",
-                "§b§m                                                        ",
-                "§a▸ Every queued output materializes at once",
-                "§a▸ Queued crafts use §eno physical ingredients§a",
-                "§b▸ Power: §e1§b EU per crafted item",
-                "§c▸ Parallel follows the AE2 crafting CPU",
-        });
-        ENGLISH.put("pcb_factory", new String[] {
-                "Machine Type: §ePCB Factory",
-                "§7§oPrints boards by the thousand. The etchant smells like progress.",
-                "§b§m                                                        ",
-                "§7Etches §6printed circuit boards§7 in bulk; bigger",
-                "§7structures unlock higher-tier boards.",
-                "§b§m                                                        ",
-                "§a▸ Three structure tiers (screwdriver on the controller)",
-                "§a▸ Accepts Laser Hatches",
-                "§b▸ Tier 1: up to §e30,719 EU/t§b; tier 2: up to §e491,519 EU/t§b",
-                "§b▸ Parallel set by the §eParallel Hatch§b",
-        });
-        ENGLISH.put("primitive_distillation_tower", new String[] {
-                "Machine Type: §eDistillation Tower",
-                "§7§oMoonshine technology, scaled up for oil.",
-                "§b§m                                                        ",
-                "§7A primitive steam distillation tower for",
-                "§7early §6oil and fluid§7 separation.",
-                "§b§m                                                        ",
-                "§a▸ Uses only §e75%§a of the normal steam",
-                "§b▸ One fluid output per tower layer",
-        });
         ENGLISH.put("primitive_stone_furnace", new String[] {
                 "Machine Type: §eFurnace",
                 "§7§oCarved by hand, powered by nothing, judged by no one.",
@@ -461,52 +201,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Every recipe finishes in §e1 tick§a",
                 "§a▸ Runs every furnace recipe at once, unlimited",
                 "§b▸ Parallel and threads: effectively §eunlimited§b",
-        });
-        ENGLISH.put("resource_collection_module", new String[] {
-                "Machine Type: §eSpace Miner, Space Drilling",
-                "§7§oAsteroid mining, minus the movie heroics.",
-                "§b§m                                                        ",
-                "§7Sends §6space drones§7 to mine asteroids",
-                "§7and collect gases.",
-                "§b§m                                                        ",
-                "§a▸ Parallel: §e4^(Power Module MK - 1)§a",
-                "§b▸ Works only while its Space Elevator runs",
-        });
-        ENGLISH.put("rocket_large_turbine", new String[] {
-                "Machine Type: §eRocket Engine",
-                "§7§oNot rocket science. Okay, it is rocket science.",
-                "§b§m                                                        ",
-                "§7An EV turbine that burns §6rocket fuel§7 and",
-                "§7turns rotor power into EU.",
-                "§b§m                                                        ",
-                "§a▸ Each rotor tier above EV: §e+10%§a eff., §e2x§a EU/t",
-                "§a▸ Engine module: §e2x§a output, §e+20%§a efficiency",
-                "§b▸ Base output: §e5,120§b EU/t",
-                "§c▸ High-Speed Mode: §e3x§c output, §e10x§c rotor wear",
-        });
-        ENGLISH.put("space_elevator", new String[] {
-                "Machine Type: §eSpace Elevator",
-                "§7§oA very long elevator. Mind the doors on the way up.",
-                "§b§m                                                        ",
-                "§7A cable to orbit that powers the §6modules§7",
-                "§7standing in its twelve module slots.",
-                "§b§m                                                        ",
-                "§a▸ Power Module MK sets the modules' parallel",
-                "§b▸ Runs only above ZPM, with computation",
-                "§b▸ Needs Nanotube Spools fed through its input bus",
-                "§c▸ All Power Modules must be the same MK",
-        });
-        ENGLISH.put("space_probe_surface_reception", new String[] {
-                "Machine Type: §eSpace Probe Receiver",
-                "§7§oListens to the cosmos and bottles what it hears.",
-                "§b§m                                                        ",
-                "§7Catches §6cosmic particles§7 with a dish pointed at",
-                "§7the open sky, far above any planet.",
-                "§b§m                                                        ",
-                "§a▸ Works in any §espace§a dimension of Ad Astra",
-                "§b▸ §ePerfect§b overclock",
-                "§c▸ Stops when the sky above the dish is covered",
-                "§c▸ Needs a §eComputation Data Hatch§c",
         });
         ENGLISH.put("stellar_containment_chamber", new String[] {
                 "Machine Type: §eStellar Containment",
@@ -522,48 +216,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Above §e2,2 M☉§b it collapses into a black hole",
                 "§c▸ Spinning below the §eKepler period§c tears the star apart",
                 "§c▸ Unpowered bands during a quake damage containment",
-        });
-        ENGLISH.put("supercomputing_center", new String[] {
-                "Machine Type: §eComputation",
-                "§7§oThree generations of computers under one roof. Mind the heat.",
-                "§b§m                                                        ",
-                "§7A tiered §6HPCA§7: HPCA, NICH or GWCA components",
-                "§7supply CWU/t to the research network.",
-                "§b§m                                                        ",
-                "§a▸ Three tiers (screwdriver): HPCA, NICH, GWCA",
-                "§a▸ MFPC coolant restores the CWU/t multiplier",
-                "§b▸ Tier 1 pays a quarter of the components' upkeep",
-                "§b▸ Tiers 2-3 need an Optical / Exotic Mainframe",
-                "§b▸ CWU/t = sum of component power x correction factor",
-                "§c▸ Low cooling damages computing components",
-                "§c▸ Tier must match the casings, vents and glass",
-                "§c▸ At higher tiers, the correction factor decays over time",
-                "§c▸ Used MFPC turns into its §einvalidated§c form",
-        });
-        ENGLISH.put("supercritical_steam_turbine", new String[] {
-                "Machine Type: §eSupercritical Steam Turbine",
-                "§7§oSteam, but it has seen things.",
-                "§b§m                                                        ",
-                "§7An IV turbine that expands §6supercritical§7",
-                "§7§6steam§7 through a rotor into EU.",
-                "§b§m                                                        ",
-                "§a▸ Each rotor tier above IV: §e+10%§a eff., §e2x§a EU/t",
-                "§a▸ Module: §e2x§a speed, §e+20%§a efficiency",
-                "§b▸ Base output: §e16,384§b EU/t",
-                "§b▸ High-Speed Mode stacks with the module",
-                "§c▸ The module doubles rotor wear",
-        });
-        ENGLISH.put("thermal_power_pump", new String[] {
-                "Machine Type: §eWater Pump",
-                "§7§oTurns steam back into water. Circle of life.",
-                "§b§m                                                        ",
-                "§7Condenses steam into §6water§7 based on the",
-                "§7surrounding biome.",
-                "§b§m                                                        ",
-                "§a▸ Rain boosts output by §e50%§a",
-                "§a▸ Oceans and rivers produce the most",
-                "§b▸ Output depends on the biome",
-                "§c▸ Produces nothing in the Nether",
         });
         ENGLISH.put("universal_factory", new String[] {
                 "Machine Type: §eUniversal Factory",
@@ -589,21 +241,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Entry tier: §eEV§b",
                 "§c▸ Origin dimension only, until upgraded",
                 "§c▸ Needs Drilling Fluid; full output pauses it",
-        });
-        ENGLISH.put("void_miner_steam_gate_aged", new String[] {
-                "Machine Type: §eVoid Miner",
-                "§7§oMining a dimension made entirely of steam. Don't ask.",
-                "§b§m                                                        ",
-                "§7Harvests raw resources from the §6Steam§7",
-                "§7§6Dimensions§7: Raw Gold, Copper, Iron,",
-                "§7Cobalt and Coal.",
-                "§b§m                                                        ",
-                "§a▸ Dense Steam: §e2x§a items, §e2x§a speed",
-                "§a▸ SuperHeated: §e3x§a items, §e3x§a speed",
-                "§a▸ Insanely: §e5x§a items, §e5x§a speed",
-                "§b▸ Boosts are configurable in the GTNA config",
-                "§c▸ EU cost: §e1.5x§c / §e2x§c / §e4x§c with each boost",
-                "§c▸ Requires Drilling Fluid per operation",
         });
     }
 

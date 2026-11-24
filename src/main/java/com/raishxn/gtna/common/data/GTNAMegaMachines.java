@@ -332,7 +332,8 @@ public final class GTNAMegaMachines {
     /** GTO {@code infinity_fluid_drilling_rig}: ZPM rig, 256x yield, no depletion; UV energy adds 50%. */
     public static final MultiblockMachineDefinition INFINITY_FLUID_DRILLING_RIG = REGISTRATE
             .multiblock("infinity_fluid_drilling_rig",
-                    holder -> new InfinityFluidDrillMachine(holder, GTValues.ZPM, 256))
+                    holder -> new InfinityFluidDrillMachine(holder,
+                            InfinityFluidDrillMachine.RIG_TIER, InfinityFluidDrillMachine.BASIS))
             .rotationState(RotationState.ALL)
             .recipeType(GTRecipeTypes.DUMMY_RECIPES)
             .appearanceBlock(GTNABlocks.IRIDIUM_CASING)

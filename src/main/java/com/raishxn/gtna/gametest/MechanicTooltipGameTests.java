@@ -18,8 +18,10 @@ import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.AdvancedFusionReactorMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.BlazeBlastFurnaceMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.CoilWorkableElectricMultipleRecipesMachine;
+import com.raishxn.gtna.common.machine.multiblock.electric.GTNALargeTurbineMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
+import com.raishxn.gtna.common.machine.multiblock.energy.GeneratorArrayMachine;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamFlightModule;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamOilDrillModule;
 import com.raishxn.gtna.data.recipe.GTNANaquadahReactorRecipes;
@@ -110,6 +112,36 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("giant_sintering_array", 6);
         MINIMUM.put("integrated_vapor_deposition_system", 4);
         MINIMUM.put("compound_extreme_cooling_unit", 4);
+        MINIMUM.put("hyper_reactor", 10);
+        MINIMUM.put("advanced_hyper_reactor", 10);
+        MINIMUM.put("annihilate_generator", 4);
+        MINIMUM.put("fuel_cell_generator", 8);
+        MINIMUM.put("generator_array", 6);
+        MINIMUM.put("rocket_large_turbine", 10);
+        MINIMUM.put("supercritical_steam_turbine", 10);
+        MINIMUM.put("lightning_rod", 4);
+        MINIMUM.put("dyson_sphere_launch_silo", 7);
+        MINIMUM.put("dyson_sphere_receiving_station", 9);
+        MINIMUM.put("thermal_power_pump", 7);
+        MINIMUM.put("liquefaction_furnace", 5);
+        MINIMUM.put("brick_kiln", 4);
+        MINIMUM.put("primitive_distillation_tower", 4);
+        MINIMUM.put("void_miner_steam_gate_aged", 6);
+        MINIMUM.put("leap_forward_one_blast_furnace", 5);
+        MINIMUM.put("large_steam_solar_boiler", 5);
+        MINIMUM.put("large_steam_storage_tank", 3);
+        MINIMUM.put("me_storage", 5);
+        MINIMUM.put("nexus_molecular_forge", 6);
+        MINIMUM.put("infinity_fluid_drilling_rig", 5);
+        MINIMUM.put("industrial_slaughterhouse", 8);
+        MINIMUM.put("pcb_factory", 5);
+        MINIMUM.put("space_elevator", 8);
+        MINIMUM.put("assembler_module", 5);
+        MINIMUM.put("resource_collection_module", 4);
+        MINIMUM.put("space_probe_surface_reception", 4);
+        MINIMUM.put("supercomputing_center", 9);
+        MINIMUM.put("data_center", 5);
+        MINIMUM.put("analysis_and_research_center", 5);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -261,6 +293,19 @@ public final class MechanicTooltipGameTests {
         }
         h.assertTrue(text("fishing_ground").contains("up to 1,024"), "fishing loot draws");
         h.assertTrue(text("chemical_plant").contains("coil tier × 5%"), "chemical plant coil cut");
+        h.succeed();
+    }
+
+    /** Turbine, generator array and slaughterhouse numbers are the machines' constants. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void gtoGeneratorNumbersMatchTheMachines(GameTestHelper h) {
+        String rocket = text("rocket_large_turbine");
+        long base = (long) (GTValues.V[GTNALargeTurbineMachine.ROCKET_TIER] * GTNALargeTurbineMachine.SPECIAL_OUTPUT);
+        h.assertTrue(rocket.contains(String.format(java.util.Locale.ROOT, "%,d EU/t", base)),
+                "rocket turbine base output " + base + ": " + rocket);
+        h.assertTrue(text("generator_array").contains("up to " + GeneratorArrayMachine.MAX_GENERATORS),
+                "generator array count");
+        h.assertTrue(text("industrial_slaughterhouse").contains("Bosses: from ZPM"), "slaughterhouse boss tier");
         h.succeed();
     }
 

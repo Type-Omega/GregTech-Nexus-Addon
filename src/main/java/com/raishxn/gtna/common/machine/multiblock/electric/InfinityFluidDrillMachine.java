@@ -25,6 +25,10 @@ import org.jetbrains.annotations.Nullable;
  */
 public final class InfinityFluidDrillMachine extends FluidDrillMachine {
 
+    /** The GTO rig: ZPM, yield multiplier 256. */
+    public static final int RIG_TIER = GTValues.ZPM;
+    public static final int BASIS = 256;
+
     private final int basis;
 
     public InfinityFluidDrillMachine(IMachineBlockEntity holder, int tier, int basis) {

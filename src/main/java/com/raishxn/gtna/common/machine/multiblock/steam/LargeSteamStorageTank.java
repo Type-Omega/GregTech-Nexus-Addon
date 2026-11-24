@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class LargeSteamStorageTank extends MultiblockTankMachine {
 
-    private static final int CAPACITY = 120_000_000;
+    public static final int CAPACITY = 120_000_000;
 
     public LargeSteamStorageTank(IMachineBlockEntity holder, Object... args) {
         super(holder, CAPACITY, new SteamOnlyFilter(), args);

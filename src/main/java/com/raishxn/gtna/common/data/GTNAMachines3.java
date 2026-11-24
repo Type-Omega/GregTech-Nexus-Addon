@@ -47,6 +47,7 @@ import com.raishxn.gtna.common.machine.multiblock.electric.ColdIceFreezerMachine
 import com.raishxn.gtna.common.machine.multiblock.electric.ComponentAssemblerMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.ComponentAssemblyLineMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.FishingGroundMachine;
+import com.raishxn.gtna.common.machine.multiblock.electric.GTNALargeTurbineMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.GreenhouseMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.IndustrialFlotationCellMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.IsaMillMachine;
@@ -680,7 +681,8 @@ public final class GTNAMachines3 {
      * Chemical Plant).
      */
     public static final MultiblockMachineDefinition ROCKET_LARGE_TURBINE = REGISTRATE
-            .multiblock("rocket_large_turbine", holder -> new RocketLargeTurbineMachine(holder, GTValues.EV, true))
+            .multiblock("rocket_large_turbine", holder -> new RocketLargeTurbineMachine(holder,
+                    GTNALargeTurbineMachine.ROCKET_TIER, true))
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTNARecipeType.ROCKET_ENGINE_FUELS)
             .generator(true)
@@ -717,7 +719,8 @@ public final class GTNAMachines3 {
      */
     public static final MultiblockMachineDefinition SUPERCRITICAL_STEAM_TURBINE = REGISTRATE
             .multiblock("supercritical_steam_turbine",
-                    holder -> new SupercriticalSteamTurbineMachine(holder, GTValues.IV, false))
+                    holder -> new SupercriticalSteamTurbineMachine(holder,
+                            GTNALargeTurbineMachine.SUPERCRITICAL_TIER, false))
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTNARecipeType.SUPERCRITICAL_STEAM_TURBINE_FUELS)
             .generator(true)

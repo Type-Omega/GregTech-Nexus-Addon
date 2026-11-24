@@ -46,7 +46,7 @@ public class ThermalPowerPumpMachine extends WorkableElectricMultipleRecipesMach
                                      implements IZeroEnergyMachine {
 
     private static final Fluid STEAM = GTMaterials.Steam.getFluid();
-    private static final int CYCLE_TICKS = 20;
+    public static final int CYCLE_TICKS = 20;
 
     private final List<NotifiableFluidTank> fluidInputs = new ArrayList<>();
     private final List<NotifiableFluidTank> fluidOutputs = new ArrayList<>();

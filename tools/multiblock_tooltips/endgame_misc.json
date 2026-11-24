@@ -77,80 +77,6 @@
       ]
     }
   },
-  "nexus_molecular_forge": {
-    "type": "AE2 Mass Crafting",
-    "flavor": "Ingredients? Where we're going, we don't need ingredients.",
-    "desc": [
-      "An ultra-fast AE2 forge that queues jobs from",
-      "*Nexus Craft Pattern Hatches* and builds them",
-      "in giant batches."
-    ],
-    "pro": [
-      "Every queued output materializes at once",
-      "Queued crafts use *no physical ingredients*"
-    ],
-    "num": [
-      "Power: *1* EU per crafted item"
-    ],
-    "con": [
-      "Parallel follows the AE2 crafting CPU"
-    ],
-    "pt": {
-      "type": "Crafting em Massa do AE2",
-      "flavor": "Ingredientes? Para onde vamos, não precisamos de ingredientes.",
-      "desc": [
-        "Uma forja do AE2 ultrarrápida que enfileira pedidos",
-        "dos *Nexus Craft Pattern Hatches* e os fabrica",
-        "em lotes gigantes."
-      ],
-      "pro": [
-        "Toda saída na fila aparece de uma vez",
-        "Pedidos na fila não usam *ingredientes físicos*"
-      ],
-      "num": [
-        "Energia: *1* EU por item fabricado"
-      ],
-      "con": [
-        "Os paralelos seguem a CPU de crafting do AE2"
-      ]
-    }
-  },
-  "me_storage": {
-    "type": "ME Storage",
-    "flavor": "More bytes than you will ever need. Probably.",
-    "desc": [
-      "An expandable *ME storage* multiblock: repeat",
-      "the core slice to add storage sections."
-    ],
-    "pro": [
-      "Grows with the structure"
-    ],
-    "num": [
-      "Up to *128* storage sections"
-    ],
-    "con": [
-      "Needs exactly *one* ME Storage Access,",
-      "Big Storage Access or IO Port Hatch"
-    ],
-    "pt": {
-      "type": "Armazenamento ME",
-      "flavor": "Mais bytes do que você vai precisar. Provavelmente.",
-      "desc": [
-        "Um multibloco de *armazenamento ME* expansível: repita",
-        "a fatia do núcleo para adicionar seções."
-      ],
-      "pro": [
-        "Cresce junto com a estrutura"
-      ],
-      "num": [
-        "Até *128* seções de armazenamento"
-      ],
-      "con": [
-        "Precisa de exatamente *um* ME Storage Access,",
-        "Big Storage Access ou IO Port Hatch"
-      ]
-    }
-  },
   "universal_factory": {
     "type": "Universal Factory",
     "flavor": "One factory to rule them all.",
@@ -300,42 +226,6 @@
       "con": [
         "Só na dimensão de origem, até o upgrade",
         "Precisa de Fluido de Perfuração; saída cheia pausa"
-      ]
-    }
-  },
-  "industrial_slaughterhouse": {
-    "type": "Industrial Slaughter",
-    "flavor": "No mobs were harmed in this tooltip. Many were in the machine.",
-    "desc": [
-      "Virtual mob processing: drops *scale with*",
-      "*voltage tier*, picked by circuit."
-    ],
-    "pro": [
-      "Bosses *x3* drops/tier, Dragon *x5* drops/tier"
-    ],
-    "num": [
-      "Circuit *1* passive, *2* hostile, *3* boss, *4* dragon",
-      "Base tiers: *LV* / *MV* / *ZPM* / *UHV*"
-    ],
-    "con": [
-      "EU/t: *1,000* / *2,560* / *32k* / *120k* per circuit"
-    ],
-    "pt": {
-      "type": "Abate Industrial",
-      "flavor": "Nenhum mob se machucou nesta tooltip. Muitos na máquina.",
-      "desc": [
-        "Processamento virtual de mobs: os drops *crescem com*",
-        "*o tier de voltagem*, escolhidos por circuito."
-      ],
-      "pro": [
-        "Chefes *x3* drops/tier, Dragão *x5* drops/tier"
-      ],
-      "num": [
-        "Circuito *1* passivo, *2* hostil, *3* chefe, *4* dragão",
-        "Tiers base: *LV* / *MV* / *ZPM* / *UHV*"
-      ],
-      "con": [
-        "EU/t: *1.000* / *2.560* / *32k* / *120k* por circuito"
       ]
     }
   },

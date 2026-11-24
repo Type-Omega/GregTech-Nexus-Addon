@@ -1,0 +1,1047 @@
+{
+  "gtna.tooltip.mb.hyper.booster": [
+    "A booster plasma in the input hatches multiplies a run by the parallels its recipe names",
+    "Um plasma de reforço nas escotilhas de entrada multiplica a operação pelos paralelos que a receita indica",
+    "输入仓中的增幅等离子体按配方指定的并行数倍增运行"
+  ],
+  "gtna.tooltip.mb.hyper.best": [
+    "With several boosters present, the one with the most parallels is used",
+    "Com vários reforços presentes, usa o de mais paralelos",
+    "存在多种增幅时使用并行数最高者"
+  ],
+  "gtna.tooltip.mb.hyper.pack": [
+    "GTNA ships no fuel for it: the pack's recipes set fuels and boosters",
+    "O GTNA não traz combustível para ele: as receitas do pack definem combustíveis e reforços",
+    "GTNA未附带其燃料：燃料与增幅由整合包配方设定"
+  ],
+  "gtna.tooltip.mb.turbine.base": [
+    "Base output: %s, V[%s] × %s",
+    "Saída base: %s, V[%s] × %s",
+    "基础输出：%s，即V[%s]×%s"
+  ],
+  "gtna.tooltip.mb.turbine.cap": [
+    "Recipe cap: min(dynamo voltage, rotor voltage × (speed / max speed)²)",
+    "Teto da receita: min(voltagem do dínamo, voltagem do rotor × (velocidade / velocidade máx.)²)",
+    "配方上限：min(动力仓电压, 转子电压×(转速/最大转速)²)"
+  ],
+  "gtna.tooltip.mb.turbine.parallel": [
+    "Runs as many fuel parallels as fit under that cap",
+    "Roda tantos paralelos de combustível quanto couberem nesse teto",
+    "在该上限内运行尽可能多的燃料并行"
+  ],
+  "gtna.tooltip.mb.turbine.efficiency": [
+    "Fuel time × the rotor holder's total efficiency",
+    "Tempo do combustível × a eficiência total do suporte de rotor",
+    "燃料时长×转子支架总效率"
+  ],
+  "gtna.tooltip.mb.turbine.rotor": [
+    "Needs a rotor; the rotor holder faces outwards with a clear front",
+    "Precisa de um rotor; o suporte de rotor fica virado para fora com a frente livre",
+    "需要转子；转子支架朝外且前方无遮挡"
+  ],
+  "gtna.tooltip.mb.turbine.module": [
+    "Auxiliary module: %s output, +%s efficiency, %s high-speed damage",
+    "Módulo auxiliar: %s de saída, +%s de eficiência, %s de dano em alta velocidade",
+    "辅助模块：输出%s，效率+%s，高速模式损耗%s"
+  ],
+  "gtna.tooltip.mb.turbine.high_speed": [
+    "High-speed mode: %s output, %s rotor damage per second, %s maintenance faults",
+    "Modo alta velocidade: %s de saída, %s de dano ao rotor por segundo, %s falhas de manutenção",
+    "高速模式：输出%s，转子每秒损耗%s，维护故障%s"
+  ],
+  "gtna.tooltip.mb.turbine.voids": [
+    "EU and fluid the hatches cannot take are voided",
+    "EU e fluido que as escotilhas não aceitam são descartados",
+    "仓室无法容纳的EU与流体将被销毁"
+  ],
+  "gtna.tooltip.mb.turbine.not_ported": [
+    "GTO's rotor auto-insert hatch and expert-mode panel are not ported",
+    "A escotilha de inserção automática de rotor e o painel do modo expert do GTO não foram portados",
+    "未移植GTO的转子自动装填仓与专家模式面板"
+  ],
+  "gtna.tooltip.mb.dyson.distance": [
+    "Planet distance: Ad Astra tier + 1 (Earth 1, Moon 2, Mars 3, Venus and Mercury 4, Glacio 5); an orbit counts as its planet",
+    "Distância do planeta: tier do Ad Astra + 1 (Terra 1, Lua 2, Marte 3, Vênus e Mercúrio 4, Glacio 5); a órbita conta como o planeta",
+    "行星距离：Ad Astra等级+1（地球1、月球2、火星3、金星与水星4、Glacio 5），轨道视同其行星"
+  ],
+  "gtna.tooltip.mb.space.parallel": [
+    "Parallels: 4^(Power Module MK − 1)",
+    "Paralelos: 4^(MK do Power Module − 1)",
+    "并行数：4^(动力模块MK−1)"
+  ],
+  "gtna.tooltip.mb.space.time": [
+    "Time × √(1 / (elevator tier − ZPM))",
+    "Tempo × √(1 / (tier do elevador − ZPM))",
+    "耗时×√(1/(电梯等级−ZPM))"
+  ],
+  "gtna.tooltip.mb.space.running": [
+    "Works only while its Space Elevator runs above ZPM with all its spools",
+    "Só funciona enquanto o Space Elevator roda acima de ZPM com todos os carretéis",
+    "仅在其太空电梯以高于ZPM运行且线轴齐全时工作"
+  ],
+  "gtna.tooltip.mb.type.hyper_reactor": [
+    "Generator",
+    "Gerador",
+    "发电机"
+  ],
+  "gtna.tooltip.mb.type.advanced_hyper_reactor": [
+    "Generator",
+    "Gerador",
+    "发电机"
+  ],
+  "gtna.tooltip.mb.type.annihilate_generator": [
+    "Annihilation Generator",
+    "Gerador de Aniquilação",
+    "湮灭发电机"
+  ],
+  "gtna.tooltip.mb.type.fuel_cell_generator": [
+    "Fuel Cell",
+    "Célula de Combustível",
+    "燃料电池"
+  ],
+  "gtna.tooltip.mb.type.generator_array": [
+    "Generator Array",
+    "Matriz de Geradores",
+    "发电阵列"
+  ],
+  "gtna.tooltip.mb.type.rocket_large_turbine": [
+    "Large Turbine",
+    "Turbina Grande",
+    "大型涡轮"
+  ],
+  "gtna.tooltip.mb.type.supercritical_steam_turbine": [
+    "Large Turbine",
+    "Turbina Grande",
+    "大型涡轮"
+  ],
+  "gtna.tooltip.mb.type.lightning_rod": [
+    "Arc Generator",
+    "Gerador de Arco",
+    "电弧发生器"
+  ],
+  "gtna.tooltip.mb.type.dyson_sphere_launch_silo": [
+    "Dyson Sphere Launch",
+    "Lançamento da Esfera de Dyson",
+    "戴森球发射"
+  ],
+  "gtna.tooltip.mb.type.dyson_sphere_receiving_station": [
+    "Dyson Sphere Generator",
+    "Gerador da Esfera de Dyson",
+    "戴森球发电"
+  ],
+  "gtna.tooltip.mb.type.thermal_power_pump": [
+    "Steam Condenser",
+    "Condensador de Vapor",
+    "蒸汽冷凝"
+  ],
+  "gtna.tooltip.mb.type.liquefaction_furnace": [
+    "Liquefaction Furnace",
+    "Forno de Liquefação",
+    "液化炉"
+  ],
+  "gtna.tooltip.mb.type.brick_kiln": [
+    "Brick Firing",
+    "Queima de Tijolos",
+    "烧砖"
+  ],
+  "gtna.tooltip.mb.type.primitive_distillation_tower": [
+    "Distillation Tower",
+    "Torre de Destilação",
+    "蒸馏塔"
+  ],
+  "gtna.tooltip.mb.type.void_miner_steam_gate_aged": [
+    "Steam Void Miner",
+    "Minerador do Vazio a Vapor",
+    "蒸汽虚空采矿"
+  ],
+  "gtna.tooltip.mb.type.leap_forward_one_blast_furnace": [
+    "Primitive Blast Furnace",
+    "Alto-Forno Primitivo",
+    "土高炉"
+  ],
+  "gtna.tooltip.mb.type.large_steam_solar_boiler": [
+    "Solar Boiler",
+    "Caldeira Solar",
+    "太阳能锅炉"
+  ],
+  "gtna.tooltip.mb.type.large_steam_storage_tank": [
+    "Steam Storage",
+    "Armazenamento de Vapor",
+    "蒸汽储存"
+  ],
+  "gtna.tooltip.mb.type.me_storage": [
+    "ME Storage",
+    "Armazenamento ME",
+    "ME存储"
+  ],
+  "gtna.tooltip.mb.type.nexus_molecular_forge": [
+    "Molecular Forge",
+    "Forja Molecular",
+    "分子锻炉"
+  ],
+  "gtna.tooltip.mb.type.infinity_fluid_drilling_rig": [
+    "Fluid Drilling Rig",
+    "Sonda de Perfuração de Fluidos",
+    "流体钻机"
+  ],
+  "gtna.tooltip.mb.type.industrial_slaughterhouse": [
+    "Slaughterhouse",
+    "Abatedouro",
+    "屠宰场"
+  ],
+  "gtna.tooltip.mb.type.pcb_factory": [
+    "PCB Factory",
+    "Fábrica de PCB",
+    "PCB工厂"
+  ],
+  "gtna.tooltip.mb.type.space_elevator": [
+    "Space Elevator",
+    "Elevador Espacial",
+    "太空电梯"
+  ],
+  "gtna.tooltip.mb.type.assembler_module": [
+    "Space Assembly",
+    "Montagem Espacial",
+    "太空组装"
+  ],
+  "gtna.tooltip.mb.type.resource_collection_module": [
+    "Space Mining and Drilling",
+    "Mineração e Perfuração Espacial",
+    "太空采矿与钻探"
+  ],
+  "gtna.tooltip.mb.type.space_probe_surface_reception": [
+    "Space Probe Reception",
+    "Recepção de Sonda Espacial",
+    "太空探测接收"
+  ],
+  "gtna.tooltip.mb.type.supercomputing_center": [
+    "Computation",
+    "Computação",
+    "算力"
+  ],
+  "gtna.tooltip.mb.type.data_center": [
+    "Data Bank",
+    "Banco de Dados",
+    "数据库"
+  ],
+  "gtna.tooltip.mb.type.analysis_and_research_center": [
+    "Research",
+    "Pesquisa",
+    "研究"
+  ],
+  "gtna.machine.hyper_reactor.tooltip.purpose": [
+    "Turns hyper fuels into huge amounts of EU",
+    "Transforma combustíveis hiper em quantidades enormes de EU",
+    "将超能燃料转化为海量EU"
+  ],
+  "gtna.machine.hyper_reactor.tooltip.humor": [
+    "Burns hyper fuel. Type Omega declines to say what is hyper about it.",
+    "Queima combustível hiper. A Type Omega não diz o que ele tem de hiper.",
+    "燃烧超能燃料，Type Omega拒绝透露“超能”在哪。"
+  ],
+  "gtna.machine.advanced_hyper_reactor.tooltip.purpose": [
+    "Burns concentrated hyper fuels with boosters set per recipe",
+    "Queima combustíveis hiper concentrados com reforços definidos por receita",
+    "燃烧浓缩超能燃料，增幅按配方设定"
+  ],
+  "gtna.machine.advanced_hyper_reactor.tooltip.humor": [
+    "The Hyper Reactor, after a long talk with Type Omega's engineers.",
+    "O Hyper Reactor, depois de uma longa conversa com os engenheiros da Type Omega.",
+    "超能反应堆与Type Omega工程师长谈之后的产物。"
+  ],
+  "gtna.machine.annihilate_generator.tooltip.purpose": [
+    "An artificial star that generates power from annihilation recipes",
+    "Uma estrela artificial que gera energia com receitas de aniquilação",
+    "以湮灭配方发电的人造恒星"
+  ],
+  "gtna.machine.annihilate_generator.tooltip.overclock": [
+    "Perfect generator overclock: each step is %s faster and gives %s the EU/t",
+    "Overclock perfeito de gerador: cada passo é %s mais rápido e dá %s o EU/t",
+    "无损发电超频：每级速度%s，输出EU/t为%s"
+  ],
+  "gtna.machine.annihilate_generator.tooltip.limit": [
+    "Up to 16 steps, while the output fits the dynamo voltage and the run lasts at least a tick",
+    "Até 16 passos, enquanto a saída couber na voltagem do dínamo e a operação durar ao menos um tick",
+    "最多16级，前提是输出不超过动力仓电压且运行至少1 tick"
+  ],
+  "gtna.machine.annihilate_generator.tooltip.output": [
+    "Outputs through Dynamo or Laser Source Hatches",
+    "Sai por Dínamos ou Escotilhas de Fonte Laser",
+    "通过动力仓或激光源仓输出"
+  ],
+  "gtna.machine.annihilate_generator.tooltip.humor": [
+    "Let there be light. Type Omega bills it by the lumen.",
+    "Faça-se a luz. A Type Omega cobra por lúmen.",
+    "要有光。Type Omega按流明计费。"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.purpose": [
+    "Three modes on one structure: absorption, transfer and release",
+    "Três modos numa estrutura: absorção, transferência e liberação",
+    "一个结构三种模式：吸收、转移、释放"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.absorption": [
+    "Absorption: a fuel and liquid oxygen charge an electrolyte; the best membrane electrode sets the efficiency",
+    "Absorção: um combustível e oxigênio líquido carregam um eletrólito; o melhor eletrodo de membrana define a eficiência",
+    "吸收：燃料与液氧为电解液充能，效率由最好的膜电极决定"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.decay": [
+    "Each absorption run multiplies the efficiency by the membrane's decay factor",
+    "Cada operação de absorção multiplica a eficiência pelo fator de desgaste da membrana",
+    "每次吸收运行，效率乘以膜的衰减系数"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.recovery": [
+    "Idle with %s of Distilled Water per tick: recovers %s of the lost efficiency per tick",
+    "Parado com %s de Água Destilada por tick: recupera %s da eficiência perdida por tick",
+    "空闲时每tick输入%s蒸馏水：每tick恢复已损失效率的%s"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.transfer": [
+    "Transfer: moves charge between electrolytes at the recipe's efficiency",
+    "Transferência: move carga entre eletrólitos com a eficiência da receita",
+    "转移：按配方效率在电解液之间转移电荷"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.release": [
+    "Release: discharges charged electrolyte into EU, up to %s parallels",
+    "Liberação: descarrega eletrólito carregado em EU, até %s paralelos",
+    "释放：将充能电解液放电为EU，最多%s并行"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.membrane": [
+    "Each release run has a %s chance to use up the membrane",
+    "Cada liberação tem %s de chance de gastar a membrana",
+    "每次释放有%s几率耗尽膜"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.not_ported": [
+    "GTO's Ion Activity Sensor is not ported",
+    "O Ion Activity Sensor do GTO não foi portado",
+    "未移植GTO的离子活性传感器"
+  ],
+  "gtna.machine.fuel_cell_generator.tooltip.humor": [
+    "Burns fuel in a special electrolyte. Type Omega's chemists call it a battery with ambition.",
+    "Queima combustível num eletrólito especial. Os químicos da Type Omega chamam de bateria ambiciosa.",
+    "在特殊电解液中“燃烧”燃料。Type Omega化学家称之为有野心的电池。"
+  ],
+  "gtna.machine.generator_array.tooltip.purpose": [
+    "Runs steam turbine, gas turbine and combustion fuels with generators placed in it",
+    "Queima combustíveis de turbina a vapor, turbina a gás e combustão com geradores colocados nele",
+    "以放入的发电机运行蒸汽涡轮、燃气涡轮与内燃燃料"
+  ],
+  "gtna.machine.generator_array.tooltip.generators": [
+    "Generators in the controller slot pick the fuel map: up to %s of one kind",
+    "Geradores no slot do controlador escolhem o mapa de combustível: até %s de um tipo",
+    "控制器槽中的发电机决定燃料类型：同种最多%s台"
+  ],
+  "gtna.machine.generator_array.tooltip.budget": [
+    "Output budget: generator voltage × count × %s, capped by the dynamo",
+    "Teto de saída: voltagem do gerador × quantidade × %s, limitado pelo dínamo",
+    "输出预算：发电机电压×数量×%s，受动力仓限制"
+  ],
+  "gtna.machine.generator_array.tooltip.parallel": [
+    "Parallels: the budget divided by the fuel's EU/t",
+    "Paralelos: o teto dividido pelo EU/t do combustível",
+    "并行数：预算除以燃料EU/t"
+  ],
+  "gtna.machine.generator_array.tooltip.wireless": [
+    "Wireless mode sends the EU to the team's Nexus network, %s lost",
+    "O modo sem fio manda o EU para a rede Nexus do time, com %s de perda",
+    "无线模式将EU送入团队Nexus网络，损耗%s"
+  ],
+  "gtna.machine.generator_array.tooltip.humor": [
+    "Four generators in one box. Type Omega counts it as one asset.",
+    "Quatro geradores numa caixa. A Type Omega conta como um ativo.",
+    "一箱四台发电机，Type Omega只算一项资产。"
+  ],
+  "gtna.machine.rocket_large_turbine.tooltip.purpose": [
+    "Burns rocket fuels in a large turbine",
+    "Queima combustíveis de foguete numa turbina grande",
+    "在大型涡轮中燃烧火箭燃料"
+  ],
+  "gtna.machine.rocket_large_turbine.tooltip.humor": [
+    "A rocket engine bolted to the floor. Type Omega Facilities would like a word.",
+    "Um motor de foguete parafusado no chão. A Manutenção da Type Omega quer conversar.",
+    "一台用螺栓固定在地上的火箭发动机。Type Omega后勤部想谈谈。"
+  ],
+  "gtna.machine.supercritical_steam_turbine.tooltip.purpose": [
+    "Expands supercritical steam in a large turbine",
+    "Expande vapor supercrítico numa turbina grande",
+    "在大型涡轮中膨胀超临界蒸汽"
+  ],
+  "gtna.machine.supercritical_steam_turbine.tooltip.humor": [
+    "Steam past its critical point. Type Omega's insurers past theirs.",
+    "Vapor além do ponto crítico. As seguradoras da Type Omega, além do delas.",
+    "蒸汽越过临界点，Type Omega的保险公司也越过了。"
+  ],
+  "gtna.machine.lightning_rod.tooltip.purpose": [
+    "Runs Arc Generator recipes, calling lightning to its tip while it works",
+    "Roda receitas do Gerador de Arco, chamando raios para a ponta enquanto trabalha",
+    "运行电弧发生器配方，工作时在顶端引下闪电"
+  ],
+  "gtna.machine.lightning_rod.tooltip.bolt": [
+    "The lightning is visual only, every 1 to 10 s at the rod tip",
+    "O raio é só visual, a cada 1 a 10 s na ponta da haste",
+    "闪电仅为视觉效果，每1至10秒落在杆顶"
+  ],
+  "gtna.machine.lightning_rod.tooltip.humor": [
+    "Calls lightning on purpose. The neighbours have questions for Type Omega.",
+    "Chama raios de propósito. Os vizinhos têm perguntas para a Type Omega.",
+    "故意招来闪电。邻居们对Type Omega有些疑问。"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.purpose": [
+    "Puts Dyson swarm modules in orbit of the planet it stands on",
+    "Coloca módulos do enxame de Dyson na órbita do planeta onde está",
+    "将戴森云模块送入所在行星轨道"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.surface": [
+    "Works only on a planet's surface, not in orbit",
+    "Só funciona na superfície de um planeta, não em órbita",
+    "仅在行星表面工作，轨道上不行"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.time": [
+    "Launch time × planet distance / 4",
+    "Tempo de lançamento × distância do planeta / 4",
+    "发射耗时×行星距离/4"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.module": [
+    "Each launch adds one module to that planet's swarm",
+    "Cada lançamento adiciona um módulo ao enxame daquele planeta",
+    "每次发射为该行星的戴森云增加一个模块"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.repair": [
+    "On a swarm more than 60% damaged, a launch repairs it instead",
+    "Num enxame com mais de 60% de dano, o lançamento o repara em vez disso",
+    "戴森云损伤超过60%时，发射改为修复"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.max": [
+    "Up to %s modules per planet",
+    "Até %s módulos por planeta",
+    "每颗行星最多%s个模块"
+  ],
+  "gtna.machine.dyson_sphere_launch_silo.tooltip.humor": [
+    "Launches a sun-catcher into orbit. Type Omega owns the orbit now.",
+    "Lança um coletor solar em órbita. A órbita agora é da Type Omega.",
+    "把集日器送入轨道。现在轨道归Type Omega了。"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.purpose": [
+    "Turns the planet's Dyson swarm into laser power",
+    "Transforma o enxame de Dyson do planeta em energia laser",
+    "将行星戴森云转化为激光能量"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.output": [
+    "Output: V[MAX] × modules × (50 − max(0, damage − 60)) / 50 EU/t",
+    "Saída: V[MAX] × módulos × (50 − max(0, dano − 60)) / 50 EU/t",
+    "输出：V[MAX]×模块数×(50−max(0,损伤−60))/50 EU/t"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.cwu": [
+    "Needs modules × distance / 10 CWU/t",
+    "Precisa de módulos × distância / 10 CWU/t",
+    "需要模块数×距离/10 CWU/t"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.helium": [
+    "Cooled with liquid Helium, √modules per run",
+    "Resfriado com Hélio líquido, √módulos por operação",
+    "以液氦冷却，每次运行√模块数"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.one": [
+    "Only one station per planet draws from the swarm at a time",
+    "Só uma estação por planeta usa o enxame por vez",
+    "每颗行星同时只有一座接收站能使用戴森云"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.damage": [
+    "Each run may damage the swarm: 1% × (1 + modules / 128)",
+    "Cada operação pode danificar o enxame: 1% × (1 + módulos / 128)",
+    "每次运行可能损伤戴森云：1%×(1+模块数/128)"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.loss": [
+    "A fully damaged swarm loses a module and resets its damage",
+    "Um enxame totalmente danificado perde um módulo e zera o dano",
+    "完全损坏的戴森云会失去一个模块并重置损伤"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.not_ported": [
+    "GTO's planet distances and Gelid Cryotheum coolant are replaced",
+    "As distâncias de planeta e o refrigerante Gelid Cryotheum do GTO foram substituídos",
+    "GTO的行星距离与极寒之凛冰冷却液已被替换"
+  ],
+  "gtna.machine.dyson_sphere_receiving_station.tooltip.humor": [
+    "Collects a star's output by the gigawatt. Type Omega invoices the star.",
+    "Recolhe a produção de uma estrela por gigawatt. A Type Omega fatura a estrela.",
+    "以吉瓦为单位收集恒星的能量，Type Omega给恒星开发票。"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.purpose": [
+    "Condenses steam back into water at a rate set by the biome",
+    "Condensa vapor de volta em água num ritmo definido pelo bioma",
+    "按生物群系决定的速率将蒸汽冷凝回水"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.biome": [
+    "Oceans and rivers produce the most",
+    "Oceanos e rios produzem mais",
+    "海洋与河流产量最高"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.formula": [
+    "Water per cycle = biome modifier × 256",
+    "Água por ciclo = modificador do bioma × 256",
+    "每周期水量 = 群系系数×256"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.rain": [
+    "Rain in the biome adds 50%",
+    "Chuva no bioma adiciona 50%",
+    "群系下雨时+50%"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.cycle": [
+    "One cycle every %s",
+    "Um ciclo a cada %s",
+    "每%s一个周期"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.nether": [
+    "Produces nothing in the Nether",
+    "Não produz nada no Nether",
+    "在下界不产出"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.no_energy": [
+    "Needs no energy hatch",
+    "Não precisa de escotilha de energia",
+    "无需能源仓"
+  ],
+  "gtna.machine.thermal_power_pump.tooltip.humor": [
+    "Turns steam back into water. Type Omega calls it the circle of life.",
+    "Transforma vapor de volta em água. A Type Omega chama de ciclo da vida.",
+    "把蒸汽变回水。Type Omega称之为生命循环。"
+  ],
+  "gtna.machine.liquefaction_furnace.tooltip.purpose": [
+    "Melts items into fluids once the coils reach the recipe temperature",
+    "Derrete itens em fluidos quando as bobinas alcançam a temperatura da receita",
+    "线圈达到配方温度后将物品熔为流体"
+  ],
+  "gtna.machine.liquefaction_furnace.tooltip.module": [
+    "Its extension tower adds a Parallel Hatch and an Accelerate Hatch slot",
+    "A torre de extensão adiciona espaço para uma Escotilha de Paralelo e uma de Aceleração",
+    "扩展塔增加一个并行仓与一个加速仓位"
+  ],
+  "gtna.machine.liquefaction_furnace.tooltip.humor": [
+    "Everything is a liquid if Type Omega heats it enough.",
+    "Tudo é líquido se a Type Omega esquentar o bastante.",
+    "只要Type Omega加热够久，万物皆可液化。"
+  ],
+  "gtna.machine.brick_kiln.tooltip.purpose": [
+    "Fires bricks and ceramics from compressed clay and coal",
+    "Queima tijolos e cerâmicas a partir de argila comprimida e carvão",
+    "以压缩黏土与煤烧制砖块与陶瓷"
+  ],
+  "gtna.machine.brick_kiln.tooltip.parallel": [
+    "Parallels: %s",
+    "Paralelos: %s",
+    "并行数：%s"
+  ],
+  "gtna.machine.brick_kiln.tooltip.no_energy": [
+    "Needs no energy hatch",
+    "Não precisa de escotilha de energia",
+    "无需能源仓"
+  ],
+  "gtna.machine.brick_kiln.tooltip.humor": [
+    "Bricks: the original building block, now under Type Omega management.",
+    "Tijolos: o bloco de construção original, agora sob gestão da Type Omega.",
+    "砖块：最初的建筑基石，现由Type Omega管理。"
+  ],
+  "gtna.machine.primitive_distillation_tower.tooltip.purpose": [
+    "A primitive steam distillation tower for early oil and fluid separation",
+    "Uma torre de destilação a vapor primitiva para separar petróleo e fluidos cedo",
+    "早期分离石油与流体的原始蒸汽蒸馏塔"
+  ],
+  "gtna.machine.primitive_distillation_tower.tooltip.steam": [
+    "Uses only 75% of the normal steam",
+    "Usa só 75% do vapor normal",
+    "仅消耗常规蒸汽的75%"
+  ],
+  "gtna.machine.primitive_distillation_tower.tooltip.layers": [
+    "One fluid output per tower layer",
+    "Uma saída de fluido por camada da torre",
+    "每层塔一个流体输出"
+  ],
+  "gtna.machine.primitive_distillation_tower.tooltip.no_energy": [
+    "Runs on steam, no energy hatch",
+    "Funciona a vapor, sem escotilha de energia",
+    "以蒸汽运行，无需能源仓"
+  ],
+  "gtna.machine.primitive_distillation_tower.tooltip.humor": [
+    "Moonshine technology, scaled up for oil by Type Omega.",
+    "Tecnologia de alambique, ampliada para petróleo pela Type Omega.",
+    "私酿技术，被Type Omega放大用于炼油。"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.purpose": [
+    "Harvests Raw Gold, Copper, Iron, Cobalt and Coal from the steam dimensions",
+    "Coleta Ouro, Cobre, Ferro, Cobalto Brutos e Carvão das dimensões de vapor",
+    "从蒸汽维度采集粗金、粗铜、粗铁、粗钴与煤"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.ores": [
+    "Each run rolls the raw resources of its recipe",
+    "Cada operação sorteia os recursos brutos da receita",
+    "每次运行抽取配方中的原始资源"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.boosts": [
+    "Dense Steam: 2x items and speed; Superheated: 3x; Insanely Superheated: 5x",
+    "Vapor Denso: 2x itens e velocidade; Superaquecido: 3x; Insanamente Superaquecido: 5x",
+    "浓密蒸汽：物品与速度2倍；过热：3倍；极度过热：5倍"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.cost": [
+    "EU cost: 1.5x, 2x and 4x with each boost",
+    "Custo de EU: 1,5x, 2x e 4x com cada reforço",
+    "EU消耗：各增幅分别为1.5倍、2倍、4倍"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.fluid": [
+    "Needs Drilling Fluid every operation",
+    "Precisa de Fluido de Perfuração a cada operação",
+    "每次运行需要钻井液"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.config": [
+    "The boosts can be changed in the GTNA config",
+    "Os reforços podem ser mudados na config do GTNA",
+    "增幅倍率可在GTNA配置中修改"
+  ],
+  "gtna.machine.void_miner_steam_gate_aged.tooltip.humor": [
+    "Mining a dimension made of steam. Type Omega Legal says do not ask.",
+    "Minerando uma dimensão feita de vapor. O Jurídico da Type Omega diz: não pergunte.",
+    "在蒸汽构成的维度里采矿。Type Omega法务部说：别问。"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.purpose": [
+    "A primitive blast furnace that grows: each extra layer doubles the parallels",
+    "Um alto-forno primitivo que cresce: cada camada extra dobra os paralelos",
+    "可扩建的原始高炉：每多一层并行翻倍"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.parallel": [
+    "Parallels: %s × 2^extra layers, up to %s",
+    "Paralelos: %s × 2^camadas extras, até %s",
+    "并行数：%s×2^额外层数，最多%s"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.time": [
+    "Cycle: %s + %s per extra layer",
+    "Ciclo: %s + %s por camada extra",
+    "周期：%s，每额外一层+%s"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.layers": [
+    "Layers are counted upwards until the first empty one",
+    "As camadas são contadas para cima até a primeira vazia",
+    "层数向上计数，直到第一层空层"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.no_energy": [
+    "Needs no energy hatch",
+    "Não precisa de escotilha de energia",
+    "无需能源仓"
+  ],
+  "gtna.machine.leap_forward_one_blast_furnace.tooltip.humor": [
+    "A great leap forward in primitive technology, approved by the Type Omega board.",
+    "Um grande salto à frente na tecnologia primitiva, aprovado pelo conselho da Type Omega.",
+    "原始科技的大跃进，经Type Omega董事会批准。"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.purpose": [
+    "An expandable solar steam field made of solar boiling cells",
+    "Um campo solar de vapor expansível feito de células de ebulição solar",
+    "由太阳能沸腾单元组成的可扩展太阳能蒸汽场"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.cells": [
+    "Steam output grows with the sunlit cells",
+    "A saída de vapor cresce com as células iluminadas pelo sol",
+    "蒸汽输出随受日照单元数量增长"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.size": [
+    "Grows up to %s blocks sideways and %s back",
+    "Cresce até %s blocos para os lados e %s para trás",
+    "最多向两侧扩展%s格、向后%s格"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.night": [
+    "At night or in the rain the cells make nothing",
+    "À noite ou na chuva as células não produzem",
+    "夜晚或雨天单元不产出"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.cycle": [
+    "Counts the cells every %s",
+    "Conta as células a cada %s",
+    "每%s统计一次单元"
+  ],
+  "gtna.machine.large_steam_solar_boiler.tooltip.humor": [
+    "Free steam, courtesy of a very large star and the Type Omega solar division.",
+    "Vapor de graça, cortesia de uma estrela enorme e da divisão solar da Type Omega.",
+    "免费蒸汽，由一颗巨大恒星与Type Omega太阳能部门提供。"
+  ],
+  "gtna.machine.large_steam_storage_tank.tooltip.purpose": [
+    "An industrial steam reservoir that buffers your boilers",
+    "Um reservatório industrial de vapor que amortece as caldeiras",
+    "为锅炉缓冲的工业蒸汽储罐"
+  ],
+  "gtna.machine.large_steam_storage_tank.tooltip.capacity": [
+    "Capacity: %s of Steam",
+    "Capacidade: %s de Vapor",
+    "容量：%s蒸汽"
+  ],
+  "gtna.machine.large_steam_storage_tank.tooltip.steam_only": [
+    "Stores Steam only",
+    "Guarda só Vapor",
+    "仅储存蒸汽"
+  ],
+  "gtna.machine.large_steam_storage_tank.tooltip.humor": [
+    "Hot air, stored responsibly by Type Omega.",
+    "Ar quente, guardado com responsabilidade pela Type Omega.",
+    "热空气，由Type Omega负责任地储存。"
+  ],
+  "gtna.machine.me_storage.tooltip.purpose": [
+    "An expandable ME storage multiblock: repeat the core slice to add sections",
+    "Um multibloco de armazenamento ME expansível: repita a fatia central para adicionar seções",
+    "可扩展的ME存储多方块：重复核心切片以增加存储段"
+  ],
+  "gtna.machine.me_storage.tooltip.sections": [
+    "Capacity grows with the storage sections built",
+    "A capacidade cresce com as seções construídas",
+    "容量随已建存储段增长"
+  ],
+  "gtna.machine.me_storage.tooltip.access": [
+    "It is reached through an ME Storage Access, Big Storage Access or IO Port Hatch",
+    "É acessado por uma ME Storage Access, Big Storage Access ou IO Port Hatch",
+    "通过ME存储访问仓、大型存储访问仓或IO端口仓访问"
+  ],
+  "gtna.machine.me_storage.tooltip.infinite": [
+    "From %s of capacity, with an infinity cell inside, it counts as infinite",
+    "A partir de %s de capacidade, com uma célula infinita dentro, conta como infinito",
+    "容量达%s且内有无限元件时视为无限"
+  ],
+  "gtna.machine.me_storage.tooltip.one_access": [
+    "Needs exactly one access or IO port hatch",
+    "Precisa de exatamente uma escotilha de acesso ou de IO port",
+    "需要且仅需一个访问仓或IO端口仓"
+  ],
+  "gtna.machine.me_storage.tooltip.humor": [
+    "More bytes than you will ever need, according to Type Omega's sales team.",
+    "Mais bytes do que você vai precisar, segundo as vendas da Type Omega.",
+    "据Type Omega销售团队说，字节多到你用不完。"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.purpose": [
+    "An ultra-fast AE2 forge that builds the jobs of Nexus Craft Pattern Hatches in giant batches",
+    "Uma forja AE2 ultrarrápida que monta os trabalhos das Nexus Craft Pattern Hatches em lotes gigantes",
+    "超高速AE2锻炉，大批量完成Nexus合成样板仓的任务"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.queue": [
+    "It queues jobs from the Nexus Craft Pattern Hatches",
+    "Enfileira trabalhos das Nexus Craft Pattern Hatches",
+    "从Nexus合成样板仓接收任务队列"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.batch": [
+    "Every queued output materializes at once",
+    "Toda saída na fila se materializa de uma vez",
+    "队列中的所有产物一次性生成"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.free": [
+    "Queued crafts use no physical ingredients",
+    "Os crafts da fila não usam ingredientes físicos",
+    "队列合成不消耗实体材料"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.power": [
+    "Power: 1 EU per crafted item",
+    "Energia: 1 EU por item fabricado",
+    "能耗：每件产物1 EU"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.parallel": [
+    "Parallels follow the AE2 crafting CPU",
+    "Os paralelos seguem a CPU de crafting do AE2",
+    "并行数取决于AE2合成CPU"
+  ],
+  "gtna.machine.nexus_molecular_forge.tooltip.humor": [
+    "Ingredients? Where Type Omega is going, it does not need ingredients.",
+    "Ingredientes? Para onde a Type Omega vai, não precisa de ingredientes.",
+    "材料？Type Omega要去的地方不需要材料。"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.purpose": [
+    "Drills fluids from self-regenerating veins under the bedrock",
+    "Perfura fluidos de veios que se regeneram sob a bedrock",
+    "从基岩下自我再生的矿脉中开采流体"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.depletion": [
+    "The vein never depletes",
+    "O veio nunca se esgota",
+    "矿脉永不枯竭"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.yield": [
+    "Yield × %s at %s",
+    "Rendimento × %s em %s",
+    "在%2$s时产量×%1$s"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.overclock": [
+    "An energy hatch above %s adds GTCEu's 50% overclock bonus",
+    "Uma escotilha de energia acima de %s adiciona o bônus de overclock de 50% do GTCEu",
+    "能源仓高于%s时获得GTCEu的50%超频加成"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.not_ported": [
+    "GTO's Drilling Control Center multiplier is not ported",
+    "O multiplicador do Drilling Control Center do GTO não foi portado",
+    "未移植GTO钻井控制中心的倍率"
+  ],
+  "gtna.machine.infinity_fluid_drilling_rig.tooltip.humor": [
+    "Better than infinite water. Type Omega Legal says it is barely legal.",
+    "Melhor que água infinita. O Jurídico da Type Omega diz que é quase legal.",
+    "比无限水还好。Type Omega法务部说这勉强合法。"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.purpose": [
+    "Rolls mob loot by circuit mode, scaling with the energy tier",
+    "Sorteia loot de mobs por modo de circuito, escalando com o tier de energia",
+    "按电路模式抽取生物战利品，随能源等级提升"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.modes": [
+    "Circuit 1 passive, 2 hostile, 3 bosses, 4 dragon",
+    "Circuito 1 passivo, 2 hostil, 3 chefes, 4 dragão",
+    "电路1被动，2敌对，3首领，4末影龙"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.passive": [
+    "Passive: from %s, drops × %s^(tier − that tier)",
+    "Passivo: a partir de %s, drops × %s^(tier − esse tier)",
+    "被动：从%s起，掉落×%s^(等级−该等级)"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.hostile": [
+    "Hostile: from %s, drops × %s^(tier − that tier)",
+    "Hostil: a partir de %s, drops × %s^(tier − esse tier)",
+    "敌对：从%s起，掉落×%s^(等级−该等级)"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.boss": [
+    "Bosses: from %s, drops × %s^(tier − that tier)",
+    "Chefes: a partir de %s, drops × %s^(tier − esse tier)",
+    "首领：从%s起，掉落×%s^(等级−该等级)"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.dragon": [
+    "Dragon: from %s, egg, breath and head × %s^(tier − that tier)",
+    "Dragão: a partir de %s, ovo, sopro e cabeça × %s^(tier − esse tier)",
+    "末影龙：从%s起，龙蛋、龙息与龙首×%s^(等级−该等级)"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.loops": [
+    "Rolls per run: (energy tier − 2) × 8, at least 1",
+    "Sorteios por operação: (tier de energia − 2) × 8, no mínimo 1",
+    "每次运行抽取：(能源等级−2)×8，至少1次"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.low_tier": [
+    "Below a mode's tier the run gives nothing",
+    "Abaixo do tier do modo a operação não dá nada",
+    "低于模式等级时运行无产出"
+  ],
+  "gtna.machine.industrial_slaughterhouse.tooltip.humor": [
+    "Animal welfare was not in Type Omega's budget this quarter.",
+    "Bem-estar animal não entrou no orçamento da Type Omega neste trimestre.",
+    "本季度Type Omega预算里没有动物福利这一项。"
+  ],
+  "gtna.machine.pcb_factory.tooltip.purpose": [
+    "Etches printed circuit boards in bulk; larger structures unlock higher boards",
+    "Grava placas de circuito impresso em massa; estruturas maiores liberam placas melhores",
+    "批量蚀刻印刷电路板，更大的结构解锁更高级电路板"
+  ],
+  "gtna.machine.pcb_factory.tooltip.tiers": [
+    "Three structure tiers, picked with a screwdriver on the controller; that tier's structure must be built",
+    "Três tiers de estrutura, escolhidos com chave de fenda no controlador; a estrutura do tier precisa estar construída",
+    "三个结构等级，用螺丝刀在控制器上选择，须建成对应结构"
+  ],
+  "gtna.machine.pcb_factory.tooltip.caps": [
+    "Recipe cap: tier 1 up to %s, tier 2 up to %s, tier 3 unlimited",
+    "Teto de receita: tier 1 até %s, tier 2 até %s, tier 3 sem limite",
+    "配方上限：1级最高%s，2级最高%s，3级无上限"
+  ],
+  "gtna.machine.pcb_factory.tooltip.not_ported": [
+    "GTO picks the tier from nanites; GTNA uses the screwdriver",
+    "O GTO escolhe o tier por nanitas; o GTNA usa a chave de fenda",
+    "GTO以纳米蜂群选择等级，GTNA改用螺丝刀"
+  ],
+  "gtna.machine.pcb_factory.tooltip.humor": [
+    "Prints boards by the thousand. The etchant smells like Type Omega progress.",
+    "Imprime placas aos milhares. O ácido cheira a progresso da Type Omega.",
+    "成千上万地印板。蚀刻液闻起来像Type Omega的进步。"
+  ],
+  "gtna.machine.space_elevator.tooltip.purpose": [
+    "A cable to orbit that powers the modules in its twelve slots",
+    "Um cabo até a órbita que alimenta os módulos dos doze slots",
+    "通往轨道的缆绳，为十二个槽位中的模块供能"
+  ],
+  "gtna.machine.space_elevator.tooltip.tier": [
+    "Runs only above ZPM, at the tier of its energy hatch",
+    "Só roda acima de ZPM, no tier da escotilha de energia",
+    "仅在高于ZPM时以能源仓等级运行"
+  ],
+  "gtna.machine.space_elevator.tooltip.upkeep": [
+    "Upkeep cycle: %s, EU of its tier and %s CWU/t per tier above ZPM",
+    "Ciclo de manutenção: %s, EU do seu tier e %s CWU/t por tier acima de ZPM",
+    "维持周期：%s，消耗其等级的EU，并按高于ZPM的每级%s CWU/t"
+  ],
+  "gtna.machine.space_elevator.tooltip.spools": [
+    "Drives its modules once it holds %s Nanotube Spools from its input bus",
+    "Aciona os módulos depois de guardar %s Nanotube Spools do barramento de entrada",
+    "从输入总线存满%s个纳米管线轴后驱动模块"
+  ],
+  "gtna.machine.space_elevator.tooltip.slots": [
+    "Modules stand in its twelve module slots",
+    "Os módulos ficam nos doze slots de módulo",
+    "模块安装在十二个模块槽中"
+  ],
+  "gtna.machine.space_elevator.tooltip.power": [
+    "The Power Module MK sets the modules' parallels and the Assembler Module recipes allowed",
+    "O MK do Power Module define os paralelos dos módulos e as receitas permitidas do Assembler Module",
+    "动力模块MK决定模块并行数与组装模块可用配方"
+  ],
+  "gtna.machine.space_elevator.tooltip.same_mk": [
+    "All Power Modules must be the same MK",
+    "Todos os Power Modules precisam ser do mesmo MK",
+    "所有动力模块须为同一MK"
+  ],
+  "gtna.machine.space_elevator.tooltip.not_ported": [
+    "GTO's space station link (1.5x CWU) and planet teleport are not ported",
+    "A ligação à estação espacial do GTO (1,5x CWU) e o teleporte a planetas não foram portados",
+    "未移植GTO的空间站联动（1.5倍算力）与星球传送"
+  ],
+  "gtna.machine.space_elevator.tooltip.humor": [
+    "A very long elevator. Type Omega asks you to mind the doors on the way up.",
+    "Um elevador muito comprido. A Type Omega pede: cuidado com as portas na subida.",
+    "一部很长的电梯。Type Omega提醒您上行时注意车门。"
+  ],
+  "gtna.machine.assembler_module.tooltip.purpose": [
+    "Assembles parts in orbit for the Space Elevator",
+    "Monta peças em órbita para o Space Elevator",
+    "为太空电梯在轨道上组装部件"
+  ],
+  "gtna.machine.assembler_module.tooltip.gate": [
+    "Recipes above the Power Module MK do not start",
+    "Receitas acima do MK do Power Module não começam",
+    "高于动力模块MK的配方不会启动"
+  ],
+  "gtna.machine.assembler_module.tooltip.humor": [
+    "Plug it into a Space Elevator and look up. Type Omega handles the paperwork.",
+    "Conecte num Space Elevator e olhe para cima. A Type Omega cuida da papelada.",
+    "插上太空电梯抬头看。文书工作由Type Omega处理。"
+  ],
+  "gtna.machine.resource_collection_module.tooltip.purpose": [
+    "Sends drones to mine asteroids and collect gases",
+    "Envia drones para minerar asteroides e coletar gases",
+    "派出无人机开采小行星并收集气体"
+  ],
+  "gtna.machine.resource_collection_module.tooltip.humor": [
+    "Asteroid mining, minus the movie heroics and plus a Type Omega contract.",
+    "Mineração de asteroides, sem o heroísmo de filme e com um contrato da Type Omega.",
+    "小行星采矿，没有电影里的英雄主义，多了一份Type Omega合同。"
+  ],
+  "gtna.machine.space_probe_surface_reception.tooltip.purpose": [
+    "Catches cosmic particles with a dish pointed at the open sky",
+    "Capta partículas cósmicas com uma antena apontada para o céu aberto",
+    "以指向开阔天空的天线捕获宇宙粒子"
+  ],
+  "gtna.machine.space_probe_surface_reception.tooltip.space": [
+    "Works only in an Ad Astra space dimension",
+    "Só funciona numa dimensão espacial do Ad Astra",
+    "仅在Ad Astra的太空维度中工作"
+  ],
+  "gtna.machine.space_probe_surface_reception.tooltip.sky": [
+    "Stops while the 9x9 area above the dish is covered, checked every second",
+    "Para enquanto a área 9x9 acima da antena estiver coberta, checada a cada segundo",
+    "天线上方9x9区域被遮挡时停止，每秒检测"
+  ],
+  "gtna.machine.space_probe_surface_reception.tooltip.humor": [
+    "Listens to the cosmos and bottles what it hears for Type Omega.",
+    "Escuta o cosmos e engarrafa o que ouve para a Type Omega.",
+    "倾听宇宙，把听到的装瓶交给Type Omega。"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.purpose": [
+    "A tiered HPCA: HPCA, NICH or GWCA components supply CWU/t",
+    "Uma HPCA em tiers: componentes HPCA, NICH ou GWCA fornecem CWU/t",
+    "分级HPCA：HPCA、NICH或GWCA组件提供CWU/t"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.tiers": [
+    "Three tiers picked with a screwdriver, each with its own casings, vents and glass",
+    "Três tiers escolhidos com chave de fenda, cada um com casings, ventilações e vidro próprios",
+    "三个等级用螺丝刀选择，各有专属外壳、散热口与玻璃"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.mainframe": [
+    "Tiers 2 and 3 need an Optical or Exotic Mainframe in an input bus, not consumed",
+    "Os tiers 2 e 3 precisam de um Optical ou Exotic Mainframe num barramento de entrada, sem consumir",
+    "2级与3级需在输入总线放入光学或奇异主机（不消耗）"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.cycle": [
+    "Every %s it pays the components' upkeep (a quarter at tier 1)",
+    "A cada %s paga a manutenção dos componentes (um quarto no tier 1)",
+    "每%s支付组件维持费用（1级为四分之一）"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.cooling": [
+    "Cooling: PCB Coolant at tier 1, liquid Helium at tiers 2 and 3 (returned as gas)",
+    "Resfriamento: PCB Coolant no tier 1, Hélio líquido nos tiers 2 e 3 (volta como gás)",
+    "冷却：1级用PCB冷却液，2、3级用液氦（返还为气体）"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.damage": [
+    "Cooling below demand damages computation components after each cycle",
+    "Resfriamento abaixo da demanda danifica componentes de computação a cada ciclo",
+    "冷却不足时每周期损坏计算组件"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.decay": [
+    "At tiers 2 and 3 the CWU/t multiplier decays; MFPC coolant in the Thermal Conductor Hatch restores it",
+    "Nos tiers 2 e 3 o multiplicador de CWU/t decai; refrigerante MFPC na Thermal Conductor Hatch o restaura",
+    "2、3级的CWU/t倍率会衰减，热导仓中的MFPC冷却液可恢复"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.match": [
+    "The tier must match the built casings, vents and glass",
+    "O tier precisa bater com as casings, ventilações e vidro construídos",
+    "等级须与已建外壳、散热口和玻璃一致"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.not_ported": [
+    "GTO picks the tier from mainframes in a controller slot; GTNA uses the screwdriver",
+    "O GTO escolhe o tier por mainframes num slot do controlador; o GTNA usa a chave de fenda",
+    "GTO以控制器槽中的主机选择等级，GTNA改用螺丝刀"
+  ],
+  "gtna.machine.supercomputing_center.tooltip.humor": [
+    "Three generations of computers under one Type Omega roof. Mind the heat.",
+    "Três gerações de computadores sob o mesmo teto da Type Omega. Cuidado com o calor.",
+    "三代计算机同处Type Omega屋檐下，小心发热。"
+  ],
+  "gtna.machine.data_center.tooltip.purpose": [
+    "A large Data Bank that shares research data with Assembly Lines over optical cables",
+    "Um Data Bank grande que compartilha dados de pesquisa com Linhas de Montagem por cabos ópticos",
+    "通过光缆与装配线共享研究数据的大型数据库"
+  ],
+  "gtna.machine.data_center.tooltip.share": [
+    "Up to 16 transmission and 4 reception optical hatches",
+    "Até 16 escotilhas ópticas de transmissão e 4 de recepção",
+    "最多16个光学发送仓与4个接收仓"
+  ],
+  "gtna.machine.data_center.tooltip.chain": [
+    "Chains with other Data Banks",
+    "Encadeia com outros Data Banks",
+    "可与其他数据库串联"
+  ],
+  "gtna.machine.data_center.tooltip.cooling": [
+    "Needs NICH cooling components in its walls",
+    "Precisa de componentes de resfriamento NICH nas paredes",
+    "墙体需要NICH冷却组件"
+  ],
+  "gtna.machine.data_center.tooltip.power": [
+    "1,920 EU/t per data hatch, 30,720 EU/t with optical reception",
+    "1.920 EU/t por escotilha de dados, 30.720 EU/t com recepção óptica",
+    "每个数据仓1,920 EU/t，带光学接收时30,720 EU/t"
+  ],
+  "gtna.machine.data_center.tooltip.humor": [
+    "Every research note, cooled and served at the speed of light by Type Omega.",
+    "Toda anotação de pesquisa, resfriada e servida à velocidade da luz pela Type Omega.",
+    "每条研究笔记都由Type Omega冷却并以光速送达。"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.purpose": [
+    "Turns scan data into research data with computation",
+    "Transforma dados de escaneamento em dados de pesquisa com computação",
+    "以算力将扫描数据转化为研究数据"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.modes": [
+    "Two modes: Data Analysis and Data Integration",
+    "Dois modos: Análise de Dados e Integração de Dados",
+    "两种模式：数据分析与数据整合"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.computation": [
+    "Needs CWU/t from a Computation Data Hatch",
+    "Precisa de CWU/t de uma Computation Data Hatch",
+    "需要算力数据仓提供CWU/t"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.one_output": [
+    "Each run yields exactly one output, picked by its chance out of %s",
+    "Cada operação dá exatamente uma saída, escolhida pela chance em %s",
+    "每次运行仅产出一种产物，按其在%s中的几率抽取"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.not_ported": [
+    "GTO's Analyze and Research Holder parts are not ported; recipes come from the pack",
+    "As peças Analyze e Research Holder do GTO não foram portadas; as receitas vêm do pack",
+    "未移植GTO的分析/研究支架部件，配方由整合包提供"
+  ],
+  "gtna.machine.analysis_and_research_center.tooltip.humor": [
+    "Feed it scans, get insight. Sometimes the insight Type Omega wanted.",
+    "Dê escaneamentos, receba ideias. Às vezes a ideia que a Type Omega queria.",
+    "喂它扫描数据，得到见解。有时正是Type Omega想要的见解。"
+  ]
+}

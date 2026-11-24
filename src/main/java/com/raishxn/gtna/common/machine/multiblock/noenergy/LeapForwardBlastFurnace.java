@@ -57,8 +57,11 @@ public class LeapForwardBlastFurnace extends PrimitiveBlastFurnaceMachine
     @DescSynced
     private int extraLayers = 0;
 
-    private static final int MAX_PARALLEL_CAP = 32000;
-    private static final int TICKS_PER_LAYER = 400;
+    public static final int MAX_PARALLEL_CAP = 32000;
+    public static final int TICKS_PER_LAYER = 400;
+    /** Cycle and parallels of the base structure; each extra layer doubles the parallels. */
+    public static final int BASE_TICKS = 400;
+    public static final int BASE_PARALLEL = 8;
 
     public LeapForwardBlastFurnace(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -117,9 +120,9 @@ public class LeapForwardBlastFurnace extends PrimitiveBlastFurnaceMachine
         // Com a base fixada em (Y-1), a altura 13 agora será lida corretamente como 13.
         this.extraLayers = Math.max(0, totalHeight - 13);
 
-        this.targetDuration = 400 + (this.extraLayers * TICKS_PER_LAYER);
+        this.targetDuration = BASE_TICKS + (this.extraLayers * TICKS_PER_LAYER);
 
-        long calcParallel = 8L * (long) Math.pow(2, this.extraLayers);
+        long calcParallel = BASE_PARALLEL * (long) Math.pow(2, this.extraLayers);
         this.currentParallel = (int) Math.min(calcParallel, MAX_PARALLEL_CAP);
     }
 

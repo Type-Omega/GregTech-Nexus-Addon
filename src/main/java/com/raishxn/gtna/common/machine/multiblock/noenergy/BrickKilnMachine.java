@@ -23,7 +23,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class BrickKilnMachine extends WorkableElectricMultipleRecipesMachine implements IZeroEnergyMachine {
 
     /** GTOCore {@code accurateParallel(4)}. */
-    private static final int MAX_PARALLEL = 4;
+    public static final int MAX_PARALLEL = 4;
 
     public BrickKilnMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
