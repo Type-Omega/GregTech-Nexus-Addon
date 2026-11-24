@@ -20,6 +20,7 @@
 
 ### Fixed
 - Tooltip lines no longer show twice: the Debug Energy, Input and Laser Hatches, the Debug Input Bus and the Thermal Conductor Hatch added their lang `.tooltip` line on top of the one GTCEu adds by itself, and the Integrated Ore Processor repeated the "Auxiliary Module" header for each KubeJS module. A GameTest fails if any GTNA item repeats a tooltip line.
+- The Nano Forge extension lines now read "Tier N extension: raises the structure to tier N if every lower extension is built" instead of "Extension: tier N", in English, Portuguese and Chinese.
 
 ## [0.6.2] - 2026-11-23
 

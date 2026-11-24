@@ -1585,7 +1585,7 @@
   "block.gtna.transcendent_plasma_mixer": "Misturador de Plasma Transcendente",
   "gtceu.transcendent_plasma_mixer": "Misturador de Plasma Transcendente",
   "item.gtna.phononic_seed_crystal": "Cristal-Semente Fonônico",
-  "gtna.machine.nano_forge.module": "Extensão: tier %s",
+  "gtna.machine.nano_forge.module": "Extensão de tier %1$s: eleva a estrutura ao tier %1$s se todas as extensões menores estiverem construídas",
   "gtna.machine.nano_forge.tier": "Nano Forge tier %s (estrutura %s, nanite %s)",
   "gtna.machine.nano_forge.low_tier": "Precisa do Nano Forge tier %s",
   "gtna.recipe.nano_forge_tier": "Tier do Nano Forge: %s",
