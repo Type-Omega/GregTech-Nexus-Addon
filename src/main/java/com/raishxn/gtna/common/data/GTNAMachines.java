@@ -3353,7 +3353,7 @@ public class GTNAMachines {
                     .allowExtendedFacing(false)
                     .recipeType(GTRecipeTypes.DUMMY_RECIPES)
                     .appearanceBlock(GTBlocks.COMPUTER_CASING)
-                    .pattern(GTNAMachines::createMEStoragePattern)
+                    .pattern(com.raishxn.gtna.common.data.multiblock.MEStorageStructure::create)
                     .workableCasingModel(
                             GTCEu.id("block/casings/hpca/computer_casing/back"),
                             GTCEu.id("block/multiblock/fusion_reactor"))
@@ -3486,53 +3486,6 @@ public class GTNAMachines {
                 .or(blocks(GTNABlocks.T3_CRAFTING_STORAGE_CORE.get()))
                 .or(blocks(GTNABlocks.T4_CRAFTING_STORAGE_CORE.get()))
                 .or(blocks(GTNABlocks.T5_CRAFTING_STORAGE_CORE.get()));
-    }
-
-    private static BlockPattern createMEStoragePattern(MultiblockMachineDefinition definition) {
-        var dPredicate = blocks(GTBlocks.COMPUTER_CASING.get());
-        var accessPredicate = abilities(GTNAPartAbility.ME_STORAGE_ACCESS).setExactLimit(1);
-
-        var corePredicate = blocks(GTNABlocks.T1_ME_STORAGE_CORE.get())
-                .or(blocks(GTNABlocks.T2_ME_STORAGE_CORE.get()))
-                .or(blocks(GTNABlocks.T3_ME_STORAGE_CORE.get()))
-                .or(blocks(GTNABlocks.T4_ME_STORAGE_CORE.get()))
-                .or(blocks(GTNABlocks.T5_ME_STORAGE_CORE.get()));
-
-        return FactoryBlockPattern.start(BACK, UP, RIGHT)
-                .aisle("AAA", "DDD", "DDD", "DDD", "AAA")
-                .aisle("AAA", "DBD", "EBD", "DBD", "AAA")
-                .aisle("BBB", "BGB", "BGB", "BGB", "BBB")
-                .aisle("CBC", "cHc", "cHc", "cHc", "CBC").setRepeatable(1, 128)
-                .aisle("BBB", "BBB", "BBB", "BBB", "BBB")
-                .where('A', blocks(GTBlocks.COMPUTER_HEAT_VENT.get()))
-                .where('B', blocks(GTBlocks.COMPUTER_CASING.get()))
-                .where('C', absCasingPredicate())
-                .where('D', dPredicate.or(accessPredicate))
-                .where('E', controller(blocks(definition.get())))
-                .where('G', blocks(GTBlocks.HIGH_POWER_CASING.get()))
-                .where('H',
-                        blocks(GTNABlocks.LITHIUM_OXIDE_CERAMIC_HEAT_RESISTANT_SHOCK_RESISTANT_MECHANICAL_CUBE.get()))
-                .where('c', corePredicate)
-                .build();
-    }
-
-    private static TraceabilityPredicate absCasingPredicate() {
-        return blocks(GTNABlocks.ABS_BLACK_CASING.get())
-                .or(blocks(GTNABlocks.ABS_BLUE_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_BROWN_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_GREEN_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_GREY_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_LIME_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_ORANGE_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_RED_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_WHITE_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_YELLOW_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_CYAN_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_MAGENTA_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_PINK_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_PURPLE_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_LIGHT_BULL_CASING.get()))
-                .or(blocks(GTNABlocks.ABS_LIGHT_GREY_CASING.get()));
     }
 
     private static String[] getArtificialStarAisle(int index) {

@@ -1,0 +1,107 @@
+# ME Storage, "Data Conduit" (GTIA-D-437, proposal B). Aisles back to front, rows bottom-up.
+# The repeated slice holds 6 storage cores: 1 to 128 slices, 6 to 768 cores.
+aisle
+|BBBBBBBBBBB|
+|BAAAAAAAAAB|
+|BAAAAAAAAAB|
+| BAAAAAAAB |
+| BAAAAAAAB |
+| BAAAAAAAB |
+|  BAAAAAB  |
+|  BAAAAAB  |
+|  BAAAAAB  |
+|   BAAAB   |
+|   BAAAB   |
+|   BAAAB   |
+|    BBB    |
+|     L     |
+aisle
+|BBBBBBBBBBB|
+|BBBBBBBBBBB|
+|BBBBBBBBBBB|
+| BBBBBBBBB |
+| BBBBBBBBB |
+| BBBBBBBBB |
+|  BBBBBBB  |
+|  BBBBBBB  |
+|  BBBBBBB  |
+|   BBBBB   |
+|   BBBBB   |
+|   BBBBB   |
+|    BBB    |
+|     L     |
+aisle
+|   CCCCC   |
+|    CFC    |
+|     F     |
+|     F     |
+|  G FGF G  |
+| G BBBBB G |
+| GVHBGBHVG |
+|FLVHHHHHVLF|
+| GVHBGBHVG |
+| G AAAAA G |
+| GG BLB GG |
+|   GGGGG   |
+|           |
+|           |
+aisle repeat 1 128
+|   CCCCC   |
+|    CFC    |
+|     F     |
+|     F     |
+|    FGF    |
+|   BBBBB   |
+|  VcBGBcV  |
+|FAVcHHHcVAF|
+|  VcBGBcV  |
+|   AAAAA   |
+|    BLB    |
+|           |
+|           |
+|           |
+aisle
+|   CCCCC   |
+|    CFC    |
+|     F     |
+|     F     |
+|  G FGF G  |
+| G BBBBB G |
+| GVHBGBHVG |
+|FLVHHHHHVLF|
+| GVHBGBHVG |
+| G AAAAA G |
+|  G BLB G  |
+|   GGGGG   |
+|           |
+|           |
+aisle
+| FCCCCCCCF |
+| BBBCFCBBB |
+| BBBBFBBBB |
+| BBBBFBBBB |
+| BBBFGFBBB |
+| BBBBBBBBB |
+| BVHBGBHVB |
+|FAVHHHHHVAF|
+| BVHBGBHVB |
+| FBAAAAABF |
+|  AABLBAA  |
+|   BBBBB   |
+|           |
+|           |
+aisle
+| FCCCCCCCF |
+| BBBDDDBBB |
+| BBBDEDBBB |
+| BBBDDDBBB |
+| BBBBBBBBB |
+| BBVVVVVBB |
+| BBVVVVVBB |
+| BBVVVVVBB |
+| BBVVVVVBB |
+| FBVVVVVBF |
+|  AAAAAAA  |
+|   BBLBB   |
+|           |
+|           |
