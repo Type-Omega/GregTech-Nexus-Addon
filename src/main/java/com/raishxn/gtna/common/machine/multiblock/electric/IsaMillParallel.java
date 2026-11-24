@@ -9,10 +9,12 @@ import com.gregtechceu.gtceu.api.recipe.modifier.ParallelLogic;
 /** Content parallel for the ISA Mill, bounded by available inputs and output space. */
 public final class IsaMillParallel {
 
+    public static final int MAX_PARALLEL = 2;
+
     private IsaMillParallel() {}
 
     public static ModifierFunction apply(MetaMachine machine, GTRecipe recipe) {
-        int parallel = ParallelLogic.getParallelAmount(machine, recipe, 2);
+        int parallel = ParallelLogic.getParallelAmount(machine, recipe, MAX_PARALLEL);
         if (parallel == 0) return ModifierFunction.NULL;
         if (parallel == 1) return ModifierFunction.IDENTITY;
         return ModifierFunction.builder()

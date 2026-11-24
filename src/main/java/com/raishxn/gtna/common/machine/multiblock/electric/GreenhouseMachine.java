@@ -17,6 +17,10 @@ import java.util.List;
 /** GTOCore Greenhouse: daylight gates growth and dim skylight slows an active crop. */
 public final class GreenhouseMachine extends WorkableElectricMultiblockMachine {
 
+    /** Below this sky light an active crop loses progress every second. */
+    public static final int DIM_LIGHT = 13;
+    public static final int DIM_REGRESS_TICKS = 10;
+
     private int skyLight = 15;
 
     public GreenhouseMachine(IMachineBlockEntity holder, Object... args) {
@@ -74,7 +78,7 @@ public final class GreenhouseMachine extends WorkableElectricMultiblockMachine {
             int light = readSkyLight();
             if (getRecipeLogic() instanceof GreenhouseRecipeLogic logic) {
                 if (light == 0) logic.regressToStart();
-                else if (light < 13) logic.regressTenTicks();
+                else if (light < DIM_LIGHT) logic.regressTenTicks();
             }
         }
         return super.onWorking();
@@ -97,7 +101,7 @@ public final class GreenhouseMachine extends WorkableElectricMultiblockMachine {
         }
 
         private void regressTenTicks() {
-            progress = Math.max(0, progress - 10);
+            progress = Math.max(0, progress - DIM_REGRESS_TICKS);
         }
     }
 }

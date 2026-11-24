@@ -1,0 +1,507 @@
+{
+  "gtna.tooltip.mb.mega.coil_parallel": [
+    "Parallels: 2^(coil temperature / %s), or the Parallel Hatch's if higher",
+    "Paralelos: 2^(temperatura da bobina / %s), ou os da Escotilha de Paralelo se forem maiores",
+    "并行数：2^(线圈温度/%s)，若并行仓更高则取并行仓"
+  ],
+  "gtna.tooltip.mb.mega.unlimited": [
+    "Parallels: no limit, as many as the inputs and energy allow",
+    "Paralelos: sem limite, quantos as entradas e a energia permitirem",
+    "并行数：无上限，取决于输入与能量"
+  ],
+  "gtna.tooltip.mb.mega.no_parallel": [
+    "No Parallel Hatch slot: one parallel per recipe",
+    "Sem espaço para Escotilha de Paralelo: um paralelo por receita",
+    "无并行仓位：每个配方一个并行"
+  ],
+  "gtna.tooltip.mb.mega.one_recipe": [
+    "No Thread Hatch slot: one recipe at a time",
+    "Sem espaço para Escotilha de Thread: uma receita por vez",
+    "无线程仓位：一次只运行一个配方"
+  ],
+  "gtna.tooltip.mb.type.cracker_hub": [
+    "Cracker, Pyrolyse Oven",
+    "Craqueador, Forno de Pirólise",
+    "裂化机、热解炉"
+  ],
+  "gtna.tooltip.mb.type.crystal_builder": [
+    "Autoclave",
+    "Autoclave",
+    "高压釜"
+  ],
+  "gtna.tooltip.mb.type.desulfurizer": [
+    "Desulfurizer",
+    "Dessulfurizador",
+    "脱硫机"
+  ],
+  "gtna.tooltip.mb.type.dimensional_focus_engraving_array": [
+    "Engraver",
+    "Gravadora",
+    "蚀刻机"
+  ],
+  "gtna.tooltip.mb.type.gemini_containment_system": [
+    "Packer",
+    "Empacotadora",
+    "打包机"
+  ],
+  "gtna.tooltip.mb.type.giant_electrochemical_workstation": [
+    "Electrolyzer",
+    "Eletrolisador",
+    "电解机"
+  ],
+  "gtna.tooltip.mb.type.heavy_rolling": [
+    "Bender",
+    "Dobradeira",
+    "卷板机"
+  ],
+  "gtna.tooltip.mb.type.magnetic_energy_reaction_furnace": [
+    "Arc Furnace",
+    "Forno a Arco",
+    "电弧炉"
+  ],
+  "gtna.tooltip.mb.type.mega_brewer": [
+    "Brewery, Fermenter",
+    "Cervejaria, Fermentador",
+    "酿造室、发酵槽"
+  ],
+  "gtna.tooltip.mb.type.mega_vacuum_drying_furnace": [
+    "Vacuum Drying",
+    "Secagem a Vácuo",
+    "真空干燥"
+  ],
+  "gtna.tooltip.mb.type.mega_wiremill": [
+    "Wiremill",
+    "Trefiladora",
+    "线材轧机"
+  ],
+  "gtna.tooltip.mb.type.nyarlathoteps_tentacle": [
+    "Assembly Line",
+    "Linha de Montagem",
+    "装配线"
+  ],
+  "gtna.tooltip.mb.type.particle_stream_matrix_filling_machine": [
+    "Canner",
+    "Enlatadora",
+    "装罐机"
+  ],
+  "gtna.tooltip.mb.type.phase_change_cube": [
+    "Extractor, Fluid Solidifier",
+    "Extrator, Solidificador de Fluidos",
+    "提取机、流体固化器"
+  ],
+  "gtna.tooltip.mb.type.hyperdimensional_plasma_fusion_core": [
+    "Plasma Forge",
+    "Forja de Plasma",
+    "等离子锻炉"
+  ],
+  "gtna.tooltip.mb.type.super_blast_smelter": [
+    "Blast Furnace, Alloy Blast Smelter",
+    "Alto-Forno, Alto-Forno de Ligas",
+    "高炉、合金冶炼炉"
+  ],
+  "gtna.tooltip.mb.type.extreme_compressor": [
+    "Compressor",
+    "Compressor",
+    "压缩机"
+  ],
+  "gtna.tooltip.mb.type.giant_flotation_tank": [
+    "Flotation Beneficiation",
+    "Beneficiamento por Flotação",
+    "浮游选矿"
+  ],
+  "gtna.tooltip.mb.type.hand_of_arachne": [
+    "Loom",
+    "Tear",
+    "织布机"
+  ],
+  "gtna.tooltip.mb.type.high_energy_laser_lathe": [
+    "Lathe",
+    "Torno",
+    "车床"
+  ],
+  "gtna.tooltip.mb.type.holy_separator": [
+    "Centrifuge",
+    "Centrífuga",
+    "离心机"
+  ],
+  "gtna.tooltip.mb.type.integrated_assembler": [
+    "Assembler",
+    "Montadora",
+    "组装机"
+  ],
+  "gtna.tooltip.mb.type.kerr_newman_homogenizer": [
+    "Mixer",
+    "Misturador",
+    "搅拌机"
+  ],
+  "gtna.tooltip.mb.type.nanites_circuit_assembly_factory": [
+    "Circuit Assembler",
+    "Montadora de Circuitos",
+    "电路组装机"
+  ],
+  "gtna.tooltip.mb.type.neutronium_wire_cutting": [
+    "Cutter",
+    "Cortadora",
+    "切割机"
+  ],
+  "gtna.tooltip.mb.type.rare_earth_centrifugal": [
+    "Rare Earth Centrifuge",
+    "Centrífuga de Terras Raras",
+    "稀土离心机"
+  ],
+  "gtna.tooltip.mb.type.superconducting_electromagnetism": [
+    "Polarizer, Electromagnetic Separator",
+    "Polarizador, Separador Eletromagnético",
+    "两极磁化机、电磁选矿机"
+  ],
+  "gtna.tooltip.mb.type.superconducting_magnetic_presser": [
+    "Forming Press",
+    "Prensa de Moldagem",
+    "冲压机床"
+  ],
+  "gtna.tooltip.mb.type.star_ultimate_material_forge_factory": [
+    "Ultimate Material Forge",
+    "Forja de Materiais Supremos",
+    "终极物质锻造"
+  ],
+  "gtna.machine.cracker_hub.tooltip.purpose": [
+    "Cracks and pyrolyses complex molecules in six reaction columns side by side",
+    "Craqueia e faz pirólise de moléculas complexas em seis colunas de reação lado a lado",
+    "在六座并列的反应塔中裂化与热解复杂分子"
+  ],
+  "gtna.machine.cracker_hub.tooltip.humor": [
+    "Make sure the safety valves work. Then Type Omega Compliance checks again.",
+    "Confira se as válvulas de segurança funcionam. Depois o Compliance da Type Omega confere de novo.",
+    "请确认安全阀正常。然后Type Omega合规部会再查一遍。"
+  ],
+  "gtna.machine.crystal_builder.tooltip.purpose": [
+    "Grows defect-free crystals under ultra-high pressure",
+    "Cultiva cristais sem defeitos sob pressão altíssima",
+    "在超高压下培育无缺陷晶体"
+  ],
+  "gtna.machine.crystal_builder.tooltip.not_ported": [
+    "GTO's Crystallization recipe type is not ported",
+    "O tipo de receita Cristalização do GTO não foi portado",
+    "未移植GTO的结晶配方类型"
+  ],
+  "gtna.machine.crystal_builder.tooltip.humor": [
+    "The Braggs' dream factory, one perfect lattice at a time, per Type Omega spec.",
+    "A fábrica dos sonhos dos Bragg, uma rede perfeita por vez, conforme a especificação da Type Omega.",
+    "布拉格父子的梦想工厂，按Type Omega规格一次一个完美晶格。"
+  ],
+  "gtna.machine.desulfurizer.tooltip.purpose": [
+    "Strips sulfur from sulfuric fuels and gases, ready for refining",
+    "Remove o enxofre de combustíveis e gases sulfurosos, prontos para o refino",
+    "脱除含硫燃料与气体中的硫，供后续精炼"
+  ],
+  "gtna.machine.desulfurizer.tooltip.not_ported": [
+    "GTO's unlimited coil parallels become 2^(coil temperature / 900)",
+    "Os paralelos ilimitados por bobina do GTO viraram 2^(temperatura da bobina / 900)",
+    "GTO的无限线圈并行改为2^(线圈温度/900)"
+  ],
+  "gtna.machine.desulfurizer.tooltip.humor": [
+    "Sulfur out, clean fuel in. Type Omega's environmental report says thanks.",
+    "Sai o enxofre, fica o combustível limpo. O relatório ambiental da Type Omega agradece.",
+    "硫出，净燃料留。Type Omega环境报告表示感谢。"
+  ],
+  "gtna.machine.dimensional_focus_engraving_array.tooltip.purpose": [
+    "Engraves endgame wafers and chips with dimensionally focused lasers",
+    "Grava wafers e chips de fim de jogo com lasers focados dimensionalmente",
+    "以维度聚焦激光蚀刻终局晶圆与芯片"
+  ],
+  "gtna.machine.dimensional_focus_engraving_array.tooltip.humor": [
+    "Focuses a laser through a fold in space. Type Omega calls it 4D precision.",
+    "Foca o laser por uma dobra no espaço. A Type Omega chama de precisão 4D.",
+    "让激光穿过空间褶皱聚焦。Type Omega称之为四维精度。"
+  ],
+  "gtna.machine.gemini_containment_system.tooltip.purpose": [
+    "Twin packaging lines that seal items at megafactory scale",
+    "Duas linhas de empacotamento que lacram itens em escala de megafábrica",
+    "双子封装产线，以巨型工厂规模封装物品"
+  ],
+  "gtna.machine.gemini_containment_system.tooltip.not_ported": [
+    "GTO's Unpacker recipe type is not ported",
+    "O tipo de receita Desempacotadora do GTO não foi portado",
+    "未移植GTO的解包配方类型"
+  ],
+  "gtna.machine.gemini_containment_system.tooltip.humor": [
+    "Packs at twin speed. Pauli and the Type Omega logistics team approve.",
+    "Empacota em velocidade dupla. Pauli e a logística da Type Omega aprovam.",
+    "双倍速打包。泡利与Type Omega物流部都认可。"
+  ],
+  "gtna.machine.giant_electrochemical_workstation.tooltip.purpose": [
+    "A giant electrolysis hall with heated cells and corrosion-proof piping",
+    "Um salão gigante de eletrólise com células aquecidas e tubulação anticorrosiva",
+    "配有加热电解池与耐腐蚀管道的巨型电解大厅"
+  ],
+  "gtna.machine.giant_electrochemical_workstation.tooltip.not_ported": [
+    "GTO's Electroplating recipe type and its GCYM upgrade overclock are not ported",
+    "O tipo de receita Galvanoplastia do GTO e o overclock de upgrade GCYM não foram portados",
+    "未移植GTO的电镀配方类型与GCYM升级超频"
+  ],
+  "gtna.machine.giant_electrochemical_workstation.tooltip.humor": [
+    "Enough current to split water, salt and the patience of Type Omega's auditors.",
+    "Corrente que separa água, sal e a paciência dos auditores da Type Omega.",
+    "电流足以分解水、盐，以及Type Omega审计员的耐心。"
+  ],
+  "gtna.machine.heavy_rolling.tooltip.purpose": [
+    "Heated rolling mills that bend plates at industrial scale",
+    "Laminadores aquecidos que dobram chapas em escala industrial",
+    "以工业规模卷制板材的加热轧机"
+  ],
+  "gtna.machine.heavy_rolling.tooltip.not_ported": [
+    "GTO's Rolling and Cluster Mill recipe types become the Bender's",
+    "Os tipos de receita Laminação e Cluster Mill do GTO viraram os da Dobradeira",
+    "GTO的轧制与多辊轧机配方类型改为卷板机配方"
+  ],
+  "gtna.machine.heavy_rolling.tooltip.humor": [
+    "Rolls metal like dough. Very hot, very heavy, Type Omega-certified dough.",
+    "Lamina metal como massa. Massa muito quente, pesada e certificada pela Type Omega.",
+    "像擀面一样轧金属。很烫、很重、经Type Omega认证的面团。"
+  ],
+  "gtna.machine.magnetic_energy_reaction_furnace.tooltip.purpose": [
+    "Plasma arcs held by magnetic fields melt and recycle matter",
+    "Arcos de plasma presos por campos magnéticos fundem e reciclam matéria",
+    "磁场约束的等离子电弧熔炼并回收物质"
+  ],
+  "gtna.machine.magnetic_energy_reaction_furnace.tooltip.humor": [
+    "Smells like ozone. Type Omega HR insists that is a perk.",
+    "Cheira a ozônio. O RH da Type Omega insiste que é um benefício.",
+    "一股臭氧味。Type Omega人事部坚称这是员工福利。"
+  ],
+  "gtna.machine.mega_brewer.tooltip.purpose": [
+    "Brews and ferments in giant temperature-controlled tanks",
+    "Faz cerveja e fermenta em tanques gigantes com controle de temperatura",
+    "在巨型温控罐中酿造与发酵"
+  ],
+  "gtna.machine.mega_brewer.tooltip.humor": [
+    "Thousand-ton brewing. Type Omega's break room has never smelled better.",
+    "Cervejaria de mil toneladas. A copa da Type Omega nunca cheirou tão bem.",
+    "千吨级酿造。Type Omega茶水间从未如此香气四溢。"
+  ],
+  "gtna.machine.mega_vacuum_drying_furnace.tooltip.purpose": [
+    "Dries ore foams into pure dusts in vacuum at megafactory scale",
+    "Seca espumas de minério em pós puros no vácuo em escala de megafábrica",
+    "以巨型工厂规模在真空中将矿石泡沫干燥为纯净粉"
+  ],
+  "gtna.machine.mega_vacuum_drying_furnace.tooltip.humor": [
+    "Zero oxidation, zero contamination, zero patience required by Type Omega.",
+    "Zero oxidação, zero contaminação, zero paciência exigida pela Type Omega.",
+    "零氧化、零污染、Type Omega对耐心零要求。"
+  ],
+  "gtna.machine.mega_wiremill.tooltip.purpose": [
+    "Draws metal into perfect wires under thousands of tons of pressure",
+    "Estira metal em fios perfeitos sob milhares de toneladas de pressão",
+    "在数千吨压力下将金属拉制成完美线材"
+  ],
+  "gtna.machine.mega_wiremill.tooltip.not_ported": [
+    "GTO's Fiber Extrusion recipe type is not ported",
+    "O tipo de receita Extrusão de Fibra do GTO não foi portado",
+    "未移植GTO的纤维挤出配方类型"
+  ],
+  "gtna.machine.mega_wiremill.tooltip.humor": [
+    "From bulky ingots to hair-thin wires. Type Omega sells the hair separately.",
+    "De lingotes pesados a fios finos como cabelo. A Type Omega vende o cabelo à parte.",
+    "从笨重锭材到发丝细线。头发由Type Omega另售。"
+  ],
+  "gtna.machine.nyarlathoteps_tentacle.tooltip.purpose": [
+    "An Assembly Line with many arms, able to run several recipes side by side",
+    "Uma Linha de Montagem com muitos braços, capaz de rodar várias receitas lado a lado",
+    "拥有众多触手的装配线，可并行运行多个配方"
+  ],
+  "gtna.machine.nyarlathoteps_tentacle.tooltip.not_ported": [
+    "GTO's Suprachronal and Circuit Assembly Line recipe types are not ported",
+    "Os tipos de receita Suprachronal e Circuit Assembly Line do GTO não foram portados",
+    "未移植GTO的超时空装配线与电路装配线配方类型"
+  ],
+  "gtna.machine.nyarlathoteps_tentacle.tooltip.humor": [
+    "The Crawling Chaos builds your circuits. Type Omega negotiated the price.",
+    "O Caos Rastejante monta seus circuitos. A Type Omega negociou o preço.",
+    "伏行之混沌为你组装电路，价格由Type Omega谈妥。"
+  ],
+  "gtna.machine.particle_stream_matrix_filling_machine.tooltip.purpose": [
+    "Fills containers with particle streams at megafactory scale",
+    "Enche recipientes com fluxos de partículas em escala de megafábrica",
+    "以巨型工厂规模将粒子流注入容器"
+  ],
+  "gtna.machine.particle_stream_matrix_filling_machine.tooltip.humor": [
+    "Even photons fit in a can now. Type Omega patented the lid.",
+    "Até fótons cabem numa lata agora. A Type Omega patenteou a tampa.",
+    "连光子都能装罐了，Type Omega为罐盖申请了专利。"
+  ],
+  "gtna.machine.phase_change_cube.tooltip.purpose": [
+    "Melts solids into fluids and freezes them back",
+    "Derrete sólidos em fluidos e os congela de volta",
+    "将固体熔为流体，再冻结回固体"
+  ],
+  "gtna.machine.phase_change_cube.tooltip.humor": [
+    "Six faces, six phase changes. A Rubik's Cube for matter, Type Omega edition.",
+    "Seis faces, seis mudanças de fase. Um cubo mágico da matéria, edição Type Omega.",
+    "六个面，六种相变。物质魔方，Type Omega特别版。"
+  ],
+  "gtna.machine.hyperdimensional_plasma_fusion_core.tooltip.purpose": [
+    "Runs Plasma Forge recipes with coil heat, side by side",
+    "Roda receitas da Forja de Plasma com o calor da bobina, lado a lado",
+    "以线圈热量并行运行等离子锻炉配方"
+  ],
+  "gtna.machine.hyperdimensional_plasma_fusion_core.tooltip.not_ported": [
+    "GTO's Plasma Forge catalyst discount and Stellar Forge recipe type are not ported",
+    "O desconto de catalisador da Forja de Plasma e o tipo de receita Stellar Forge do GTO não foram portados",
+    "未移植GTO等离子锻炉的催化剂折扣与恒星锻炉配方类型"
+  ],
+  "gtna.machine.hyperdimensional_plasma_fusion_core.tooltip.humor": [
+    "A Plasma Forge that learned to multitask. Type Omega bills the universe for it.",
+    "Uma Forja de Plasma que aprendeu a multitarefa. A Type Omega manda a conta ao universo.",
+    "学会多任务的等离子锻炉。Type Omega把账单寄给了宇宙。"
+  ],
+  "gtna.machine.super_blast_smelter.tooltip.purpose": [
+    "Smelts and alloys at star-core heat: Electric Blast Furnace and Alloy Blast Smelter recipes",
+    "Funde e faz ligas no calor de núcleo estelar: receitas de Alto-Forno Elétrico e de Alto-Forno de Ligas",
+    "以恒星核心的温度冶炼与合金：电力高炉与合金冶炼炉配方"
+  ],
+  "gtna.machine.super_blast_smelter.tooltip.humor": [
+    "Smelting everything at artificial-sun temperatures. Type Omega supplies the sun.",
+    "Fundindo tudo em temperaturas de sol artificial. A Type Omega fornece o sol.",
+    "以人造太阳的温度冶炼万物，太阳由Type Omega提供。"
+  ],
+  "gtna.machine.extreme_compressor.tooltip.purpose": [
+    "A planet-grade hydraulic press that squeezes ingots, dusts and plates",
+    "Uma prensa hidráulica de escala planetária que comprime lingotes, pós e chapas",
+    "行星级液压机，压缩锭、粉与板"
+  ],
+  "gtna.machine.extreme_compressor.tooltip.not_ported": [
+    "GTO's Gas Compressor and Thermo Pressing recipe types are not ported",
+    "Os tipos de receita Compressor de Gás e Termoprensagem do GTO não foram portados",
+    "未移植GTO的气体压缩与热压配方类型"
+  ],
+  "gtna.machine.extreme_compressor.tooltip.humor": [
+    "Megaton press. Even the hardest metal learns Type Omega manners.",
+    "Prensa de megatons. Até o metal mais duro aprende os modos da Type Omega.",
+    "百万吨压机。再硬的金属也得学会Type Omega的规矩。"
+  ],
+  "gtna.machine.giant_flotation_tank.tooltip.purpose": [
+    "Sorts ore particles with bubbles at megafactory scale",
+    "Separa partículas de minério com bolhas em escala de megafábrica",
+    "以巨型工厂规模用气泡分选矿物颗粒"
+  ],
+  "gtna.machine.giant_flotation_tank.tooltip.humor": [
+    "Billions of bubbles, each one a tiny Type Omega elevator for ore.",
+    "Bilhões de bolhas, cada uma um elevadorzinho de minério da Type Omega.",
+    "数十亿气泡，每个都是Type Omega的迷你矿石电梯。"
+  ],
+  "gtna.machine.hand_of_arachne.tooltip.purpose": [
+    "A giant loom that weaves fibres and cables",
+    "Um tear gigante que tece fibras e cabos",
+    "编织纤维与线缆的巨型织机"
+  ],
+  "gtna.machine.hand_of_arachne.tooltip.humor": [
+    "Eight arms, zero tangles. Arachne applied to Type Omega and was turned down.",
+    "Oito braços, nenhum nó. Aracne se candidatou na Type Omega e foi recusada.",
+    "八只手，零缠绕。阿拉克涅应聘Type Omega被拒了。"
+  ],
+  "gtna.machine.high_energy_laser_lathe.tooltip.purpose": [
+    "Turns rods and bolts with photon blades",
+    "Torneia hastes e parafusos com lâminas de fótons",
+    "以光子刃车削杆件与螺栓"
+  ],
+  "gtna.machine.high_energy_laser_lathe.tooltip.humor": [
+    "Laser blades turn rods. Type Omega bills the sawdust as a hologram.",
+    "Lâminas de laser torneiam hastes. A Type Omega cobra a serragem como holograma.",
+    "激光刃车削杆件，Type Omega把木屑当全息影像收费。"
+  ],
+  "gtna.machine.holy_separator.tooltip.purpose": [
+    "An altar-like centrifuge that separates materials by density",
+    "Uma centrífuga em forma de altar que separa materiais por densidade",
+    "祭坛般的离心机，按密度分离物质"
+  ],
+  "gtna.machine.holy_separator.tooltip.humor": [
+    "Centrifugation as a sacred ritual. Type Omega provides the liturgy.",
+    "Centrifugação como ritual sagrado. A Type Omega fornece a liturgia.",
+    "将离心视作神圣仪式，祷文由Type Omega提供。"
+  ],
+  "gtna.machine.integrated_assembler.tooltip.purpose": [
+    "A hyperspatial assembly hall that builds anything from chips to engines",
+    "Um salão de montagem hiperespacial que monta de chips a motores",
+    "超空间组装车间，从芯片到引擎无所不造"
+  ],
+  "gtna.machine.integrated_assembler.tooltip.not_ported": [
+    "GTO's Laminator recipe type is not ported",
+    "O tipo de receita Laminadora do GTO não foi portado",
+    "未移植GTO的层压配方类型"
+  ],
+  "gtna.machine.integrated_assembler.tooltip.humor": [
+    "Make complexity simple, make the impossible routine. Type Omega's motto, trademarked.",
+    "Torne o complexo simples e o impossível rotina. Lema da Type Omega, marca registrada.",
+    "化繁为简，化不可能为日常。Type Omega注册商标的座右铭。"
+  ],
+  "gtna.machine.kerr_newman_homogenizer.tooltip.purpose": [
+    "Mixes at the edge of a charged, spinning singularity",
+    "Mistura na borda de uma singularidade carregada e girando",
+    "在带电旋转奇点的边缘进行搅拌"
+  ],
+  "gtna.machine.kerr_newman_homogenizer.tooltip.humor": [
+    "A spinning black hole stirs better than any spoon. Type Omega still issues spoons.",
+    "Um buraco negro girando mexe melhor que qualquer colher. A Type Omega ainda distribui colheres.",
+    "旋转黑洞比任何勺子都搅得好。Type Omega仍照常发勺子。"
+  ],
+  "gtna.machine.nanites_circuit_assembly_factory.tooltip.purpose": [
+    "Assembles circuits with nanites at megafactory scale",
+    "Monta circuitos com nanitas em escala de megafábrica",
+    "以巨型工厂规模用纳米蜂群组装电路"
+  ],
+  "gtna.machine.nanites_circuit_assembly_factory.tooltip.humor": [
+    "No furnace roar, no robot arms. Just nanites on a Type Omega payroll.",
+    "Sem rugido de fornalha, sem braço robótico. Só nanitas na folha de pagamento da Type Omega.",
+    "没有炉鸣，没有机械臂，只有领Type Omega工资的纳米蜂群。"
+  ],
+  "gtna.machine.neutronium_wire_cutting.tooltip.purpose": [
+    "Cuts with neutron-degenerate threads at atomic precision",
+    "Corta com fios de matéria degenerada de nêutrons com precisão atômica",
+    "以中子简并丝线实现原子级精度切割"
+  ],
+  "gtna.machine.neutronium_wire_cutting.tooltip.humor": [
+    "Neutron star matter cuts like butter. Type Omega supplies the butter.",
+    "Matéria de estrela de nêutrons corta como manteiga. A Type Omega fornece a manteiga.",
+    "中子星物质切起来像黄油，黄油由Type Omega提供。"
+  ],
+  "gtna.machine.rare_earth_centrifugal.tooltip.purpose": [
+    "Splits rare earth concentrates into their elements in one spin",
+    "Separa concentrados de terras raras em seus elementos de uma vez",
+    "一次离心即可将稀土精矿分离为各元素"
+  ],
+  "gtna.machine.rare_earth_centrifugal.tooltip.humor": [
+    "Spins rare earths until every lanthanide finds its Type Omega-labelled jar.",
+    "Gira as terras raras até cada lantanídeo achar o seu pote com etiqueta da Type Omega.",
+    "旋转稀土，直到每种镧系元素都找到贴着Type Omega标签的罐子。"
+  ],
+  "gtna.machine.superconducting_electromagnetism.tooltip.purpose": [
+    "Polarizes and separates magnetically in a zero-resistance field",
+    "Polariza e separa magneticamente num campo de resistência zero",
+    "在零电阻超导磁场中磁化与磁选"
+  ],
+  "gtna.machine.superconducting_electromagnetism.tooltip.humor": [
+    "Maxwell's equations, now in industrial size and Type Omega blue.",
+    "As equações de Maxwell, agora em tamanho industrial e no azul da Type Omega.",
+    "麦克斯韦方程组，工业尺寸，Type Omega蓝。"
+  ],
+  "gtna.machine.superconducting_magnetic_presser.tooltip.purpose": [
+    "Shapes metal with railgun-grade electromagnetic force",
+    "Molda metal com força eletromagnética de canhão eletromagnético",
+    "以轨道炮级电磁力冲压成型金属"
+  ],
+  "gtna.machine.superconducting_magnetic_presser.tooltip.humor": [
+    "Accelerates coins to Mach 3. Type Omega Finance would like them back.",
+    "Acelera moedas a Mach 3. O Financeiro da Type Omega quer elas de volta.",
+    "能把硬币加速到三倍音速。Type Omega财务部希望能收回。"
+  ],
+  "gtna.machine.star_ultimate_material_forge_factory.tooltip.purpose": [
+    "Forges ultimate materials inside a contained star",
+    "Forja materiais supremos dentro de uma estrela contida",
+    "在受控恒星中锻造终极物质"
+  ],
+  "gtna.machine.star_ultimate_material_forge_factory.tooltip.humor": [
+    "A star in a box, hammering out the last materials. Type Omega owns the box.",
+    "Uma estrela numa caixa, forjando os últimos materiais. A caixa é da Type Omega.",
+    "盒中恒星锻造最后的物质，盒子归Type Omega所有。"
+  ]
+}

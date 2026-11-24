@@ -20,18 +20,23 @@ import java.util.List;
 /** GTOCore Blaze Blast Furnace: 64 parallel, half duration, molten Blaze upkeep. */
 public final class BlazeBlastFurnaceMachine extends CoilWorkableElectricMultiblockMachine {
 
+    /** GTO numbers shared with the Cold Ice Freezer: parallels, time factor and the upkeep at MV, in mB/s. */
+    public static final int MAX_PARALLEL = 64;
+    public static final double DURATION_MULTIPLIER = 0.5;
+    public static final int UPKEEP_BASE = 10;
+
     public BlazeBlastFurnaceMachine(IMachineBlockEntity holder, Object... args) {
         super(holder);
     }
 
     public static ModifierFunction recipeModifier(MetaMachine machine, GTRecipe recipe) {
         if (!(machine instanceof BlazeBlastFurnaceMachine)) return ModifierFunction.NULL;
-        int parallel = ParallelLogic.getParallelAmount(machine, recipe, 64);
+        int parallel = ParallelLogic.getParallelAmount(machine, recipe, MAX_PARALLEL);
         if (parallel <= 0) return ModifierFunction.NULL;
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallel))
                 .eutMultiplier(parallel)
-                .durationMultiplier(0.5)
+                .durationMultiplier(DURATION_MULTIPLIER)
                 .parallels(parallel)
                 .build();
     }
@@ -49,7 +54,8 @@ public final class BlazeBlastFurnaceMachine extends CoilWorkableElectricMultiblo
     }
 
     private int heatingTemperature() {
-        return getCoilType().getCoilTemperature() + 100 * Math.max(0, getTier() - 2);
+        return getCoilType().getCoilTemperature() +
+                CoilWorkableElectricMultipleRecipesMachine.HEAT_PER_TIER * Math.max(0, getTier() - 2);
     }
 
     @Override
@@ -72,8 +78,13 @@ public final class BlazeBlastFurnaceMachine extends CoilWorkableElectricMultiblo
         }
     }
 
+    /** 2^(tier − 2) × the base upkeep, paid every second. */
+    public static int upkeep(int tier) {
+        return (1 << Math.max(0, Math.min(20, tier - 2))) * UPKEEP_BASE;
+    }
+
     private boolean drainBlaze() {
-        int required = (1 << Math.max(0, Math.min(20, getTier() - 2))) * 10;
+        int required = upkeep(getTier());
         return FluidUpkeep.consume(this, GTMaterials.Blaze.getFluid(), required);
     }
 }

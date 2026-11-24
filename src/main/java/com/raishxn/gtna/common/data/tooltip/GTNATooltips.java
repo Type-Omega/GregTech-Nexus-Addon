@@ -63,6 +63,8 @@ public final class GTNATooltips {
         BECTooltips.register();
         ReactorTooltips.register();
         SteamElevatorTooltips.register();
+        MegaTooltips.register();
+        ProcessTooltips.register();
     }
 
     static void register(String path, Supplier<List<Component>> tooltip) {

@@ -31,12 +31,12 @@ public final class ColdIceFreezerMachine extends WorkableElectricMultiblockMachi
 
     public static ModifierFunction recipeModifier(MetaMachine machine, GTRecipe recipe) {
         if (!(machine instanceof ColdIceFreezerMachine)) return ModifierFunction.NULL;
-        int parallel = ParallelLogic.getParallelAmount(machine, recipe, 64);
+        int parallel = ParallelLogic.getParallelAmount(machine, recipe, BlazeBlastFurnaceMachine.MAX_PARALLEL);
         if (parallel <= 0) return ModifierFunction.NULL;
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallel))
                 .eutMultiplier(parallel)
-                .durationMultiplier(0.5)
+                .durationMultiplier(BlazeBlastFurnaceMachine.DURATION_MULTIPLIER)
                 .parallels(parallel)
                 .build();
     }
@@ -98,7 +98,7 @@ public final class ColdIceFreezerMachine extends WorkableElectricMultiblockMachi
     }
 
     private boolean drainIce() {
-        int required = (1 << Math.max(0, Math.min(20, getTier() - 2))) * 10;
+        int required = BlazeBlastFurnaceMachine.upkeep(getTier());
         return FluidUpkeep.consume(this, GTMaterials.Ice.getFluid(), required);
     }
 

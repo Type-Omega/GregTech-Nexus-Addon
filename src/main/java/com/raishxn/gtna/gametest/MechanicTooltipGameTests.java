@@ -16,6 +16,8 @@ import com.raishxn.gtna.api.machine.feature.godforge.GodforgeMath;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeModuleStats;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.AdvancedFusionReactorMachine;
+import com.raishxn.gtna.common.machine.multiblock.electric.BlazeBlastFurnaceMachine;
+import com.raishxn.gtna.common.machine.multiblock.electric.CoilWorkableElectricMultipleRecipesMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamFlightModule;
@@ -73,6 +75,41 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("steam_elevator_ore_processor_module", 10);
         MINIMUM.put("steam_elevator_apiary_module", 8);
         MINIMUM.put("steam_elevator_bee_breeding_module", 9);
+        for (String id : new String[] { "cracker_hub", "crystal_builder", "desulfurizer",
+                "dimensional_focus_engraving_array", "gemini_containment_system", "giant_electrochemical_workstation",
+                "heavy_rolling", "magnetic_energy_reaction_furnace", "mega_brewer", "mega_vacuum_drying_furnace",
+                "mega_wiremill", "nyarlathoteps_tentacle", "particle_stream_matrix_filling_machine",
+                "phase_change_cube" }) {
+            MINIMUM.put(id, 6);
+        }
+        MINIMUM.put("hyperdimensional_plasma_fusion_core", 6);
+        MINIMUM.put("super_blast_smelter", 5);
+        for (String id : new String[] { "extreme_compressor", "giant_flotation_tank", "hand_of_arachne",
+                "high_energy_laser_lathe", "holy_separator", "integrated_assembler", "kerr_newman_homogenizer",
+                "nanites_circuit_assembly_factory", "neutronium_wire_cutting", "rare_earth_centrifugal",
+                "superconducting_electromagnetism", "superconducting_magnetic_presser",
+                "star_ultimate_material_forge_factory" }) {
+            MINIMUM.put(id, 4);
+        }
+        MINIMUM.put("blaze_blast_furnace", 7);
+        MINIMUM.put("cold_ice_freezer", 6);
+        MINIMUM.put("chemical_plant", 4);
+        MINIMUM.put("component_assembler", 6);
+        MINIMUM.put("fishing_ground", 7);
+        MINIMUM.put("greenhouse", 5);
+        MINIMUM.put("large_greenhouse", 3);
+        MINIMUM.put("isa_mill", 6);
+        MINIMUM.put("industrial_flotation_cell", 3);
+        MINIMUM.put("vacuum_drying_furnace", 8);
+        MINIMUM.put("evaporation_plant", 4);
+        MINIMUM.put("large_cracker", 5);
+        MINIMUM.put("large_pyrolyse_oven", 5);
+        MINIMUM.put("reaction_furnace", 6);
+        MINIMUM.put("engraving_laser_plant", 4);
+        MINIMUM.put("large_incubator", 7);
+        MINIMUM.put("giant_sintering_array", 6);
+        MINIMUM.put("integrated_vapor_deposition_system", 4);
+        MINIMUM.put("compound_extreme_cooling_unit", 4);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -195,6 +232,35 @@ public final class MechanicTooltipGameTests {
         h.assertTrue(text("steam_elevator_monster_repellent_module_ii").contains("Radius: 128 m"),
                 "repellent II radius is 2^(5 + 2)");
         h.assertTrue(text("steam_elevator_weather_module_iii").contains("lasts 3 h"), "weather III lasts 3 h");
+        h.succeed();
+    }
+
+    /** Megafactory coil parallels and heat use the step the machine base applies. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void megafactoryCoilNumbersMatchTheBase(GameTestHelper h) {
+        String hub = text("cracker_hub");
+        for (String needed : new String[] {
+                "2^(coil temperature / " + CoilWorkableElectricMultipleRecipesMachine.COIL_PARALLEL_STEP + " K)",
+                CoilWorkableElectricMultipleRecipesMachine.HEAT_PER_TIER + " K per voltage tier above MV" }) {
+            h.assertTrue(hub.contains(needed), "Cracker Hub tooltip lacks '" + needed + "': " + hub);
+        }
+        h.assertTrue(text("star_ultimate_material_forge_factory").contains("no limit"),
+                "the Ultimate Material Forge has no parallel limit");
+        h.succeed();
+    }
+
+    /** Blaze upkeep, fishing loot and chemical plant coil numbers are the machines' constants. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void gtoProcessNumbersMatchTheMachines(GameTestHelper h) {
+        h.assertTrue(BlazeBlastFurnaceMachine.upkeep(GTValues.EV) == 4 * BlazeBlastFurnaceMachine.UPKEEP_BASE,
+                "EV pays 2^(4 - 2) times the base upkeep");
+        String blaze = text("blaze_blast_furnace");
+        for (String needed : new String[] { BlazeBlastFurnaceMachine.MAX_PARALLEL + " parallels, 0.50x",
+                "× " + BlazeBlastFurnaceMachine.UPKEEP_BASE + " mB every second" }) {
+            h.assertTrue(blaze.contains(needed), "Blaze Blast Furnace tooltip lacks '" + needed + "': " + blaze);
+        }
+        h.assertTrue(text("fishing_ground").contains("up to 1,024"), "fishing loot draws");
+        h.assertTrue(text("chemical_plant").contains("coil tier × 5%"), "chemical plant coil cut");
         h.succeed();
     }
 

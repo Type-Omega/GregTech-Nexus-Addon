@@ -24,6 +24,9 @@ import java.util.List;
  */
 public final class ChemicalPlantMachine extends CoilWorkableElectricMultiblockMachine {
 
+    /** EU and duration cut per coil tier (GTO's controller display). */
+    public static final double COIL_DISCOUNT_PER_TIER = 0.05;
+
     public ChemicalPlantMachine(IMachineBlockEntity holder, Object... args) {
         super(holder);
     }
@@ -53,6 +56,6 @@ public final class ChemicalPlantMachine extends CoilWorkableElectricMultiblockMa
     }
 
     private static double coilEfficiencyOf(ChemicalPlantMachine plant) {
-        return 1 - plant.getCoilTier() * 0.05;
+        return 1 - plant.getCoilTier() * COIL_DISCOUNT_PER_TIER;
     }
 }

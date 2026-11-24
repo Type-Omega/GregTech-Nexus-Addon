@@ -40,7 +40,7 @@ public final class PortLangParityTest {
     private static final Path GENERATED_EN_US = Path
             .of("src/generated/resources/assets/gtna/lang/en_us.json");
     private static final Pattern STANDARD_TOOLTIP_KEY = Pattern
-            .compile("\"(gtna\\.machine\\.[a-z0-9_]+\\.tooltip\\.[a-z0-9_]+)\"\\s*:");
+            .compile("\"(gtna\\.(?:machine\\.[a-z0-9_]+\\.tooltip|tooltip\\.mb)\\.[a-z0-9_.]+)\"\\s*:");
     private static final Pattern TOOLTIP_KEY = Pattern.compile("^gtna\\.machine\\.[a-z0-9_]+\\.tooltip");
 
     private PortLangParityTest() {}
@@ -61,7 +61,8 @@ public final class PortLangParityTest {
             throw new AssertionError("pt_br.json is missing " + missing.size() + " block/tooltip key(s) exposed by " +
                     "GTNALangProvider: " + missing + " - add them to src/main/resources/assets/gtna/lang/pt_br.json");
         }
-        // Multiblock tooltip lines (old numbered ones and the named lines of the lib layout) exist only in the
+        // Multiblock tooltip lines (old numbered ones, the named lines of the lib layout
+        // and the shared gtna.tooltip.mb lines) exist only in the
         // generated en_us: every one needs pt_br.
         Set<String> standard = new LinkedHashSet<>();
         collect(STANDARD_TOOLTIP_KEY, Files.readString(GENERATED_EN_US, StandardCharsets.UTF_8), standard);

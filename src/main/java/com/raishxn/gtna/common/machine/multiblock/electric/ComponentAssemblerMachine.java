@@ -24,6 +24,10 @@ import java.util.List;
  */
 public final class ComponentAssemblerMachine extends WorkableElectricMultiblockMachine {
 
+    /** Casing cap of the base structure and once an extension module formed (GTO). */
+    public static final int BASE_CASING_CAP = GTValues.IV;
+    public static final int EXTENDED_CASING_CAP = GTValues.UV;
+
     private int casingTier;
 
     public ComponentAssemblerMachine(IMachineBlockEntity holder, Object... args) {
@@ -34,7 +38,7 @@ public final class ComponentAssemblerMachine extends WorkableElectricMultiblockM
     public void onStructureFormed() {
         super.onStructureFormed();
         Object matched = getMultiblockState().getMatchContext().get("ComponentAssemblyCasingTier");
-        int baseCap = gtna$formedModuleCount() > 0 ? GTValues.UV : GTValues.IV;
+        int baseCap = gtna$formedModuleCount() > 0 ? EXTENDED_CASING_CAP : BASE_CASING_CAP;
         casingTier = matched instanceof Integer tier ? Math.min(baseCap, tier) : 0;
     }
 

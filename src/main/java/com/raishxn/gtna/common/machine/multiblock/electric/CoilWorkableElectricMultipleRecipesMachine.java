@@ -14,6 +14,11 @@ import org.jetbrains.annotations.Nullable;
  */
 public class CoilWorkableElectricMultipleRecipesMachine extends WorkableElectricMultipleRecipesMachine {
 
+    /** Coil parallels: one doubling per this much coil temperature. */
+    public static final int COIL_PARALLEL_STEP = 900;
+    /** Heat added per voltage tier above MV. */
+    public static final int HEAT_PER_TIER = 100;
+
     private ICoilType coilType = CoilBlock.CoilType.CUPRONICKEL;
     private final boolean scaleParallelWithCoil;
 
@@ -51,7 +56,7 @@ public class CoilWorkableElectricMultipleRecipesMachine extends WorkableElectric
     public int getMaxParallel() {
         int hatchParallel = super.getMaxParallel();
         if (!scaleParallelWithCoil) return hatchParallel;
-        int exponent = Math.max(0, coilType.getCoilTemperature() / 900);
+        int exponent = Math.max(0, coilType.getCoilTemperature() / COIL_PARALLEL_STEP);
         int coilParallel = exponent >= 30 ? Integer.MAX_VALUE : 1 << exponent;
         return Math.max(hatchParallel, coilParallel);
     }
@@ -69,6 +74,6 @@ public class CoilWorkableElectricMultipleRecipesMachine extends WorkableElectric
     }
 
     public int getHeatingCoilTemperature() {
-        return coilType.getCoilTemperature() + 100 * Math.max(0, getTier() - 2);
+        return coilType.getCoilTemperature() + HEAT_PER_TIER * Math.max(0, getTier() - 2);
     }
 }

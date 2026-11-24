@@ -38,6 +38,12 @@ import java.util.List;
 /** GTOCore Fishing Ground with its four fixed bait recipes and vanilla fishing loot circuit modes. */
 public class FishingGroundMachine extends WorkableElectricMultiblockMachine {
 
+    /** Loot mode: draws per run at most, EU/t per draw, run time and enchanted or named items kept per run. */
+    public static final int MAX_LOOT_DRAWS = 1024;
+    public static final long LOOT_EU_PER_DRAW = 480;
+    public static final int LOOT_DURATION = 20;
+    public static final int MAX_TAGGED_ITEMS = 100;
+
     private static final SoundEvent[] FISHING_SOUNDS = {
             SoundEvents.FISHING_BOBBER_RETRIEVE, SoundEvents.FISHING_BOBBER_SPLASH,
             SoundEvents.FISHING_BOBBER_THROW, SoundEvents.FISH_SWIM
@@ -109,13 +115,13 @@ public class FishingGroundMachine extends WorkableElectricMultiblockMachine {
                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(getPos()))
                 .create(LootContextParamSets.FISHING);
 
-        int parallel = Math.min(1024, Math.max(1,
+        int parallel = Math.min(MAX_LOOT_DRAWS, Math.max(1,
                 getParallelHatch().map(IParallelHatch::getCurrentParallel).orElse(1)));
         List<ItemStack> catches = new ArrayList<>();
         int tagged = 0;
         for (int draw = 0; draw < parallel; draw++) {
             for (ItemStack stack : table.getRandomItems(context)) {
-                if (stack.hasTag() && tagged++ >= 100) continue;
+                if (stack.hasTag() && tagged++ >= MAX_TAGGED_ITEMS) continue;
                 boolean merged = false;
                 for (ItemStack existing : catches) {
                     if (ItemStack.isSameItemSameTags(existing, stack)) {
@@ -129,8 +135,8 @@ public class FishingGroundMachine extends WorkableElectricMultiblockMachine {
         }
         var builder = GTNARecipeType.FISHING_GROUND_RECIPES.recipeBuilder("fishing_loot_" + circuit)
                 .circuitMeta(circuit)
-                .EUt(480L * parallel)
-                .duration(20);
+                .EUt(LOOT_EU_PER_DRAW * parallel)
+                .duration(LOOT_DURATION);
         for (ItemStack catchStack : catches) builder.outputItems(catchStack);
         return builder.buildRawRecipe();
     }

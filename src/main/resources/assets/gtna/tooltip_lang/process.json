@@ -1,0 +1,442 @@
+{
+  "gtna.tooltip.mb.gto.fixed_bonus": [
+    "%s parallels, %s the recipe time",
+    "%s paralelos, %s o tempo da receita",
+    "%s并行，配方耗时%s"
+  ],
+  "gtna.tooltip.mb.gto.upkeep_stop": [
+    "Without the fluid the recipe stops",
+    "Sem o fluido a receita para",
+    "流体不足时配方停止"
+  ],
+  "gtna.tooltip.mb.mega.glass_parallel": [
+    "Parallels: 4^glass tier, or the Parallel Hatch's if higher",
+    "Paralelos: 4^tier do vidro, ou os da Escotilha de Paralelo se forem maiores",
+    "并行数：4^玻璃等级，若并行仓更高则取并行仓"
+  ],
+  "gtna.tooltip.mb.component.same": [
+    "Every casing of the structure must be the same tier",
+    "Todas as casings da estrutura precisam ser do mesmo tier",
+    "结构中所有外壳必须为同一等级"
+  ],
+  "gtna.tooltip.mb.component.gate": [
+    "A recipe whose casing tier is above the machine's does not start",
+    "Uma receita com tier de casing acima do da máquina não começa",
+    "外壳等级要求高于机器的配方不会启动"
+  ],
+  "gtna.tooltip.mb.type.blaze_blast_furnace": [
+    "Electric Blast Furnace",
+    "Alto-Forno Elétrico",
+    "电力高炉"
+  ],
+  "gtna.tooltip.mb.type.cold_ice_freezer": [
+    "Vacuum Freezer, Atomization Condensation",
+    "Congelador a Vácuo, Condensação por Atomização",
+    "真空冷冻机、雾化冷凝"
+  ],
+  "gtna.tooltip.mb.type.chemical_plant": [
+    "Large Chemical Reactor",
+    "Grande Reator Químico",
+    "大型化学反应釜"
+  ],
+  "gtna.tooltip.mb.type.component_assembler": [
+    "Component Assembly",
+    "Montagem de Componentes",
+    "部件装配"
+  ],
+  "gtna.tooltip.mb.type.fishing_ground": [
+    "Fishing Ground",
+    "Pesqueiro",
+    "渔场"
+  ],
+  "gtna.tooltip.mb.type.greenhouse": [
+    "Greenhouse",
+    "Estufa",
+    "温室"
+  ],
+  "gtna.tooltip.mb.type.large_greenhouse": [
+    "Greenhouse, Tree Growth",
+    "Estufa, Crescimento de Árvores",
+    "温室、树木生长"
+  ],
+  "gtna.tooltip.mb.type.isa_mill": [
+    "ISA Mill",
+    "Moinho ISA",
+    "艾萨研磨机"
+  ],
+  "gtna.tooltip.mb.type.industrial_flotation_cell": [
+    "Flotation Beneficiation",
+    "Beneficiamento por Flotação",
+    "浮游选矿"
+  ],
+  "gtna.tooltip.mb.type.vacuum_drying_furnace": [
+    "Vacuum Drying, Dehydrator",
+    "Secagem a Vácuo, Desidratador",
+    "真空干燥、脱水机"
+  ],
+  "gtna.tooltip.mb.type.evaporation_plant": [
+    "Evaporation",
+    "Evaporação",
+    "蒸发"
+  ],
+  "gtna.tooltip.mb.type.large_cracker": [
+    "Cracker",
+    "Craqueador",
+    "裂化机"
+  ],
+  "gtna.tooltip.mb.type.large_pyrolyse_oven": [
+    "Pyrolyse Oven",
+    "Forno de Pirólise",
+    "热解炉"
+  ],
+  "gtna.tooltip.mb.type.reaction_furnace": [
+    "Reaction Furnace",
+    "Forno de Reação",
+    "反应炉"
+  ],
+  "gtna.tooltip.mb.type.engraving_laser_plant": [
+    "Laser Engraver, Precision Laser Engraver",
+    "Gravadora a Laser, Gravadora a Laser de Precisão",
+    "激光蚀刻机、精密激光蚀刻"
+  ],
+  "gtna.tooltip.mb.type.large_incubator": [
+    "Incubator",
+    "Incubadora",
+    "培养缸"
+  ],
+  "gtna.tooltip.mb.type.giant_sintering_array": [
+    "Sintering Furnace",
+    "Forno de Sinterização",
+    "烧结炉"
+  ],
+  "gtna.tooltip.mb.type.integrated_vapor_deposition_system": [
+    "Chemical and Physical Vapor Deposition",
+    "Deposição Química e Física de Vapor",
+    "化学与物理气相沉积"
+  ],
+  "gtna.tooltip.mb.type.compound_extreme_cooling_unit": [
+    "Vacuum Freezer, Atomization Condensation, Plasma Condenser",
+    "Congelador a Vácuo, Condensação por Atomização, Condensador de Plasma",
+    "真空冷冻机、雾化冷凝、等离子冷凝"
+  ],
+  "gtna.machine.blaze_blast_furnace.tooltip.purpose": [
+    "Runs Electric Blast Furnace recipes in huge batches, sped up by molten Blaze",
+    "Roda receitas do Alto-Forno Elétrico em lotes enormes, acelerado por Blaze fundido",
+    "以熔融烈焰加速，大批量运行电力高炉配方"
+  ],
+  "gtna.machine.blaze_blast_furnace.tooltip.upkeep": [
+    "Liquid Blaze: 2^(voltage tier − 2) × %s every second, the first payment when the recipe starts",
+    "Blaze Líquido: 2^(tier de voltagem − 2) × %s por segundo, o primeiro pagamento quando a receita começa",
+    "液态烈焰：每秒2^(电压等级−2)×%s，配方开始时先支付一次"
+  ],
+  "gtna.machine.blaze_blast_furnace.tooltip.humor": [
+    "An intern kept a blaze spawner in here. It worked; Type Omega promoted the blaze.",
+    "Um estagiário guardou um spawner de blaze aqui. Funcionou; a Type Omega promoveu o blaze.",
+    "有实习生在这里养了个烈焰人刷怪笼。效果不错，Type Omega给烈焰人升了职。"
+  ],
+  "gtna.machine.cold_ice_freezer.tooltip.purpose": [
+    "Freezes Vacuum Freezer recipes in huge batches with Liquid Ice",
+    "Congela receitas do Congelador a Vácuo em lotes enormes com Gelo Líquido",
+    "以液态冰大批量运行真空冷冻机配方"
+  ],
+  "gtna.machine.cold_ice_freezer.tooltip.upkeep": [
+    "Liquid Ice: 2^(voltage tier − 2) × %s every second, the first payment when the recipe starts",
+    "Gelo Líquido: 2^(tier de voltagem − 2) × %s por segundo, o primeiro pagamento quando a receita começa",
+    "液态冰：每秒2^(电压等级−2)×%s，配方开始时先支付一次"
+  ],
+  "gtna.machine.cold_ice_freezer.tooltip.module": [
+    "The auxiliary tower unlocks the Atomization Condensation mode",
+    "A torre auxiliar libera o modo Condensação por Atomização",
+    "辅助塔解锁雾化冷凝模式"
+  ],
+  "gtna.machine.cold_ice_freezer.tooltip.humor": [
+    "Born from a liquid ice leak. Type Omega HR is still looking for the intern.",
+    "Nasceu de um vazamento de gelo líquido. O RH da Type Omega ainda procura o estagiário.",
+    "源于一次液态冰泄漏。Type Omega人事部仍在寻找那位实习生。"
+  ],
+  "gtna.machine.chemical_plant.tooltip.purpose": [
+    "Runs Large Chemical Reactor recipes in bulk with heating coils",
+    "Roda receitas do Grande Reator Químico em massa com bobinas de aquecimento",
+    "以加热线圈批量运行大型化学反应釜配方"
+  ],
+  "gtna.machine.chemical_plant.tooltip.coil": [
+    "EU and time × (1 − coil tier × %s)",
+    "EU e tempo × (1 − tier da bobina × %s)",
+    "EU与耗时×(1−线圈等级×%s)"
+  ],
+  "gtna.machine.chemical_plant.tooltip.humor": [
+    "The chairman poses with a microscope for the Type Omega brochure. Nobody is fooled.",
+    "O presidente posa com um microscópio para o folheto da Type Omega. Ninguém se engana.",
+    "董事长为Type Omega宣传册举着显微镜摆拍，没人被骗到。"
+  ],
+  "gtna.machine.component_assembler.tooltip.purpose": [
+    "Assembles batches of electric components from materials and circuits",
+    "Monta lotes de componentes elétricos a partir de materiais e circuitos",
+    "以材料与电路批量组装电子部件"
+  ],
+  "gtna.machine.component_assembler.tooltip.tier": [
+    "Tier = its Component Assembly Casings, up to %s, or up to %s once an extension is built",
+    "Tier = as Component Assembly Casings, até %s, ou até %s depois que uma extensão é construída",
+    "等级 = 部件装配外壳等级，最高%s，建成扩展后最高%s"
+  ],
+  "gtna.machine.component_assembler.tooltip.humor": [
+    "Your first Type Omega salary will not cover one of its parts.",
+    "Seu primeiro salário na Type Omega não paga uma peça dela.",
+    "你在Type Omega的第一份工资买不起它的一个零件。"
+  ],
+  "gtna.machine.fishing_ground.tooltip.purpose": [
+    "A smart fishing farm: fishes with bait or rolls vanilla fishing loot",
+    "Uma fazenda de pesca inteligente: pesca com isca ou sorteia o loot de pesca vanilla",
+    "智能渔场：使用鱼饵钓鱼，或抽取原版钓鱼战利品"
+  ],
+  "gtna.machine.fishing_ground.tooltip.bait": [
+    "Bait recipes: a fixed catch per bait, with the Parallel Hatch",
+    "Receitas de isca: pesca fixa por isca, com a Escotilha de Paralelo",
+    "鱼饵配方：每份鱼饵产出固定渔获，可用并行仓"
+  ],
+  "gtna.machine.fishing_ground.tooltip.loot": [
+    "Loot circuits: 1 any catch, 2 fish, 3 junk, 4 treasure",
+    "Circuitos de loot: 1 qualquer pesca, 2 peixe, 3 lixo, 4 tesouro",
+    "战利品电路：1任意渔获，2鱼，3垃圾，4宝藏"
+  ],
+  "gtna.machine.fishing_ground.tooltip.draws": [
+    "Loot run: one draw per Parallel Hatch parallel, up to %s, at %s per draw, %s each",
+    "Rodada de loot: um sorteio por paralelo da Escotilha de Paralelo, até %s, a %s por sorteio, %s cada",
+    "战利品运行：每个并行抽取一次，最多%s次，每次%s，每轮%s"
+  ],
+  "gtna.machine.fishing_ground.tooltip.tagged": [
+    "At most %s enchanted or named items per loot run",
+    "No máximo %s itens encantados ou nomeados por rodada de loot",
+    "每轮最多%s件附魔或带名称的物品"
+  ],
+  "gtna.machine.fishing_ground.tooltip.humor": [
+    "Like eating fish? The whole Type Omega office does now, by memo.",
+    "Gosta de comer peixe? O escritório inteiro da Type Omega gosta agora, por memorando.",
+    "爱吃鱼吗？根据备忘录，Type Omega全体员工现在都爱吃。"
+  ],
+  "gtna.machine.greenhouse.tooltip.purpose": [
+    "Grows crops from a kept seed or plant, water and optional fertilizer",
+    "Cultiva plantas a partir de semente ou muda mantida, água e fertilizante opcional",
+    "以保留的种子或植株、水和可选肥料种植作物"
+  ],
+  "gtna.machine.greenhouse.tooltip.light": [
+    "Needs daylight on its roof: with no sky light the recipe does not start",
+    "Precisa de luz do dia no teto: sem luz do céu a receita não começa",
+    "屋顶需要日光：没有天空光照时配方不会启动"
+  ],
+  "gtna.machine.greenhouse.tooltip.dark": [
+    "In full darkness the progress resets; below light level %s it loses %s every second",
+    "No escuro total o progresso zera; abaixo do nível de luz %s perde %s por segundo",
+    "完全黑暗时进度清零；光照低于%s时每秒倒退%s"
+  ],
+  "gtna.machine.greenhouse.tooltip.humor": [
+    "Photosynthesis as a service, billed monthly by Type Omega.",
+    "Fotossíntese como serviço, cobrada mensalmente pela Type Omega.",
+    "光合作用即服务，由Type Omega按月计费。"
+  ],
+  "gtna.machine.large_greenhouse.tooltip.purpose": [
+    "Grows crops and trees in two selectable recipe modes",
+    "Cultiva plantas e árvores em dois modos de receita",
+    "在两种可选配方模式下种植作物与树木"
+  ],
+  "gtna.machine.large_greenhouse.tooltip.humor": [
+    "Who needs the sun? Type Omega has lamps and ambition.",
+    "Quem precisa do sol? A Type Omega tem lâmpadas e ambição.",
+    "谁还需要太阳？Type Omega有灯，也有野心。"
+  ],
+  "gtna.machine.isa_mill.tooltip.purpose": [
+    "Wet-grinds ores and raw ores into Milled products",
+    "Mói a úmido minérios e minérios brutos em produtos Moídos",
+    "将矿石与粗矿湿磨为研磨产物"
+  ],
+  "gtna.machine.isa_mill.tooltip.ball": [
+    "Needs the grinding ball the recipe asks for in its Grinding Ball Hatch: Soapstone or Aluminium",
+    "Precisa da bola de moagem que a receita pede na Grinding Ball Hatch: Pedra-sabão ou Alumínio",
+    "研磨球仓中需要配方要求的研磨球：皂石或铝"
+  ],
+  "gtna.machine.isa_mill.tooltip.wear": [
+    "Each run wears the ball by parallels / (Unbreaking + 1) + 1",
+    "Cada operação desgasta a bola em paralelos / (Inquebrável + 1) + 1",
+    "每次运行研磨球损耗：并行数/(耐久等级+1)+1"
+  ],
+  "gtna.machine.isa_mill.tooltip.broken": [
+    "The ball breaks when it reaches its maximum damage",
+    "A bola quebra quando chega ao dano máximo",
+    "研磨球达到最大损耗时损坏"
+  ],
+  "gtna.machine.isa_mill.tooltip.parallel": [
+    "Parallels: up to %s",
+    "Paralelos: até %s",
+    "并行数：最多%s"
+  ],
+  "gtna.machine.isa_mill.tooltip.humor": [
+    "Despite its green paint, Type Omega's ISA Mill is not eco-friendly at all.",
+    "Apesar da tinta verde, o Moinho ISA da Type Omega não tem nada de ecológico.",
+    "尽管涂成绿色，Type Omega的艾萨研磨机一点也不环保。"
+  ],
+  "gtna.machine.industrial_flotation_cell.tooltip.purpose": [
+    "Froth-floats Milled ore with ethylxanthate and turpentine into ore foam",
+    "Faz flotação de minério Moído com etilxantato e terebintina em espuma de minério",
+    "用乙基黄药与松节油将研磨矿浮选为矿物泡沫"
+  ],
+  "gtna.machine.industrial_flotation_cell.tooltip.humor": [
+    "Smells like essential balm. Type Omega lists fewer mosquitoes as a feature.",
+    "Cheira a bálsamo. A Type Omega lista menos mosquitos como recurso.",
+    "闻起来像清凉油。Type Omega把蚊子变少列为功能之一。"
+  ],
+  "gtna.machine.vacuum_drying_furnace.tooltip.purpose": [
+    "Dries flotation foams back into dusts, or runs the Dehydrator",
+    "Seca espumas de flotação de volta em pós, ou roda o Desidratador",
+    "将浮选泡沫干燥回粉末，或运行脱水机"
+  ],
+  "gtna.machine.vacuum_drying_furnace.tooltip.drying": [
+    "Vacuum Drying mode: one parallel, with the blast furnace coil rules",
+    "Modo Secagem a Vácuo: um paralelo, com as regras de bobina do alto-forno",
+    "真空干燥模式：单并行，适用高炉线圈规则"
+  ],
+  "gtna.machine.vacuum_drying_furnace.tooltip.dehydrator": [
+    "Dehydrator mode: 2^(coil temperature / %s) parallels and the standard overclock",
+    "Modo Desidratador: 2^(temperatura da bobina / %s) paralelos e overclock padrão",
+    "脱水机模式：2^(线圈温度/%s)并行，标准超频"
+  ],
+  "gtna.machine.vacuum_drying_furnace.tooltip.humor": [
+    "Turns foam back into dust. Type Omega calls it magic, with vacuum.",
+    "Transforma espuma de volta em pó. A Type Omega chama de mágica, com vácuo.",
+    "把泡沫变回粉末。Type Omega称之为真空魔法。"
+  ],
+  "gtna.machine.evaporation_plant.tooltip.purpose": [
+    "Evaporates brine and other fluids in a tall tower of up to five stages",
+    "Evapora salmoura e outros fluidos numa torre alta de até cinco estágios",
+    "在最多五层的高塔中蒸发卤水等流体"
+  ],
+  "gtna.machine.evaporation_plant.tooltip.layers": [
+    "One fluid output hatch per layer",
+    "Uma escotilha de saída de fluido por camada",
+    "每层一个流体输出仓"
+  ],
+  "gtna.machine.evaporation_plant.tooltip.humor": [
+    "Patience, salt and a very tall Type Omega tower.",
+    "Paciência, sal e uma torre muito alta da Type Omega.",
+    "耐心、盐，还有一座很高的Type Omega塔。"
+  ],
+  "gtna.machine.large_cracker.tooltip.purpose": [
+    "Runs Cracker recipes in bulk with heating coils",
+    "Roda receitas de Craqueador em massa com bobinas de aquecimento",
+    "以加热线圈批量运行裂化配方"
+  ],
+  "gtna.machine.large_cracker.tooltip.coil": [
+    "Each coil tier above Cupronickel: %s EU usage",
+    "Cada tier de bobina acima de Cupronickel: %s de uso de EU",
+    "线圈每高于白铜一级：耗能%s"
+  ],
+  "gtna.machine.large_cracker.tooltip.humor": [
+    "Cracking hydrocarbons like the Type Omega Sunday crossword.",
+    "Craqueando hidrocarbonetos como a cruzadinha de domingo da Type Omega.",
+    "裂解烃类就像Type Omega周日填字游戏。"
+  ],
+  "gtna.machine.large_pyrolyse_oven.tooltip.purpose": [
+    "Runs Pyrolyse Oven recipes in bulk",
+    "Roda receitas do Forno de Pirólise em massa",
+    "批量运行热解炉配方"
+  ],
+  "gtna.machine.large_pyrolyse_oven.tooltip.coil": [
+    "Cupronickel coils take %s the time; coil tier N takes 2 / (N + 1)",
+    "Bobinas de Cupronickel levam %s o tempo; o tier de bobina N leva 2 / (N + 1)",
+    "白铜线圈耗时%s，线圈等级N耗时为2/(N+1)"
+  ],
+  "gtna.machine.large_pyrolyse_oven.tooltip.humor": [
+    "Wood goes in, chemistry comes out, smoke goes into the Type Omega quarterly report.",
+    "Entra madeira, sai química, a fumaça vai para o relatório trimestral da Type Omega.",
+    "木头进，化学品出，烟雾进了Type Omega季度报告。"
+  ],
+  "gtna.machine.reaction_furnace.tooltip.purpose": [
+    "Runs high-temperature reactions; its coils set the heat like a blast furnace",
+    "Roda reações de alta temperatura; as bobinas definem o calor como num alto-forno",
+    "运行高温反应，线圈如高炉一样决定温度"
+  ],
+  "gtna.machine.reaction_furnace.tooltip.humor": [
+    "Hot enough to make chemistry happen, whether it signed the Type Omega contract or not.",
+    "Quente o bastante para a química acontecer, tenha ela assinado o contrato da Type Omega ou não.",
+    "热到化学反应不得不发生，不管它签没签Type Omega的合同。"
+  ],
+  "gtna.machine.engraving_laser_plant.tooltip.purpose": [
+    "A photon engraving plant for Laser Engraver and Precision Laser recipes",
+    "Uma fábrica de gravação a fótons para receitas de Gravadora a Laser e de Precisão",
+    "运行激光蚀刻与精密激光配方的光子蚀刻工厂"
+  ],
+  "gtna.machine.engraving_laser_plant.tooltip.precision": [
+    "Precision Laser Engraver recipes run without parallels",
+    "Receitas da Gravadora a Laser de Precisão rodam sem paralelos",
+    "精密激光蚀刻配方不使用并行"
+  ],
+  "gtna.machine.engraving_laser_plant.tooltip.humor": [
+    "Precise enough to engrave QR codes on viruses. Type Omega Marketing asked for it.",
+    "Preciso o bastante para gravar QR codes em vírus. O Marketing da Type Omega pediu.",
+    "精确到能在病毒上刻二维码。这是Type Omega市场部的要求。"
+  ],
+  "gtna.machine.large_incubator.tooltip.purpose": [
+    "Grows cultures in a sealed, filtered chamber",
+    "Cultiva culturas numa câmara selada e filtrada",
+    "在密封过滤舱中培养菌群"
+  ],
+  "gtna.machine.large_incubator.tooltip.glass": [
+    "The glass tier caps the voltage it runs and overclocks at",
+    "O tier do vidro limita a voltagem em que roda e faz overclock",
+    "玻璃等级限制其运行与超频的电压"
+  ],
+  "gtna.machine.large_incubator.tooltip.filter": [
+    "Sterile filter casings allow the recipes that need them",
+    "Casings de filtro estéril permitem as receitas que precisam delas",
+    "无菌过滤外壳可运行需要它的配方"
+  ],
+  "gtna.machine.large_incubator.tooltip.filter_gate": [
+    "A recipe that needs a better filter than the structure has does not start",
+    "Uma receita que precisa de filtro melhor que o da estrutura não começa",
+    "需要更高级过滤的配方不会启动"
+  ],
+  "gtna.machine.large_incubator.tooltip.not_ported": [
+    "GTO's Radiation Hatch is not ported",
+    "A Radiation Hatch do GTO não foi portada",
+    "未移植GTO的辐射仓"
+  ],
+  "gtna.machine.large_incubator.tooltip.humor": [
+    "A greenhouse for things Type Omega Legal prefers to keep behind glass.",
+    "Uma estufa para coisas que o Jurídico da Type Omega prefere manter atrás do vidro.",
+    "培养那些Type Omega法务部希望隔着玻璃的东西。"
+  ],
+  "gtna.machine.giant_sintering_array.tooltip.purpose": [
+    "Fuses powders into dense blocks below their melting point",
+    "Funde pós em blocos densos abaixo do ponto de fusão",
+    "在熔点以下将粉末烧结为致密块"
+  ],
+  "gtna.machine.giant_sintering_array.tooltip.humor": [
+    "Powder in, solid out. No melting allowed by Type Omega policy.",
+    "Entra pó, sai sólido. A política da Type Omega não permite derreter.",
+    "粉进块出。按Type Omega规定，禁止熔化。"
+  ],
+  "gtna.machine.integrated_vapor_deposition_system.tooltip.purpose": [
+    "Deposits thin films from gas and vapor for chips and coatings",
+    "Deposita filmes finos de gás e vapor para chips e revestimentos",
+    "以气体与蒸气沉积薄膜，用于芯片与涂层"
+  ],
+  "gtna.machine.integrated_vapor_deposition_system.tooltip.humor": [
+    "Grows films one atom at a time. Type Omega's fabs pay billions for less.",
+    "Cresce filmes um átomo por vez. As fábricas da Type Omega pagam bilhões por menos.",
+    "一次长一个原子的薄膜。Type Omega的晶圆厂为更少的东西花了数十亿。"
+  ],
+  "gtna.machine.compound_extreme_cooling_unit.tooltip.purpose": [
+    "Three coolers in one: vacuum freezing, atomization and plasma condensation",
+    "Três resfriadores em um: congelamento a vácuo, atomização e condensação de plasma",
+    "三合一冷却：真空冷冻、雾化与等离子冷凝"
+  ],
+  "gtna.machine.compound_extreme_cooling_unit.tooltip.plasma": [
+    "The Plasma Condenser mode needs the larger plasma structure, checked again when the mode changes",
+    "O modo Condensador de Plasma precisa da estrutura de plasma maior, checada de novo ao trocar o modo",
+    "等离子冷凝模式需要更大的等离子结构，切换模式时重新检测"
+  ],
+  "gtna.machine.compound_extreme_cooling_unit.tooltip.humor": [
+    "Freezes, atomizes and condenses plasma. Type Omega issues the coat.",
+    "Congela, atomiza e condensa plasma. A Type Omega fornece o casaco.",
+    "冷冻、雾化、冷凝等离子体。外套由Type Omega发放。"
+  ]
+}
