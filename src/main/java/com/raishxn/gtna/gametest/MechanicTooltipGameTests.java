@@ -24,6 +24,7 @@ import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
 import com.raishxn.gtna.common.machine.multiblock.energy.GeneratorArrayMachine;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamFlightModule;
 import com.raishxn.gtna.common.machine.multiblock.module.steamElevator.SteamOilDrillModule;
+import com.raishxn.gtna.common.machine.multiblock.noenergy.DimensionallyTranscendentDirtForgeMachine;
 import com.raishxn.gtna.data.recipe.GTNANaquadahReactorRecipes;
 
 import java.util.LinkedHashMap;
@@ -142,6 +143,17 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("supercomputing_center", 9);
         MINIMUM.put("data_center", 5);
         MINIMUM.put("analysis_and_research_center", 5);
+        MINIMUM.put("dimensionally_transcendent_dirt_forge", 4);
+        MINIMUM.put("dimensionally_transcendent_steam_boiler", 6);
+        MINIMUM.put("dimensionally_transcendent_steam_oven", 5);
+        MINIMUM.put("electric_void_miner", 7);
+        MINIMUM.put("incubator", 5);
+        MINIMUM.put("void_fluid_drilling_rig", 7);
+        MINIMUM.put("integrated_ore_processor", 6);
+        MINIMUM.put("advanced_integrated_ore_processor", 8);
+        MINIMUM.put("mega_distillery", 4);
+        MINIMUM.put("universal_factory", 8);
+        MINIMUM.put("primitive_stone_furnace", 4);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -306,6 +318,16 @@ public final class MechanicTooltipGameTests {
         h.assertTrue(text("generator_array").contains("up to " + GeneratorArrayMachine.MAX_GENERATORS),
                 "generator array count");
         h.assertTrue(text("industrial_slaughterhouse").contains("Bosses: from ZPM"), "slaughterhouse boss tier");
+        h.succeed();
+    }
+
+    /** GTL parallels come from the machine constants. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void gtlNumbersMatchTheMachines(GameTestHelper h) {
+        String forge = text("dimensionally_transcendent_dirt_forge");
+        h.assertTrue(forge.contains(String.format(java.util.Locale.ROOT, "%,d",
+                DimensionallyTranscendentDirtForgeMachine.MAX_PARALLEL)), "dirt forge parallels: " + forge);
+        h.assertTrue(text("dimensionally_transcendent_steam_oven").contains("100x"), "steam oven is 100x faster");
         h.succeed();
     }
 

@@ -20,7 +20,7 @@ public class PrimitiveStoneFurnaceMachine extends WorkableElectricMultipleRecipe
                                           implements IZeroEnergyMachine {
 
     /** GTLsupb {@code MachineConfig.recipeDuration} default. */
-    private static final int RECIPE_DURATION = 1;
+    public static final int RECIPE_DURATION = 1;
 
     public PrimitiveStoneFurnaceMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);

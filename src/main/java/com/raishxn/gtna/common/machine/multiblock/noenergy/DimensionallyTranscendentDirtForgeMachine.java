@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 public class DimensionallyTranscendentDirtForgeMachine extends WorkableElectricMultipleRecipesMachine
                                                        implements IZeroEnergyMachine {
 
-    private static final int MAX_PARALLEL = 524288;
+    public static final int MAX_PARALLEL = 524288;
 
     public DimensionallyTranscendentDirtForgeMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);

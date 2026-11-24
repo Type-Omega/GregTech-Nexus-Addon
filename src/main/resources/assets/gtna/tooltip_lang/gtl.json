@@ -1,0 +1,377 @@
+{
+  "gtna.tooltip.mb.ore.routes": [
+    "Circuit 1: crush → crush → centrifuge",
+    "Circuito 1: triturar → triturar → centrífuga",
+    "电路1：粉碎→粉碎→离心"
+  ],
+  "gtna.tooltip.mb.ore.routes_wash": [
+    "Circuits 2 to 4: crush → wash, then thermal centrifuge → crush, crush → centrifuge, or sift → centrifuge",
+    "Circuitos 2 a 4: triturar → lavar, depois centrífuga térmica → triturar, triturar → centrífuga, ou peneirar → centrífuga",
+    "电路2至4：粉碎→洗矿，之后分别为热力离心→粉碎、粉碎→离心、筛选→离心"
+  ],
+  "gtna.tooltip.mb.ore.routes_bath": [
+    "Circuits 5 to 7: crush → chemical bath, then the same three endings",
+    "Circuitos 5 a 7: triturar → banho químico, depois os mesmos três finais",
+    "电路5至7：粉碎→化学浸洗，之后同样三种结尾"
+  ],
+  "gtna.tooltip.mb.type.dimensionally_transcendent_dirt_forge": [
+    "Primitive Blast Furnace",
+    "Alto-Forno Primitivo",
+    "土高炉"
+  ],
+  "gtna.tooltip.mb.type.dimensionally_transcendent_steam_boiler": [
+    "Large Boiler",
+    "Caldeira Grande",
+    "大型锅炉"
+  ],
+  "gtna.tooltip.mb.type.dimensionally_transcendent_steam_oven": [
+    "Steam Furnace",
+    "Fornalha a Vapor",
+    "蒸汽熔炉"
+  ],
+  "gtna.tooltip.mb.type.electric_void_miner": [
+    "Void Mining",
+    "Mineração do Vazio",
+    "虚空采矿"
+  ],
+  "gtna.tooltip.mb.type.incubator": [
+    "Incubator",
+    "Incubadora",
+    "培养缸"
+  ],
+  "gtna.tooltip.mb.type.void_fluid_drilling_rig": [
+    "Void Fluid Drilling",
+    "Perfuração de Fluidos do Vazio",
+    "虚空流体钻探"
+  ],
+  "gtna.tooltip.mb.type.integrated_ore_processor": [
+    "Integrated Ore Processing",
+    "Processamento Integrado de Minério",
+    "集成矿石处理"
+  ],
+  "gtna.tooltip.mb.type.advanced_integrated_ore_processor": [
+    "Integrated Ore Processing",
+    "Processamento Integrado de Minério",
+    "集成矿石处理"
+  ],
+  "gtna.tooltip.mb.type.mega_distillery": [
+    "Distillery, Distillation Tower, Evaporation",
+    "Destilaria, Torre de Destilação, Evaporação",
+    "蒸馏室、蒸馏塔、蒸发"
+  ],
+  "gtna.tooltip.mb.type.universal_factory": [
+    "Universal Factory",
+    "Fábrica Universal",
+    "通用工厂"
+  ],
+  "gtna.tooltip.mb.type.primitive_stone_furnace": [
+    "Furnace",
+    "Fornalha",
+    "熔炉"
+  ],
+  "gtna.machine.dimensionally_transcendent_dirt_forge.tooltip.purpose": [
+    "A Plasma Forge shell repurposed for primitive blast furnace recipes",
+    "Uma carcaça de Forja de Plasma reaproveitada para receitas de alto-forno primitivo",
+    "改作土高炉配方之用的等离子锻炉外壳"
+  ],
+  "gtna.machine.dimensionally_transcendent_dirt_forge.tooltip.tick": [
+    "Every recipe finishes in 1 tick",
+    "Toda receita termina em 1 tick",
+    "所有配方1 tick完成"
+  ],
+  "gtna.machine.dimensionally_transcendent_dirt_forge.tooltip.parallel": [
+    "Parallels: up to %s",
+    "Paralelos: até %s",
+    "并行数：最多%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_dirt_forge.tooltip.no_energy": [
+    "Needs no energy hatch",
+    "Não precisa de escotilha de energia",
+    "无需能源仓"
+  ],
+  "gtna.machine.dimensionally_transcendent_dirt_forge.tooltip.humor": [
+    "Someone looked at the DTPF and thought: what if dirt? Type Omega approved it.",
+    "Alguém olhou a DTPF e pensou: e se fosse terra? A Type Omega aprovou.",
+    "有人看着超维度等离子锻炉想：要是用泥土呢？Type Omega批准了。"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.purpose": [
+    "A GTCEu large boiler that bends space for steam throughput",
+    "Uma caldeira grande do GTCEu que dobra o espaço para gerar vapor",
+    "扭曲空间以提升蒸汽产量的GTCEu大型锅炉"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.steam": [
+    "Max temperature: %s; the steam made grows with the temperature",
+    "Temperatura máxima: %s; o vapor produzido cresce com a temperatura",
+    "最高温度：%s，蒸汽产量随温度增长"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.heat": [
+    "Heat speed: %s, it heats up while it burns fuel and cools down while idle",
+    "Velocidade de aquecimento: %s, esquenta enquanto queima combustível e esfria parado",
+    "升温速度：%s，燃烧燃料时升温，空闲时降温"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.fuel": [
+    "Burns the Large Boiler fuels from its input bus and hatches",
+    "Queima os combustíveis da Caldeira Grande do barramento e escotilhas de entrada",
+    "燃烧输入总线与仓中的大型锅炉燃料"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.water": [
+    "Out of water while hot it explodes",
+    "Sem água enquanto quente, explode",
+    "高温时缺水会爆炸"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.throttle": [
+    "Throttle from 25% to 100% in its screen",
+    "Acelerador de 25% a 100% na tela",
+    "可在界面中将节流阀设为25%至100%"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_boiler.tooltip.humor": [
+    "Bends spacetime to boil water. Type Omega calls that prioritising.",
+    "Dobra o espaço-tempo para ferver água. A Type Omega chama isso de priorizar.",
+    "扭曲时空来烧开水，Type Omega称之为分清主次。"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.purpose": [
+    "A steam oven pushed far beyond sane thermal limits",
+    "Uma fornalha a vapor levada muito além dos limites térmicos sensatos",
+    "远超理智热力极限的蒸汽烤炉"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.speed": [
+    "%s faster than a furnace",
+    "%s mais rápido que uma fornalha",
+    "比熔炉快%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.threads": [
+    "%s threads: that many furnace recipes at once",
+    "%s threads: essa quantidade de receitas de fornalha ao mesmo tempo",
+    "%s个线程：同时运行同等数量的熔炉配方"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.parallel": [
+    "Parallels: up to %s",
+    "Paralelos: até %s",
+    "并行数：最多%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.steam": [
+    "Runs on steam from its steam hatch",
+    "Funciona com vapor da escotilha de vapor",
+    "以蒸汽仓的蒸汽运行"
+  ],
+  "gtna.machine.dimensionally_transcendent_steam_oven.tooltip.humor": [
+    "Preheat to 350 degrees. Then add infinity, per Type Omega's recipe.",
+    "Preaqueça a 350 graus. Depois adicione infinito, pela receita da Type Omega.",
+    "预热到350度，再按Type Omega的食谱加入无限。"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.purpose": [
+    "Mines vein programs for raw ores using energy and Drilling Fluid",
+    "Minera programas de veio em minérios brutos com energia e Fluido de Perfuração",
+    "以能量与钻井液按矿脉程序开采粗矿"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.precise": [
+    "Precise mode: an essence in the input bus picks the vein and is consumed",
+    "Modo preciso: uma essência no barramento de entrada escolhe o veio e é consumida",
+    "精准模式：输入总线中的精华指定矿脉并被消耗"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.random": [
+    "Random mode: no essence, rolls from the whole pool",
+    "Modo aleatório: sem essência, sorteia de todo o conjunto",
+    "随机模式：无需精华，从整个矿池抽取"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.circuits": [
+    "Circuit 1: EV basics; circuit 2: LuV and ZPM veins",
+    "Circuito 1: básicos de EV; circuito 2: veios de LuV e ZPM",
+    "电路1：EV基础矿；电路2：LuV与ZPM矿脉"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.parallel": [
+    "From %s the Parallel Hatch adds parallels, capped by the config",
+    "A partir de %s a Escotilha de Paralelo adiciona paralelos, limitados pela config",
+    "从%s起并行仓提供并行，上限由配置决定"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.fluid": [
+    "Needs Drilling Fluid every operation",
+    "Precisa de Fluido de Perfuração a cada operação",
+    "每次运行需要钻井液"
+  ],
+  "gtna.machine.electric_void_miner.tooltip.humor": [
+    "Mining nothing and getting everything. Type Omega made physics optional.",
+    "Minerando o nada e obtendo tudo. A Type Omega tornou a física opcional.",
+    "采的是虚无，得的是万物。Type Omega让物理学变成了可选项。"
+  ],
+  "gtna.machine.incubator.tooltip.purpose": [
+    "Cultivates vein essences from seeds and ore samples using scanned world data",
+    "Cultiva essências de veio a partir de sementes e amostras de minério com dados de mundo escaneados",
+    "以扫描的世界数据从种子与矿样培养矿脉精华"
+  ],
+  "gtna.machine.incubator.tooltip.data": [
+    "World and planet data is reusable",
+    "Dados de mundo e planeta são reutilizáveis",
+    "世界与星球数据可重复使用"
+  ],
+  "gtna.machine.incubator.tooltip.inputs": [
+    "Default recipes: 10,000 mB of Biomass and of Milk per culture",
+    "Receitas padrão: 10.000 mB de Biomassa e de Leite por cultura",
+    "默认配方：每次培养消耗10,000 mB生物质与牛奶"
+  ],
+  "gtna.machine.incubator.tooltip.output": [
+    "Default recipes: 64 essences per culture",
+    "Receitas padrão: 64 essências por cultura",
+    "默认配方：每次培养产出64个精华"
+  ],
+  "gtna.machine.incubator.tooltip.humor": [
+    "Growing ore veins in a petri dish. Type Omega calls it science.",
+    "Cultivando veios de minério numa placa de Petri. A Type Omega chama de ciência.",
+    "在培养皿里种矿脉，Type Omega称之为科学。"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.purpose": [
+    "Keeps producing a fluid after its natural deposit was extracted and recorded",
+    "Continua produzindo um fluido depois que o depósito natural foi extraído e registrado",
+    "在天然矿藏被开采并记录后继续产出该流体"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.data": [
+    "Deposit Data is reusable",
+    "Dados de Depósito são reutilizáveis",
+    "矿藏数据可重复使用"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.parallel": [
+    "Parallels multiply energy, reagents and output alike",
+    "Os paralelos multiplicam energia, reagentes e saída igualmente",
+    "并行同时倍增能量、试剂与产出"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.origin": [
+    "Only in the deposit's dimension until upgraded",
+    "Só na dimensão do depósito até ser melhorado",
+    "升级前仅能在矿藏所在维度运行"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.fluid": [
+    "Needs Drilling Fluid; a full output hatch pauses it",
+    "Precisa de Fluido de Perfuração; escotilha de saída cheia o pausa",
+    "需要钻井液；输出仓满时暂停"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.checks": [
+    "The gates are checked at search, at start and through each cycle",
+    "As condições são checadas na busca, no início e durante cada ciclo",
+    "条件在检索、开始及每个周期中持续检查"
+  ],
+  "gtna.machine.void_fluid_drilling_rig.tooltip.humor": [
+    "The well ran dry. The void did not, according to Type Omega geology.",
+    "O poço secou. O vazio não, segundo a geologia da Type Omega.",
+    "油井干了，据Type Omega地质部说，虚空没干。"
+  ],
+  "gtna.machine.integrated_ore_processor.tooltip.purpose": [
+    "The whole ore line in one machine; the circuit picks one of seven routes",
+    "A linha inteira de minério numa máquina; o circuito escolhe uma de sete rotas",
+    "一台机器完成整条矿石处理，电路选择七条路线之一"
+  ],
+  "gtna.machine.integrated_ore_processor.tooltip.humor": [
+    "The entire ore processing line in one box. Type Omega sells the box.",
+    "A linha inteira de processamento de minério numa caixa. A Type Omega vende a caixa.",
+    "整条矿石处理产线装进一个盒子，盒子由Type Omega出售。"
+  ],
+  "gtna.machine.advanced_integrated_ore_processor.tooltip.purpose": [
+    "The endgame ore processor: every route, several different recipes at once",
+    "O processador de minério do fim de jogo: todas as rotas, várias receitas diferentes ao mesmo tempo",
+    "终局矿石处理机：所有路线，同时运行多个不同配方"
+  ],
+  "gtna.machine.advanced_integrated_ore_processor.tooltip.parallel": [
+    "Parallels: up to 2,147,483,647",
+    "Paralelos: até 2.147.483.647",
+    "并行数：最多2,147,483,647"
+  ],
+  "gtna.machine.advanced_integrated_ore_processor.tooltip.laser": [
+    "Takes Laser Target Hatches only",
+    "Aceita só Escotilhas de Alvo Laser",
+    "仅接受激光靶仓"
+  ],
+  "gtna.machine.advanced_integrated_ore_processor.tooltip.humor": [
+    "Why process one ore when Type Omega can process all of them?",
+    "Por que processar um minério quando a Type Omega pode processar todos?",
+    "既然Type Omega能处理所有矿石，何必只处理一种？"
+  ],
+  "gtna.machine.mega_distillery.tooltip.purpose": [
+    "Runs Distillery, Distillation Tower and Evaporation recipes at megafactory scale",
+    "Roda receitas de Destilaria, Torre de Destilação e Evaporação em escala de megafábrica",
+    "以巨型工厂规模运行蒸馏室、蒸馏塔与蒸发配方"
+  ],
+  "gtna.machine.mega_distillery.tooltip.outputs": [
+    "Distillation outputs go to any fluid output hatch",
+    "As saídas da destilação vão para qualquer escotilha de saída de fluido",
+    "蒸馏产物可输出至任意流体输出仓"
+  ],
+  "gtna.machine.mega_distillery.tooltip.humor": [
+    "Every fraction of the barrel, accounted for by Type Omega Accounting.",
+    "Cada fração do barril, contabilizada pela Contabilidade da Type Omega.",
+    "桶里的每个馏分，都由Type Omega会计部入账。"
+  ],
+  "gtna.machine.universal_factory.tooltip.purpose": [
+    "Processes many different recipe types at once with threads and parallels",
+    "Processa muitos tipos de receita diferentes ao mesmo tempo com threads e paralelos",
+    "以线程与并行同时处理多种不同配方"
+  ],
+  "gtna.machine.universal_factory.tooltip.mode": [
+    "Scaling mode: %s (config)",
+    "Modo de escala: %s (config)",
+    "扩展模式：%s（配置）"
+  ],
+  "gtna.machine.universal_factory.tooltip.legacy_threads": [
+    "Threads: %s × 2^voltage tier",
+    "Threads: %s × 2^tier de voltagem",
+    "线程数：%s×2^电压等级"
+  ],
+  "gtna.machine.universal_factory.tooltip.legacy_parallel": [
+    "Parallels: %s × 2^voltage tier × batch × warmup",
+    "Paralelos: %s × 2^tier de voltagem × lote × aquecimento",
+    "并行数：%s×2^电压等级×批次×预热"
+  ],
+  "gtna.machine.universal_factory.tooltip.budget": [
+    "Shared budget: pick up to 256 threads; the tier's capacity is split between them",
+    "Orçamento compartilhado: escolha até 256 threads; a capacidade do tier é dividida entre elas",
+    "共享预算：最多选择256个线程，该等级的容量在线程间分配"
+  ],
+  "gtna.machine.universal_factory.tooltip.warmup": [
+    "Warmup: 1 + (%s − 1) × (1 − e^(−running seconds / %s))",
+    "Aquecimento: 1 + (%s − 1) × (1 − e^(−segundos rodando / %s))",
+    "预热：1+(%s−1)×(1−e^(−运行秒数/%s))"
+  ],
+  "gtna.machine.universal_factory.tooltip.overload": [
+    "After %s running it overloads and keeps the full warmup",
+    "Depois de %s rodando entra em sobrecarga e mantém o aquecimento máximo",
+    "连续运行%s后进入过载，保持最大预热"
+  ],
+  "gtna.machine.universal_factory.tooltip.batch": [
+    "Auto batch grows the parallels while it keeps working, up to %s",
+    "O lote automático aumenta os paralelos enquanto continua trabalhando, até %s",
+    "自动批次在持续工作时提升并行，最高%s"
+  ],
+  "gtna.machine.universal_factory.tooltip.config": [
+    "Warmup, batch and the special hatches must be enabled in the GTNA config",
+    "Aquecimento, lote e as escotilhas especiais precisam estar ativados na config do GTNA",
+    "预热、批次与特殊仓须在GTNA配置中启用"
+  ],
+  "gtna.machine.universal_factory.tooltip.humor": [
+    "One factory to rule them all, with Type Omega holding the ring.",
+    "Uma fábrica para a todos governar, com a Type Omega segurando o anel.",
+    "一座工厂统御一切，魔戒在Type Omega手里。"
+  ],
+  "gtna.machine.primitive_stone_furnace.tooltip.purpose": [
+    "A primitive stone furnace that smelts with no energy",
+    "Uma fornalha primitiva de pedra que funde sem energia",
+    "无需能量即可冶炼的原始石炉"
+  ],
+  "gtna.machine.primitive_stone_furnace.tooltip.tick": [
+    "Every recipe finishes in %s tick",
+    "Toda receita termina em %s tick",
+    "所有配方%s tick完成"
+  ],
+  "gtna.machine.primitive_stone_furnace.tooltip.unlimited": [
+    "Runs every furnace recipe at once, with no parallel limit",
+    "Roda todas as receitas de fornalha ao mesmo tempo, sem limite de paralelos",
+    "同时运行所有熔炉配方，并行无上限"
+  ],
+  "gtna.machine.primitive_stone_furnace.tooltip.no_energy": [
+    "Needs no energy hatch",
+    "Não precisa de escotilha de energia",
+    "无需能源仓"
+  ],
+  "gtna.machine.primitive_stone_furnace.tooltip.humor": [
+    "Carved by hand, powered by nothing, audited by Type Omega anyway.",
+    "Esculpida à mão, movida a nada, auditada pela Type Omega mesmo assim.",
+    "手工雕刻，无需能源，Type Omega照样要审计。"
+  ]
+}

@@ -90,6 +90,10 @@ import static com.raishxn.gtna.common.data.GTNARecipeType.SUPERHEATER_RECIPES;
 
 public class GTNAMachines {
 
+    /** GTL Dimensionally Transcendent Steam Boiler: GTCEu large-boiler max temperature and heat speed. */
+    public static final int DT_STEAM_BOILER_STEAM = 4_096_000;
+    public static final int DT_STEAM_BOILER_HEAT_SPEED = 32;
+
     private static final ResourceLocation OVERLAY_IN = new ResourceLocation("gtna",
             "block/overlay/machine/overlay_steam_wireless_in");
     private static final ResourceLocation OVERLAY_OUT = new ResourceLocation("gtna",
@@ -1970,7 +1974,7 @@ public class GTNAMachines {
             "dimensionallyTranscendentSteamBoiler", () -> REGISTRATE
                     .multiblock("dimensionally_transcendent_steam_boiler",
                             holder -> new com.gregtechceu.gtceu.common.machine.multiblock.steam.LargeBoilerMachine(
-                                    holder, 4_096_000, 32))
+                                    holder, DT_STEAM_BOILER_STEAM, DT_STEAM_BOILER_HEAT_SPEED))
                     .rotationState(RotationState.NON_Y_AXIS)
                     .recipeType(GTRecipeTypes.LARGE_BOILER_RECIPES)
                     .recipeModifier(

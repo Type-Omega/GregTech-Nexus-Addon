@@ -12,17 +12,6 @@ public final class GTNAMultiblockTooltipText {
     public static final Map<String, String[]> ENGLISH = new LinkedHashMap<>();
 
     static {
-        ENGLISH.put("advanced_integrated_ore_processor", new String[] {
-                "Machine Type: §eIntegrated Ore Processing",
-                "§7§oWhy process one ore when you can process all of them?",
-                "§b§m                                                        ",
-                "§7Complete §6ore processing§7 in one step,",
-                "§7running several different recipes at once.",
-                "§b§m                                                        ",
-                "§a▸ Runs §emultiple different recipes§a at once",
-                "§b▸ Max parallel: §e2,147,483,647§b",
-                "§c▸ Only accepts §eLaser§c Energy Hatches",
-        });
         ENGLISH.put("antimatter_collider_ring", new String[] {
                 "Machine Type: §eParticle Collider",
                 "§7§oTwo beams, one ring, zero room for error.",
@@ -53,36 +42,6 @@ public final class GTNAMultiblockTooltipText {
                 "§c▸ Stability at §e0§c collapses the rift",
                 "§c▸ Dissonant chords dig deeper but cost more",
         });
-        ENGLISH.put("dimensionally_transcendent_dirt_forge", new String[] {
-                "Machine Type: §ePrimitive Blast Furnace",
-                "§7§oSomeone looked at the DTPF and thought: what if dirt?",
-                "§b§m                                                        ",
-                "§7An absurd primitive forge shell repurposed for",
-                "§7§6massive§7 primitive blast throughput.",
-                "§b§m                                                        ",
-                "§a▸ Every recipe finishes in §e1 tick§a",
-                "§b▸ Parallel: up to §e524,288§b",
-        });
-        ENGLISH.put("dimensionally_transcendent_steam_boiler", new String[] {
-                "Machine Type: §eLarge Boiler",
-                "§7§oBends spacetime to boil water. Priorities.",
-                "§b§m                                                        ",
-                "§7An absurd late-game boiler that bends",
-                "§7dimensional space into §6steam throughput§7.",
-                "§b§m                                                        ",
-                "§a▸ Output: §e4,096,000§a L of steam per cycle",
-        });
-        ENGLISH.put("dimensionally_transcendent_steam_oven", new String[] {
-                "Machine Type: §eFurnace",
-                "§7§oPreheat to 350 degrees. Then add infinity.",
-                "§b§m                                                        ",
-                "§7A steam oven pushed far beyond sane",
-                "§7§6thermal engineering§7 limits.",
-                "§b§m                                                        ",
-                "§a▸ §e100x§a speed vs. a furnace",
-                "§a▸ §e2§a threads: two furnace recipes at once",
-                "§b▸ Parallel: up to §e524,288§b",
-        });
         ENGLISH.put("duration_tester", new String[] {
                 "Machine Type: §eDeveloper Tool",
                 "§7§oIf you are reading this, you found the dev room.",
@@ -93,50 +52,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Runs Assembler and Circuit Assembler recipes",
                 "§b▸ Accepts Thread and Overclock Hatches",
                 "§c▸ Development use only",
-        });
-        ENGLISH.put("electric_void_miner", new String[] {
-                "Machine Type: §eVoid Mining",
-                "§7§oMining nothing and getting everything. Physics is optional.",
-                "§b§m                                                        ",
-                "§7Mines vein programs for §6Raw Ores§7 using",
-                "§7energy and Drilling Fluid.",
-                "§b§m                                                        ",
-                "§a▸ Precise mode: pick a vein with an §eessence§a",
-                "§a▸ Random mode: no essence, full ZPM pool",
-                "§b▸ Circuit §e1§b = EV basics, circuit §e2§b = LuV/ZPM veins",
-                "§b▸ From IV, a Parallel Control Hatch adds parallel",
-                "§c▸ Needs Drilling Fluid every operation",
-                "§c▸ EV tier has no parallel",
-        });
-        ENGLISH.put("incubator", new String[] {
-                "Machine Type: §eIncubator",
-                "§7§oGrowing ore veins in a petri dish. Science!",
-                "§b§m                                                        ",
-                "§7Cultivates §6vein essences§7 from seeds and",
-                "§7ore samples using scanned world data.",
-                "§b§m                                                        ",
-                "§a▸ World and planet data is §ereusable§a",
-                "§a▸ Overclock shortens the culture time",
-                "§b▸ §e10,000§b mB Biomass and Milk per culture",
-                "§b▸ Produces §e64§b essences per culture",
-                "§c▸ Needs Biomass and Milk every culture",
-        });
-        ENGLISH.put("integrated_ore_processor", new String[] {
-                "Machine Type: §eIntegrated Ore Processing",
-                "§7§oThe entire ore processing line, in one box.",
-                "§b§m                                                        ",
-                "§7Complete §6ore processing§7 in one step; the",
-                "§7circuit picks one of seven routes.",
-                "§b§m                                                        ",
-                "§a▸ Grind, wash, bath, sift and spin in one go",
-                "§b▸ Circuit §e1§b: Crush -> Crush -> Centrifuge",
-                "§b▸ Circuit §e2§b: Crush -> Wash -> Thermal -> Crush",
-                "§b▸ Circuit §e3§b: Crush -> Wash -> Crush -> Centrifuge",
-                "§b▸ Circuit §e4§b: Crush -> Wash -> Sift -> Centrifuge",
-                "§b▸ Circuit §e5§b: Crush -> Bath -> Thermal -> Crush",
-                "§b▸ Circuit §e6§b: Crush -> Bath -> Crush -> Centrifuge",
-                "§b▸ Circuit §e7§b: Crush -> Bath -> Sift -> Centrifuge",
-                "§c▸ Parallel comes from Parallel Control Hatches",
         });
         ENGLISH.put("kinetic_orbital_lance", new String[] {
                 "Machine Type: §eOrbital Mining",
@@ -152,17 +67,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Capsules return after the §etravel time§b",
                 "§c▸ A worn liner §emisfires§c",
                 "§c▸ A hot barrel §edrifts§c off target",
-        });
-        ENGLISH.put("mega_distillery", new String[] {
-                "Machine Type: §eDistillery, Distillation",
-                "§7§oEvery fraction of the barrel, accounted for.",
-                "§b§m                                                        ",
-                "§7Runs Distillery, §6Distillation Tower§7 and",
-                "§7Evaporation recipes at megafactory scale.",
-                "§b§m                                                        ",
-                "§a▸ Distillation outputs go to any fluid hatch",
-                "§a▸ Thread Hatch: several recipes at once",
-                "§b▸ Parallel set by the §eParallel Hatch§b",
         });
         ENGLISH.put("nexus_flux_matrix", new String[] {
                 "Machine Type: §eWireless Energy Storage",
@@ -191,17 +95,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Threads per module: §e4§b / §e16§b / §e128§b / §e1,024§b",
                 "§c▸ Needs exactly §eone§c Crafting CPU Interface",
         });
-        ENGLISH.put("primitive_stone_furnace", new String[] {
-                "Machine Type: §eFurnace",
-                "§7§oCarved by hand, powered by nothing, judged by no one.",
-                "§b§m                                                        ",
-                "§7A primitive furnace carved from stone that",
-                "§7smelts like a furnace with §6no energy§7.",
-                "§b§m                                                        ",
-                "§a▸ Every recipe finishes in §e1 tick§a",
-                "§a▸ Runs every furnace recipe at once, unlimited",
-                "§b▸ Parallel and threads: effectively §eunlimited§b",
-        });
         ENGLISH.put("stellar_containment_chamber", new String[] {
                 "Machine Type: §eStellar Containment",
                 "§7§oIt spins seven hundred times a second. Do not touch.",
@@ -216,31 +109,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Above §e2,2 M☉§b it collapses into a black hole",
                 "§c▸ Spinning below the §eKepler period§c tears the star apart",
                 "§c▸ Unpowered bands during a quake damage containment",
-        });
-        ENGLISH.put("universal_factory", new String[] {
-                "Machine Type: §eUniversal Factory",
-                "§7§oOne factory to rule them all.",
-                "§b§m                                                        ",
-                "§7Processes §6many different recipes§7 at once",
-                "§7with cross-recipe parallel and threads.",
-                "§b§m                                                        ",
-                "§a▸ Runs §e32§a recipe types in one machine",
-                "§a▸ Legacy mode: thermal warmup and batch",
-                "§b▸ Threads and parallel follow balance mode and tier",
-                "§c▸ Special hatches must be enabled in the config",
-        });
-        ENGLISH.put("void_fluid_drilling_rig", new String[] {
-                "Machine Type: §eVoid Fluid Drilling",
-                "§7§oThe well ran dry. The void did not.",
-                "§b§m                                                        ",
-                "§7Keeps producing a fluid after its natural",
-                "§7deposit was §6extracted and recorded§7.",
-                "§b§m                                                        ",
-                "§a▸ Deposit Data is §ereusable§a",
-                "§a▸ Parallel scales energy, reagents and output",
-                "§b▸ Entry tier: §eEV§b",
-                "§c▸ Origin dimension only, until upgraded",
-                "§c▸ Needs Drilling Fluid; full output pauses it",
         });
     }
 

@@ -66,6 +66,7 @@ public final class GTNATooltips {
         MegaTooltips.register();
         ProcessTooltips.register();
         GtoMiscTooltips.register();
+        GtlTooltips.register();
     }
 
     static void register(String path, Supplier<List<Component>> tooltip) {
