@@ -19,7 +19,7 @@ public final class GTNATooltipLang {
     /** Files under tooltip_lang, without the extension, one per migrated machine family. */
     public static final String[] FILES = { "large_steam", "steam_utility", "steam_reactors", "endgame", "coil",
             "godforge", "forge", "bec", "shared", "reactors", "steam_elevator", "mega", "process", "gto_misc", "gtl",
-            "originals" };
+            "originals", "originals_emi" };
 
     private static Map<String, String[]> texts;
 
