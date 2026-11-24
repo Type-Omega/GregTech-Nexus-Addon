@@ -3,7 +3,7 @@
   "textures": {
     "layer0": "gtceu:item/material_sets/gtna_graviton_shard/ingot_hot",
     "layer1": "gtceu:item/material_sets/gtna_creon/gem_overlay",
-    "layer2": "gtceu:item/material_sets/gtna_creon/gem_overlay"
+    "layer2": "gtceu:item/material_sets/dull/ingot_hot_overlay"
   },
   "loader": "gtna:cosmic",
   "cosmic": {
