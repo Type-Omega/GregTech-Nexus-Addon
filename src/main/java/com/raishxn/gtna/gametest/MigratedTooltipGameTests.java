@@ -62,7 +62,7 @@ public final class MigratedTooltipGameTests {
             }
             checked++;
         }
-        h.assertTrue(checked >= 19, "expected the 19 large steam multiblocks, checked " + checked);
+        h.assertTrue(checked >= 28, "expected the 28 steam multiblocks, checked " + checked);
         h.succeed();
     }
 
@@ -90,6 +90,23 @@ public final class MigratedTooltipGameTests {
             h.assertTrue(journey.stream().anyMatch(s -> s.contains("Journey")), "the variant label is shown");
         } finally {
             GTNASteamBalance.setProvider(null);
+        }
+        h.succeed();
+    }
+
+    /** Only structures with a steel casing tier promise high pressure (the old cobbler-family tooltips did). */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void highPressureOnlyWhereTheCasingHasASteelTier(GameTestHelper h) {
+        for (String path : new String[] { "steam_cobbler", "stone_superheater", "steam_woodcutter",
+                "steam_lava_maker", "steam_manufacturer", "steam_cracking", "steam_mega_compressor" }) {
+            List<Component> tooltip = GTNATooltips.build(path);
+            h.assertTrue(tooltip != null, path + " is migrated");
+            boolean steel = path.equals("steam_cracking") || path.equals("steam_mega_compressor");
+            List<String> keys = keys(tooltip);
+            h.assertTrue(keys.contains("gtna.tooltip.mb.steam.high_pressure") == steel,
+                    path + (steel ? " must" : " must not") + " show the high-pressure rule");
+            h.assertTrue(keys.contains("gtna.tooltip.mb.steam.fixed_casing") == !steel,
+                    path + " says whether its casing has a steel tier");
         }
         h.succeed();
     }

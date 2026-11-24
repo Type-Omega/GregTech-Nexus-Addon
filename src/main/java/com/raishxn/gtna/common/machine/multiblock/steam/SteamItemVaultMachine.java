@@ -26,8 +26,8 @@ public class SteamItemVaultMachine extends SteamMultiMachineBase {
             SteamItemVaultMachine.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     /** 256 slots x 64,000 per slot = 16,384,000 items. */
-    private static final int SLOTS = 256;
-    private static final int SLOT_LIMIT = 64_000;
+    public static final int SLOTS = 256;
+    public static final int SLOT_LIMIT = 64_000;
 
     @Persisted
     private final NotifiableItemStackHandler vaultStorage;

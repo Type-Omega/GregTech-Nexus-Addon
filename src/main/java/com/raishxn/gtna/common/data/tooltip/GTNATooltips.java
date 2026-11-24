@@ -39,6 +39,7 @@ public final class GTNATooltips {
         if (initialised) return;
         initialised = true;
         LargeSteamTooltips.register();
+        SteamUtilityTooltips.register();
     }
 
     static void register(String path, Supplier<List<Component>> tooltip) {

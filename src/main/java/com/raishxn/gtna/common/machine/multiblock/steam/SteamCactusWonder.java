@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public class SteamCactusWonder extends WorkableMultiblockMachine implements IDisplayUIMachine {
 
+    /** Ticks per offer: every recipe of the machine burns one fuel item per cycle. */
+    public static final int CYCLE_TICKS = 20;
+
     public SteamCactusWonder(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
     }

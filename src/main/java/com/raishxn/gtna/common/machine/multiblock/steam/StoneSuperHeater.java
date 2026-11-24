@@ -30,7 +30,7 @@ public class StoneSuperHeater extends SteamMultiMachineBase {
             StoneSuperHeater.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    private int targetParallel = 32;
+    private int targetParallel = LargeSteamSpecs.SUPERHEATER.defaultParallel();
 
     public StoneSuperHeater(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -81,7 +81,7 @@ public class StoneSuperHeater extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(32, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.SUPERHEATER.maxParallel(), this.targetParallel * 2);
             }
         }
     }

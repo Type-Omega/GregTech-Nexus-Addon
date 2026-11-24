@@ -1,0 +1,162 @@
+{
+  "gtna.tooltip.mb.type.rock_breaker": [
+    "Rock Breaker",
+    "Quebrador de Rochas",
+    "碎岩机"
+  ],
+  "gtna.tooltip.mb.type.superheater": [
+    "Superheater",
+    "Superaquecedor",
+    "超级加热器"
+  ],
+  "gtna.tooltip.mb.type.woodcutter": [
+    "Woodcutter",
+    "Lenhador",
+    "伐木机"
+  ],
+  "gtna.tooltip.mb.type.lava_maker": [
+    "Lava Maker",
+    "Fabricante de Lava",
+    "熔岩制造机"
+  ],
+  "gtna.tooltip.mb.type.hydraulic_manufacturing": [
+    "Hydraulic Manufacturing",
+    "Manufatura Hidráulica",
+    "液压制造"
+  ],
+  "gtna.tooltip.mb.type.cracker": [
+    "Cracker",
+    "Craqueador",
+    "裂化机"
+  ],
+  "gtna.tooltip.mb.type.item_storage": [
+    "Item Storage",
+    "Armazenamento de Itens",
+    "物品存储"
+  ],
+  "gtna.tooltip.mb.type.steam_producer": [
+    "Steam Producer",
+    "Produtor de Vapor",
+    "蒸汽生产"
+  ],
+  "gtna.tooltip.mb.steam.fixed_casing": [
+    "Its casings have no steel tier: always low pressure",
+    "Os blocos não têm versão de aço: sempre em baixa pressão",
+    "外壳没有钢制版本：始终为低压"
+  ],
+  "gtna.machine.steam_cobbler.tooltip.purpose": [
+    "Breaks rock in bulk with the water and magma built into it",
+    "Quebra rocha em massa com a água e o magma da própria estrutura",
+    "利用结构内的水与岩浆块大量产出岩石"
+  ],
+  "gtna.machine.steam_cobbler.tooltip.humor": [
+    "Infinite cobblestone. The warehouse has filed a formal complaint.",
+    "Pedregulho infinito. O almoxarifado abriu uma reclamação formal.",
+    "无限圆石。仓库已正式投诉。"
+  ],
+  "gtna.machine.stone_superheater.tooltip.purpose": [
+    "Melts stone and cobblestone into lava over its magma floor",
+    "Derrete pedra e pedregulho em lava sobre o piso de magma",
+    "在岩浆块地板上把石头与圆石熔成熔岩"
+  ],
+  "gtna.machine.stone_superheater.tooltip.humor": [
+    "Turns rocks into a liquid asset.",
+    "Transforma pedra em ativo líquido.",
+    "把石头变成流动资产。"
+  ],
+  "gtna.machine.steam_woodcutter.tooltip.purpose": [
+    "Grows logs from saplings on its dirt floor; no tree is planted",
+    "Tira toras de mudas sobre o piso de terra; nenhuma árvore é plantada",
+    "在泥土地板上由树苗产出原木，不会真的种树"
+  ],
+  "gtna.machine.steam_woodcutter.tooltip.humor": [
+    "Sustainable forestry, as defined by the marketing department.",
+    "Silvicultura sustentável, na definição do departamento de marketing.",
+    "可持续林业——按市场部的定义。"
+  ],
+  "gtna.machine.steam_lava_maker.tooltip.purpose": [
+    "Melts stone into lava behind its glass window",
+    "Derrete pedra em lava atrás da janela de vidro",
+    "在玻璃窗后把石头熔成熔岩"
+  ],
+  "gtna.machine.steam_lava_maker.tooltip.humor": [
+    "Turning up the heat, within the limits set by Facilities.",
+    "Aumentando o calor, dentro dos limites da Manutenção Predial.",
+    "调高温度，但不超过后勤部规定的上限。"
+  ],
+  "gtna.machine.steam_manufacturer.tooltip.purpose": [
+    "Assembles steam-age parts with hydraulic presses",
+    "Monta peças da era do vapor com prensas hidráulicas",
+    "用液压机组装蒸汽时代的部件"
+  ],
+  "gtna.machine.steam_manufacturer.tooltip.steam": [
+    "Burns %s of steam per tick for each parallel",
+    "Gasta %s de vapor por tick para cada paralelo",
+    "每个并行每刻消耗%s蒸汽"
+  ],
+  "gtna.machine.steam_manufacturer.tooltip.humor": [
+    "Assembles assemblies assemblically. Unpaid interns not included.",
+    "Monta montagens montadamente. Estagiários não remunerados não incluídos.",
+    "组装地组装组件。不含无薪实习生。"
+  ],
+  "gtna.machine.steam_mega_compressor.tooltip.purpose": [
+    "Fires impossibly pressurised jets of steam to compress materials",
+    "Dispara jatos de vapor com pressão absurda para comprimir materiais",
+    "喷射压力高得离谱的蒸汽来压缩材料"
+  ],
+  "gtna.machine.steam_mega_compressor.tooltip.humor": [
+    "Superdense plates, superdense paperwork.",
+    "Placas superdensas, papelada superdensa.",
+    "超致密板材，超致密文书。"
+  ],
+  "gtna.machine.steam_cracking.tooltip.purpose": [
+    "Cracks hydrocarbons with steam heat, more efficiently than a chemical reactor",
+    "Craqueia hidrocarbonetos no calor do vapor, melhor que um reator químico",
+    "以蒸汽热量裂化烃类，比化学反应釜更高效"
+  ],
+  "gtna.machine.steam_cracking.tooltip.parallel": [
+    "Processes up to %s at once in bronze, %s in steel",
+    "Processa até %s de uma vez em bronze, %s em aço",
+    "青铜结构最多同时处理%s个，钢结构%s个"
+  ],
+  "gtna.machine.steam_cracking.tooltip.humor": [
+    "Breaking molecules, never deadlines.",
+    "Quebra moléculas, nunca prazos.",
+    "只打破分子，从不打破截止日期。"
+  ],
+  "gtna.machine.steam_item_vault.tooltip.purpose": [
+    "Stores %s item types, up to %s of each",
+    "Guarda %s tipos de item, até %s de cada",
+    "存储%s种物品，每种最多%s个"
+  ],
+  "gtna.machine.steam_item_vault.tooltip.total": [
+    "Holds up to %s items; reach them through its item buses",
+    "Cabe até %s itens; acesse pelos barramentos de itens",
+    "最多容纳%s个物品，通过物品总线存取"
+  ],
+  "gtna.machine.steam_item_vault.tooltip.humor": [
+    "The only archive in the company that is actually organised.",
+    "O único arquivo da empresa que está de fato organizado.",
+    "全公司唯一真正整理好的档案室。"
+  ],
+  "gtna.machine.steam_cactus_wonder.tooltip.purpose": [
+    "Burns carbon fuels and returns their value as steam",
+    "Queima combustíveis de carbono e devolve o valor deles em vapor",
+    "焚烧碳燃料，以蒸汽返还其价值"
+  ],
+  "gtna.machine.steam_cactus_wonder.tooltip.offer": [
+    "Takes one offer every %s, one fuel type at a time",
+    "Aceita uma oferenda a cada %s, um tipo de combustível por vez",
+    "每%s接受一份供品，一次只能一种燃料"
+  ],
+  "gtna.machine.steam_cactus_wonder.tooltip.cacti": [
+    "Needs fully grown cacti on its sand floor to form",
+    "Precisa de cactos adultos no piso de areia para se formar",
+    "沙地上需有完全长成的仙人掌才能成型"
+  ],
+  "gtna.machine.steam_cactus_wonder.tooltip.humor": [
+    "Cactus. Praise be. Attendance at the morning prayer is tracked.",
+    "Cacto. Louvado seja. A presença na oração da manhã é registrada.",
+    "仙人掌，赞美之。晨祷出勤会被记录。"
+  ]
+}

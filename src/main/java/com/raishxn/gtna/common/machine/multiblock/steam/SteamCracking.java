@@ -31,6 +31,9 @@ public class SteamCracking extends SteamMultiMachineBase {
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             SteamCracking.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
+    public static final int BRONZE_PARALLEL = 8;
+    public static final int STEEL_PARALLEL = 16;
+
     public SteamCracking(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
     }
@@ -48,7 +51,7 @@ public class SteamCracking extends SteamMultiMachineBase {
         if (recipe.getType() != GTRecipeTypes.CRACKING_RECIPES) {
             return ModifierFunction.NULL;
         }
-        int maxParallel = steamMachine.isHighPressure() ? 16 : 8;
+        int maxParallel = steamMachine.isHighPressure() ? STEEL_PARALLEL : BRONZE_PARALLEL;
         int parallels = ParallelLogic.getParallelAmount(machine, recipe, GTNASteamBalance.parallels(maxParallel));
         if (parallels == 0) {
             return ModifierFunction.NULL;

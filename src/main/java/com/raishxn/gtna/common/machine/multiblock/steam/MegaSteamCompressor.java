@@ -48,13 +48,14 @@ public class MegaSteamCompressor extends SteamMultiMachineBase {
         if (recipe.getType() != GTRecipeTypes.COMPRESSOR_RECIPES) {
             return ModifierFunction.NULL;
         }
-        int parallels = ParallelLogic.getParallelAmount(machine, recipe, GTNASteamBalance.parallels(256));
+        int parallels = ParallelLogic.getParallelAmount(machine, recipe,
+                GTNASteamBalance.parallels(LargeSteamSpecs.MEGA_COMPRESSOR.maxParallel()));
         if (parallels == 0) {
             return ModifierFunction.NULL;
         }
         return ModifierFunction.builder()
                 .modifyAllContents(ContentModifier.multiplier(parallels))
-                .durationMultiplier(GTNASteamBalance.duration(0.5))
+                .durationMultiplier(GTNASteamBalance.duration(LargeSteamSpecs.MEGA_COMPRESSOR.durationMultiplier()))
                 .parallels(parallels)
                 .build();
     }

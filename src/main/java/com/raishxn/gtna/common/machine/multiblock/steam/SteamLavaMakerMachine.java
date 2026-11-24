@@ -34,7 +34,7 @@ public class SteamLavaMakerMachine extends SteamMultiMachineBase {
             SteamLavaMakerMachine.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
     @Persisted
-    private int targetParallel = 16;
+    private int targetParallel = LargeSteamSpecs.LAVA_MAKER.defaultParallel();
 
     public SteamLavaMakerMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -83,7 +83,7 @@ public class SteamLavaMakerMachine extends SteamMultiMachineBase {
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(16, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.LAVA_MAKER.maxParallel(), this.targetParallel * 2);
             }
         }
     }

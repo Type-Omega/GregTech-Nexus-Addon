@@ -1297,39 +1297,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Builds in any direction",
                 "§b▸ §eUnlimited§b parallel",
         });
-        ENGLISH.put("steam_cactus_wonder", new String[] {
-                "Machine Type: §eSteam Generator",
-                "§7§oWho needs a boiler when you have a desert?",
-                "§b§m                                                        ",
-                "§7Burns cactus-era carbon fuels and returns",
-                "§7their value as §6steam§7.",
-                "§b§m                                                        ",
-                "§a▸ Coal / Charcoal: §e8,000§a mB steam each",
-                "§a▸ Coal Block: §e90,000§a mB steam",
-                "§b▸ One fuel item per §e1 s§b cycle",
-                "§c▸ Needs fully grown §ecacti§c on the sand floor",
-        });
-        ENGLISH.put("steam_cobbler", new String[] {
-                "Machine Type: §eRock Breaker",
-                "§7§oInfinite cobblestone: the oldest trick in the book, now industrial.",
-                "§b§m                                                        ",
-                "§7An advanced steam rock generator that makes",
-                "§7§6different stones§7 by programmed circuit.",
-                "§b§m                                                        ",
-                "§a▸ Circuit selects the stone type",
-                "§b▸ Parallel: §e16§b default, adjustable up to §e16§b",
-        });
-        ENGLISH.put("steam_cracking", new String[] {
-                "Machine Type: §eCracker",
-                "§7§oPetrochemistry, Victorian edition.",
-                "§b§m                                                        ",
-                "§7A steam cracker that thermally cracks",
-                "§7§6sulfuric hydrocarbons§7 with the regular",
-                "§7cracking recipes (circuits 1-3).",
-                "§b§m                                                        ",
-                "§a▸ High pressure doubles the parallel",
-                "§b▸ Parallel: §e8§b bronze / §e16§b steel",
-        });
         ENGLISH.put("steam_elevator", new String[] {
                 "Machine Type: §eModular Elevator",
                 "§7§oGoing up? Please hold on to your top hat.",
@@ -1595,58 +1562,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Circuit §e1§b: clear, §e2§b: rain, §e3§b: thunder",
                 "§c▸ Only works attached to a Steam Elevator",
         });
-        ENGLISH.put("steam_item_vault", new String[] {
-                "Machine Type: §eItem Storage",
-                "§7§oA Victorian warehouse. Dragons not included.",
-                "§b§m                                                        ",
-                "§7A very large item storage for the steam era,",
-                "§7accessed through the structure's §6item buses§7.",
-                "§b§m                                                        ",
-                "§a▸ Holds up to §e16,384,000§a items",
-                "§b▸ §e256§b item types, §e64,000§b each",
-        });
-        ENGLISH.put("steam_lava_maker", new String[] {
-                "Machine Type: §eLava Maker",
-                "§7§oTurning the floor into lava, professionally.",
-                "§b§m                                                        ",
-                "§7Melts stone into §6lava§7 using steam",
-                "§7instead of EU.",
-                "§b§m                                                        ",
-                "§a▸ §e1 s§a per stone block",
-                "§a▸ High pressure: §e2x§a speed, §e2x§a steam",
-                "§b▸ Parallel: §e16§b default, adjustable up to §e16§b",
-        });
-        ENGLISH.put("steam_manufacturer", new String[] {
-                "Machine Type: §eHydraulic Manufacturing",
-                "§7§oThe assembly line, but every worker is a piston.",
-                "§b§m                                                        ",
-                "§7An advanced §6hydraulic assembly line§7 that",
-                "§7builds the steam era's biggest machines.",
-                "§b§m                                                        ",
-                "§a▸ Crafts the Steam Supercompressor and more",
-                "§b▸ Parallel: §e16§b default, adjustable up to §e16§b",
-        });
-        ENGLISH.put("steam_mega_compressor", new String[] {
-                "Machine Type: §eCompressor",
-                "§7§oDiamonds are made under pressure. So is this machine.",
-                "§b§m                                                        ",
-                "§7A supercompressor where impossible jets of",
-                "§7steam crush material into shape.",
-                "§b§m                                                        ",
-                "§a▸ §e2x§a speed vs. singleblock",
-                "§b▸ Parallel: up to §e256§b",
-                "§c▸ Crafted from §e64§c Large Steam Compressors",
-        });
-        ENGLISH.put("steam_woodcutter", new String[] {
-                "Machine Type: §eWoodcutter",
-                "§7§oI'm a lumberjack and I'm okay.",
-                "§b§m                                                        ",
-                "§7An industrial tree processor that turns",
-                "§7§6saplings§7 into logs using only steam.",
-                "§b§m                                                        ",
-                "§a▸ Sapling in, logs out, no trees planted",
-                "§b▸ Parallel: §e64§b default, adjustable up to §e64§b",
-        });
         ENGLISH.put("stellar_containment_chamber", new String[] {
                 "Machine Type: §eStellar Containment",
                 "§7§oIt spins seven hundred times a second. Do not touch.",
@@ -1661,16 +1576,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Above §e2,2 M☉§b it collapses into a black hole",
                 "§c▸ Spinning below the §eKepler period§c tears the star apart",
                 "§c▸ Unpowered bands during a quake damage containment",
-        });
-        ENGLISH.put("stone_superheater", new String[] {
-                "Machine Type: §eSuper Heating",
-                "§7§oRocks, but hotter. Much hotter.",
-                "§b§m                                                        ",
-                "§7Melts stone with §6extreme heat§7 for",
-                "§7the steam era's hottest recipes.",
-                "§b§m                                                        ",
-                "§a▸ Adjustable parallel in the controller",
-                "§b▸ Parallel: §e32§b default, adjustable up to §e32§b",
         });
         ENGLISH.put("super_blast_smelter", new String[] {
                 "Machine Type: §eBlast Furnace, Alloy Blast",

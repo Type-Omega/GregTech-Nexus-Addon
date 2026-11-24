@@ -1,7 +1,7 @@
 package com.raishxn.gtna.common.machine.multiblock.steam;
 
 /**
- * Parallel and speed of the large steam multiblocks, read by the recipe logic and by the tooltips, so both always
+ * Parallel and speed of the steam multiblocks, read by the recipe logic and by the tooltips, so both always
  * show the same numbers. The pack's {@code GTNASteamBalance} scales them at run time.
  */
 public final class LargeSteamSpecs {
@@ -30,6 +30,13 @@ public final class LargeSteamSpecs {
     public static final Spec WIREMILL = new Spec(16, 16, 0.5);
     public static final Spec SIFTER = new Spec(16, 16, 0.5);
     public static final Spec FORMING_PRESS = new Spec(32, 32, 0.4);
+    // GTNL steam utilities; recipes run at their listed time except the mega compressor.
+    public static final Spec COBBLER = new Spec(16, 16, 1.0);
+    public static final Spec SUPERHEATER = new Spec(32, 32, 1.0);
+    public static final Spec WOODCUTTER = new Spec(64, 64, 1.0);
+    public static final Spec LAVA_MAKER = new Spec(16, 16, 1.0);
+    public static final Spec MANUFACTURER = new Spec(16, 16, 1.0);
+    public static final Spec MEGA_COMPRESSOR = new Spec(256, 256, 0.5);
 
     private LargeSteamSpecs() {}
 }

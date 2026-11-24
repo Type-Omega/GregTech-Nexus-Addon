@@ -90,19 +90,19 @@ final class LargeSteamTooltips {
     }
 
     /** High pressure and the steam hatch, shared by every large steam multiblock. */
-    private static MultiblockTooltipBuilder rules(MultiblockTooltipBuilder b) {
+    static MultiblockTooltipBuilder rules(MultiblockTooltipBuilder b) {
         return b.line(shared("steam.high_pressure"), highlight(shared("steam.steel")),
                 value(times(1 / SteamMultiMachineBase.HIGH_PRESSURE_DURATION_MULTIPLIER)),
                 value(times(SteamMultiMachineBase.HIGH_PRESSURE_CONVERSION_MULTIPLIER)))
                 .line(shared("steam.hatch"), value(1));
     }
 
-    private static Component parallels(int base) {
+    static Component parallels(int base) {
         return balanced(n -> NumberFormat.getIntegerInstance(Locale.ROOT).format((long) n),
                 v -> v.parallels(base));
     }
 
-    private static String percent(double fraction) {
+    static String percent(double fraction) {
         return Math.round(fraction * 100) + "%";
     }
 

@@ -2388,7 +2388,7 @@ public class GTNAMachineRecipes {
         GTNARecipeType.CACTUS_WONDER_RECIPES.recipeBuilder(id)
                 .inputItems(fuel)
                 .outputFluids(GTMaterials.Steam.getFluid(steam))
-                .duration(20)
+                .duration(com.raishxn.gtna.common.machine.multiblock.steam.SteamCactusWonder.CYCLE_TICKS)
                 .save(provider);
     }
 }

@@ -545,6 +545,12 @@ humour line of our own. No sentence is copied unchanged.
   author's permission above also applies). Changes: the percentages compare against GTCEu's steam single block (or the recipe time), parallel limits
   and speeds are GTNA's, the hatch and high-pressure rules describe GTNA's structures, and the Portuguese and Chinese
   texts were written for GTNA.
+- **GTNL steam utilities** (Steam Cobbler, Stone Superheater, Steam Woodcutter, Steam Lava Maker, Steam Manufacturer,
+  Steam Mega Compressor, Steam Cracking, Steam Item Vault, Steam Cactus Wonder): from the `gtnl.machine.steam_*` and
+  `gtnl.machine.mega_steam_compressor` lines of the same GTNL commit `52345d2` (LGPL-3.0). Several of those GTNL
+  machines credit "SteamIsTheNumber", their author in GT: New Horizons. Changes: GTNA's parallels and casing rules,
+  the steam cost, capacity and cycle read from GTNA's code, new wording and humour lines, Portuguese and Chinese
+  written for GTNA.
 
 ## Simplified Chinese translation (zh_cn)
 

@@ -42,9 +42,12 @@ public class SteamManufacturer extends SteamMultiMachineBase implements IDisplay
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             SteamManufacturer.class, SteamMultiMachineBase.MANAGED_FIELD_HOLDER);
 
+    /** mB of steam per tick for each parallel, charged with the recipe. */
+    public static final int STEAM_PER_PARALLEL = 16;
+
     @Persisted
     @DescSynced
-    private int targetParallel = 16;
+    private int targetParallel = LargeSteamSpecs.MANUFACTURER.defaultParallel();
 
     public SteamManufacturer(IMachineBlockEntity holder, Object... args) {
         super(holder, false, args);
@@ -67,7 +70,7 @@ public class SteamManufacturer extends SteamMultiMachineBase implements IDisplay
         int parallels = ParallelLogic.getParallelAmountWithoutEU(machine, recipe,
                 GTNASteamBalance.parallels(maxParallel));
         if (parallels == 0) return ModifierFunction.NULL;
-        long steamPerTick = 16L * parallels;
+        long steamPerTick = (long) STEAM_PER_PARALLEL * parallels;
 
         return r -> {
             GTRecipe modified = ModifierFunction.builder()
@@ -131,7 +134,7 @@ public class SteamManufacturer extends SteamMultiMachineBase implements IDisplay
             if (componentData.equals("parallelSub")) {
                 this.targetParallel = Math.max(1, this.targetParallel / 2);
             } else if (componentData.equals("parallelAdd")) {
-                this.targetParallel = Math.min(16, this.targetParallel * 2);
+                this.targetParallel = Math.min(LargeSteamSpecs.MANUFACTURER.maxParallel(), this.targetParallel * 2);
             }
         }
     }
