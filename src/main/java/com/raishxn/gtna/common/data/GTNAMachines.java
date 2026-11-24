@@ -3325,7 +3325,7 @@ public class GTNAMachines {
                     .allowExtendedFacing(false)
                     .recipeType(GTRecipeTypes.DUMMY_RECIPES)
                     .appearanceBlock(GTNABlocks.OXIDATION_RESISTANT_HASTELLOY_N_MECHANICAL_CASING)
-                    .pattern(GTNAMachines::createNexusMolecularForgePattern)
+                    .pattern(com.raishxn.gtna.common.data.multiblock.NexusAssemblyForgeStructure::create)
                     .workableCasingModel(
                             GTNACORE.id("block/casings/oxidation_resistant_hastelloy_n_mechanical_casing"),
                             GTCEu.id("block/multiblock/fusion_reactor"))
@@ -3409,50 +3409,6 @@ public class GTNAMachines {
                         Blocks.ACACIA_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.MANGROVE_PLANKS, Blocks.CHERRY_PLANKS,
                         Blocks.BAMBOO_PLANKS, Blocks.WARPED_PLANKS, Blocks.CRIMSON_PLANKS))
                 .where(' ', air())
-                .build();
-    }
-
-    private static BlockPattern createNexusMolecularForgePattern(MultiblockMachineDefinition definition) {
-        var dPredicate = blocks(GTNABlocks.ZIRCONIA_CERAMIC_HIGH_STRENGTH_BENDING_RESISTANCE_MECHANICAL_BLOCK.get())
-                .setMinGlobalLimited(20)
-                .or(abilities(INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(abilities(EXPORT_ITEMS));
-        if (GTNAMachines2.ME_CRAFT_PATTERN_HATCH != null) {
-            dPredicate = dPredicate.or(blocks(GTNAMachines2.ME_CRAFT_PATTERN_HATCH.getBlock()));
-        }
-
-        return FactoryBlockPattern.start()
-                .aisle("AAAAAAAAA", "AAAABAAAA", "AAAABAAAA", "AAAABAAAA", "AAAACAAAA", "AACCCCCAA", "AAAACAAAA",
-                        "AAAABAAAA", "AAAABAAAA", "AAAABAAAA", "AAAAAAAAA")
-                .aisle("AAAABAAAA", "AAADCDAAA", "AADDCDDAA", "AAEDCDEAA", "AAEDFDEAA", "ACEDFDECA", "AAEDFDEAA",
-                        "AAEDCDEAA", "AADDCDDAA", "AAADCDAAA", "AAAABAAAA")
-                .aisle("AAAABAAAA", "AADGHGDAA", "ADIIIIIDA", "AEAAFAAEA", "AEAAAAAEA", "CEAAAAAEC", "AEAAAAAEA",
-                        "AEAAFAAEA", "ADIIIIIDA", "AADGHGDAA", "AAAABAAAA")
-                .aisle("AAAABAAAA", "ADGGHGGDA", "ADIJJJIDA", "ADAAKAADA", "ADAAAAADA", "CDAAAAADC", "ADAAAAADA",
-                        "ADAAKAADA", "ADIJJJIDA", "ADGGHGGDA", "AAAABAAAA")
-                .aisle("ABBBBBBBA", "BCHHHHHCB", "BCIJJJICB", "BCFKLKFCB", "CFAALAAFC", "CFAALAAFC", "CFAALAAFC",
-                        "BCFKLKFCB", "BCIJJJICB", "BCHHHHHCB", "ABBBBBBBA")
-                .aisle("AAAABAAAA", "ADGGHGGDA", "ADIJJJIDA", "ADAAKAADA", "ADAAAAADA", "CDAAAAADC", "ADAAAAADA",
-                        "ADAAKAADA", "ADIJJJIDA", "ADGGHGGDA", "AAAABAAAA")
-                .aisle("AAAABAAAA", "AADGHGDAA", "ADIIIIIDA", "AEAAFAAEA", "AEAAAAAEA", "CEAAAAAEC", "AEAAAAAEA",
-                        "AEAAFAAEA", "ADIIIIIDA", "AADGHGDAA", "AAAABAAAA")
-                .aisle("AAAABAAAA", "AAADCDAAA", "AADDCDDAA", "AAEDCDEAA", "AAEDFDEAA", "ACEDFDECA", "AAEDFDEAA",
-                        "AAEDCDEAA", "AADDCDDAA", "AAADCDAAA", "AAAABAAAA")
-                .aisle("AAAAAAAAA", "AAAABAAAA", "AAAABAAAA", "AAAABAAAA", "AAAACAAAA", "AACCMCCAA", "AAAACAAAA",
-                        "AAAABAAAA", "AAAABAAAA", "AAAABAAAA", "AAAAAAAAA")
-                .where('A', Predicates.air())
-                .where('B', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTNAMaterials.HastelloyN)))
-                .where('C', blocks(GTNABlocks.OXIDATION_RESISTANT_HASTELLOY_N_MECHANICAL_CASING.get()))
-                .where('D', dPredicate)
-                .where('E', blocks(GTNABlocks.NAQUADAH_BOROSILICATE_GLASS.get()))
-                .where('F', blocks(GTNABlocks.MAGTECH_CASING.get()))
-                .where('G', blocks(GTNABlocks.PROCESS_MACHINE_CASING.get()))
-                .where('H', blocks(GTBlocks.CASING_ASSEMBLY_LINE.get()))
-                .where('I', blocks(GTBlocks.HIGH_POWER_CASING.get()))
-                .where('J', blocks(GTNABlocks.COMPRESSOR_CONTROLLER_CASING.get()))
-                .where('K', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Europium)))
-                .where('L', blocks(GTNABlocks.EXTREME_DENSITY_CASING.get()))
-                .where('M', controller(blocks(definition.get())))
                 .build();
     }
 

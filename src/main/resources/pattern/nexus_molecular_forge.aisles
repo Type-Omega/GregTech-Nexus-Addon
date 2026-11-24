@@ -1,0 +1,554 @@
+# Nexus Assembly Forge, "Orbital Forge of Crossed Rings" (GTIA-D-437, proposal A with the author's fixes).
+# Aisles back to front, rows bottom-up. d = plain zirconia behind the hatch panel; it counts toward the 20.
+aisle
+| B      BBBBB      B |
+| C      CCCCC      C |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|        BCGCB        |
+|        BCGCB        |
+|        BCGCB        |
+|        PCGCP        |
+|        BCGCB        |
+|        BCGCB        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+| BB     BBBBB     BB |
+| FC     CCCCC     CF |
+| G                 G |
+|                     |
+|                     |
+|                     |
+|        BCGCB        |
+|        CCGCC        |
+|        CIGIC        |
+|        CIHIC        |
+|        CBBBC        |
+|       PPPPPPP       |
+|        CBBBC        |
+|        CIHIC        |
+|        CIGIC        |
+|        CCGCC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+| BCC    CCCCC    CCB |
+| CBC    BCBCB    CBC |
+|                     |
+|  GK             KG  |
+|  F     BCGCB     F  |
+|  G     BCGCB     G  |
+|  G     CIGIC     G  |
+|  FK    CIHIC    KF  |
+|  FK             KF  |
+|                     |
+|      BBB   BBB      |
+|     PFFFFFFFFFP     |
+|      BBB   BBB      |
+|                     |
+|                     |
+|        CIHIC        |
+|        CIGIC        |
+|        BCGCB        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|  CCC   CCCCC   CCC  |
+|  CBC   CBCBC   CBC  |
+|                     |
+|  K     BCGCB     K  |
+|        CCGCC        |
+|        CIHIC        |
+|        CIHIC        |
+|  KK             KK  |
+|   G             G   |
+|   G             G   |
+|   FFB         BFF   |
+|   FPFF       FFPF   |
+|     B         B     |
+|                     |
+|                     |
+|                     |
+|        CIHIC        |
+|        CIHIC        |
+|        CCGCC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+aisle
+|   CCC  CCCCC  CCC   |
+|   CBC  HHHHH  CBC   |
+|                     |
+|        BCGCB        |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|    B           B    |
+|   PFF         FFP   |
+|    B           B    |
+|    F           F    |
+|    G           G    |
+|    GK         KG    |
+|                     |
+|                     |
+|        CIHIC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+aisle
+|    CCCCCCCCCCCCC    |
+|    CBCHHHHHHHCBC    |
+|        BCGCB        |
+|        CIGIC        |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|   B             B   |
+|  PFF           FFP  |
+|   B             B   |
+|                     |
+|                     |
+|    KF         FK    |
+|    FF         FF    |
+|    GG         GG    |
+|        CIHIC        |
+|        CIGIC        |
+|        BCGCB        |
+|                     |
+|                     |
+aisle
+|     CCCCCCCCCCC     |
+|     CHHHHHHHHHC     |
+|       HCCGCCH       |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|         EEE         |
+|  B      EEE      B  |
+|  FF   EEE EEE   FF  |
+|  B      EEE      B  |
+|          E          |
+|          E          |
+|                     |
+|                     |
+|                     |
+|                     |
+|        CIHIC        |
+|        CCGCC        |
+|                     |
+|                     |
+aisle
+|     CCCCCCCCCCC     |
+|     HHLBCGCBLHH     |
+|      HHCIGICHH      |
+|       IIIIIII       |
+|        IIIII        |
+|                     |
+|                     |
+|          E          |
+|         EEE         |
+|         EEE         |
+|  B     EE EE     B  |
+| PF    EELLLEE    FP |
+|  B     EE EE     B  |
+|         EEE         |
+|         EEE         |
+|                     |
+|                     |
+|                     |
+|                     |
+|       IIIIIII       |
+|        CIGIC        |
+|        BCGCB        |
+|                     |
+aisle
+|BBCCCCCCCCCCCCCCCCCBB|
+|CCBCHHHBBCGCBBHHHCBCC|
+|     BCCCIHICCCB     |
+|   BBCCIIIIIIICCBB   |
+|  BCCC IIIIIII CCCB  |
+|  BC             CB  |
+| BCC             CCB |
+| CC      EEE      CC |
+|BC      KEEEK      CB|
+|BC     EKK KKE     CB|
+|BCB    EE L EE    BCB|
+|PPF   EE L L EE   FPP|
+|BCB   EEE L EEE   BCB|
+|BC     EKK KKE     CB|
+|BC      KEEEK      CB|
+| CC       E       CC |
+| BCC             CCB |
+|  BC             CB  |
+|  BCCC         CCCB  |
+|   BBCCIIIIIIICCBB   |
+|     BCCCIHICCCB     |
+|       BBCGCBB       |
+|         CCC         |
+aisle
+|BBCCCCCCCCCCCCCCCCCBB|
+|CCCBHHHCBCGCBCHHHBCCC|
+|     CCICIHICICC     |
+|   CCIIIIJJJIIIICC   |
+|  CCII IIJJJII IICC  |
+|  CI             IC  |
+| CII             IIC |
+| CI      EEE      IC |
+|CI      EELEE      IC|
+|CI     EE L EE     IC|
+|CB    EE KLK EE    BC|
+|CPF     LLJLL     FPC|
+|CB    EE KLK EE    BC|
+|CI     EE L EE     IC|
+|CI      EELEE      IC|
+| CI     EEEEE     IC |
+| CII             IIC |
+|  CI             IC  |
+|  CCII         IICC  |
+|   CCIIIIIIIIIIICC   |
+|     CCICIHICICC     |
+|       CBCGCBC       |
+|        CHHHC        |
+aisle
+|BBCCCCCCCCCCCCCCCCCBB|
+|CCBCHHHGBCGCBGHHHCBCC|
+|     GGGCIHICGGG     |
+|   GGGHIIJJJIIHGGG   |
+|  GGHH IIJJJII HHGG  |
+|  GH      K      HG  |
+| GGH      K      HGG |
+| GH     EEKEE     HG |
+|GG     EELLLEE     GG|
+|GH    EE LLL EE    HG|
+|GB      LLJLL      BG|
+|GPF    LLJLJLL    FPG|
+|GB      LLJLL      BG|
+|GH    EE LLL EE    HG|
+|GG     EELLLEE     GG|
+| GH     EEKEE     HG |
+| GGH      K      HGG |
+|  GH      K      HG  |
+|  GGHH    K    HHGG  |
+|   GGGHIIIIIIIHGGG   |
+|     GGGCIHICGGG     |
+|       GBCGCBG       |
+|        CHPHC        |
+aisle
+|BBCCCCCCCCCCCCCCCCCBB|
+|CCCBHHHCBCGCBCHHHBCCC|
+|     CCICIHICICC     |
+|   CCIIIIJJJIIIICC   |
+|  CCII IIJJJII IICC  |
+|  CI             IC  |
+| CII             IIC |
+| CI      EEE      IC |
+|CI      EELEE      IC|
+|CI     EE L EE     IC|
+|CB    EE KLK EE    BC|
+|CPF     LLJLL     FPC|
+|CB    EE KLK EE    BC|
+|CI     EE L EE     IC|
+|CI      EELEE      IC|
+| CI     EEEEE     IC |
+| CII             IIC |
+|  CI             IC  |
+|  CCII         IICC  |
+|   CCIIIIIIIIIIICC   |
+|     CCICIHICICC     |
+|       CBCGCBC       |
+|        CHHHC        |
+aisle
+|BBCCCCCCCCCCCCCCCCCBB|
+|CCBCHHHBBCGCBBHHHCBCC|
+|     BCCCIHICCCB     |
+|   BBCCIIIIIIICCBB   |
+|  BCCC IIIIIII CCCB  |
+|  BC             CB  |
+| BCC             CCB |
+| CC      EEE      CC |
+|BC      KEEEK      CB|
+|BC     EKK KKE     CB|
+|BCB    EE L EE    BCB|
+|PPF   EE L L EE   FPP|
+|BCB   EEE L EEE   BCB|
+|BC     EKK KKE     CB|
+|BC      KEEEK      CB|
+| CC       E       CC |
+| BCC             CCB |
+|  BC             CB  |
+|  BCCC         CCCB  |
+|   BBCCIIIIIIICCBB   |
+|     BCCCIHICCCB     |
+|       BBCGCBB       |
+|         CCC         |
+aisle
+|     CCCCCCCCCCC     |
+|     HHLBCGCBLHH     |
+|      HHCIGICHH      |
+|       IIIIIII       |
+|        IIIII        |
+|                     |
+|                     |
+|          E          |
+|         EEE         |
+|         EEE         |
+|  B     EE EE     B  |
+| PF    EELLLEE    FP |
+|  B     EE EE     B  |
+|         EEE         |
+|         EEE         |
+|                     |
+|                     |
+|                     |
+|                     |
+|       IIIIIII       |
+|        CIGIC        |
+|        BCGCB        |
+|                     |
+aisle
+|     CCCCCCCCCCC     |
+|     CHHHHHHHHHC     |
+|       HCCGCCH       |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|         EEE         |
+|  B      EEE      B  |
+|  FF   EEE EEE   FF  |
+|  B      EEE      B  |
+|          E          |
+|          E          |
+|                     |
+|                     |
+|                     |
+|                     |
+|        CIHIC        |
+|        CCGCC        |
+|                     |
+|                     |
+aisle
+|    CCCCCCCCCCCCC    |
+|    CBCHHHHHHHCBC    |
+|        BCGCB        |
+|        CIGIC        |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|   B             B   |
+|  PFF           FFP  |
+|   B             B   |
+|                     |
+|                     |
+|    KF         FK    |
+|    FF         FF    |
+|    GG         GG    |
+|        CIHIC        |
+|        CIGIC        |
+|        BCGCB        |
+|                     |
+|                     |
+aisle
+|   CCC  CCCCC  CCC   |
+|   CBC  HHHHH  CBC   |
+|                     |
+|        BCGCB        |
+|        CIHIC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|    B           B    |
+|   PFF         FFP   |
+|    B           B    |
+|    F           F    |
+|    G           G    |
+|    GK         KG    |
+|                     |
+|                     |
+|        CIHIC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+aisle
+|  CCC   CCCCC   CCC  |
+|  CBC   CBCBC   CBC  |
+|                     |
+|  K     BCGCB     K  |
+|        CCGCC        |
+|        CIHIC        |
+|        CIHIC        |
+|  KK             KK  |
+|   G             G   |
+|   G             G   |
+|   FFB         BFF   |
+|   FPFF       FFPF   |
+|     B         B     |
+|                     |
+|                     |
+|                     |
+|        CIHIC        |
+|        CIHIC        |
+|        CCGCC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+aisle
+| BCC    CCCCC    CCB |
+| CBC    BCBCB    CBC |
+|                     |
+|  GK             KG  |
+|  F     BCGCB     F  |
+|  G     BCGCB     G  |
+|  G     CIGIC     G  |
+|  FK    CIHIC    KF  |
+|  FK             KF  |
+|                     |
+|      BBB   BBB      |
+|     PFFFFFFFFFP     |
+|      BBB   BBB      |
+|                     |
+|                     |
+|        CIHIC        |
+|        CIGIC        |
+|        BCGCB        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+| BB    CCCCCCC    BB |
+| FC    BIIIIIB    CF |
+| G     CIIIIIC     G |
+|       CIIIIIC       |
+|       CIIIIIC       |
+|       BIIIIIB       |
+|        CCCCC        |
+|        CCGCC        |
+|        CIGIC        |
+|        CIHIC        |
+|        CBBBC        |
+|       PPPPPPP       |
+|        CBBBC        |
+|        CIHIC        |
+|        CIGIC        |
+|        CCGCC        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+| B     CCCCCCC     B |
+| C     BIIIIIB     C |
+|       CIIIIIC       |
+|       CIIIIIC       |
+|       CIIIIIC       |
+|       BIIIIIB       |
+|        CCCCC        |
+|                     |
+|        BCGCB        |
+|        BCGCB        |
+|        BCGCB        |
+|        PCGCP        |
+|        BCGCB        |
+|        BCGCB        |
+|        BCGCB        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|       CCCCCCC       |
+|       BdddddB       |
+|       CdddddC       |
+|       CdddddC       |
+|       CdddddC       |
+|       BdddddB       |
+|        CCCCC        |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+aisle
+|       CCCCCCC       |
+|       BDDDDDB       |
+|       PDDDDDP       |
+|       BDDMDDB       |
+|       PDDDDDP       |
+|       BDDDDDB       |
+|       CCPPPCC       |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
