@@ -1,0 +1,277 @@
+{
+  "gtna.tooltip.mb.type.bec_assembler": [
+    "Condensate Observation Array",
+    "Matriz de Observação de Condensado",
+    "凝聚态观测阵列"
+  ],
+  "gtna.tooltip.mb.type.bec_storage": [
+    "Condensate Containment Field",
+    "Campo de Contenção de Condensado",
+    "凝聚态约束场"
+  ],
+  "gtna.tooltip.mb.type.bec_generator": [
+    "Condensate Entanglement Apparatus",
+    "Aparato de Emaranhamento de Condensado",
+    "凝聚态纠缠装置"
+  ],
+  "gtna.tooltip.mb.type.bec_io_node": [
+    "Condensate Teleportation Node",
+    "Nó de Teletransporte de Condensado",
+    "凝聚态传送节点"
+  ],
+  "gtna.tooltip.mb.type.bec_diode": [
+    "Maxwell Gate",
+    "Portão de Maxwell",
+    "麦克斯韦门"
+  ],
+  "gtna.machine.bec_assembler.tooltip.purpose": [
+    "Supplies nanites, power and condensate to the Teleportation Nodes it can see",
+    "Fornece nanitas, energia e condensado aos Nós de Teletransporte que enxerga",
+    "为视线内的传送节点提供纳米蜂群、能量与凝聚态"
+  ],
+  "gtna.machine.bec_assembler.tooltip.nanites": [
+    "Nanites go in its Nanite Containment Buses",
+    "As nanitas ficam nos Barramentos de Contenção de Nanitas",
+    "纳米蜂群存放在纳米蜂群约束总线中"
+  ],
+  "gtna.machine.bec_assembler.tooltip.lowest": [
+    "Nanite types can be mixed, but the effective tier is the lowest of them",
+    "Tipos de nanita podem ser misturados, mas o tier efetivo é o menor deles",
+    "可混合不同纳米蜂群，但有效等级取最低者"
+  ],
+  "gtna.machine.bec_assembler.tooltip.max": [
+    "Only %s nanites count at once; the rest are ignored",
+    "Só %s nanitas contam de cada vez; o resto é ignorado",
+    "同时最多计入%s个纳米蜂群，其余忽略"
+  ],
+  "gtna.machine.bec_assembler.tooltip.stall": [
+    "Nodes stall when they ask for more EU than the array can supply",
+    "Os nós travam quando pedem mais EU do que a matriz fornece",
+    "节点请求的EU超过阵列供给时会停滞"
+  ],
+  "gtna.machine.bec_assembler.tooltip.condensate": [
+    "A recipe's condensate can arrive at any time during the craft",
+    "O condensado de uma receita pode chegar a qualquer momento da fabricação",
+    "配方所需凝聚态可在制作期间任意时刻供给"
+  ],
+  "gtna.machine.bec_assembler.tooltip.void": [
+    "A recipe still missing condensate at the end fails and voids",
+    "Uma receita que ainda falta condensado no fim falha e é perdida",
+    "结束时仍缺凝聚态的配方会失败并清空"
+  ],
+  "gtna.machine.bec_assembler.tooltip.slow": [
+    "Condensate in the network that the recipe did not ask for slows the craft",
+    "Condensado na rede que a receita não pediu deixa a fabricação mais lenta",
+    "网络中存在配方不需要的凝聚态会降低制作速度"
+  ],
+  "gtna.machine.bec_assembler.tooltip.clog": [
+    "More than %s unrequested condensates while a node runs: the craft fails at once",
+    "Mais de %s condensados não pedidos com um nó rodando: a fabricação falha na hora",
+    "节点运行时若有超过%s种不需要的凝聚态，制作立即失败"
+  ],
+  "gtna.machine.bec_assembler.tooltip.humor": [
+    "Watches everything, touches nothing, invoices both.",
+    "Observa tudo, não toca em nada, fatura os dois.",
+    "什么都看，什么都不碰，两样都开票。"
+  ],
+  "gtna.machine.bec_storage.tooltip.purpose": [
+    "Its condensate is visible to every Observation Array on the network",
+    "Seu condensado fica visível para toda Matriz de Observação da rede",
+    "其中的凝聚态对网络上所有观测阵列可见"
+  ],
+  "gtna.machine.bec_storage.tooltip.route": [
+    "A Maxwell Gate controls where the condensate goes",
+    "Um Portão de Maxwell controla para onde o condensado vai",
+    "麦克斯韦门控制凝聚态的流向"
+  ],
+  "gtna.machine.bec_storage.tooltip.capacity": [
+    "Capacity is the field strength, set in the GUI or by a computer",
+    "A capacidade é a força do campo, ajustada na interface ou por computador",
+    "容量即场强，可在界面或由计算机设置"
+  ],
+  "gtna.machine.bec_storage.tooltip.unit": [
+    "1 field strength holds 1 mB of condensate and uses 1 EU/t",
+    "1 de força de campo guarda 1 mB de condensado e gasta 1 EU/t",
+    "1点场强可储存1 mB凝聚态，消耗1 EU/t"
+  ],
+  "gtna.machine.bec_storage.tooltip.split": [
+    "With several fields on a network, new condensate is split by field strength",
+    "Com vários campos na rede, o condensado novo é dividido pela força de cada campo",
+    "网络上有多个约束场时，新凝聚态按场强比例分配"
+  ],
+  "gtna.machine.bec_storage.tooltip.overfill": [
+    "Overfilled, it deletes %s of every condensate each second",
+    "Lotado, ele apaga %s de cada condensado por segundo",
+    "超出容量时，每秒删除每种凝聚态的%s"
+  ],
+  "gtna.machine.bec_storage.tooltip.shutdown": [
+    "If the field shuts down, its contents are voided at once",
+    "Se o campo desligar, o conteúdo some na hora",
+    "约束场一旦停机，内容物立即清空"
+  ],
+  "gtna.machine.bec_storage.tooltip.detector": [
+    "A Condensate Detector Hatch reads the stored levels",
+    "Uma Escotilha Detectora de Condensado lê os níveis guardados",
+    "凝聚态探测仓可读取储量"
+  ],
+  "gtna.machine.bec_storage.tooltip.humor": [
+    "Storage policy: keep it cold, keep it paid, keep it quiet.",
+    "Política de armazenamento: frio, pago e em silêncio.",
+    "储存政策：保持低温、按时付费、保持安静。"
+  ],
+  "gtna.machine.bec_generator.tooltip.purpose": [
+    "Turns fluids into entangled condensate",
+    "Transforma fluidos em condensado emaranhado",
+    "将流体转化为纠缠凝聚态"
+  ],
+  "gtna.machine.bec_generator.tooltip.transfer": [
+    "Entangled condensate moves only through BEC hatches and conduits",
+    "Condensado emaranhado só passa por escotilhas e condutos BEC",
+    "纠缠凝聚态只能经由BEC仓与导管传输"
+  ],
+  "gtna.machine.bec_generator.tooltip.always": [
+    "It keeps producing even with no room in the network; the excess is voided",
+    "Continua produzindo mesmo sem espaço na rede; o excesso é perdido",
+    "即使网络无空间也会继续生产，多余部分清空"
+  ],
+  "gtna.machine.bec_generator.tooltip.stored": [
+    "Condensate is stored only in a Containment Field",
+    "O condensado só é guardado num Campo de Contenção",
+    "凝聚态只能储存在约束场中"
+  ],
+  "gtna.machine.bec_generator.tooltip.eu": [
+    "Uses as much fluid as the supplied EU/t allows",
+    "Gasta tanto fluido quanto o EU/t fornecido permite",
+    "按供给的EU/t尽可能多地消耗流体"
+  ],
+  "gtna.machine.bec_generator.tooltip.time": [
+    "A cycle lasts as long as the slowest active recipe",
+    "Um ciclo dura o tanto da receita ativa mais lenta",
+    "每个周期时长等于最慢的进行中配方"
+  ],
+  "gtna.machine.bec_generator.tooltip.humor": [
+    "Quantum entanglement, now with a monthly subscription.",
+    "Emaranhamento quântico, agora com assinatura mensal.",
+    "量子纠缠，现已推出月度订阅。"
+  ],
+  "gtna.machine.bec_io_node.tooltip.purpose": [
+    "Teleports items into and out of the Observation Array",
+    "Teletransporta itens para dentro e para fora da Matriz de Observação",
+    "将物品传送进出观测阵列"
+  ],
+  "gtna.machine.bec_io_node.tooltip.logic": [
+    "Recipe logic is the same as other multiblocks",
+    "A lógica de receitas é a mesma das outras multis",
+    "配方逻辑与其他多方块相同"
+  ],
+  "gtna.machine.bec_io_node.tooltip.start": [
+    "Condensate need not be present for a recipe to start",
+    "O condensado não precisa estar presente para a receita começar",
+    "配方启动时无需凝聚态已就位"
+  ],
+  "gtna.machine.bec_io_node.tooltip.link": [
+    "Link it to the array with a Line-of-Sight Connector",
+    "Ligue-o à matriz com um Conector de Linha de Visão",
+    "用视线连接器将其与阵列连接"
+  ],
+  "gtna.machine.bec_io_node.tooltip.slot_tier": [
+    "Each item slot of a recipe has a nanite tier; to pass it the node needs that tier or higher",
+    "Cada slot de item da receita tem um tier de nanita; para passar o nó precisa desse tier ou maior",
+    "配方的每个物品槽都有纳米蜂群等级；节点需提供同级或更高等级才能推进"
+  ],
+  "gtna.machine.bec_io_node.tooltip.excess": [
+    "Extra nanites speed up the craft linearly",
+    "Nanitas extras aceleram a fabricação de forma linear",
+    "多余的纳米蜂群线性加快制作"
+  ],
+  "gtna.machine.bec_io_node.tooltip.higher": [
+    "A higher tier than requested slows progress by 2^(provided tier − requested tier)",
+    "Um tier maior que o pedido deixa o progresso 2^(tier fornecido − tier pedido) vezes mais lento",
+    "提供的等级高于需求时，进度变慢 2^(提供等级 − 需求等级) 倍"
+  ],
+  "gtna.machine.bec_io_node.tooltip.progress": [
+    "Progress per tick = nanites / (parallels × 2^|tier gap| × max(slowdowns + 1, speed divisor))",
+    "Progresso por tick = nanitas / (paralelos × 2^|diferença de tier| × max(lentidões + 1, divisor de velocidade))",
+    "每tick进度 = 纳米蜂群 / (并行 × 2^|等级差| × max(减速 + 1, 速度除数))"
+  ],
+  "gtna.machine.bec_io_node.tooltip.eu": [
+    "Its EU/t stays the same when paused, stalled or slowed",
+    "Seu EU/t continua igual quando pausado, travado ou lento",
+    "暂停、停滞或减速时EU/t保持不变"
+  ],
+  "gtna.machine.bec_io_node.tooltip.parallel_eu": [
+    "Each parallel adds the recipe's EU/t linearly",
+    "Cada paralelo soma o EU/t da receita de forma linear",
+    "每个并行线性增加配方EU/t"
+  ],
+  "gtna.machine.bec_io_node.tooltip.no_overclock": [
+    "Does not overclock",
+    "Não faz overclock",
+    "不会超频"
+  ],
+  "gtna.machine.bec_io_node.tooltip.min_max": [
+    "Min and max parallels are set in the parameters for exact timings",
+    "Paralelos mínimo e máximo são ajustados nos parâmetros para tempos exatos",
+    "可在参数中设置最小与最大并行以精确控制时长"
+  ],
+  "gtna.machine.bec_io_node.tooltip.divisor": [
+    "The speed divisor slows recipes for slow automation, without lowering the EU/t",
+    "O divisor de velocidade deixa as receitas lentas para automação lenta, sem baixar o EU/t",
+    "速度除数可为慢速自动化减慢配方，但不降低EU/t"
+  ],
+  "gtna.machine.bec_io_node.tooltip.nanite_detector": [
+    "A Nanite Detector Hatch reads the requested nanites",
+    "Uma Escotilha Detectora de Nanitas lê as nanitas pedidas",
+    "纳米蜂群探测仓可读取所需纳米蜂群"
+  ],
+  "gtna.machine.bec_io_node.tooltip.pause": [
+    "An I/O Node Controller Hatch pauses the node",
+    "Uma Escotilha Controladora de Nó pausa o nó",
+    "IO节点控制仓可暂停节点"
+  ],
+  "gtna.machine.bec_io_node.tooltip.humor": [
+    "Shipping department of the quantum era. Still loses one sock per batch.",
+    "O setor de expedição da era quântica. Ainda perde uma meia por lote.",
+    "量子时代的物流部。每批依然丢一只袜子。"
+  ],
+  "gtna.machine.bec_diode.tooltip.purpose": [
+    "Maxwell's Demon's big brother: controls what condensate each side of the network sees",
+    "O irmão mais velho do Demônio de Maxwell: controla o condensado que cada lado da rede vê",
+    "麦克斯韦妖的大哥：控制网络两侧能看到的凝聚态"
+  ],
+  "gtna.machine.bec_diode.tooltip.direction": [
+    "The input hatch's side is exposed to the output hatch's side, never the other way",
+    "O lado da escotilha de entrada fica exposto ao lado da escotilha de saída, nunca ao contrário",
+    "输入仓一侧对输出仓一侧可见，反向则不可见"
+  ],
+  "gtna.machine.bec_diode.tooltip.filters": [
+    "Filters in the parameters, one slot per condensate type",
+    "Filtros nos parâmetros, um espaço por tipo de condensado",
+    "参数中可设置过滤，每种凝聚态一个槽"
+  ],
+  "gtna.machine.bec_diode.tooltip.no_filter": [
+    "With no filter set, all condensate passes",
+    "Sem filtro, todo condensado passa",
+    "未设置过滤时，所有凝聚态均可通过"
+  ],
+  "gtna.machine.bec_diode.tooltip.fluid_override": [
+    "Fluid input hatches override the filters: each fluid in them becomes a filter",
+    "Escotilhas de entrada de fluido substituem os filtros: cada fluido nelas vira um filtro",
+    "流体输入仓会覆盖过滤：其中每种流体都成为过滤项"
+  ],
+  "gtna.machine.bec_diode.tooltip.toggle": [
+    "Turning the controller on or off toggles the flow",
+    "Ligar ou desligar o controlador liga ou corta o fluxo",
+    "开关控制器即可切换流通"
+  ],
+  "gtna.machine.bec_diode.tooltip.power": [
+    "Uses %s while running, whatever the networks do",
+    "Gasta %s enquanto ligado, faça a rede o que fizer",
+    "运行时消耗%s，与两侧网络状态无关"
+  ],
+  "gtna.machine.bec_diode.tooltip.humor": [
+    "Sorting particles by hand is cheaper than thermodynamics, says procurement.",
+    "Separar partículas na mão sai mais barato que a termodinâmica, diz o setor de compras.",
+    "采购部说：手工分拣粒子比热力学便宜。"
+  ]
+}

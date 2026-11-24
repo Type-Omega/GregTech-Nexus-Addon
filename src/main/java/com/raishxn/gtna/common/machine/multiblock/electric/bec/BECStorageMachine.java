@@ -36,6 +36,11 @@ import java.util.List;
  */
 public class BECStorageMachine extends BECMultiblockMachine implements BECInventory {
 
+    // EN: GTNA keeps 9/10 of each condensate per second when overfilled (GTNH deletes 11%).
+    // PT: O GTNA mantém 9/10 de cada condensado por segundo quando lotado (o GTNH apaga 11%).
+    // ZH: 超出容量时 GTNA 每秒保留每种凝聚态的 9/10（GTNH 删除 11%）。
+    public static final long OVERFILL_DIVISOR = 10;
+    public static final double OVERFILL_LOSS = 1.0 / OVERFILL_DIVISOR;
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             BECStorageMachine.class, BECMultiblockMachine.MANAGED_FIELD_HOLDER);
 
@@ -84,7 +89,7 @@ public class BECStorageMachine extends BECMultiblockMachine implements BECInvent
     public boolean beforeWorking(GTRecipe recipe) {
         if (!super.beforeWorking(recipe)) return false;
         if (getAmountStored() > fieldStrength) {
-            stored.replaceAll((fluid, amount) -> amount * 9 / 10);
+            stored.replaceAll((fluid, amount) -> amount * (OVERFILL_DIVISOR - 1) / OVERFILL_DIVISOR);
             stored.object2LongEntrySet().removeIf(e -> e.getLongValue() <= 0);
             contentsChanged = true;
         }

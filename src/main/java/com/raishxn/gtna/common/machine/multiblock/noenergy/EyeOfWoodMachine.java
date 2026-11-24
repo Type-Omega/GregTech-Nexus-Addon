@@ -53,11 +53,13 @@ public class EyeOfWoodMachine extends WorkableMultiblockMachine implements IDisp
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             EyeOfWoodMachine.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
 
-    private static final int STANDARD_WATER = 256_000;
-    private static final int STANDARD_LAVA = 256_000;
-    private static final int DURATION = 1200;
-    private static final int SUCCESS_BASE = 7500;
-    private static final double SUCCESS_SUBSTRATE = Math.pow(2_000_000_000d, 1d / 256d);
+    public static final int STANDARD_WATER = 256_000;
+    public static final int STANDARD_LAVA = 256_000;
+    public static final int DURATION = 1200;
+    public static final int SUCCESS_BASE = 7500;
+    /** Steam vented on failure per point of success chance (in 1/10,000). */
+    public static final int FAIL_STEAM_PER_POINT = 36_000;
+    public static final double SUCCESS_SUBSTRATE = Math.pow(2_000_000_000d, 1d / 256d);
     private static final Fluid[] WATER_FLUIDS = new Fluid[] { Fluids.WATER, GTMaterials.Water.getFluid() };
     private static final Fluid[] LAVA_FLUIDS = new Fluid[] { Fluids.LAVA, GTMaterials.Lava.getFluid() };
 
@@ -267,11 +269,11 @@ public class EyeOfWoodMachine extends WorkableMultiblockMachine implements IDisp
 
         double waterMultiplier = 1d / Math.pow(SUCCESS_SUBSTRATE, waterDifference);
         double lavaMultiplier = 1d / Math.pow(SUCCESS_SUBSTRATE, lavaDifference);
-        return Math.max(1, (int) (SUCCESS_BASE - 7499 * (1d - waterMultiplier * lavaMultiplier)));
+        return Math.max(1, (int) (SUCCESS_BASE - (SUCCESS_BASE - 1) * (1d - waterMultiplier * lavaMultiplier)));
     }
 
     private int getFailSteamOutput() {
-        return 36_000 * Math.max(1, successChance);
+        return FAIL_STEAM_PER_POINT * Math.max(1, successChance);
     }
 
     private List<ItemStack> generateOutputs() {

@@ -37,6 +37,9 @@ public class PlasmaForgeMachine extends CoilWorkableElectricMultiblockMachine {
     public static final double MAX_EFFICIENCY_TICKS = 3600d * 8d * 20d;
     public static final double MAXIMUM_DISCOUNT = 0.5d;
     public static final long DECAY_PER_TICK = 100;
+    /** Stored run time is capped at this many times the time for the full discount. */
+    public static final int RUNNING_TIME_CAP = 2;
+    public static final int MAX_ENERGY_HATCHES = 2, MAX_LASER_HATCHES = 1;
 
     @Persisted
     @DescSynced
@@ -64,7 +67,8 @@ public class PlasmaForgeMachine extends CoilWorkableElectricMultiblockMachine {
     @Override
     public boolean beforeWorking(GTRecipe recipe) {
         if (!super.beforeWorking(recipe)) return false;
-        if (recipe != null) runningTime = Math.min((long) MAX_EFFICIENCY_TICKS * 2, runningTime + recipe.duration);
+        if (recipe != null)
+            runningTime = Math.min((long) MAX_EFFICIENCY_TICKS * RUNNING_TIME_CAP, runningTime + recipe.duration);
         return true;
     }
 
@@ -83,7 +87,7 @@ public class PlasmaForgeMachine extends CoilWorkableElectricMultiblockMachine {
 
     public static double discount(long runningTime) {
         double progress = Math.min(runningTime / MAX_EFFICIENCY_TICKS, 1.0d);
-        return Math.max(MAXIMUM_DISCOUNT, 1 - progress * 0.5);
+        return Math.max(MAXIMUM_DISCOUNT, 1 - progress * (1 - MAXIMUM_DISCOUNT));
     }
 
     private static Set<Fluid> catalysts() {

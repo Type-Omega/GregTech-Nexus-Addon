@@ -44,6 +44,8 @@ public class BECDiodeMachine extends BECMultiblockMachine {
             BECDiodeMachine.class, BECMultiblockMachine.MANAGED_FIELD_HOLDER);
 
     /** Match-context key the pattern stores the input hatch position under. */
+    /** Amperes of UIV drawn while the gate runs. */
+    public static final int AMPS = 1;
     public static final String INPUT_HATCH = "gtna_bec_diode_input";
 
     @Persisted
@@ -69,7 +71,7 @@ public class BECDiodeMachine extends BECMultiblockMachine {
             @Override
             public @NotNull Iterator<GTRecipe> searchRecipe() {
                 if (!isFormed()) return Collections.emptyIterator();
-                return List.of(cycle("maxwell_gate", VA[UIV], 1, 1)).iterator();
+                return List.of(cycle("maxwell_gate", VA[UIV], AMPS, 1)).iterator();
             }
 
             @Override

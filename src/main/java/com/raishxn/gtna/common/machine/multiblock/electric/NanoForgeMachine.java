@@ -33,6 +33,13 @@ import java.util.List;
 public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
 
     public static final String TIER = "nano_forge_tier";
+    public static final int MAX_TIER = 4;
+    // EN: GTNH tier-4 numbers: MagMatter per parallel halves for each tier below 4, time x 0.9999 per parallel.
+    // PT: Números do tier 4 do GTNH: MagMatter por paralelo cai à metade a cada tier abaixo do 4, tempo x 0,9999 por
+    // paralelo.
+    // ZH: GTNH 第4级数值：每低一级每并行所需磁物质减半，每并行耗时 x 0.9999。
+    public static final long MAGMATTER_PER_PARALLEL = 288L;
+    public static final double DURATION_PER_PARALLEL = 0.9999;
 
     public NanoForgeMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -42,7 +49,7 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
     public int getStructureTier() {
         long mask = ((IGTNAModuleHost) (Object) this).gtna$formedModuleMask();
         int tier = 1;
-        while (tier < 4 && (mask & (1L << (tier - 1))) != 0) tier++;
+        while (tier < MAX_TIER && (mask & (1L << (tier - 1))) != 0) tier++;
         return tier;
     }
 
@@ -73,15 +80,15 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
         if (tier < required) {
             return ModifierFunction.cancel(Component.translatable("gtna.machine.nano_forge.low_tier", required));
         }
-        int parallel = tier >= 4 ? forge.magMatterParallel(recipe, required) : 1;
-        boolean perfect = (tier < 4 || required < 3) && tier > required || required == 3 && parallel > 1;
+        int parallel = tier >= MAX_TIER ? forge.magMatterParallel(recipe, required) : 1;
+        boolean perfect = (tier < MAX_TIER || required < 3) && tier > required || required == 3 && parallel > 1;
         var overclock = (perfect ? GTRecipeModifiers.OC_PERFECT : GTRecipeModifiers.OC_NON_PERFECT)
                 .getModifier(machine, recipe);
-        if (parallel <= 1 && tier < 4) return overclock;
+        if (parallel <= 1 && tier < MAX_TIER) return overclock;
         var magmatter = ModifierFunction.builder()
                 .modifyAllContents(com.gregtechceu.gtceu.api.recipe.content.ContentModifier.multiplier(parallel))
                 .eutMultiplier(parallel).parallels(parallel)
-                .durationMultiplier(Math.pow(0.9999, parallel)).build();
+                .durationMultiplier(Math.pow(DURATION_PER_PARALLEL, parallel)).build();
         return magmatter.andThen(overclock);
     }
 
@@ -89,7 +96,7 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
     int magMatterParallel(GTRecipe recipe, int recipeTier) {
         if (findOutputNanite(recipe) == null) return 1;
         long magmatter = magMatterAmount(false);
-        long perParallel = 288L >> (4 - Math.min(4, recipeTier));
+        long perParallel = MAGMATTER_PER_PARALLEL >> (MAX_TIER - Math.min(MAX_TIER, recipeTier));
         return (int) Math.max(1, Math.min(Integer.MAX_VALUE, magmatter / Math.max(1, perParallel)));
     }
 
@@ -157,7 +164,7 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
 
     @Override
     public boolean beforeWorking(@org.jetbrains.annotations.Nullable GTRecipe recipe) {
-        if (recipe != null && getNanoTier() >= 4) {
+        if (recipe != null && getNanoTier() >= MAX_TIER) {
             int[] nanite = findOutputNanite(recipe);
             if (nanite != null && magMatterAmount(false) > 0) {
                 magMatterAmount(true);

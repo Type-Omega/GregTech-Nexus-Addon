@@ -56,6 +56,8 @@ public class BECIONodeMachine extends BECMultiblockMachine {
             BECIONodeMachine.class, BECMultiblockMachine.MANAGED_FIELD_HOLDER);
 
     /** Recipe data: ordinals of the {@link NaniteTier} of each item slot. */
+    /** More unrequested condensates than this in the network fail the craft at once. */
+    public static final int MAX_UNREQUESTED_CONDENSATES = 3;
     public static final String NANITE_TIERS = "bec_nanite_tiers";
     private static final String CONDENSATE = "bec_condensate";
     private static final String EUT = "bec_eut";
@@ -406,7 +408,7 @@ public class BECIONodeMachine extends BECMultiblockMachine {
                 nextProgress = Math.min(nextProgress, recipeSteps.get(step.index + 1).start);
             }
         }
-        if (slowdowns > 3) {
+        if (slowdowns > MAX_UNREQUESTED_CONDENSATES) {
             failRecipe(Component.translatable("gtna.bec.recipe.bec_clogged"));
             return;
         }

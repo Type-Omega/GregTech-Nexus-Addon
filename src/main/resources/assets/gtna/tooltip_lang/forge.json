@@ -1,0 +1,242 @@
+{
+  "gtna.tooltip.mb.type.nanite_fabricator": [
+    "Nanite Fabricator",
+    "Fabricador de Nanitas",
+    "纳米蜂群制造机"
+  ],
+  "gtna.tooltip.mb.type.plasma_forge": [
+    "Plasma Forge",
+    "Forja de Plasma",
+    "等离子锻炉"
+  ],
+  "gtna.tooltip.mb.type.plasma_mixer": [
+    "Plasma Mixer",
+    "Misturador de Plasma",
+    "等离子混合器"
+  ],
+  "gtna.machine.nano_forge.tooltip.purpose": [
+    "Needs insane amounts of power to build nanites",
+    "Precisa de quantidades absurdas de energia para fazer nanitas",
+    "需要海量能量来制造纳米蜂群"
+  ],
+  "gtna.machine.nano_forge.tooltip.tier": [
+    "Machine tier = the lower of the nanite tier and the built extensions",
+    "Tier da máquina = o menor entre o tier da nanita e as extensões construídas",
+    "机器等级 = 纳米蜂群等级与已建扩展中的较低者"
+  ],
+  "gtna.machine.nano_forge.tooltip.nanites": [
+    "Nanite tiers: %s, %s, %s, %s, in any input bus",
+    "Tiers de nanita: %s, %s, %s, %s, em qualquer barramento de entrada",
+    "纳米蜂群等级：%s、%s、%s、%s，放在任意输入总线"
+  ],
+  "gtna.machine.nano_forge.tooltip.kept": [
+    "The tier nanite is never consumed",
+    "A nanita de tier nunca é consumida",
+    "决定等级的纳米蜂群不会被消耗"
+  ],
+  "gtna.machine.nano_forge.tooltip.perfect": [
+    "Recipes of a lower tier overclock perfectly: %s faster per overclock instead of %s",
+    "Receitas de tier menor fazem overclock perfeito: %s mais rápido por overclock em vez de %s",
+    "低于机器等级的配方执行无损超频：每次加速%s而非%s"
+  ],
+  "gtna.machine.nano_forge.tooltip.low_tier": [
+    "A recipe above the machine tier does not start",
+    "Uma receita acima do tier da máquina não começa",
+    "高于机器等级的配方不会启动"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4": [
+    "Tier %s needs %s and the last extension",
+    "O tier %s precisa de %s e da última extensão",
+    "第%s级需要%s和最后一个扩展"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4_drain": [
+    "At tier 4, with the output nanite in a bus, it drains all molten MagMatter and spends one of those nanites",
+    "No tier 4, com a nanita de saída num barramento, drena todo o MagMatter fundido e gasta uma dessas nanitas",
+    "第4级时，若总线中有与产物相同的纳米蜂群，会抽干所有熔融磁物质并消耗一个该纳米蜂群"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4_parallel": [
+    "Parallels = MagMatter / (%s / 2^(%s − recipe tier))",
+    "Paralelos = MagMatter / (%s / 2^(%s − tier da receita))",
+    "并行数 = 磁物质 / (%s / 2^(%s − 配方等级))"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4_time": [
+    "Time × %s^parallels",
+    "Tempo × %s^paralelos",
+    "耗时 × %s^并行数"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4_perfect": [
+    "At tier 4, tier-3 recipes overclock perfectly only when MagMatter gives parallels",
+    "No tier 4, receitas de tier 3 só fazem overclock perfeito quando o MagMatter dá paralelos",
+    "第4级时，第3级配方只有在磁物质提供并行时才无损超频"
+  ],
+  "gtna.machine.nano_forge.tooltip.t4_foreign": [
+    "Another nanite in the buses that the recipe does not use blocks the MagMatter mode",
+    "Outra nanita nos barramentos que a receita não usa bloqueia o modo MagMatter",
+    "总线中有配方不使用的其他纳米蜂群时，磁物质模式不会启用"
+  ],
+  "gtna.machine.nano_forge.tooltip.humor": [
+    "Builds robots smaller than a budget meeting is long.",
+    "Faz robôs menores que a duração de uma reunião de orçamento.",
+    "造出的机器人比预算会议还要短小。"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.purpose": [
+    "Transcends dimensional boundaries to forge the hardest materials",
+    "Transcende as fronteiras dimensionais para forjar os materiais mais difíceis",
+    "超越维度边界，锻造最难的材料"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.runtime": [
+    "Each recipe adds its time to the run time; after %s the catalysts cost up to %s less",
+    "Cada receita soma seu tempo ao tempo de operação; depois de %s os catalisadores custam até %s menos",
+    "每个配方都会累加运行时间；累计%s后催化剂消耗最多减少%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.catalysts": [
+    "The discount applies to the Excited Dimensionally Transcendent catalysts",
+    "O desconto vale para os catalisadores Dimensionalmente Transcendentes Excitados",
+    "折扣作用于激发态超维度催化剂"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.decay": [
+    "While idle, the run time drains %s as fast as it builds up",
+    "Parada, o tempo de operação cai %s mais rápido do que sobe",
+    "空闲时运行时间的流失速度是累积速度的%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.cap": [
+    "Run time is stored up to %s",
+    "O tempo de operação é guardado até %s",
+    "运行时间最多储存%s"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.energy": [
+    "Takes up to %s energy hatches or %s laser hatch",
+    "Aceita até %s escotilhas de energia ou %s escotilha de laser",
+    "最多使用%s个能源仓或%s个激光仓"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.no_convergence": [
+    "No Dimensional Convergence in this port: the Transdimensional Alignment Matrix gives no perfect overclocks",
+    "Sem Convergência Dimensional neste port: a Matriz de Alinhamento Transdimensional não dá overclock perfeito",
+    "此移植没有维度汇聚：超维度校准矩阵不提供无损超频"
+  ],
+  "gtna.machine.dimensionally_transcendent_plasma_forge.tooltip.humor": [
+    "Takes eight hours to warm up. Just like the coffee machine.",
+    "Leva oito horas para esquentar. Igual à máquina de café.",
+    "需要八小时预热。和咖啡机一样。"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.purpose": [
+    "Mixes the plasmas the Plasma Forge needs, in bulk",
+    "Mistura em massa os plasmas que a Forja de Plasma precisa",
+    "批量混合等离子锻炉所需的等离子体"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.cost": [
+    "EU per recipe = EU/t × time × the recipe's multiplier (%s by default)",
+    "EU por receita = EU/t × tempo × multiplicador da receita (%s por padrão)",
+    "每个配方EU = EU/t × 耗时 × 配方倍率（默认%s）"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.upfront": [
+    "The whole cost is paid once, when the recipe starts",
+    "Todo o custo é pago de uma vez, quando a receita começa",
+    "全部消耗在配方开始时一次性扣除"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.parallel_hatch": [
+    "Parallel Hatch",
+    "Escotilha de Paralelo",
+    "并行仓"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.parallel": [
+    "Parallels come from a %s (%s at most)",
+    "Os paralelos vêm de uma %s (no máximo %s)",
+    "并行数来自%s（最多%s个）"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.scale": [
+    "Every input and the EU scale with the parallels; the time does not",
+    "Todas as entradas e o EU crescem com os paralelos; o tempo não",
+    "所有输入与EU随并行数增加，耗时不变"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.affordable": [
+    "Parallels are also capped by what the network balance can pay",
+    "Os paralelos também são limitados pelo que o saldo da rede consegue pagar",
+    "并行数还受无线网络余额可支付量限制"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.no_overclock": [
+    "Does not overclock",
+    "Não faz overclock",
+    "不会超频"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.no_energy": [
+    "A network short of one recipe's EU does not start",
+    "Uma rede sem o EU de uma receita não começa",
+    "网络余额不足一个配方的EU时不会启动"
+  ],
+  "gtna.machine.transcendent_plasma_mixer.tooltip.humor": [
+    "Assisting all your Plasma Forge needs. The finance team assists the bill.",
+    "Atendendo a todas as necessidades da Forja de Plasma. O financeiro atende a conta.",
+    "满足等离子锻炉的一切需求。账单由财务部满足。"
+  ],
+  "gtna.tooltip.mb.type.happiness_master": [
+    "Happiness Master",
+    "Mestre da Felicidade",
+    "快乐大师"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.purpose": [
+    "You'd better do a sanity check if you are looking at this",
+    "Melhor fazer um teste de sanidade se você está olhando para isto",
+    "如果你正在看这个，最好做个理智检定"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.overworld": [
+    "Works only in the Overworld; anywhere else it just has a festive effect",
+    "Só funciona no Overworld; em outro lugar só faz efeito festivo",
+    "只能在主世界工作；在其他地方只有节日效果"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.store": [
+    "Keeps pulling Water and Lava from its input hatches into storage, like the Eye of Harmony",
+    "Puxa sem parar Água e Lava das escotilhas de entrada para o estoque, como o Eye of Harmony",
+    "像鸿蒙之眼一样不断从输入仓抽取水和熔岩储存在机器内"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.depends": [
+    "The success rate depends on how much Water and Lava it has stored",
+    "A taxa de sucesso depende de quanta Água e Lava estão guardadas",
+    "成功率取决于机器内储存的水和熔岩数量"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.peak": [
+    "Highest success rate: %s with exactly %s of each stored",
+    "Maior taxa de sucesso: %s com exatamente %s de cada guardados",
+    "最高成功率：两者都恰好储存%2$s时为%1$s"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.formula": [
+    "Success = (%s − %s × [1 − 1/(S^dW × S^dL)]) / 10,000",
+    "Sucesso = (%s − %s × [1 − 1/(S^dW × S^dL)]) / 10.000",
+    "成功率 = (%s − %s × [1 − 1/(S^dW × S^dL)]) / 10,000"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.base": [
+    "Base S ≈ %s",
+    "Base S ≈ %s",
+    "底数 S ≈ %s"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.difference": [
+    "dW and dL = floor(|stored − %s| / 1,000) for Water and for Lava",
+    "dW e dL = piso(|guardado − %s| / 1.000) para Água e para Lava",
+    "dW 与 dL = floor(|储存量 − %s| / 1,000)，分别对应水和熔岩"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.too_far": [
+    "%s or more away from the target: the success rate drops to the minimum",
+    "%s ou mais longe do alvo: a taxa de sucesso cai para o mínimo",
+    "偏离目标%s及以上：成功率降到最低"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.time": [
+    "Each run takes a fixed %s",
+    "Cada ciclo leva %s fixos",
+    "每次运行固定耗时%s"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.success": [
+    "On success it outputs a big bundle of Overworld ores",
+    "No sucesso sai um pacote grande de minérios do Overworld",
+    "成功时输出大量主世界矿石资源"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.failure": [
+    "On failure it vents Steam: %s per success point, up to %s",
+    "Na falha solta Vapor: %s por ponto de sucesso, até %s",
+    "失败时输出蒸汽：每点成功率%s，最多%s"
+  ],
+  "gtna.machine.eye_of_wood.tooltip.humor": [
+    "The Eye of Harmony's rustic cousin. HR filed it under team-building.",
+    "O primo caipira do Eye of Harmony. O RH classificou como dinâmica de equipe.",
+    "鸿蒙之眼的乡下表亲。人事部把它归到团建活动里。"
+  ]
+}

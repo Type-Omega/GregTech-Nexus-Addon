@@ -15,6 +15,7 @@ import com.raishxn.gtna.api.machine.feature.godforge.GodforgeMath;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeModuleStats;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
+import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,6 +42,15 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("godforge_molten_module", 13);
         MINIMUM.put("godforge_plasma_module", 11);
         MINIMUM.put("godforge_exotic_module", 12);
+        MINIMUM.put("nano_forge", 12);
+        MINIMUM.put("dimensionally_transcendent_plasma_forge", 12);
+        MINIMUM.put("transcendent_plasma_mixer", 9);
+        MINIMUM.put("eye_of_wood", 12);
+        MINIMUM.put("bec_assembler", 9);
+        MINIMUM.put("bec_storage", 8);
+        MINIMUM.put("bec_generator", 6);
+        MINIMUM.put("bec_io_node", 15);
+        MINIMUM.put("bec_diode", 7);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -113,6 +123,23 @@ public final class MechanicTooltipGameTests {
         }
         h.assertTrue(text("forge_of_gods").contains("Holds " + GodforgeMath.maxModuleCount(data) + " modules"),
                 "the Forge lists the module slots GodforgeMath allows");
+        h.succeed();
+    }
+
+    /** Plasma Forge discount and Eye of Wood peak come from the machine code. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void plasmaForgeAndEyeOfWoodNumbersMatchTheCode(GameTestHelper h) {
+        h.assertTrue(PlasmaForgeMachine.discount((long) PlasmaForgeMachine.MAX_EFFICIENCY_TICKS) ==
+                PlasmaForgeMachine.MAXIMUM_DISCOUNT, "full run time gives the maximum discount");
+        String forge = text("dimensionally_transcendent_plasma_forge");
+        for (String needed : new String[] { "after 8 h the catalysts cost up to 50% less", "100x", "16 h" }) {
+            h.assertTrue(forge.contains(needed), "Plasma Forge tooltip lacks '" + needed + "': " + forge);
+        }
+        String wood = text("eye_of_wood");
+        for (String needed : new String[] { "75% with exactly 256,000 mB", "60 s", "up to 270,000,000 mB",
+                "Source:" }) {
+            h.assertTrue(wood.contains(needed), "Eye of Wood tooltip lacks '" + needed + "': " + wood);
+        }
         h.succeed();
     }
 

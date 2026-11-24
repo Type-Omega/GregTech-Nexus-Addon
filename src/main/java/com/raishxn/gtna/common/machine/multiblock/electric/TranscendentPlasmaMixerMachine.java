@@ -34,6 +34,9 @@ public class TranscendentPlasmaMixerMachine extends WorkableElectricMultiblockMa
     /** GTNH recipe EU/t, kept as data: the mixer never draws per-tick EU, so recipes carry no EU content. */
     public static final String EUT = "tpm_eut";
     private static final String COST = "gtna_wireless_cost";
+    /** EU multiplier of a recipe that does not set its own (GTNH default). */
+    public static final long DEFAULT_EU_MULTIPLIER = 10;
+    public static final int MAX_PARALLEL_HATCHES = 1;
 
     public TranscendentPlasmaMixerMachine(IMachineBlockEntity holder, Object... args) {
         super(holder, args);
@@ -48,7 +51,8 @@ public class TranscendentPlasmaMixerMachine extends WorkableElectricMultiblockMa
     }
 
     public static BigInteger costPerRecipe(GTRecipe recipe) {
-        long multiplier = recipe.data.contains(EU_MULTIPLIER) ? recipe.data.getLong(EU_MULTIPLIER) : 10;
+        long multiplier = recipe.data.contains(EU_MULTIPLIER) ? recipe.data.getLong(EU_MULTIPLIER) :
+                DEFAULT_EU_MULTIPLIER;
         long eut = recipe.data.getLong(EUT);
         return BigInteger.valueOf(multiplier).multiply(BigInteger.valueOf(eut))
                 .multiply(BigInteger.valueOf(recipe.duration));

@@ -96,69 +96,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Parallel: §e4^(Power Module MK - 1)§a",
                 "§b▸ Works only while its Space Elevator runs",
         });
-        ENGLISH.put("bec_assembler", new String[] {
-                "Machine Type: §eBEC Observation Array",
-                "§7§oIt only crafts what it can see.",
-                "§b§m                                                        ",
-                "§7Feeds §6Teleportation Nodes§7 linked by Line-of-Sight connectors",
-                "§7with nanites, EU and network condensate.",
-                "§b§m                                                        ",
-                "§a▸ One array powers §emany§a nodes",
-                "§b▸ Nanite tier: the §elowest§b among its buses",
-                "§b▸ At most §e30720§b nanites count",
-                "§c▸ Nodes stall when the array lacks §eEU§c",
-                "§c▸ More than §e3§c unrequested condensates fail the craft",
-        });
-        ENGLISH.put("bec_diode", new String[] {
-                "Machine Type: §eBEC Maxwell Gate",
-                "§7§oMaxwell's Demon's big brother.",
-                "§b§m                                                        ",
-                "§7Lets condensate flow §6one way§7:",
-                "§7the input side's condensate reaches the output side.",
-                "§b§m                                                        ",
-                "§a▸ Filters per condensate type in the parameters",
-                "§a▸ Fluid input hatches set the filters",
-                "§b▸ Uses §e1A UIV§b while active",
-                "§c▸ Blocks the network while switched off",
-        });
-        ENGLISH.put("bec_generator", new String[] {
-                "Machine Type: §eBEC Generator",
-                "§7§oOne fluid in, one ghost out.",
-                "§b§m                                                        ",
-                "§7Turns molten metals and fluids into §6entangled condensate§7;",
-                "§7the condensate goes straight into the network.",
-                "§b§m                                                        ",
-                "§a▸ Runs §eevery§a fluid in its hatches at once",
-                "§b▸ Parallels fill up to the §eEU/t§b available",
-                "§b▸ The cycle lasts as long as the §eslowest§b recipe",
-                "§c▸ Condensate is §evoided§c without room in the network",
-        });
-        ENGLISH.put("bec_io_node", new String[] {
-                "Machine Type: §eBEC Teleportation Node",
-                "§7§oItems in, items out, physics optional.",
-                "§b§m                                                        ",
-                "§7Crafts §6Condensate Assembly§7 recipes with its buses;",
-                "§7each item slot needs a §6nanite tier§7 in turn.",
-                "§b§m                                                        ",
-                "§a▸ Extra nanites speed crafting §elinearly§a",
-                "§a▸ Min/max parallels and a speed divisor in the parameters",
-                "§b▸ Higher-tier nanites slow it by §e2^(provided - required)§b",
-                "§b▸ Condensate may arrive at §eany time§b before the end",
-                "§c▸ No overclock",
-                "§c▸ Missing condensate at the end §efails§c the recipe",
-        });
-        ENGLISH.put("bec_storage", new String[] {
-                "Machine Type: §eBEC Storage",
-                "§7§oHold still. Very still.",
-                "§b§m                                                        ",
-                "§7Stores condensate for the network;",
-                "§7set the §6field strength§7 in the parameters.",
-                "§b§m                                                        ",
-                "§a▸ Injected condensate splits by §ecapacity§a between fields",
-                "§b▸ §e1§b field strength holds §e1 mB§b and costs §e1 EU/t§b",
-                "§b▸ Overfilled: keeps §e9/10§b of each condensate per second",
-                "§c▸ §eVoids§c everything if it loses power or is switched off",
-        });
         ENGLISH.put("blaze_blast_furnace", new String[] {
                 "Machine Type: §eElectric Blast Furnace",
                 "§7§oAn intern kept a blaze spawner in here. It worked.",
@@ -325,19 +262,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Every recipe finishes in §e1 tick§a",
                 "§b▸ Parallel: up to §e524,288§b",
         });
-        ENGLISH.put("dimensionally_transcendent_plasma_forge", new String[] {
-                "Machine Type: §ePlasma Forge, DTPF",
-                "§7§oTranscending dimensional boundaries since 2015.",
-                "§b§m                                                        ",
-                "§7A forge that slowly §6breaches dimensional§7",
-                "§7§6boundaries§7, burning less fuel the longer",
-                "§7it runs.",
-                "§b§m                                                        ",
-                "§a▸ Up to §e50%§a less fuel after §e8 h§a of runtime",
-                "§b▸ At least §e1,250§b Dimensional Injection Casings",
-                "§b▸ Up to §e2§b energy hatches or §e1§b laser",
-                "§c▸ Idle: the discount decays §e100x§c faster",
-        });
         ENGLISH.put("dimensionally_transcendent_steam_boiler", new String[] {
                 "Machine Type: §eLarge Boiler",
                 "§7§oBends spacetime to boil water. Priorities.",
@@ -439,20 +363,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Accepts Laser Hatches",
                 "§b▸ Parallel set by the §eParallel Hatch§b",
                 "§c▸ Needs a §eMuffler Hatch§c",
-        });
-        ENGLISH.put("eye_of_wood", new String[] {
-                "Machine Type: §eOre Condenser",
-                "§7§oThe Eye of Harmony's rustic cousin from the countryside.",
-                "§b§m                                                        ",
-                "§7An Overworld-only ore condenser that stores",
-                "§7§6Water and Lava§7 and turns them into large",
-                "§7ore bundles.",
-                "§b§m                                                        ",
-                "§a▸ Peak success: §e75%§a at §e256,000§a mB of each fluid",
-                "§b▸ Each run takes a fixed §e60 s§b",
-                "§c▸ Failure vents up to §e270,000,000§c mB Steam",
-                "§c▸ Overworld only",
-                "§c▸ Both shortage and excess of water/lava lower the chance",
         });
         ENGLISH.put("fishing_ground", new String[] {
                 "Machine Type: §eFishing Ground",
@@ -943,20 +853,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Thread Hatch: several recipes at once",
                 "§a▸ Accepts Laser Hatches",
                 "§b▸ Parallel set by the §eParallel Hatch§b",
-        });
-        ENGLISH.put("nano_forge", new String[] {
-                "Machine Type: §eNanite Fabricator",
-                "§7§oNanobots, son. Billions of them.",
-                "§b§m                                                        ",
-                "§7Builds §6nanites§7 with insane amounts of power;",
-                "§7the nanite in any input bus sets the tier.",
-                "§b§m                                                        ",
-                "§a▸ §ePerfect overclock§a on lower-tier recipes",
-                "§a▸ The tier nanite is never consumed",
-                "§b▸ Carbon §eT1§b, Neutronium §eT2§b, Transcendent §eT3§b",
-                "§b▸ MagMatter §eT4§b: molten MagMatter adds parallels",
-                "§b▸ Keep the tier nanite in an §einput bus§b",
-                "§c▸ Each tier needs structural changes",
         });
         ENGLISH.put("naquadah_hyper_reactor", new String[] {
                 "Machine Type: §eGenerator",
@@ -1523,18 +1419,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Oceans and rivers produce the most",
                 "§b▸ Output depends on the biome",
                 "§c▸ Produces nothing in the Nether",
-        });
-        ENGLISH.put("transcendent_plasma_mixer", new String[] {
-                "Machine Type: §eTranscendent Mixer, TPM",
-                "§7§oAssisting in all your DTPF needs!",
-                "§b§m                                                        ",
-                "§7Mixes the exotic plasmas that feed the",
-                "§7§6Plasma Forge§7, scaled with a Parallel Hatch.",
-                "§b§m                                                        ",
-                "§a▸ All inputs scale with parallel, time does not",
-                "§b▸ Cost per parallel: §e10§b x EU/t x duration",
-                "§c▸ Power only from §ewireless§c networks",
-                "§c▸ EU is paid when the recipe starts",
         });
         ENGLISH.put("universal_factory", new String[] {
                 "Machine Type: §eUniversal Factory",
