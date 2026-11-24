@@ -877,22 +877,6 @@
    }
   ]
  },
- "advanced_fusion_reactor": {
-  "160": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/electric/AdvancedFusionReactorMachine.java",
-    "pattern": "energyInputs \\* \\(1L << \\(tier - GTValues\\.LuV\\)\\) \\* 10_000_000L",
-    "expr": "16 inputs x 10M at LuV = 160M"
-   }
-  ],
-  "4": [
-   {
-    "file": "src/main/java/com/raishxn/gtna/common/machine/multiblock/electric/AdvancedFusionReactorMachine.java",
-    "pattern": "TIER_EXTENSIONS = 4",
-    "expr": "4 extensions"
-   }
-  ]
- },
  "large_cracker": {
   "10": [
    {

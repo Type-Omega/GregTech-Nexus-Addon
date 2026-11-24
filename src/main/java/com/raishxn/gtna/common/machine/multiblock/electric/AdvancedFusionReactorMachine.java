@@ -40,7 +40,13 @@ public class AdvancedFusionReactorMachine extends WorkableElectricMultipleRecipe
             AdvancedFusionReactorMachine.class, WorkableElectricMultipleRecipesMachine.MANAGED_FIELD_HOLDER);
 
     /** The first four registered extensions (kuangbiao2..5) are the tier ones; the fifth is cross-recipe. */
-    private static final int TIER_EXTENSIONS = 4;
+    public static final int TIER_EXTENSIONS = 4;
+    /** Buffer per energy input at LuV; it doubles per tier extension. */
+    public static final long BUFFER_PER_INPUT = 10_000_000L;
+    /** Heat lost per tick while the reactor is idle. */
+    public static final long HEAT_DECAY_PER_TICK = 10_000;
+    /** Energy or laser hatches of each kind. */
+    public static final int MAX_ENERGY_HATCHES = 16;
 
     @Persisted
     @DescSynced
@@ -74,7 +80,7 @@ public class AdvancedFusionReactorMachine extends WorkableElectricMultipleRecipe
     }
 
     public static long bufferCapacity(int tier, int energyInputs) {
-        return energyInputs * (1L << (tier - GTValues.LuV)) * 10_000_000L;
+        return energyInputs * (1L << (tier - GTValues.LuV)) * BUFFER_PER_INPUT;
     }
 
     public long getHeat() {
@@ -114,7 +120,7 @@ public class AdvancedFusionReactorMachine extends WorkableElectricMultipleRecipe
         var logic = getRecipeLogic();
         if (heat > 0 &&
                 (logic.isIdle() || !logic.isWorkingEnabled() || (logic.isWaiting() && logic.getProgress() == 0))) {
-            heat = Math.max(0, heat - 10_000);
+            heat = Math.max(0, heat - HEAT_DECAY_PER_TICK);
         }
         long room = buffer.getEnergyCapacity() - buffer.getEnergyStored();
         if (isFormed() && room > 0 && energyContainer != null && energyContainer.getEnergyStored() > 0) {

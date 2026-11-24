@@ -1,0 +1,57 @@
+{
+  "gtna.tooltip.mb.oc.standard": [
+    "Overclock: %s faster per voltage tier above the recipe, for %s the EU",
+    "Overclock: %s mais rápido por tier de voltagem acima da receita, por %s o EU",
+    "超频：配方之上每高一个电压等级，速度%s，耗能%s"
+  ],
+  "gtna.tooltip.mb.oc.perfect": [
+    "Perfect overclock: %s faster per voltage tier above the recipe, for %s the EU",
+    "Overclock perfeito: %s mais rápido por tier de voltagem acima da receita, por %s o EU",
+    "无损超频：配方之上每高一个电压等级，速度%s，耗能%s"
+  ],
+  "gtna.tooltip.mb.oc.none": [
+    "No overclock: recipes run at their own EU/t and time",
+    "Sem overclock: as receitas rodam no próprio EU/t e tempo",
+    "无超频：配方按自身的EU/t与耗时运行"
+  ],
+  "gtna.tooltip.mb.oc.generator": [
+    "No overclock: it gives the recipe's EU/t, whatever the dynamo tier",
+    "Sem overclock: gera o EU/t da receita, qualquer que seja o tier do dínamo",
+    "无超频：无论动力仓等级，都按配方的EU/t发电"
+  ],
+  "gtna.tooltip.mb.hatch.parallel": [
+    "Parallel Hatch: runs as many parallels as the hatch is set to",
+    "Escotilha de Paralelo: roda tantos paralelos quanto a escotilha estiver ajustada",
+    "并行仓：按并行仓的设定值并行运行"
+  ],
+  "gtna.tooltip.mb.hatch.thread": [
+    "Thread Hatch: one recipe per thread, and each thread may run a different recipe",
+    "Escotilha de Thread: uma receita por thread, e cada thread pode rodar uma receita diferente",
+    "线程仓：每个线程运行一个配方，各线程可运行不同配方"
+  ],
+  "gtna.tooltip.mb.hatch.accelerate": [
+    "Accelerate Hatch: cuts recipe time to its set percentage; each tier the recipe is above the hatch gives some time back",
+    "Escotilha de Aceleração: reduz o tempo da receita à porcentagem ajustada; cada tier da receita acima da escotilha devolve parte do tempo",
+    "加速仓：将配方耗时降至设定百分比；配方每高于加速仓一个等级，会退回部分耗时"
+  ],
+  "gtna.tooltip.mb.hatch.overclock": [
+    "Overclock Hatch: each overclock divides the time by its divisor (%s up to hatch tier − %s) instead of %s",
+    "Escotilha de Overclock: cada overclock divide o tempo pelo divisor dela (de %s até o tier da escotilha − %s) em vez de %s",
+    "超频仓：每次超频耗时除以其除数（%s至仓室等级−%s），而非%s"
+  ],
+  "gtna.tooltip.mb.hatch.output_boost": [
+    "Output Boost Hatch: multiplies the outputs by its tier's factor",
+    "Escotilha de Reforço de Saída: multiplica as saídas pelo fator do tier dela",
+    "产出增幅仓：按其等级的倍率增加产出"
+  ],
+  "gtna.tooltip.mb.naquadah.time": [
+    "Run time: %s for Naquadah Fuel, %s for Enriched Naquadah Fuel",
+    "Duração: %s com Combustível de Naquadah, %s com Combustível de Naquadah Enriquecido",
+    "运行时长：硅岩燃料%s，富集硅岩燃料%s"
+  ],
+  "gtna.tooltip.mb.naquadah.hatches": [
+    "Up to %s Fluid Input Hatches, and one Dynamo or one Laser Source Hatch",
+    "Até %s Escotilhas de Entrada de Fluido, e um Dínamo ou uma Escotilha de Fonte Laser",
+    "最多%s个流体输入仓，以及一个动力仓或一个激光源仓"
+  ]
+}

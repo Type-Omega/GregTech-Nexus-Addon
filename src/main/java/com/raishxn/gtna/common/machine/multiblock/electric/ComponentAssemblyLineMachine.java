@@ -27,6 +27,10 @@ import java.util.List;
  */
 public final class ComponentAssemblyLineMachine extends WorkableElectricMultiblockMachine {
 
+    /** Highest casing tier the line reads; higher casings count as this one. */
+    public static final int MAX_CASING_TIER = GTValues.UV;
+    public static final int MAX_ENERGY_HATCHES = 2;
+
     private int casingTier;
 
     public ComponentAssemblyLineMachine(IMachineBlockEntity holder, Object... args) {
@@ -37,7 +41,7 @@ public final class ComponentAssemblyLineMachine extends WorkableElectricMultiblo
     public void onStructureFormed() {
         super.onStructureFormed();
         Object matched = getMultiblockState().getMatchContext().get("ComponentAssemblyLineCasingTier");
-        casingTier = matched instanceof Integer tier ? Math.min(GTValues.UV, tier) : 0;
+        casingTier = matched instanceof Integer tier ? Math.min(MAX_CASING_TIER, tier) : 0;
     }
 
     @Override

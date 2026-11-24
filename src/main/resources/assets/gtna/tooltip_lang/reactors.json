@@ -1,0 +1,197 @@
+{
+  "gtna.tooltip.mb.type.generator": [
+    "Generator",
+    "Gerador",
+    "发电机"
+  ],
+  "gtna.tooltip.mb.type.component_assembly": [
+    "Component Assembly",
+    "Montagem de Componentes",
+    "部件装配"
+  ],
+  "gtna.tooltip.mb.type.fusion_reactor": [
+    "Fusion Reactor",
+    "Reator de Fusão",
+    "聚变反应堆"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.purpose": [
+    "Burns naquadah fuels with hydrogen or with a plasma for steady power",
+    "Queima combustíveis de naquadah com hidrogênio ou com um plasma para energia constante",
+    "以氢气或等离子体燃烧硅岩燃料，稳定发电"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.hydrogen": [
+    "With hydrogen: %s of fuel + %s of Hydrogen per run give %s",
+    "Com hidrogênio: %s de combustível + %s de Hidrogênio por operação geram %s",
+    "氢气模式：每次运行消耗%s燃料+%s氢气，产出%s"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.plasma": [
+    "With a plasma: %s of fuel + %s of plasma per run give %s for %s as long",
+    "Com plasma: %s de combustível + %s de plasma por operação geram %s por %s o tempo",
+    "等离子模式：每次运行消耗%s燃料+%s等离子体，产出%s，持续时间为%s"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.plasma_pair": [
+    "Naquadah Fuel burns with Oxygen Plasma, Enriched Naquadah Fuel with Nitrogen Plasma",
+    "O Combustível de Naquadah queima com Plasma de Oxigênio, o Enriquecido com Plasma de Nitrogênio",
+    "硅岩燃料搭配氧等离子体，富集硅岩燃料搭配氮等离子体"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.rotation": [
+    "Builds facing any direction, up and down included",
+    "Pode ser construído virado para qualquer direção, inclusive para cima e para baixo",
+    "可朝任意方向建造，包括朝上与朝下"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.not_ported": [
+    "GTO's generator overclock is not ported: the dynamo tier does not raise the output",
+    "O overclock de gerador do GTO não foi portado: o tier do dínamo não aumenta a saída",
+    "未移植GTO的发电机超频：动力仓等级不会提高产出"
+  ],
+  "gtna.machine.large_naquadah_reactor.tooltip.humor": [
+    "Naquadah in, gigawatts out. Type Omega relocated the neighbours free of charge.",
+    "Entra naquadah, sai gigawatt. A Type Omega realocou os vizinhos sem custo.",
+    "硅岩进，吉瓦出。Type Omega已免费为邻居安排搬迁。"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.purpose": [
+    "The strongest naquadah reactor: the Large reactor's fuels and run times, at %s",
+    "O reator de naquadah mais forte: os combustíveis e durações do Large, em %s",
+    "最强的硅岩反应堆：燃料与时长同大型反应堆，但运行于%s"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.hydrogen": [
+    "With hydrogen: %s of fuel + %s of Hydrogen per run give %s, %s the EU per mB of the Large reactor",
+    "Com hidrogênio: %s de combustível + %s de Hidrogênio por operação geram %s, %s o EU por mB do Large",
+    "氢气模式：每次运行消耗%s燃料+%s氢气，产出%s，每mB产能为大型反应堆的%s"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.boosters": [
+    "Booster plasmas: %s of Oxygen Plasma for up to %s parallels, %s of Nitrogen Plasma for up to %s",
+    "Plasmas de reforço: %s de Plasma de Oxigênio para até %s paralelos, %s de Plasma de Nitrogênio para até %s",
+    "增幅等离子体：%s氧等离子体最多%s并行，%s氮等离子体最多%s并行"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.best": [
+    "The strongest booster found in the input hatches is the one used",
+    "O reforço mais forte encontrado nas escotilhas de entrada é o usado",
+    "使用输入仓中找到的最强增幅"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.parallel": [
+    "Boosted parallels are limited by the fuel and hydrogen in the hatches, not by EU",
+    "Os paralelos com reforço são limitados pelo combustível e hidrogênio nas escotilhas, não pelo EU",
+    "增幅并行数受仓内燃料与氢气限制，而非EU"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.scale": [
+    "A boosted run multiplies fuel, hydrogen and EU/t by its parallels; the run time stays the same",
+    "Uma operação reforçada multiplica combustível, hidrogênio e EU/t pelos paralelos; a duração não muda",
+    "增幅运行将燃料、氢气与EU/t乘以并行数，运行时长不变"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.consumed": [
+    "The booster plasma is consumed once, when a boosted run starts",
+    "O plasma de reforço é consumido uma vez, quando a operação reforçada começa",
+    "增幅等离子体在增幅运行开始时消耗一次"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.unboosted": [
+    "Without a booster it runs one recipe at a time",
+    "Sem reforço roda uma receita por vez",
+    "无增幅时每次只运行一个配方"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.default": [
+    "A booster a pack adds without a parallel count gives %s",
+    "Um reforço que um pack adiciona sem número de paralelos dá %s",
+    "整合包添加的未设定并行数的增幅默认为%s"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.ring": [
+    "The hatches go in the ring around the controller",
+    "As escotilhas ficam no anel ao redor do controlador",
+    "仓室位于控制器周围的环上"
+  ],
+  "gtna.machine.naquadah_hyper_reactor.tooltip.humor": [
+    "Four suns in a bottle. Type Omega Legal advises against shaking it.",
+    "Quatro sóis numa garrafa. O Jurídico da Type Omega desaconselha agitar.",
+    "瓶中四日。Type Omega法务部建议请勿摇晃。"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.purpose": [
+    "Assembles motors, pumps, sensors and other components in bulk on a tier-cased line",
+    "Monta motores, bombas, sensores e outros componentes em massa numa linha com casings de tier",
+    "在分级外壳的产线上批量装配电机、泵、传感器等部件"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.tier": [
+    "Line tier = the tier of its Component Assembly Line Casings, LV up to %s",
+    "Tier da linha = o tier das Component Assembly Line Casings, de LV até %s",
+    "产线等级 = 部件装配线外壳的等级，LV至%s"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.same": [
+    "Every casing of the line must be the same tier",
+    "Todas as casings da linha precisam ser do mesmo tier",
+    "产线所有外壳必须为同一等级"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.gate": [
+    "A recipe whose casing tier is above the line tier does not start",
+    "Uma receita com tier de casing acima do tier da linha não começa",
+    "外壳等级要求高于产线等级的配方不会启动"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.energy": [
+    "Up to %s Energy Hatches or %s Laser Target Hatches",
+    "Até %s Escotilhas de Energia ou %s Escotilhas de Alvo Laser",
+    "最多%s个能源仓或%s个激光靶仓"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.not_ported": [
+    "GTO's multiple recipes are not ported: it runs one recipe at a time",
+    "As receitas múltiplas do GTO não foram portadas: roda uma receita por vez",
+    "未移植GTO的多配方：每次只运行一个配方"
+  ],
+  "gtna.machine.component_assembly_line.tooltip.humor": [
+    "Industry's closest approach to divine creation, per the Type Omega annual report.",
+    "Segundo o relatório anual da Type Omega, o mais perto que a indústria chegou da criação divina.",
+    "据Type Omega年报，这是工业最接近神之造物的作品。"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.purpose": [
+    "A fusion reactor that climbs tiers as its extensions are built",
+    "Um reator de fusão que sobe de tier conforme as extensões são construídas",
+    "随扩展建造而提升等级的聚变反应堆"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.tier": [
+    "Tier: %s, plus one per tier extension built in order, up to %s",
+    "Tier: %s, mais um por extensão de tier construída em ordem, até %s",
+    "等级：%s，每按顺序建成一个等级扩展+1，最高%s"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.order": [
+    "Extensions count from the first; a missing one stops the count",
+    "As extensões contam a partir da primeira; uma que falte interrompe a contagem",
+    "扩展从第一个开始计数，缺少任何一个即停止计数"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.buffer": [
+    "Energy buffer: %s per energy input at %s, doubled for each tier above it",
+    "Buffer de energia: %s por entrada de energia em %s, dobrado a cada tier acima",
+    "能量缓存：每个能源输入%1$s（%2$s时），每高一级翻倍"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.startup": [
+    "A recipe needs its start energy; heat already in the reactor counts, only the rest comes from the buffer",
+    "Uma receita precisa da energia de partida; o calor já no reator conta, só o resto sai do buffer",
+    "配方需要启动能量；反应堆已有热量计入其中，仅差额从缓存扣除"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.too_big": [
+    "A recipe whose start energy exceeds the buffer does not run",
+    "Uma receita cuja energia de partida passa do buffer não roda",
+    "启动能量超过缓存容量的配方不会运行"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.decay": [
+    "While idle, heat drops by %s every tick",
+    "Parado, o calor cai %s a cada tick",
+    "空闲时热量每tick下降%s"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.cross": [
+    "The cross-recipe extension holds one Thread Hatch and one Overclock Hatch",
+    "A extensão de receitas cruzadas comporta uma Escotilha de Thread e uma de Overclock",
+    "跨配方扩展可容纳一个线程仓和一个超频仓"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.energy": [
+    "Up to %s Energy Hatches and %s Laser Target Hatches",
+    "Até %s Escotilhas de Energia e %s Escotilhas de Alvo Laser",
+    "最多%s个能源仓和%s个激光靶仓"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.not_ported": [
+    "GTO's Control Hatch is not ported; normal and wireless energy hatches fit next to the lasers",
+    "A Control Hatch do GTO não foi portada; escotilhas de energia normais e sem fio cabem junto dos lasers",
+    "未移植GTO的控制仓；普通与无线能源仓可与激光仓并用"
+  ],
+  "gtna.machine.advanced_fusion_reactor.tooltip.humor": [
+    "It simulates the eternal light. Type Omega bills it by the lumen.",
+    "Ele simula a luz eterna. A Type Omega cobra por lúmen.",
+    "它模拟永恒之光。Type Omega按流明计费。"
+  ]
+}

@@ -47,8 +47,12 @@ public final class GTNAAdvancedFusion {
                             .or(abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(16))
                             .or(abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(16))
                             .or(abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                            .or(abilities(PartAbility.INPUT_LASER).setMaxGlobalLimited(16, 16))
-                            .or(abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(16).setPreviewCount(0))
+                            .or(abilities(PartAbility.INPUT_LASER).setMaxGlobalLimited(
+                                    AdvancedFusionReactorMachine.MAX_ENERGY_HATCHES,
+                                    AdvancedFusionReactorMachine.MAX_ENERGY_HATCHES))
+                            .or(abilities(PartAbility.INPUT_ENERGY)
+                                    .setMaxGlobalLimited(AdvancedFusionReactorMachine.MAX_ENERGY_HATCHES)
+                                    .setPreviewCount(0))
                             .or(abilities(GTNAPartAbility.ACCELERATE_HATCH).setMaxGlobalLimited(1)))
                     .where('E', blocks(GTBlocks.FUSION_CASING.get()))
                     .where('F', frames(GTMaterials.NaquadahAlloy))

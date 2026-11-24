@@ -12,21 +12,6 @@ public final class GTNAMultiblockTooltipText {
     public static final Map<String, String[]> ENGLISH = new LinkedHashMap<>();
 
     static {
-        ENGLISH.put("advanced_fusion_reactor", new String[] {
-                "Machine Type: §eFusion Reactor",
-                "§7§oIt simulates the eternal light.",
-                "§b§m                                                        ",
-                "§7A modular fusion reactor: §6high-energy§7",
-                "§7modules raise its heat capacity, an",
-                "§7§6overclock§7 module unlocks special hatches.",
-                "§b§m                                                        ",
-                "§a▸ Each high-energy module §edoubles§a heat capacity",
-                "§a▸ Overclock module: Overclock and Thread Hatches",
-                "§b▸ Energy storage: §e160M§b EU before modules",
-                "§b▸ Up to §e4§b high-energy modules, in order",
-                "§c▸ Only §eone§c overclock module",
-                "§c▸ On conflict, install high-energy modules first",
-        });
         ENGLISH.put("advanced_hyper_reactor", new String[] {
                 "Machine Type: §eGenerator",
                 "§7§oThe Hyper Reactor, after a long talk with an echo.",
@@ -151,17 +136,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Extension 2: Parallel Control and Laser Hatches",
                 "§b▸ Recipe cap: §eIV§b, never above the casing tier",
                 "§c▸ Each upgrade needs a bigger structure",
-        });
-        ENGLISH.put("component_assembly_line", new String[] {
-                "Machine Type: §eComponent Assembly",
-                "§7§oIndustry's closest approximation to divine creation.",
-                "§b§m                                                        ",
-                "§7Runs component assembly batches as a",
-                "§7§6tier-cased line§7 with a Parallel Hatch.",
-                "§b§m                                                        ",
-                "§a▸ Parallel set by the §eParallel Hatch§a",
-                "§b▸ Casing tier limits which recipes can start",
-                "§c▸ All assembly casings must share one tier",
         });
         ENGLISH.put("compound_extreme_cooling_unit", new String[] {
                 "Machine Type: §eVacuum Freezer",
@@ -696,19 +670,6 @@ public final class GTNAMultiblockTooltipText {
                 "§b▸ Recipes may ask for a §esterile filter§b",
                 "§c▸ All glass blocks must be the same tier",
         });
-        ENGLISH.put("large_naquadah_reactor", new String[] {
-                "Machine Type: §eGenerator",
-                "§7§oNaquadah in, gigawatts out. The neighbours moved away.",
-                "§b§m                                                        ",
-                "§7Burns §6naquadah fuels§7 with hydrogen or a",
-                "§7plasma for steady UHV power.",
-                "§b§m                                                        ",
-                "§a▸ Builds in any direction",
-                "§a▸ Dynamo or Laser Source Hatch",
-                "§b▸ Fuel + Hydrogen: §e2,097,152§b EU/t",
-                "§b▸ Fuel + plasma: §e524,288§b EU/t for 32x as long",
-                "§c▸ Up to 3 Fluid Input Hatches",
-        });
         ENGLISH.put("large_pyrolyse_oven", new String[] {
                 "Machine Type: §ePyrolyse Oven",
                 "§7§oWood goes in, chemistry comes out, smoke goes everywhere.",
@@ -853,20 +814,6 @@ public final class GTNAMultiblockTooltipText {
                 "§a▸ Thread Hatch: several recipes at once",
                 "§a▸ Accepts Laser Hatches",
                 "§b▸ Parallel set by the §eParallel Hatch§b",
-        });
-        ENGLISH.put("naquadah_hyper_reactor", new String[] {
-                "Machine Type: §eGenerator",
-                "§7§oFour suns in a bottle. Do not shake.",
-                "§b§m                                                        ",
-                "§7The best naquadah reactor: burns the same",
-                "§7§6naquadah fuels§7 as the Large one, at UEV.",
-                "§b§m                                                        ",
-                "§a▸ Dynamo or Laser Source Hatch",
-                "§a▸ Hatches go in the ring around the controller",
-                "§b▸ Fuel + Hydrogen: §e8,388,608§b EU/t, 4x EU per mB",
-                "§b▸ Oxygen plasma booster: §e8x§b parallel",
-                "§b▸ Nitrogen plasma booster: §e16x§b parallel",
-                "§c▸ Booster plasma is used once per boosted run",
         });
         ENGLISH.put("neutronium_wire_cutting", new String[] {
                 "Machine Type: §eCutter",

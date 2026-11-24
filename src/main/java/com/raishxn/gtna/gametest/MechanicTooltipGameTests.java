@@ -1,5 +1,6 @@
 package com.raishxn.gtna.gametest;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 
 import net.minecraft.gametest.framework.GameTest;
@@ -14,8 +15,10 @@ import com.raishxn.gtna.api.machine.feature.godforge.GodforgeData;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeMath;
 import com.raishxn.gtna.api.machine.feature.godforge.GodforgeModuleStats;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
+import com.raishxn.gtna.common.machine.multiblock.electric.AdvancedFusionReactorMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.MegaAlloyBlastSmelterMachine;
 import com.raishxn.gtna.common.machine.multiblock.electric.PlasmaForgeMachine;
+import com.raishxn.gtna.data.recipe.GTNANaquadahReactorRecipes;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -51,6 +54,10 @@ public final class MechanicTooltipGameTests {
         MINIMUM.put("bec_generator", 6);
         MINIMUM.put("bec_io_node", 15);
         MINIMUM.put("bec_diode", 7);
+        MINIMUM.put("large_naquadah_reactor", 9);
+        MINIMUM.put("naquadah_hyper_reactor", 13);
+        MINIMUM.put("component_assembly_line", 8);
+        MINIMUM.put("advanced_fusion_reactor", 15);
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 20)
@@ -139,6 +146,23 @@ public final class MechanicTooltipGameTests {
         for (String needed : new String[] { "75% with exactly 256,000 mB", "60 s", "up to 270,000,000 mB",
                 "Source:" }) {
             h.assertTrue(wood.contains(needed), "Eye of Wood tooltip lacks '" + needed + "': " + wood);
+        }
+        h.succeed();
+    }
+
+    /** Naquadah booster and fusion buffer numbers come from the recipes and the machine. */
+    @GameTest(template = TEMPLATE, timeoutTicks = 20)
+    public static void naquadahAndFusionNumbersMatchTheCode(GameTestHelper h) {
+        String hyper = text("naquadah_hyper_reactor");
+        for (String needed : new String[] { GTNANaquadahReactorRecipes.OXYGEN_BOOST + "x parallels",
+                "up to " + GTNANaquadahReactorRecipes.NITROGEN_BOOST + "x", "4x the EU per mB", "43.75 s" }) {
+            h.assertTrue(hyper.contains(needed), "Naquadah Hyper Reactor tooltip lacks '" + needed + "': " + hyper);
+        }
+        h.assertTrue(AdvancedFusionReactorMachine.bufferCapacity(GTValues.LuV, 1) ==
+                AdvancedFusionReactorMachine.BUFFER_PER_INPUT, "one LuV input holds the listed buffer");
+        String fusion = text("advanced_fusion_reactor");
+        for (String needed : new String[] { "10,000,000 EU per energy input at LuV", "up to UEV", "10,000 EU" }) {
+            h.assertTrue(fusion.contains(needed), "Advanced Fusion tooltip lacks '" + needed + "': " + fusion);
         }
         h.succeed();
     }

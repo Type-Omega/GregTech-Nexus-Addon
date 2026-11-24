@@ -347,40 +347,6 @@
       ]
     }
   },
-  "component_assembly_line": {
-    "type": "Component Assembly",
-    "flavor": "Industry's closest approximation to divine creation.",
-    "desc": [
-      "Runs component assembly batches as a",
-      "*tier-cased line* with a Parallel Hatch."
-    ],
-    "pro": [
-      "Parallel set by the *Parallel Hatch*"
-    ],
-    "num": [
-      "Casing tier limits which recipes can start"
-    ],
-    "con": [
-      "All assembly casings must share one tier"
-    ],
-    "pt": {
-      "type": "Montagem de Componentes",
-      "flavor": "O mais perto que a indústria chegou da criação divina.",
-      "desc": [
-        "Roda lotes de montagem de componentes como uma",
-        "*linha por tier de casing* com um Parallel Hatch."
-      ],
-      "pro": [
-        "Paralelos definidos pelo *Parallel Hatch*"
-      ],
-      "num": [
-        "O tier do casing limita quais receitas começam"
-      ],
-      "con": [
-        "Todos os casings de montagem precisam do mesmo tier"
-      ]
-    }
-  },
   "rocket_large_turbine": {
     "type": "Rocket Engine",
     "flavor": "Not rocket science. Okay, it is rocket science.",
@@ -522,48 +488,6 @@
       "con": [
         "As bobinas precisam da temperatura da receita",
         "A Secagem a Vácuo sempre roda em série"
-      ]
-    }
-  },
-  "advanced_fusion_reactor": {
-    "type": "Fusion Reactor",
-    "flavor": "It simulates the eternal light.",
-    "desc": [
-      "A modular fusion reactor: *high-energy*",
-      "modules raise its heat capacity, an",
-      "*overclock* module unlocks special hatches."
-    ],
-    "pro": [
-      "Each high-energy module *doubles* heat capacity",
-      "Overclock module: Overclock and Thread Hatches"
-    ],
-    "num": [
-      "Energy storage: *160M* EU before modules",
-      "Up to *4* high-energy modules, in order"
-    ],
-    "con": [
-      "Only *one* overclock module",
-      "On conflict, install high-energy modules first"
-    ],
-    "pt": {
-      "type": "Reator de Fusão",
-      "flavor": "Ele simula a luz eterna.",
-      "desc": [
-        "Um reator de fusão modular: módulos de *alta*",
-        "*energia* aumentam a capacidade de calor e um",
-        "módulo de *overclock* libera hatches especiais."
-      ],
-      "pro": [
-        "Cada módulo de alta energia *dobra* o calor",
-        "Módulo de overclock: Overclock e Thread Hatches"
-      ],
-      "num": [
-        "Armazenamento: *160M* EU antes dos módulos",
-        "Até *4* módulos de alta energia, em ordem"
-      ],
-      "con": [
-        "Só *um* módulo de overclock",
-        "Em conflito, instale os de alta energia primeiro"
       ]
     }
   },
@@ -2495,44 +2419,6 @@
         "Só funciona com o Elevador Espacial rodando"
       ],
       "con": []
-    }
-  },
-  "large_naquadah_reactor": {
-    "type": "Generator",
-    "flavor": "Naquadah in, gigawatts out. The neighbours moved away.",
-    "desc": [
-      "Burns *naquadah fuels* with hydrogen or a",
-      "plasma for steady UHV power."
-    ],
-    "pro": [
-      "Builds in any direction",
-      "Dynamo or Laser Source Hatch"
-    ],
-    "num": [
-      "Fuel + Hydrogen: *2,097,152* EU/t",
-      "Fuel + plasma: *524,288* EU/t for 32x as long"
-    ],
-    "con": [
-      "Up to 3 Fluid Input Hatches"
-    ],
-    "pt": {
-      "type": "Gerador",
-      "flavor": "Entra naquadah, sai gigawatt. Os vizinhos se mudaram.",
-      "desc": [
-        "Queima *combustíveis de naquadah* com hidrogênio",
-        "ou um plasma para energia UHV constante."
-      ],
-      "pro": [
-        "Monta em qualquer direção",
-        "Dynamo Hatch ou Laser Source Hatch"
-      ],
-      "num": [
-        "Combustível + Hidrogênio: *2.097.152* EU/t",
-        "Combustível + plasma: *524.288* EU/t por 32x mais tempo"
-      ],
-      "con": [
-        "Até 3 Fluid Input Hatches"
-      ]
     }
   }
 }

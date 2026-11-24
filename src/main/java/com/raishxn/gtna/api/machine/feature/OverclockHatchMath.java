@@ -19,12 +19,14 @@ public final class OverclockHatchMath {
     public static final int MIN_DIVISOR = 2;
     /** The standard non-perfect overclock duration factor ({@code 0.5}). */
     public static final double STD_DURATION_FACTOR = 0.5;
+    /** The highest divisor is the hatch tier minus this (UV hatch: 2, MAX: 8). */
+    public static final int TIER_OFFSET = 6;
 
     private OverclockHatchMath() {}
 
     /** The tier's best (largest) divisor: {@code tier - 6}, never below {@link #MIN_DIVISOR}. */
     public static int maxDivisor(int tier) {
-        return Math.max(MIN_DIVISOR, tier - 6);
+        return Math.max(MIN_DIVISOR, tier - TIER_OFFSET);
     }
 
     /** Clamps a configured divisor into {@code [MIN_DIVISOR, maxDivisor(tier)]}. */

@@ -126,8 +126,11 @@ public final class GTNANaquadahReactors {
                     "                         " },
     };
 
+    /** Fluid input hatches either reactor accepts. */
+    public static final int MAX_FLUID_INPUTS = 3;
+
     private static TraceabilityPredicate reactorHatches(TraceabilityPredicate casing) {
-        return casing.or(abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(3).setPreviewCount(2))
+        return casing.or(abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(MAX_FLUID_INPUTS).setPreviewCount(2))
                 .or(abilities(PartAbility.MAINTENANCE).setExactLimit(1))
                 .or(abilities(PartAbility.OUTPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(1))
                 .or(abilities(PartAbility.OUTPUT_LASER).setMaxGlobalLimited(1).setPreviewCount(0));

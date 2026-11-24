@@ -31,6 +31,22 @@ import static com.raishxn.gtna.common.data.material.NaquadahFuelMaterials.Naquad
  */
 public final class GTNANaquadahReactorRecipes {
 
+    /** Fuel and hydrogen per run in both reactors. */
+    public static final int FUEL_PER_RUN = 16;
+    public static final int HYDROGEN_PER_RUN = 80;
+    /** Run time of Naquadah Fuel and Enriched Naquadah Fuel, in ticks. */
+    public static final int NAQUADAH_DURATION = 875;
+    public static final int ENRICHED_DURATION = 1250;
+    /** Large reactor plasma recipes: ten times the fuel at UV, 32 times as long (GTO). */
+    public static final int PLASMA_FUEL_PER_RUN = 160;
+    public static final int PLASMA_PER_RUN = 40;
+    public static final int PLASMA_DURATION_FACTOR = 32;
+    public static final int LARGE_TIER = GTValues.UHV;
+    public static final int LARGE_PLASMA_TIER = GTValues.UV;
+    public static final int HYPER_TIER = GTValues.UEV;
+    public static final int OXYGEN_BOOST = 8;
+    public static final int NITROGEN_BOOST = 16;
+
     private GTNANaquadahReactorRecipes() {}
 
     public static void register(Consumer<FinishedRecipe> provider) {
@@ -65,19 +81,23 @@ public final class GTNANaquadahReactorRecipes {
     private static void largeReactor(Consumer<FinishedRecipe> provider) {
         var type = GTNANaquadahRecipeTypes.LARGE_NAQUADAH_REACTOR_RECIPES;
         type.recipeBuilder(GTNACORE.id("naquadah_fuel"))
-                .inputFluids(NaquadahFuel.getFluid(16)).inputFluids(GTMaterials.Hydrogen.getFluid(80))
-                .duration(875).EUt(-GTValues.V[GTValues.UHV]).save(provider);
+                .inputFluids(NaquadahFuel.getFluid(FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Hydrogen.getFluid(HYDROGEN_PER_RUN))
+                .duration(NAQUADAH_DURATION).EUt(-GTValues.V[LARGE_TIER]).save(provider);
         type.recipeBuilder(GTNACORE.id("enriched_naquadah_fuel"))
-                .inputFluids(EnrichedNaquadahFuel.getFluid(16)).inputFluids(GTMaterials.Hydrogen.getFluid(80))
-                .duration(1250).EUt(-GTValues.V[GTValues.UHV]).save(provider);
+                .inputFluids(EnrichedNaquadahFuel.getFluid(FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Hydrogen.getFluid(HYDROGEN_PER_RUN))
+                .duration(ENRICHED_DURATION).EUt(-GTValues.V[LARGE_TIER]).save(provider);
         type.recipeBuilder(GTNACORE.id("naquadah_fuel_oxygen_plasma"))
-                .inputFluids(NaquadahFuel.getFluid(160))
-                .inputFluids(GTMaterials.Oxygen.getFluid(FluidStorageKeys.PLASMA, 40))
-                .duration(16 * 875 * 2).EUt(-GTValues.V[GTValues.UV]).save(provider);
+                .inputFluids(NaquadahFuel.getFluid(PLASMA_FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Oxygen.getFluid(FluidStorageKeys.PLASMA, PLASMA_PER_RUN))
+                .duration(PLASMA_DURATION_FACTOR * NAQUADAH_DURATION).EUt(-GTValues.V[LARGE_PLASMA_TIER])
+                .save(provider);
         type.recipeBuilder(GTNACORE.id("enriched_naquadah_fuel_nitrogen_plasma"))
-                .inputFluids(EnrichedNaquadahFuel.getFluid(160))
-                .inputFluids(GTMaterials.Nitrogen.getFluid(FluidStorageKeys.PLASMA, 40))
-                .duration(16 * 1250 * 2).EUt(-GTValues.V[GTValues.UV]).save(provider);
+                .inputFluids(EnrichedNaquadahFuel.getFluid(PLASMA_FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Nitrogen.getFluid(FluidStorageKeys.PLASMA, PLASMA_PER_RUN))
+                .duration(PLASMA_DURATION_FACTOR * ENRICHED_DURATION).EUt(-GTValues.V[LARGE_PLASMA_TIER])
+                .save(provider);
     }
 
     // EN: Same fuel and duration as the Large reactor at UEV: four times the EU per mB, which makes it the best
@@ -89,19 +109,23 @@ public final class GTNANaquadahReactorRecipes {
     private static void hyperReactor(Consumer<FinishedRecipe> provider) {
         var type = GTNANaquadahRecipeTypes.NAQUADAH_HYPER_REACTOR_RECIPES;
         type.recipeBuilder(GTNACORE.id("naquadah_fuel"))
-                .inputFluids(NaquadahFuel.getFluid(16)).inputFluids(GTMaterials.Hydrogen.getFluid(80))
-                .duration(875).EUt(-GTValues.V[GTValues.UEV]).addData(HyperReactorMachine.BOOSTERS, boosters())
+                .inputFluids(NaquadahFuel.getFluid(FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Hydrogen.getFluid(HYDROGEN_PER_RUN))
+                .duration(NAQUADAH_DURATION).EUt(-GTValues.V[HYPER_TIER])
+                .addData(HyperReactorMachine.BOOSTERS, boosters())
                 .save(provider);
         type.recipeBuilder(GTNACORE.id("enriched_naquadah_fuel"))
-                .inputFluids(EnrichedNaquadahFuel.getFluid(16)).inputFluids(GTMaterials.Hydrogen.getFluid(80))
-                .duration(1250).EUt(-GTValues.V[GTValues.UEV]).addData(HyperReactorMachine.BOOSTERS, boosters())
+                .inputFluids(EnrichedNaquadahFuel.getFluid(FUEL_PER_RUN))
+                .inputFluids(GTMaterials.Hydrogen.getFluid(HYDROGEN_PER_RUN))
+                .duration(ENRICHED_DURATION).EUt(-GTValues.V[HYPER_TIER])
+                .addData(HyperReactorMachine.BOOSTERS, boosters())
                 .save(provider);
     }
 
     private static ListTag boosters() {
         var list = new ListTag();
-        list.add(booster(GTMaterials.Oxygen, 8));
-        list.add(booster(GTMaterials.Nitrogen, 16));
+        list.add(booster(GTMaterials.Oxygen, OXYGEN_BOOST));
+        list.add(booster(GTMaterials.Nitrogen, NITROGEN_BOOST));
         return list;
     }
 
@@ -109,7 +133,7 @@ public final class GTNANaquadahReactorRecipes {
                                        int parallel) {
         var tag = new CompoundTag();
         tag.putString("fluid", ForgeRegistries.FLUIDS.getKey(material.getFluid(FluidStorageKeys.PLASMA)).toString());
-        tag.putInt("amount", 40);
+        tag.putInt("amount", PLASMA_PER_RUN);
         tag.putInt("parallel", parallel);
         return tag;
     }
