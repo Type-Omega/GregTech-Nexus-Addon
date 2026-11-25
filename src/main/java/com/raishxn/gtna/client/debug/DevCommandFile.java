@@ -58,6 +58,7 @@ public final class DevCommandFile {
         if (line.equals("close")) mc.setScreen(null);
         else if (line.equals("inv"))
             mc.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(mc.player));
+        else if (line.startsWith("hud ")) mc.options.hideGui = line.substring(4).trim().equals("off");
         else if (line.startsWith("renders "))
             com.raishxn.gtna.client.renderer.machine.MachineRenders.override = com.raishxn.gtna.config.ClientConfig.MachineRenderLevel
                     .valueOf(line.substring(8).trim().toUpperCase(java.util.Locale.ROOT));
