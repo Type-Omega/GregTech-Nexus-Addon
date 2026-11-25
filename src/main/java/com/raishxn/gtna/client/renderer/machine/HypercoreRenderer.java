@@ -157,7 +157,14 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
     }
 
     public static void onRenderLevelStage(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || QUEUE.isEmpty()) return;
+        // EN: drawn after block entities and before translucent blocks: the chamber glass is then blended over the
+        // EN: hologram, so it shows through the glass; after the translucent pass the glass depth hid it entirely.
+        // PT: desenhado depois das block entities e antes dos blocos translúcidos: o vidro da câmara é misturado por
+        // PT: cima do holograma, que aparece através dele; depois do passe translúcido a profundidade do vidro o
+        // PT: escondia por inteiro.
+        // ZH: 在方块实体之后、半透明方块之前绘制：腔室玻璃随后叠加混合在全息影像上，使其透过玻璃可见；若在半透明阶段之后
+        // ZH: 绘制，玻璃的深度会将其完全遮住。
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_BLOCK_ENTITIES || QUEUE.isEmpty()) return;
         Vec3 cam = event.getCamera().getPosition();
         PoseStack pose = event.getPoseStack();
         Matrix4f projection = new Matrix4f(event.getProjectionMatrix());
