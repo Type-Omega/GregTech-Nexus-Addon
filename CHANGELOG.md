@@ -25,6 +25,7 @@
 - GTNA now requires TypeOmega Lib 0.7.0.
 
 ### Added
+- `modernspace_campus_groups.json`: on a ModernSpace campus the Bose-Einstein Condensate, Forge of Gods, Space Elevator, Steam Elevator and Dyson Sphere modules get plots next to their main machine.
 - **Nexus Terminal v2** (GTIA-D-439). The terminal now scans a structure into a plan once and every function reuses it. Builds reserve their blocks in one batch per item (one ME extraction, one inventory pass), place plain blocks with their facing in a single update, play one sound per build, and above 4096 cells run as a job of at most 2048 blocks or 2 ms per tick, with a progress bar on the action bar; Shift+click a controller (or the Cancel button) cancels it and returns what was not placed. A 4961-cell build went from one long tick to about 30 ms of work spread over three ticks.
 - Left-clicking a controller with the terminal scans it without touching the world: a chat summary with a [report] link and coloured boxes through terrain for 15 s (green place, orange replace, red blocked, yellow clear, magenta missing material, cyan hatches). The report lists every cell by kind with its position, the materials (need, inventory, ME, missing) and the ME crafting status; "show boxes" lights the listed cells.
 - The ME link works with any active ME block (Shift+click), from any distance and dimension, through the AE2 API. Missing blocks that have a pattern are crafted by the ME on their own when building, and from the Materials tab with "Ask the ME".

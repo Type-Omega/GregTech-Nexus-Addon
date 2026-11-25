@@ -1,0 +1,13 @@
+{
+  "groups": [
+    { "leader": "gtna:bec_generator", "members": ["gtna:bec_*"] },
+    { "leader": "gtna:forge_of_gods", "members": ["gtna:godforge_*"] },
+    {
+      "leader": "gtna:space_elevator",
+      "members": ["gtna:space_elevator_*", "gtna:assembler_module", "gtna:resource_collection_module",
+        "gtna:miner_module*", "gtna:drilling_module*", "gtna:dyson_swarm_module*"]
+    },
+    { "leader": "gtna:steam_elevator", "members": ["gtna:steam_elevator_*"] },
+    { "leader": "gtna:dyson_sphere_launch_silo", "members": ["gtna:dyson_sphere_receiving_station"] }
+  ]
+}
