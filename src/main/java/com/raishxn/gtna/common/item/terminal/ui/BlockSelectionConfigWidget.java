@@ -505,7 +505,11 @@ public class BlockSelectionConfigWidget {
             case INTEGRAL_FRAME -> id.contains("integral") && id.contains("framework");
             case LIGHT -> id.contains("lamp") || id.contains("light_block");
             case SPACE_ELEVATOR -> id.contains("space_elevator") && id.contains("casing");
-            case STELLAR_CONTAINMENT -> id.contains("stellar") && id.contains("containment");
+            // EN: Casings only; the Stellar Containment Chamber controller also has "stellar" and "containment" in its
+            // id.
+            // PT: Só carcaças; o controlador da Stellar Containment Chamber também tem "stellar" e "containment" no id.
+            // ZH: 仅限机壳；恒星约束室控制器的 id 中同样含有 "stellar" 和 "containment"。
+            case STELLAR_CONTAINMENT -> id.contains("stellar_containment") && id.endsWith("casing");
             case EOH_COMPRESSION -> id.startsWith("spacetime_compression_field_generator_tier_");
             case EOH_ACCELERATION -> id.startsWith("time_acceleration_field_generator_tier_");
             case EOH_STABILISATION -> id.startsWith("stabilisation_field_generator_tier_");

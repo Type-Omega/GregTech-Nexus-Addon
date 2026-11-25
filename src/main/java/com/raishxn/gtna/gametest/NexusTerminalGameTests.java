@@ -41,6 +41,18 @@ public final class NexusTerminalGameTests {
         helper.succeed();
     }
 
+    /** The "stellar" family lists the containment casings, never the Stellar Containment Chamber controller. */
+    @GameTest(template = "empty_16", timeoutTicks = 20)
+    public static void stellarFamilyListsOnlyCasings(GameTestHelper helper) {
+        var entries = BlockSelectionConfigWidget.getEntries(BlockCategory.STELLAR_CONTAINMENT);
+        helper.assertTrue(!entries.isEmpty(), "stellar family is empty");
+        for (ItemStack stack : entries) {
+            String path = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath();
+            helper.assertTrue(path.endsWith("casing"), "stellar family lists " + path);
+        }
+        helper.succeed();
+    }
+
     @GameTest(template = "empty_16", timeoutTicks = 40)
     public static void nexusTerminalSelectionsKeepLegacyAndRejectIncompatibleCells(GameTestHelper helper) {
         ItemStack terminal = GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
