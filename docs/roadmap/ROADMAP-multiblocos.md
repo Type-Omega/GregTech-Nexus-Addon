@@ -10,12 +10,12 @@ Documento de referência para as próximas sessões. Complementa:
 > **Escopo:** porta-se só o que está em `lista-do-autor.md`, da fonte (mod) indicada ali.
 
 - **O que o GTNA é:** um mod de multiblocos **e** mecânicas (wireless, módulos, EOH, Forge of Gods, hatches de paralelo/thread…). Tudo tem API para KubeJS, para outros criadores montarem receitas e linhas.
-- **Receitas:** o GTNA traz um *default* funcional. O balanço e as linhas são do modpack (GT:IA) e não precisam ser 1:1 com o GTNH.
-- **Máquinas "atalho" também são portadas.** No GT:IA elas são craftáveis, mas extremamente caras, na proporção da facilidade que dão.
+- **Receitas:** o GTNA traz um *default* funcional. O balanço e as linhas são do modpack (Type Omega) e não precisam ser 1:1 com o GTNH.
+- **Máquinas "atalho" também são portadas.** No Type Omega elas são craftáveis, mas extremamente caras, na proporção da facilidade que dão.
 - **O que fica de fora:**
   - duplicatas exatas, ou seja, a mesma máquina vinda de duas fontes (porta-se a melhor);
   - máquinas inviáveis pelo custo, avaliadas caso a caso.
-- **Research:** o Research Center / Analysis Center do GTO serve ao **research padrão do GTCEu** (station research, que o GT:IA usa). Não é a árvore de pesquisa removida do GT:IA (D-226): **entra no port**.
+- **Research:** o Research Center / Analysis Center do GTO serve ao **research padrão do GTCEu** (station research, que o Type Omega usa). Não é a árvore de pesquisa removida do Type Omega (D-226): **entra no port**.
 - **Fonte:** GTO/GTL (1.20, GTCEu) primeiro. O GTNA já lê os padrões `.mbs` do GTO (`GTOCompressedPatternReader`, `pattern/gto/`) e `.mbs` do GTNA (`GTNAMultiBlockFileReader`). Máquinas do GTNH 1.7.10 / TST / GTNL / 123Tech exigem converter o StructureLib por script (exemplo: `tools/convert_dtpf_structure.py`, `tools/convert_nano_forge_structure.py`).
 - **Texturas:** originais (GTO para blocos do GTO; Modernity-GTNH ou GT5U para blocos do GTNH). Nunca chamar a arte do autor de placeholder.
 - **Commits:** só depois que o autor testar e aprovar; sem atribuição ao Claude.

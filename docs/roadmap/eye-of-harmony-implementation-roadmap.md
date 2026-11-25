@@ -17,7 +17,7 @@ O [estudo](eye-of-harmony-gtnh-study.md) documenta as fontes e as lacunas atuais
 Prioridade de fidelidade: funções dos blocos → estrutura/hatches → regras matemáticas →
 receitas/progressão → apresentação. Adaptações inevitáveis de dimensões, materiais e APIs
 ficam explícitas em uma matriz de equivalência. O padrão fiel não recebe descontos arbitrários;
-ajustes do GTIA pertencem ao perfil do pack.
+ajustes do Type Omega pertencem ao perfil do pack.
 
 ## Inventário inicial verificado
 
@@ -220,7 +220,7 @@ invalidação do cache de operação após `/reload` ainda pendentes.
   programas legados identificados; não apagar conteúdo já publicado sem migração.
 
 Aceitação: cada programa fabricável, demonstrado no viewer e executado em GameTest;
-nenhuma receita espacial carregada com item ausente; perfil GTIA auditável separadamente.
+nenhuma receita espacial carregada com item ausente; perfil Type Omega auditável separadamente.
 
 ### EOH-06 — Astral Arrays
 

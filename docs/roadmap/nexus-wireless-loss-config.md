@@ -10,7 +10,7 @@
   mesmo que o sinalizador legado ainda esteja `true` em um arquivo antigo.
 - `NO_LOSS`: a rede e o Array não descontam energia.
 
-O exemplo GTIA em `docs/config-examples/gtia/nexus_flux_matrix.json` aplica LV 5%, MV 4%, HV 3%,
+O exemplo Type Omega em `docs/config-examples/gtia/nexus_flux_matrix.json` aplica LV 5%, MV 4%, HV 3%,
 EV 2%, IV 1% e LuV+ 0%. As opções `tiers` existentes continuam definindo capacidade, limite de
 transferência e acesso entre dimensões (padrão: EV+). O valor por tier aceita 0–100%, com
 precisão de 0,01%. É necessário reiniciar o jogo/servidor após editar o arquivo.

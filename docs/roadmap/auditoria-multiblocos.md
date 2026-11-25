@@ -1,8 +1,8 @@
-# Auditoria de multiblocos: o que portar para o GT:IA (2026-10-07)
+# Auditoria de multiblocos: o que portar para o Type Omega (2026-10-07)
 
 > **Critério revisado pelo autor (2026-10-07, vale sobre as tabelas abaixo):** o GTNA é uma **biblioteca de
 > multiblocos**. Para cada máquina viável, porta-se estrutura, mecânica, texturas originais e suporte a KubeJS, e
-> registra-se o tipo de receita. As receitas e linhas de processamento ficam para o modpack (GT:IA) e outros
+> registra-se o tipo de receita. As receitas e linhas de processamento ficam para o modpack (Type Omega) e outros
 > criadores; não precisam ser 1:1 com o GTNH.
 > Com isso, "atalho" e "depende de conteúdo" **deixam de ser motivo para não portar**: o pack decide as receitas.
 > Continuam fora só:
@@ -24,9 +24,9 @@ Fontes analisadas:
 - Fontes do GT5-Unofficial.
 - Fontes do GTOCore e do GTLCore (1.20/GTCEu).
 
-A comparação é contra o que o GT:IA já tem: GTCEu 7.5.3 + GCYM, GTNA (84 multiblocos) e GTIACore (lime kiln, Solvay, Bayer, Hall-Héroult, contato, amônia, célula de diafragma, wood retort).
+A comparação é contra o que o Type Omega já tem: GTCEu 7.5.3 + GCYM, GTNA (84 multiblocos) e TypeOmegaCore (lime kiln, Solvay, Bayer, Hall-Héroult, contato, amônia, célula de diafragma, wood retort).
 
-**Critérios (direção do GT:IA):**
+**Critérios (direção do Type Omega):**
 - Megafábrica, cadeias longas, química com referência real.
 - "Mega" e multiblocos sem limite são bem-vindos.
 - Máquina que **pula etapas** de uma cadeia conta como exploit.
@@ -90,8 +90,8 @@ São máquinas do GTO com arquivo de padrão e poucos ou nenhum bloco faltando. 
 | Industrial Arc Furnace (GTNH) | O Large Arc Smelter do GCYM cobre |
 | Endothermic Fridge (GTNH) | É um vacuum freezer com bônus de velocidade; o Mega Vacuum Freezer do GCYM cobre |
 | Mega Oil Cracker (GTNH) / Advanced Mega Oil Cracker (TST) | O Cracker Hub (GTO) cobre com menos esforço |
-| Ammonia Plant (Steam Reborn) | O GTIACore já tem o conversor de amônia (Haber) |
-| Wood Chemical Plant (GTNL) | O GTIACore tem o wood retort; duplicaria a linha |
+| Ammonia Plant (Steam Reborn) | O TypeOmegaCore já tem o conversor de amônia (Haber) |
+| Wood Chemical Plant (GTNL) | O TypeOmegaCore tem o wood retort; duplicaria a linha |
 | ISA Processing Integrated Factory (123) | **Atalho declarado** ("jogou fora os processos bagunçados") |
 | Platinum Group Processing Hub (GTNL) | Platina em uma etapa = atalho sobre a cadeia real |
 | Advanced Rare Earth Centrifuge (GTNL/GTL) | Terras raras em uma etapa = atalho |
@@ -105,12 +105,12 @@ São máquinas do GTO com arquivo de padrão e poucos ou nenhum bloco faltando. 
 | Magnetic Drive Pressure Former (TST) | Os 4 modos já são cobertos pelo GCYM; só faria sentido como "GTO Rules" |
 | Starcore Miner (TST) | Os void miners do GTNA cobrem |
 | Astral Computing Array (TST) | O Supercomputing Center (GTO) faz o papel com menos esforço |
-| Research Center (GTNL/GTO) | **Corrigido:** serve ao research padrão do GTCEu, que o GT:IA usa; entra no port (ver ROADMAP) |
+| Research Center (GTNL/GTO) | **Corrigido:** serve ao research padrão do GTCEu, que o Type Omega usa; entra no port (ver ROADMAP) |
 | Data Center (GTNL/GTO) | O Data Bank do GTCEu cobre |
 | Eye of Harmony Injector (GTNL) | Conveniência de entrada (1.342 linhas); o AE2 já alimenta o EOH |
 | EGTW e seus módulos (GTNL) | Um segundo "Forge of Gods" (2.376 linhas); sobrepõe o FoG já portado |
 | Hyper / Advanced Hyper Naquadah Reactor | Só com a cadeia de combustíveis hyper do GTO (conteúdo novo); senão, não |
-| Fast Neutron Breeder | Só se o GT:IA quiser um sistema de fissão |
+| Fast Neutron Breeder | Só se o Type Omega quiser um sistema de fissão |
 | Nanites Circuit Assembly Factory | Só se for criada uma linha de circuitos com nanites |
 
 ## Ordem sugerida

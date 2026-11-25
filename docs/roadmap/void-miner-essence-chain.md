@@ -98,13 +98,13 @@ Tooltips de origem creditam GTL pelas mecânicas e GTLCore pela estrutura.
 
 ## Correção de seleção após QA na Prism
 
-O GTCEu indexa receitas pelas entradas e não distingue variantes apenas pelo EU/t ou duração. O ensaio conjunto do GTIA revelou descarte de programas básicos/completos com a mesma essência, além da colisão entre os dois aleatórios. Os circuitos acima tornam as entradas distintas sem retirar essências, modos ou gates de energia. `GTNAVoidMinerLookupGameTests` monta um catálogo isolado com todas as receitas reais e procura cada ID usando suas entradas; assim, um registro presente no RecipeManager mas ausente do índice passa a falhar no gate.
+O GTCEu indexa receitas pelas entradas e não distingue variantes apenas pelo EU/t ou duração. O ensaio conjunto do Type Omega revelou descarte de programas básicos/completos com a mesma essência, além da colisão entre os dois aleatórios. Os circuitos acima tornam as entradas distintas sem retirar essências, modos ou gates de energia. `GTNAVoidMinerLookupGameTests` monta um catálogo isolado com todas as receitas reais e procura cada ID usando suas entradas; assim, um registro presente no RecipeManager mas ausente do índice passa a falhar no gate.
 
 
 ## QA do autor em 2026-09-30
 
 Tempos acima adotados por escolha explícita do autor. As receitas iniciais e planetárias
 agora também usam `baseDuration`; culturas usam `incubationDuration`. Configs já existentes
-conservam valores próprios: o perfil GTIA e o ambiente local foram atualizados com backup.
+conservam valores próprios: o perfil Type Omega e o ambiente local foram atualizados com backup.
 O Jade resume tamanho do pool e chances no modo aleatório; ele não garante todos os
 minérios por ciclo. Preciso mantém suas saídas determinísticas.

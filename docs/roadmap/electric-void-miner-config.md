@@ -12,7 +12,7 @@ apenas a partir de IV. O `gtna:void_miner_steam_gate_aged` continua independente
 
 ## Arquivo
 
-`config/gtna/balance/electric_void_miner.json` (exemplo GTIA em
+`config/gtna/balance/electric_void_miner.json` (exemplo Type Omega em
 `docs/config-examples/gtia/electric_void_miner.json`). A configuração é lida na inicialização;
 reinicie o jogo/servidor após editar. O campo `enabled: false` **não registra** o bloco — use
 apenas antes de distribuir o mundo, já que blocos colocados deixariam de existir.

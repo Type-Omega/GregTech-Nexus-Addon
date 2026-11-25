@@ -46,7 +46,7 @@ HV Assembler, 200 ticks. There is no ordinary crafting recipe for discovered dat
 Default cycles: 400 ticks, 1920 EU/t, 100 mB Drilling Fluid. Oil 2000, Heavy Oil 1500,
 Light Oil 2500, Natural Gas 1500 (+100 Nitrogen), Salt Water 4000, Raw Oil 2000 mB.
 Stock Raw Oil's actual registry ID is `gtceu:oil_medium`, verified in `UnknownCompositionMaterials`.
-The GTIA example adds Mars Radon: 50 mB +100 Nitrogen +1 filter, otherwise the same costs.
+The Type Omega example adds Mars Radon: 50 mB +100 Nitrogen +1 filter, otherwise the same costs.
 
 Parallel caps EV 1 / IV 2 / LuV 4 / ZPM 8 / UV 16, then double up to the technical cap 1024.
 Use the common parallel-hatch ability: GCYM's early hatches and GTNA's later advanced hatches are accepted.

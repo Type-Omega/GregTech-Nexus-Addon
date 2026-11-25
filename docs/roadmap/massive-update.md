@@ -8,7 +8,7 @@ Regra de ouro: **nada de conteúdo novo até as fases 0–2 fecharem.** Toda oti
 ## Fase 0 — Base de medição e gate
 
 - [x] Gate falha sozinho quando receita `gtna:` não carrega ou GameTest falha (task `gate` no Gradle).
-- [ ] Mundo de benchmark reprodutível (dedicated server, pack GTIA completa, mediana de 3 boots, `perf_bench.py`).
+- [ ] Mundo de benchmark reprodutível (dedicated server, pack Type Omega completa, mediana de 3 boots, `perf_bench.py`).
 - [ ] Baseline salva: tempo de boot, MSPT ocioso, heap após GC, FPS do client e reload do EMI.
 - [ ] Cenários fixos de spark (ver manual-qa.md § Performance): 200 hatches wireless ociosos, 50 Pattern Buffers, 2.000 fornalhas LV, 1 EoH rodando, inventário com itens de efeito.
 
@@ -47,7 +47,7 @@ Ordem vinda da auditoria de tick de 2026-11-21. Os custos ainda não foram medid
 - [ ] Teste unitário: todo multibloco tem linha `Source:`, chave em en_us/pt_br/zh_cn, tier, parallel e sem placeholder.
 - [ ] Padrão por multibloco: o que faz, hatches aceitos, como escala, tier mínimo, dica de uso.
 - [ ] Explicação passo a passo (tooltip + wiki) para EoH, Godforge, Nano Forge, BEC, Dyson, Space Elevator.
-- [ ] Sistemas próprios (Nexus, wireless steam, Pattern Buffer, módulos, hatches de Thread/Parallel/Overclock): tooltip de como ligar + quest de introdução no GT:IA.
+- [ ] Sistemas próprios (Nexus, wireless steam, Pattern Buffer, módulos, hatches de Thread/Parallel/Overclock): tooltip de como ligar + quest de introdução no Type Omega.
 - [ ] UI diz por que a máquina não forma ou não roda (hatch faltando, EU/t insuficiente, módulo ausente).
 
 ## Fase 5 — Ascension Optimizer

@@ -255,7 +255,7 @@ remote-production gates. GTL's terrestrial fluid proportions informed the protot
 explicitly reduced production rates and added reagents. Machine tooltips credit GTL.
 No GTL/GTO textures were copied for this system: models reference existing GTCEu casing,
 drilling-rig, scanner, Data Stick, Data Orb and fluid-filter resources.
-The optional GTIA Mars deposit example uses the numeric reference in GTOCore's
+The optional Type Omega Mars deposit example uses the numeric reference in GTOCore's
 `GTOBedrockFluids.java`; it is pack-owned data, not default GTNA world generation.
 
 ## Eye of Harmony content foundation (2026-10-04)

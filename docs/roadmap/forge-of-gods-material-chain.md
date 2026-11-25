@@ -45,7 +45,7 @@ Tiers GTNH → GTCEu: UMV → UXV, UXV → OpV.
 | Advanced Nitinol | Laser Engraver (Nitinol 60 + Laser Lens Special) | sim |
 | Attuned Tengam | Polarizer de Purified Tengam ← Electromagnetic Separator de Raw Tengam | sim (Raw/Purified/Attuned) |
 | Superconductor UIV / UMV (+ Base) | EBF 12.700 / 13.600 K + Vacuum Freezer | sim (fio supercondutor UIV e UXV) |
-| Infinity | Avaritia no GTNH; **sem Avaritia no GT:IA**, rota nova a definir | sim |
+| Infinity | Avaritia no GTNH; **sem Avaritia no Type Omega**, rota nova a definir | sim |
 | Eternity | Nano Forge tier 3 (nanites) | sim |
 | Ichorium, Dragonblood (Dragon Metal) | Thaumcraft/Draconic no GTNH; rota nova a definir | sim |
 | Magmatter, SpaceTime, Universium, WDM/BDM, MHDCSM, DTR, QGP, Raw Star Matter | EOH / Forge | já existiam |
