@@ -72,6 +72,13 @@ public final class DevCommandFile {
             mc.getLanguageManager().setSelected(mc.options.languageCode);
             mc.reloadResourcePacks();
             cooldown = 200;
+        } else if (line.startsWith("click ")) {
+            // GUI-scaled coordinates, as the screen sees them.
+            String[] xy = line.substring(6).trim().split(" ");
+            if (mc.screen != null) {
+                mc.screen.mouseClicked(Double.parseDouble(xy[0]), Double.parseDouble(xy[1]), 0);
+                mc.screen.mouseReleased(Double.parseDouble(xy[0]), Double.parseDouble(xy[1]), 0);
+            }
         } else if (line.startsWith("mouse ")) {
             String[] xy = line.substring(6).trim().split(" ");
             org.lwjgl.glfw.GLFW.glfwSetCursorPos(mc.getWindow().getWindow(), Double.parseDouble(xy[0]),
