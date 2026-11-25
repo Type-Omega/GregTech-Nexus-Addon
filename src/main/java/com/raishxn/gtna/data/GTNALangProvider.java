@@ -462,37 +462,6 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.eoh.jei.warning", "Warning: Not all outputs displayed here (%s/%s)");
         add("emi.category.gtna.eye_of_harmony", "Eye of Harmony");
         add("gtna.eoh.jei.base", "Before fields, circuit, gas excess and Nexus loss");
-        add("gtna.eoh.manual.hint", "Press Z for the next page");
-        add("gtna.eoh.manual.page", "Eye of Harmony — page %s/%s");
-        add("gtna.eoh.manual.page1", "Eye of Harmony — fields (1/2)");
-        add("gtna.eoh.manual.page2", "Eye of Harmony — operation (2/2)");
-        add("gtna.eoh.manual.fields",
-                "Each field family has 9 tiers. Use a uniform tier within each family; the three families can differ.");
-        add("gtna.eoh.manual.compression",
-                "Compression: unlocks programs by minimum tier. Each tier above the minimum multiplies duration by 0.97 (3% faster).");
-        add("gtna.eoh.manual.acceleration",
-                "Time acceleration: each tier above the first halves duration and subtracts 9.25 percentage points from success chance.");
-        add("gtna.eoh.manual.stabilisation",
-                "Stabilisation: each tier above the first adds 5 percentage points to success chance and subtracts 5 points from output yield.");
-        add("gtna.eoh.manual.energy",
-                "The first stabilisation tier reduces base EU return by 40%. Each higher tier removes 5 points of this penalty.");
-        add("gtna.eoh.manual.circuit",
-                "Circuit 0–24: configuration k multiplies EU input by 4^k and duration by 2^-k. EU return and product yield are unchanged by the circuit.");
-        add("gtna.eoh.manual.gas",
-                "While idle and enabled, absorbs hydrogen and helium once per second. Starting a cycle consumes ALL stored gas, including excess.");
-        add("gtna.eoh.manual.ratio", "For each gas: overflow ratio = stored / required - 1.");
-        add("gtna.eoh.manual.penalty",
-                "Penalty = 1 - exp(-(30 × overflow ratio)^2). Both gas penalties are subtracted from success chance and product yield, clamped to 0–100%.");
-        add("gtna.eoh.manual.failure",
-                "A failed Overworld cycle produces chance × 28,800 mB of molten SpaceTime instead of regular products. Failure still returns the same gross EU.");
-        add("gtna.eoh.manual.pity",
-                "Repeated failures at the same chance accumulate progress toward a guaranteed success. Gas excess still applies to the next cycle.");
-        add("gtna.eoh.manual.ports",
-                "Exactly one item input, two fluid inputs, one item output and one fluid output. Only finite-buffer ME inputs and ME outputs are supported; ordinary, stocking, crafting and dual ports are rejected.");
-        add("gtna.eoh.manual.delivery",
-                "Wireless energy uses the bound Nexus owner. EU input is charged once; outputs wait when ports or the network are full. Nexus transfer losses apply to the EU return.");
-        add("gtna.eoh.manual.scope",
-                "Programs: Overworld, Nether, End, Moon, Mars, Venus, Mercury and Glacio (planets need Ad Astra). Put the Planet Block in the controller slot; higher tier planets need more gas, more time and better compression fields. Astral Arrays and parallel operation are not implemented yet.");
         add("gtna.eoh.operation.gas_excess", "Gas excess: Hydrogen %s%% / Helium %s%%");
         add("gtna.eoh.operation.planet", "Planet: %s");
         add("gtna.eoh.operation.no_planet", "None");

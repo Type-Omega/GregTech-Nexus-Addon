@@ -113,7 +113,6 @@ public class ClientProxy extends CommonProxy {
                 .addListener(com.raishxn.gtna.client.renderer.material.UniversiumRenderer::chunkUnloaded);
         MinecraftForge.EVENT_BUS.addListener(com.raishxn.gtna.client.renderer.material.UniversiumRenderer::renderWorld);
         MinecraftForge.EVENT_BUS.register(ModuleCountClientHandler.class);
-        MinecraftForge.EVENT_BUS.register(EyeOfHarmonyTooltips.class);
         MinecraftForge.EVENT_BUS.register(com.raishxn.gtna.client.research.KnowledgeClientHandler.class);
         MinecraftForge.EVENT_BUS.register(com.raishxn.gtna.client.research.ResearchKeys.class);
         net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus()
