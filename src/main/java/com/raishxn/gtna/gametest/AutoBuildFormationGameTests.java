@@ -45,6 +45,11 @@ public final class AutoBuildFormationGameTests {
      */
     static MultiblockControllerMachine autoBuild(GameTestHelper helper, MultiblockMachineDefinition definition,
                                                  int repetitions, int lane) {
+        return autoBuild(helper, definition, repetitions, lane, Direction.NORTH);
+    }
+
+    static MultiblockControllerMachine autoBuild(GameTestHelper helper, MultiblockMachineDefinition definition,
+                                                 int repetitions, int lane, Direction front) {
         ItemStack terminal = GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
         terminal.getOrCreateTag().putInt("Repetitions", repetitions);
         // EN: out in the lanes there is real terrain, and the terminal never replaces it: lift the controller by what
@@ -53,7 +58,7 @@ public final class AutoBuildFormationGameTests {
         // PT: desce abaixo dele, mais uma folga de ar.
         // ZH: 测试通道里有真实地形，终端不会替换它：按结构在控制器下方延伸的高度抬高控制器，再留出空气余量。
         var pattern = NexusBlockPattern.fromBlockPattern(definition.getPatternFactory().get());
-        int below = pattern == null ? 0 : -pattern.lowestOffset(Direction.NORTH, Direction.NORTH, false,
+        int below = pattern == null ? 0 : -pattern.lowestOffset(front, Direction.NORTH, false,
                 NexusTerminalUIFactory.AutoBuildSetting.getSetting(terminal));
         var local = new BlockPos(8 + 320 * lane, 200 + below, 8);
         var centre = helper.absolutePos(local);
@@ -63,7 +68,7 @@ public final class AutoBuildFormationGameTests {
         helper.setBlock(local, definition.getBlock());
         var controller = (MultiblockControllerMachine) ((IMachineBlockEntity) helper.getBlockEntity(local))
                 .getMetaMachine();
-        controller.setFrontFacing(Direction.NORTH);
+        controller.setFrontFacing(front);
         var player = FakePlayerFactory.get(helper.getLevel(), new GameProfile(UUID.randomUUID(), "AutoBuildQA"));
         player.setGameMode(GameType.CREATIVE);
         player.setItemInHand(InteractionHand.MAIN_HAND, terminal);
@@ -88,6 +93,26 @@ public final class AutoBuildFormationGameTests {
     @GameTest(template = "empty_16", timeoutTicks = 200, batch = "gtna_autobuild_me_storage")
     public static void meStorageAutoBuildForms(GameTestHelper helper) {
         assertForms(helper, GTNAMachines.ME_STORAGE, 3, 1);
+    }
+
+    /**
+     * As /gtna_dev_build does it: the terminal's default repetitions (0, clamped to the minimum) and a controller
+     * facing south; it must be formed by the build itself, without a manual pattern check.
+     */
+    @GameTest(template = "empty_16", timeoutTicks = 200, batch = "gtna_autobuild_me_storage_default")
+    public static void meStorageAutoBuildFormsWithDefaultRepetitions(GameTestHelper helper) {
+        var controller = autoBuild(helper, GTNAMachines.ME_STORAGE, 0, 7, Direction.SOUTH);
+        var terminal = GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
+        var plan = NexusBlockPattern.fromBlockPattern(controller.getPattern()).plan(controller.getMultiblockState(),
+                NexusTerminalUIFactory.AutoBuildSetting.getSetting(terminal), terminal).get(0);
+        var kinds = new java.util.EnumMap<com.raishxn.gtna.common.item.terminal.plan.NexusBuildPlan.Kind, Integer>(
+                com.raishxn.gtna.common.item.terminal.plan.NexusBuildPlan.Kind.class);
+        for (var cell : plan.cells) kinds.merge(cell.kind, 1, Integer::sum);
+        var error = controller.getMultiblockState().error;
+        helper.assertTrue(controller.isFormed(), "ME Storage with default repetitions must form after the build: " +
+                kinds + ", check now " + controller.checkPatternWithLock() + ", error " +
+                (error == null ? "none" : error.getPos() + " " + error.getErrorInfo().getString()));
+        helper.succeed();
     }
 
     @GameTest(template = "empty_16", timeoutTicks = 200, batch = "gtna_autobuild_flux_matrix")

@@ -62,6 +62,18 @@ public final class PreviewBenchCommand {
         var built = pos;
         server.tell(new net.minecraft.server.TickTask(server.getTickCount() + 100, () -> {
             var error = controller.isFormed() ? null : controller.getMultiblockState().error;
+            var plan = com.raishxn.gtna.common.item.terminal.NexusBlockPattern
+                    .fromBlockPattern(controller.getPattern());
+            if (plan != null) {
+                var kinds = new java.util.TreeMap<String, Integer>();
+                for (var cell : plan.plan(controller.getMultiblockState(),
+                        com.raishxn.gtna.common.item.terminal.ui.NexusTerminalUIFactory.AutoBuildSetting
+                                .getSetting(terminal),
+                        terminal).get(0).cells)
+                    kinds.merge(cell.kind.name() + (cell.kind.name().equals("BLOCKED") ? "@" + cell.pos + "=" +
+                            cell.existing.getBlock() : ""), 1, Integer::sum);
+                GTNACORE.LOGGER.info("[GTNA dev] {} plan after build: {}", id, kinds);
+            }
             GTNACORE.LOGGER.info("[GTNA dev] {} at {} formed after build: {}{}", id, built, controller.isFormed(),
                     error == null ? "" : " (" + error.getErrorInfo().getString() + " at " + error.getPos() + ")");
         }));
