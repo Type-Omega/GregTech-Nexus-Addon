@@ -3346,6 +3346,7 @@
   "gtna.terminal.nexus.me": "ME network",
   "gtna.terminal.nexus.me.offline": "§coffline",
   "gtna.terminal.nexus.me.online": "§2online",
+  "gtna.terminal.nexus.me.short.unlinked": "§cnot linked",
   "gtna.terminal.nexus.me.unlinked": "§cnot linked (Shift+click an ME block)",
   "gtna.terminal.nexus.mirror_build": "Mirror Build",
   "gtna.terminal.nexus.mirror_build.hint": "§7Build mirrored structure",

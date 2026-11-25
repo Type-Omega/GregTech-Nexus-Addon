@@ -4386,5 +4386,6 @@
   "gtna.terminal.nexus.blueprints.full": "§c已存结构列表已满",
   "gtna.terminal.nexus.blueprints.saved": "§a已保存“%s”（%s 个方块）",
   "gtna.terminal.nexus.blueprints.pasted": "§a正在将“%s”粘贴到目标",
-  "gtna.terminal.nexus.blueprints.wrong_machine": "§c“%s”保存自另一种机器"
+  "gtna.terminal.nexus.blueprints.wrong_machine": "§c“%s”保存自另一种机器",
+  "gtna.terminal.nexus.me.short.unlinked": "§c未连接"
 }

@@ -1206,6 +1206,7 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.terminal.nexus.blueprints.saved", "§aSaved \"%s\" (%s blocks)");
         add("gtna.terminal.nexus.blueprints.pasted", "§aPasting \"%s\" onto the target");
         add("gtna.terminal.nexus.blueprints.wrong_machine", "§c\"%s\" was saved from another machine");
+        add("gtna.terminal.nexus.me.short.unlinked", "§cnot linked");
         add("gtna.terminal.nexus.ae2.linked", "§a[GTNA] §fLinked to the ME network");
         add("gtna.terminal.nexus.ae2.tooltip.linked", "§a⚡ ME Network linked at [%s, %s, %s]");
         add("gtna.terminal.nexus.ae2.tooltip.not_linked", "§c✖ ME Network: Not connected");

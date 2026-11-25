@@ -4401,5 +4401,6 @@
   "gtna.terminal.nexus.blueprints.full": "§cLista de estruturas salvas cheia",
   "gtna.terminal.nexus.blueprints.saved": "§aSalva \"%s\" (%s blocos)",
   "gtna.terminal.nexus.blueprints.pasted": "§aColando \"%s\" no alvo",
-  "gtna.terminal.nexus.blueprints.wrong_machine": "§c\"%s\" foi salva de outra máquina"
+  "gtna.terminal.nexus.blueprints.wrong_machine": "§c\"%s\" foi salva de outra máquina",
+  "gtna.terminal.nexus.me.short.unlinked": "§cnão vinculada"
 }

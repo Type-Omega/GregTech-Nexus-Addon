@@ -82,7 +82,7 @@ public final class NexusTerminalWindow {
                     }));
         }
         page.addWidget(ToolWindow.label(2, steps.length * 22 + 6, Component.translatable("gtna.terminal.nexus.me")));
-        page.addWidget(ToolWindow.label(2, steps.length * 22 + 17, this::meState));
+        page.addWidget(ToolWindow.label(2, steps.length * 22 + 17, this::meShort));
         // Action bar: summary on the left, actions on the right.
         int by = ph - BAR_H;
         page.addWidget(new com.lowdragmc.lowdraglib.gui.widget.ImageWidget(0, by - 2, pw, BAR_H + 2,
@@ -239,12 +239,13 @@ public final class NexusTerminalWindow {
         }
     }
 
-    private String meState() {
+    /** ME state in one short word, for the narrow step column. */
+    private String meShort() {
         if (player.level().isClientSide) return "";
-        if (!NexusAE2Link.isLinked(stack)) return Component.translatable("gtna.terminal.nexus.me.unlinked").getString();
-        return NexusAE2Link.grid(stack, player.getServer()) != null ?
-                Component.translatable("gtna.terminal.nexus.me.online").getString() :
-                Component.translatable("gtna.terminal.nexus.me.offline").getString();
+        if (!NexusAE2Link.isLinked(stack)) return Component.translatable("gtna.terminal.nexus.me.short.unlinked")
+                .getString();
+        return Component.translatable(NexusAE2Link.grid(stack, player.getServer()) != null ?
+                "gtna.terminal.nexus.me.online" : "gtna.terminal.nexus.me.offline").getString();
     }
 
     @Nullable
