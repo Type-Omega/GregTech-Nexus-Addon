@@ -57,6 +57,13 @@ public final class PreviewBenchCommand {
         long t0 = System.nanoTime();
         com.raishxn.gtna.common.item.terminal.NexusAutoBuilder.autoBuild(player, controller, terminal);
         com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs.drain(player);
+        // EN: form it now, as the GameTests do: the check below is a TickTask that the server may run before the
+        // EN: end-of-tick refresh, and then it read "not formed" with every block of the plan in place.
+        // PT: forma agora, como os GameTests: a checagem abaixo é um TickTask que o servidor pode rodar antes do
+        // PT: refresh do fim do tick, e então lia "não formado" com todos os blocos do plano no lugar.
+        // ZH: 像 GameTest 一样立即成型：下面的检查是 TickTask，服务器可能在刻末刷新之前运行它，于是在计划中所有方块都
+        // ZH: 已就位时仍读到"未成型"。
+        com.raishxn.gtna.common.item.terminal.NexusBuildCheckGuard.flushPending();
         GTNACORE.LOGGER.info("[GTNA perf] dev build {} at {}: {} ms", id, pos, (System.nanoTime() - t0) / 1_000_000);
         lastBuilt = pos;
         var built = pos;
