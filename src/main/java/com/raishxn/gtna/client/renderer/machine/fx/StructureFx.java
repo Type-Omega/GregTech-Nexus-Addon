@@ -123,8 +123,10 @@ public final class StructureFx {
     // ------------------------------------------------------------------ ME Storage
 
     /**
-     * Status lights on the glass side of every storage core, blinking with the storage use, and a capacity ring
-     * around the front of the conduit that fills with the used share.
+     * The "Data Conduit" read at a glance (author's request, after studying gt_shanhai's renders), seen through the
+     * side windows: a fill gauge along the top of each window, as long as the used share and coloured green, amber,
+     * red as it fills; data packets streaming through the windows to the access hatch while the network is online;
+     * and one light per storage core, lit front to back in proportion to the use. Offline, everything turns dim red.
      */
     public static void storage(MEStorageMachine m, Matrix4f at, Matrix4f projection, float time) {
         int cores = m.renderCores() > 0 ? m.renderCores() : MachineRenders.SHOWCASE ? 24 : 0;
@@ -149,51 +151,87 @@ public final class StructureFx {
         }
         if (positions.isEmpty()) return;
         centre.div(positions.size());
+        float back = Float.MAX_VALUE, front0 = -Float.MAX_VALUE, reach = 0;
+        for (Vector3f p : positions) {
+            back = Math.min(back, p.dot(f));
+            front0 = Math.max(front0, p.dot(f));
+            reach = Math.max(reach, Math.abs(new Vector3f(p).sub(centre).dot(side)));
+        }
+        back -= 0.5f;
+        front0 += 0.5f;
+        float length = front0 - back;
+        // EN: the cores sit right behind the side windows (laminated glass 'V', which is not see-through enough):
+        // EN: the gauge, the packets and the core lights are drawn on the outer face of those windows, 1.6 blocks
+        // EN: out from the cores, as a display panel on the glass.
+        // PT: os núcleos ficam logo atrás das janelas laterais (vidro laminado 'V', que não é transparente o
+        // PT: bastante): o medidor, os pacotes e as luzes dos núcleos são desenhados na face externa dessas janelas,
+        // PT: a 1,6 bloco dos núcleos, como um painel no vidro.
+        // ZH: 存储核心紧贴侧窗（夹层玻璃 'V'，透明度不足）：量表、数据包和核心灯绘制在这些窗的外表面，距核心 1.6 格，
+        // ZH: 如同玻璃上的显示面板。
+        float lane = reach + 1.6f;
+        // EN: gauge colour by fill: green below 60 %, amber to 85 %, red above (the network is nearly full).
+        // PT: cor do medidor pelo preenchimento: verde abaixo de 60 %, âmbar até 85 %, vermelho acima (rede quase
+        // PT: cheia).
+        // ZH: 量表颜色随填充变化：60% 以下绿色，85% 以下琥珀色，以上红色（网络将满）。
+        float[] gauge = !online ? new float[] { 0.7f, 0.1f, 0.1f } :
+                use < 0.6f ? new float[] { 0.25f, 1f, 0.55f } :
+                        use < 0.85f ? new float[] { 1f, 0.7f, 0.15f } : new float[] { 1f, 0.25f, 0.2f };
+        var filled = FxDraw.fx(6, time, gauge[0], gauge[1], gauge[2], 0.95f, online ? 1.2f : 0, 1, 0.4f, 0);
+        var guide = FxDraw.fx(6, time, gauge[0], gauge[1], gauge[2], 0.18f, 0, 1, 0.1f, 0);
+        var halo = FxDraw.fx(6, time, gauge[0], gauge[1], gauge[2], 0.3f, 0.5f, 1, 0.05f, 0);
+        if (filled == null) return;
+        for (int sgn : new int[] { -1, 1 }) {
+            // Fill gauge along the top of each window: bright up to the used share, a faint guide after it.
+            Vector3f start = new Vector3f(centre).add(new Vector3f(f).mul(back - centre.dot(f)))
+                    .add(new Vector3f(side).mul(sgn * lane)).add(0, 1.35f, 0);
+            FxDraw.ribbon(guide, at, List.of(start, new Vector3f(start).add(new Vector3f(f).mul(length))), 0.25f, 1);
+            if (use > 0) {
+                List<Vector3f> part = List.of(new Vector3f(start),
+                        new Vector3f(start).add(new Vector3f(f).mul(length * Math.min(1, use))));
+                FxDraw.ribbon(filled, at, part, 0.42f, 1);
+                FxDraw.ribbon(halo, at, part, MachineRenders.high() ? 1.4f : 1f, 1);
+            }
+        }
+
         RenderSystem.setShader(() -> additive);
         BufferBuilder buf = Tesselator.getInstance().getBuilder();
         buf.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-        int tick = (int) (time * 6);
-        Vector3f up = new Vector3f(0, 1, 0);
-        for (int i = 0; i < positions.size(); i++) {
-            Vector3f p = positions.get(i);
-            float sign = Math.signum(new Vector3f(p).sub(centre).dot(side));
-            Vector3f face = new Vector3f(p).add(new Vector3f(side).mul(sign * 0.53f));
-            for (int led = 0; led < 6; led++) {
-                Random rnd = new Random(i * 977L + led * 31L + tick / (1 + led % 3));
-                boolean lit = online && rnd.nextFloat() < 0.15f + 0.85f * use;
-                float[] c = !online ? new float[] { 0.8f, 0.1f, 0.1f } :
-                        rnd.nextFloat() < use * 0.6f ? new float[] { 1f, 0.65f, 0.15f } :
-                                new float[] { 0.2f, 1f, 0.55f };
-                float a = lit ? 0.95f : 0.12f;
-                Vector3f centreLed = new Vector3f(face).add(new Vector3f(up).mul(-0.3f + 0.3f * (led % 3)))
-                        .add(new Vector3f(f).mul(led < 3 ? -0.18f : 0.18f));
-                square(buf, at, centreLed, up, f, 0.07f, c, a);
+        // Data packets streaming through both windows to the front (the access hatch); fewer on LOW.
+        if (online) {
+            int packets = Math.min(MachineRenders.detail(48, 16), 4 + 2 * slices);
+            for (int sgn : new int[] { -1, 1 }) {
+                for (int k = 0; k < packets; k++) {
+                    float t = (time * 0.35f + k / (float) packets + (sgn > 0 ? 0.5f / packets : 0)) % 1;
+                    Vector3f q = new Vector3f(centre).add(new Vector3f(f).mul(back - centre.dot(f) + t * length))
+                            .add(new Vector3f(side).mul(sgn * lane)).add(0, ((k * 3) % 3 - 1) * 0.6f, 0);
+                    FxDraw.billboard(buf, at, q.x, q.y, q.z, 0.14f, 0.55f, 0.9f, 1f, 0.9f * (1 - t * 0.4f));
+                }
             }
+        }
+        // One light per storage core, on its window face, lit front to back with the use.
+        List<Vector3f> ordered = new ArrayList<>(positions);
+        ordered.sort((x, y) -> Float.compare(y.dot(f), x.dot(f)));
+        int lit = Math.round(Math.min(1, use) * ordered.size());
+        for (int i = 0; i < ordered.size(); i++) {
+            Vector3f p = ordered.get(i);
+            float sign = Math.signum(new Vector3f(p).sub(centre).dot(side));
+            Vector3f face = new Vector3f(p).add(new Vector3f(side).mul(sign * (lane - reach)));
+            boolean on = online && i < lit;
+            float pulse = on ? 0.75f + 0.25f * (float) Math.sin(time * 4 + i * 0.6f) : 0.3f;
+            float[] c = on ? gauge : online ? new float[] { 0.25f, 0.35f, 0.45f } : new float[] { 0.6f, 0.1f, 0.1f };
+            FxDraw.billboard(buf, at, face.x, face.y, face.z, on ? 0.4f : 0.22f, c[0], c[1], c[2], pulse);
         }
         Tesselator.getInstance().end();
 
-        // Capacity ring around the front of the conduit.
-        float front0 = -Float.MAX_VALUE;
-        for (Vector3f p : positions) front0 = Math.max(front0, p.dot(f));
-        Vector3f ringCentre = new Vector3f(centre).add(new Vector3f(f).mul(front0 - centre.dot(f) + 0.9f));
+        // Capacity ring around the front of the conduit, the same share as the gauge.
+        Vector3f ringCentre = new Vector3f(centre).add(new Vector3f(f).mul(front0 - centre.dot(f) + 0.4f));
         Matrix4f ringFrame = new Matrix4f(at).translate(ringCentre)
                 .rotate(new org.joml.Quaternionf().rotationTo(new Vector3f(0, 0, 1), f));
-        var ring = FxDraw.fx(6, time, use > 0.85f ? 1f : 0.3f, use > 0.85f ? 0.5f : 0.9f, 1f, 0.9f, 1.5f, 1, 0.5f,
-                0);
+        var ring = FxDraw.fx(6, time, gauge[0], gauge[1], gauge[2], 0.9f, 1.5f, 1, 0.5f, 0);
         if (ring == null || use <= 0) return;
         double start = Math.PI / 2;
         FxDraw.ribbon(ring, ringFrame, FxDraw.arc(3.3f, start, start - 2 * Math.PI * use,
-                Math.max(4, (int) (64 * use))), 0.35f, 1);
-    }
-
-    private static void square(BufferBuilder b, Matrix4f m, Vector3f c, Vector3f u, Vector3f v, float s, float[] col,
-                               float a) {
-        Vector3f[] q = { new Vector3f(c).sub(new Vector3f(u).mul(s)).sub(new Vector3f(v).mul(s)),
-                new Vector3f(c).add(new Vector3f(u).mul(s)).sub(new Vector3f(v).mul(s)),
-                new Vector3f(c).add(new Vector3f(u).mul(s)).add(new Vector3f(v).mul(s)),
-                new Vector3f(c).sub(new Vector3f(u).mul(s)).add(new Vector3f(v).mul(s)) };
-        for (int k : new int[] { 0, 1, 2, 0, 2, 3 })
-            b.vertex(m, q[k].x, q[k].y, q[k].z).color(col[0], col[1], col[2], a).endVertex();
+                Math.max(4, (int) (64 * use))), 0.45f, 1);
     }
 
     // ------------------------------------------------------------------ Assembly Forge

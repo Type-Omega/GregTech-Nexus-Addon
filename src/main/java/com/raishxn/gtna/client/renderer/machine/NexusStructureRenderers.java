@@ -39,7 +39,12 @@ public final class NexusStructureRenderers {
     private NexusStructureRenderers() {}
 
     public static void onRenderLevelStage(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || QUEUE.isEmpty()) return;
+        // EN: before the translucent pass, so the windows and glass of these structures blend over the effects
+        // EN: (the ME Storage cores and the Flux Matrix column sit behind glass) instead of hiding them.
+        // PT: antes do passe translúcido, para as janelas e vidros destas estruturas se misturarem por cima dos efeitos
+        // PT: (os núcleos do ME Storage e a coluna da Flux Matrix ficam atrás de vidro) em vez de escondê-los.
+        // ZH: 在半透明阶段之前绘制，使这些结构的窗户和玻璃叠加在效果之上（ME 存储核心和通量矩阵柱位于玻璃后），而不是遮住它们。
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_BLOCK_ENTITIES || QUEUE.isEmpty()) return;
         Vec3 cam = event.getCamera().getPosition();
         PoseStack pose = event.getPoseStack();
         Matrix4f projection = new Matrix4f(event.getProjectionMatrix());
