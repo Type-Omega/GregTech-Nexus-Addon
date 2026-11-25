@@ -26,6 +26,23 @@ public final class PreviewBenchCommand {
         var level = player.serverLevel();
         var facing = player.getDirection();
         var pos = player.blockPosition().relative(facing, 8);
+        var terminal = new net.minecraft.world.item.ItemStack(
+                com.raishxn.gtna.common.data.GTNAItems.NEXUS_STRUCTURE_TERMINAL.get());
+        // EN: lift the controller so the lowest block of the structure lands on the player's level: the terminal
+        // EN: never replaces terrain, so a ring reaching below the controller (Collider, Hypercore) never formed.
+        // PT: ergue o controlador para o bloco mais baixo da estrutura ficar no nível do jogador: o terminal não
+        // PT: substitui terreno, então um anel que desce abaixo do controlador (Collider, Hypercore) nunca formava.
+        // ZH: 抬高控制器，让结构最低的方块落在玩家所在高度：终端不会替换地形，因此向下延伸的环（对撞机、超核）从未成型。
+        if (net.minecraftforge.registries.ForgeRegistries.BLOCKS.getValue(
+                id) instanceof com.gregtechceu.gtceu.api.block.MetaMachineBlock machineBlock &&
+                machineBlock.getDefinition() instanceof MultiblockMachineDefinition definition) {
+            var pattern = com.raishxn.gtna.common.item.terminal.NexusBlockPattern
+                    .fromBlockPattern(definition.getPatternFactory().get());
+            if (pattern != null) pos = pos.above(-pattern.lowestOffset(facing.getOpposite(),
+                    net.minecraft.core.Direction.NORTH, false,
+                    com.raishxn.gtna.common.item.terminal.ui.NexusTerminalUIFactory.AutoBuildSetting
+                            .getSetting(terminal)));
+        }
         var state = block.defaultBlockState();
         var prop = state.getBlock().getStateDefinition().getProperty("facing");
         if (prop instanceof net.minecraft.world.level.block.state.properties.DirectionProperty dir &&
@@ -37,14 +54,16 @@ public final class PreviewBenchCommand {
             return;
         // Placed by command, not by the player: give it an owner like a hand-placed controller has.
         controller.self().setOwnerUUID(uuid);
-        var terminal = new net.minecraft.world.item.ItemStack(
-                com.raishxn.gtna.common.data.GTNAItems.NEXUS_STRUCTURE_TERMINAL.get());
         long t0 = System.nanoTime();
         com.raishxn.gtna.common.item.terminal.NexusAutoBuilder.autoBuild(player, controller, terminal);
         GTNACORE.LOGGER.info("[GTNA perf] dev build {} at {}: {} ms", id, pos, (System.nanoTime() - t0) / 1_000_000);
         lastBuilt = pos;
-        server.tell(new net.minecraft.server.TickTask(server.getTickCount() + 100, () -> GTNACORE.LOGGER
-                .info("[GTNA dev] {} formed after build: {}", id, controller.isFormed())));
+        var built = pos;
+        server.tell(new net.minecraft.server.TickTask(server.getTickCount() + 100, () -> {
+            var error = controller.isFormed() ? null : controller.getMultiblockState().error;
+            GTNACORE.LOGGER.info("[GTNA dev] {} at {} formed after build: {}{}", id, built, controller.isFormed(),
+                    error == null ? "" : " (" + error.getErrorInfo().getString() + " at " + error.getPos() + ")");
+        }));
     }
 
     private static net.minecraft.core.BlockPos lastBuilt;

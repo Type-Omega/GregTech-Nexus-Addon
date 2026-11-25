@@ -20,6 +20,7 @@ import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.common.data.GTNAEnergyHatches;
 import com.raishxn.gtna.common.data.GTNAItems;
 import com.raishxn.gtna.common.data.GTNAMachines;
+import com.raishxn.gtna.common.data.GTNAOriginals;
 import com.raishxn.gtna.common.item.terminal.NexusAutoBuilder;
 import com.raishxn.gtna.common.item.terminal.NexusBlockPattern;
 import com.raishxn.gtna.common.item.terminal.NexusBuildCheckGuard;
@@ -96,6 +97,17 @@ public final class AutoBuildFormationGameTests {
     @GameTest(template = "empty_16", timeoutTicks = 200, batch = "gtna_autobuild_assembly_forge")
     public static void assemblyForgeAutoBuildForms(GameTestHelper helper) {
         assertForms(helper, GTNAMachines.NEXUS_MOLECULAR_FORGE, 1, 3);
+    }
+
+    /** Hypercore and Collider reach below the controller; built from a lifted controller they form (dev rig fix). */
+    @GameTest(template = "empty_16", timeoutTicks = 400, batch = "gtna_autobuild_hypercore")
+    public static void hypercoreAutoBuildForms(GameTestHelper helper) {
+        assertForms(helper, GTNAMachines.NEXUS_ME_HYPERCORE, 1, 4);
+    }
+
+    @GameTest(template = "empty_16", timeoutTicks = 400, batch = "gtna_autobuild_collider")
+    public static void colliderAutoBuildForms(GameTestHelper helper) {
+        assertForms(helper, GTNAOriginals.ANTIMATTER_COLLIDER_RING, 1, 5);
     }
 
     /** Negative: a structure the auto-build left one block short of does not form. */
