@@ -3,20 +3,28 @@ package com.raishxn.gtna.gametest;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+import com.gregtechceu.gtceu.api.pattern.BlockPattern;
+import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.mojang.authlib.GameProfile;
 import com.raishxn.gtna.GTNACORE;
+import com.raishxn.gtna.api.machine.multiblock.GTNASubPatterns;
+import com.raishxn.gtna.api.machine.multiblock.IAlternativeStructureMachine;
+import com.raishxn.gtna.api.machine.multiblock.ISubPatternMachine;
 import com.raishxn.gtna.common.data.GTNAEnergyHatches;
 import com.raishxn.gtna.common.data.GTNAItems;
 import com.raishxn.gtna.common.data.GTNAMachines;
@@ -24,8 +32,11 @@ import com.raishxn.gtna.common.data.GTNAOriginals;
 import com.raishxn.gtna.common.item.terminal.NexusAutoBuilder;
 import com.raishxn.gtna.common.item.terminal.NexusBlockPattern;
 import com.raishxn.gtna.common.item.terminal.NexusBuildCheckGuard;
+import com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs;
 import com.raishxn.gtna.common.item.terminal.ui.NexusTerminalUIFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -36,6 +47,10 @@ import java.util.UUID;
 @GameTestHolder(GTNACORE.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class AutoBuildFormationGameTests {
+
+    private static final int LANE_BASE = 4096;
+    private static final int LANE_STEP = 512;
+    private static final int LANE_MARGIN = 2;
 
     private AutoBuildFormationGameTests() {}
 
@@ -60,36 +75,174 @@ public final class AutoBuildFormationGameTests {
         ItemStack terminal = GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
         terminal.getOrCreateTag().putInt("Repetitions", repetitions);
         terminal.getOrCreateTag().putInt("ModuleBuild", modules);
-        // EN: out in the lanes there is real terrain, and the terminal never replaces it: lift the controller by what
-        // EN: the pattern reaches below it, plus clear air.
-        // PT: nas faixas há terreno de verdade, e o terminal nunca o substitui: ergue o controlador pelo que o padrão
-        // PT: desce abaixo dele, mais uma folga de ar.
-        // ZH: 测试通道里有真实地形，终端不会替换它：按结构在控制器下方延伸的高度抬高控制器，再留出空气余量。
         var setting = NexusTerminalUIFactory.AutoBuildSetting.getSetting(terminal);
-        var extensions = com.raishxn.gtna.api.machine.multiblock.GTNASubPatterns.get(definition);
-        var patterns = new java.util.ArrayList<>(java.util.List.of(definition.getPatternFactory().get()));
-        patterns.addAll(extensions.subList(0, Math.min(modules, extensions.size())));
-        int below = 0;
-        for (var each : patterns) {
-            var layout = NexusBlockPattern.fromBlockPattern(each);
-            if (layout != null) below = Math.max(below, -layout.lowestOffset(front, Direction.NORTH, false, setting));
-        }
-        var local = new BlockPos(8 + 320 * lane, 200 + below, 8);
-        var centre = helper.absolutePos(local);
-        for (int cx = (centre.getX() - 96) >> 4; cx <= (centre.getX() + 96) >> 4; cx++)
-            for (int cz = (centre.getZ() - 160) >> 4; cz <= (centre.getZ() + 160) >> 4; cz++)
-                helper.getLevel().getChunk(cx, cz);
+        ServerLevel level = helper.getLevel();
+        // EN: place lanes at fixed world coordinates independent of templateX/templateZ so batches never overlap
+        // EN: across filters or runs, then clear the entire structure box (stone floor below, air above).
+        // PT: coloca as faixas em coordenadas fixas do mundo independentes de templateX/templateZ para que lotes
+        // PT: nunca se sobreponham entre filtros ou rodadas, e limpa a caixa inteira (piso sólido abaixo, ar acima).
+        // ZH: 将测试通道放在与 templateX/templateZ 无关的固定世界坐标，避免不同筛选或运行间相互重叠，
+        // ZH: 并在建造前清空整个结构包围盒（下方铺实心石头底座，上方清为空气）。
+        int worldX = LANE_BASE + LANE_STEP * lane;
+        int worldZ = LANE_BASE;
+        level.getChunk(worldX >> 4, worldZ >> 4);
+        BlockPos probePos = new BlockPos(worldX, Math.max(140, level.getMinBuildHeight() + 64), worldZ);
+        level.removeBlock(probePos, false);
+        level.setBlock(probePos, definition.getBlock().defaultBlockState(), 2);
+        var probe = (MultiblockControllerMachine) ((IMachineBlockEntity) level.getBlockEntity(probePos))
+                .getMetaMachine();
+        probe.setFrontFacing(front);
+        boolean allowFlip = probe.self().allowFlip();
+        List<NexusBlockPattern> layouts = activeLayouts(definition, probe, modules);
+        level.removeBlock(probePos, false);
+
+        int[] bounds = patternBounds(layouts, front, setting, allowFlip);
+        int[] chunkBounds = searchBounds(layouts, front, setting, allowFlip, bounds);
+        int below = -bounds[1];
+        int baseY = Math.max(140, level.getMinBuildHeight() + 64);
+        int centreY = Math.min(level.getMaxBuildHeight() - 1 - bounds[4], baseY + below);
+        BlockPos centre = new BlockPos(worldX, centreY, worldZ);
+        int minX = centre.getX() + bounds[0] - LANE_MARGIN;
+        int minY = centre.getY() + bounds[1];
+        int minZ = centre.getZ() + bounds[2] - LANE_MARGIN;
+        int maxX = centre.getX() + bounds[3] + LANE_MARGIN;
+        int maxY = centre.getY() + bounds[4] + LANE_MARGIN;
+        int maxZ = centre.getZ() + bounds[5] + LANE_MARGIN;
+
+        // EN: GTCEu's checkPatternAt starts scanning at z = -centerOffset[4] (-maxZ) before the controller, so
+        // EN: repeatable aisles before the controller (ME Storage, maxZ=133) need those outer chunks loaded too.
+        // PT: o checkPatternAt do GTCEu começa a varredura em z = -centerOffset[4] (-maxZ) antes do controlador;
+        // PT: fileiras repetidas antes dele (ME Storage, maxZ=133) também precisam desses chunks carregados.
+        // ZH: GTCEu 的 checkPatternAt 从控制器之前的 z = -centerOffset[4]（-maxZ）开始扫描，
+        // ZH: 因此控制器前方的可重复层（如 ME Storage，maxZ=133）也需要加载那些外围区块。
+        int chunkMinX = centre.getX() + chunkBounds[0];
+        int chunkMinZ = centre.getZ() + chunkBounds[2];
+        int chunkMaxX = centre.getX() + chunkBounds[3];
+        int chunkMaxZ = centre.getZ() + chunkBounds[5];
+        for (int cx = (chunkMinX - 16) >> 4; cx <= (chunkMaxX + 16) >> 4; cx++)
+            for (int cz = (chunkMinZ - 16) >> 4; cz <= (chunkMaxZ + 16) >> 4; cz++)
+                level.getChunk(cx, cz);
+        clearLane(level, minX, minY, minZ, maxX, maxY, maxZ);
+
+        BlockPos local = centre.subtract(helper.absolutePos(BlockPos.ZERO));
         helper.setBlock(local, definition.getBlock());
         var controller = (MultiblockControllerMachine) ((IMachineBlockEntity) helper.getBlockEntity(local))
                 .getMetaMachine();
         controller.setFrontFacing(front);
-        var player = FakePlayerFactory.get(helper.getLevel(), new GameProfile(UUID.randomUUID(), "AutoBuildQA"));
+        var player = FakePlayerFactory.get(level, new GameProfile(UUID.randomUUID(), "AutoBuildQA"));
         player.setGameMode(GameType.CREATIVE);
         player.setItemInHand(InteractionHand.MAIN_HAND, terminal);
         NexusAutoBuilder.autoBuild(player, controller, terminal);
-        com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs.drain(player);
+        NexusBuildJobs.drain(player);
+        helper.assertTrue(!NexusBuildJobs.isRunning(player),
+                definition.getId() + " auto-build job must finish before checking");
         NexusBuildCheckGuard.flushPending();
         return controller;
+    }
+
+    private static List<NexusBlockPattern> activeLayouts(MultiblockMachineDefinition definition,
+                                                         MultiblockControllerMachine controller, int modules) {
+        List<BlockPattern> extensions = new ArrayList<>(GTNASubPatterns.get(definition));
+        if (controller.self() instanceof ISubPatternMachine host) extensions.addAll(host.gtna$getSubPatterns());
+        List<NexusBlockPattern> layouts = new ArrayList<>();
+        if (modules > extensions.size() && controller.self() instanceof IAlternativeStructureMachine alternatives) {
+            List<BlockPattern> options = alternatives.gtna$alternativeStructures();
+            if (!options.isEmpty()) {
+                var chosen = NexusBlockPattern
+                        .fromBlockPattern(options.get(Math.min(modules - extensions.size(), options.size()) - 1));
+                if (chosen != null) layouts.add(chosen);
+                return layouts;
+            }
+        }
+        var main = NexusBlockPattern.fromBlockPattern(definition.getPatternFactory().get());
+        if (main != null) layouts.add(main);
+        for (BlockPattern ext : extensions.subList(0, Math.min(Math.max(0, modules), extensions.size()))) {
+            var sub = NexusBlockPattern.fromBlockPattern(ext);
+            if (sub != null) layouts.add(sub);
+        }
+        return layouts;
+    }
+
+    private static int[] patternBounds(List<NexusBlockPattern> layouts, Direction front,
+                                       NexusTerminalUIFactory.AutoBuildSetting setting, boolean allowFlip) {
+        int[] bounds = new int[6];
+        for (NexusBlockPattern layout : layouts) {
+            var cells = layout.cells();
+            int[] center = layout.centerOffset();
+            int[] repeat = layout.repetitions(setting);
+            int z = 0;
+            for (int aisle = 0; aisle < center[2]; aisle++) z -= repeat[aisle];
+            for (int aisle = 0; aisle < cells.length; aisle++) {
+                for (int copy = 0; copy < repeat[aisle]; copy++, z++) {
+                    for (int row = 0; row < cells[aisle].length; row++) {
+                        for (int col = 0; col < cells[aisle][row].length; col++) {
+                            if (cells[aisle][row][col].common.contains(SimplePredicate.ANY)) continue;
+                            includeOffset(bounds, layout.toWorldOffset(col - center[0], row - center[1], z,
+                                    front, Direction.NORTH, false));
+                            if (allowFlip) includeOffset(bounds, layout.toWorldOffset(col - center[0], row - center[1],
+                                    z, front, Direction.NORTH, true));
+                        }
+                    }
+                }
+            }
+        }
+        return bounds;
+    }
+
+    private static int[] searchBounds(List<NexusBlockPattern> layouts, Direction front,
+                                      NexusTerminalUIFactory.AutoBuildSetting setting, boolean allowFlip,
+                                      int[] buildBounds) {
+        int[] bounds = buildBounds.clone();
+        for (NexusBlockPattern layout : layouts) {
+            var cells = layout.cells();
+            int[] center = layout.centerOffset();
+            int minZ = -center[4];
+            int maxZ = -center[3];
+            for (int z : new int[] { minZ, maxZ }) {
+                for (int row = 0; row < cells[0].length; row++) {
+                    for (int col = 0; col < cells[0][row].length; col++) {
+                        if (cells[0][row][col].common.contains(SimplePredicate.ANY)) continue;
+                        includeOffset(bounds, layout.toWorldOffset(col - center[0], row - center[1], z,
+                                front, Direction.NORTH, false));
+                        if (allowFlip) includeOffset(bounds, layout.toWorldOffset(col - center[0], row - center[1],
+                                z, front, Direction.NORTH, true));
+                    }
+                }
+            }
+        }
+        return bounds;
+    }
+
+    private static void includeOffset(int[] bounds, BlockPos offset) {
+        bounds[0] = Math.min(bounds[0], offset.getX());
+        bounds[1] = Math.min(bounds[1], offset.getY());
+        bounds[2] = Math.min(bounds[2], offset.getZ());
+        bounds[3] = Math.max(bounds[3], offset.getX());
+        bounds[4] = Math.max(bounds[4], offset.getY());
+        bounds[5] = Math.max(bounds[5], offset.getZ());
+    }
+
+    private static void clearLane(ServerLevel level, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        int floorY = minY - 1;
+        int ceilingY = level.getMaxBuildHeight() - 1;
+        var cursor = new BlockPos.MutableBlockPos();
+        for (int x = minX; x <= maxX; x++) {
+            for (int z = minZ; z <= maxZ; z++) {
+                if (floorY >= level.getMinBuildHeight()) {
+                    cursor.set(x, floorY, z);
+                    if (!level.getBlockState(cursor).is(Blocks.STONE)) {
+                        level.setBlock(cursor, Blocks.STONE.defaultBlockState(), 2);
+                    }
+                }
+                int topY = Math.min(ceilingY, Math.max(maxY, level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z)));
+                for (int y = minY; y <= topY; y++) {
+                    cursor.set(x, y, z);
+                    if (!level.getBlockState(cursor).isAir()) {
+                        level.setBlock(cursor, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+            }
+        }
     }
 
     private static void assertForms(GameTestHelper helper, MultiblockMachineDefinition definition,
