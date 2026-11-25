@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
@@ -12,8 +13,10 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 
+import com.raishxn.gtna.api.machine.multiblock.IAlternativeStructureMachine;
 import com.raishxn.gtna.api.machine.multiblock.IGTNAModuleHost;
 import com.raishxn.gtna.common.data.GTNANanoForge;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -29,8 +32,11 @@ import java.util.List;
  * of those nanites; parallel {@code MagMatter / (288 / 2^(4 - recipe tier))}, duration {@code x 0.9999^parallel}.
  * Perfect overclock below tier 3 when the forge is above the recipe, and for tier-3 recipes only with that parallel.
  * The modifier only measures; the MagMatter and nanite are taken when the recipe starts ({@link #beforeWorking}).
+ * <p>
+ * The tier-4 structure is not an extension of the tower: as in GTNH it is built and checked instead of the tower and
+ * its tier 2 and 3 extensions ({@link #checkPattern}).
  */
-public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
+public class NanoForgeMachine extends WorkableElectricMultiblockMachine implements IAlternativeStructureMachine {
 
     public static final String TIER = "nano_forge_tier";
     public static final int MAX_TIER = 4;
@@ -45,8 +51,46 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
         super(holder, args);
     }
 
-    /** 1 + the tier extensions formed in order. */
+    private volatile boolean tierFour;
+
+    @Override
+    public List<BlockPattern> gtna$alternativeStructures() {
+        return List.of(GTNANanoForge.tierFourPattern(getDefinition()));
+    }
+
+    /**
+     * The tower (with its extensions) or, when that does not match, the tier-4 structure. They claim different
+     * blocks in the same cells, so a world holds one of them; the controller forms from whichever is complete.
+     */
+    @Override
+    public boolean checkPattern() {
+        if (super.checkPattern()) {
+            tierFour = false;
+            return true;
+        }
+        var state = getMultiblockState();
+        var towerError = state.error;
+        var watched = new LongOpenHashSet(state.cache);
+        if (GTNANanoForge.tierFourPattern(getDefinition()).checkPatternAt(state, false)) {
+            tierFour = true;
+            return true;
+        }
+        // EN: Neither formed: keep reporting the tower's first missing block, and watch the cells of both structures
+        // EN: so placing a missing block of either one re-checks the controller.
+        // PT: Nenhuma formou: segue reportando o primeiro bloco que falta da torre e observa as células das duas
+        // PT: estruturas, assim colocar um bloco que falta em qualquer uma confere o controlador de novo.
+        // ZH: 两者都未成型：继续报告塔身缺少的第一个方块，并同时监视两种结构的格子，
+        // ZH: 这样补上任一结构缺少的方块都会重新检查控制器。
+        tierFour = false;
+        watched.addAll(state.cache);
+        state.cache = watched;
+        state.setError(towerError);
+        return false;
+    }
+
+    /** 1 + the tier extensions formed in order; the separate tier-4 structure counts as tier 4. */
     public int getStructureTier() {
+        if (tierFour) return MAX_TIER;
         long mask = ((IGTNAModuleHost) (Object) this).gtna$formedModuleMask();
         int tier = 1;
         while (tier < MAX_TIER && (mask & (1L << (tier - 1))) != 0) tier++;

@@ -44,11 +44,14 @@ public final class GTNANanoForgeGameTests {
         helper.succeed();
     }
 
-    /** The tier 2, 3 and 4 extensions all build (the tier-4 piece is 41x52x41 with MagMatter frames). */
+    /**
+     * The tier 2 and 3 extensions are modules; the tier-4 piece (41x52x41 with MagMatter frames) is its own structure.
+     */
     @GameTest(template = "empty_12", timeoutTicks = 40)
-    public static void nanoForgeHasThreeTierExtensions(GameTestHelper helper) {
+    public static void nanoForgeHasTwoExtensionsAndATierFourStructure(GameTestHelper helper) {
         var patterns = com.raishxn.gtna.api.machine.multiblock.GTNASubPatterns.get(GTNANanoForge.NANO_FORGE);
-        helper.assertTrue(patterns.size() >= 3, "tier 2, 3 and 4 extensions, got " + patterns.size());
+        helper.assertTrue(patterns.size() == 2, "tier 2 and 3 extensions, got " + patterns.size());
+        helper.assertTrue(GTNANanoForge.tierFourPattern(GTNANanoForge.NANO_FORGE) != null, "tier-4 structure");
         helper.assertTrue(GTNANanoForge.tierNanites().length == 4, "four tier nanites");
         helper.assertTrue(GTNANanoForge.isNanite(GTNANanoForge.MAGMATTER_NANITES.get()), "MagMatter is a nanite");
         helper.succeed();

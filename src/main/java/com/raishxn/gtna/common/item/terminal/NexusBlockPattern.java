@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 import com.raishxn.gtna.api.machine.multiblock.GTNASubPatterns;
+import com.raishxn.gtna.api.machine.multiblock.IAlternativeStructureMachine;
 import com.raishxn.gtna.api.machine.multiblock.ISubPatternMachine;
 import com.raishxn.gtna.common.item.terminal.plan.*;
 import com.raishxn.gtna.common.item.terminal.ui.NexusTerminalUIFactory.AutoBuildSetting;
@@ -75,16 +76,40 @@ public final class NexusBlockPattern {
         return (T) field.get(pattern);
     }
 
-    /** Scans the structure and its first N modules (sub-patterns) into plans, without touching the world. */
+    /**
+     * Scans the structure and its first N modules (sub-patterns) into plans, without touching the world. When N is
+     * past the last module and the machine has an {@link IAlternativeStructureMachine} structure, only that
+     * structure is scanned.
+     */
     public List<NexusBuildPlan> plan(MultiblockState state, AutoBuildSetting setting, ItemStack terminal) {
         NexusStructurePlanner planner = new NexusStructurePlanner(state, setting, terminal);
         List<NexusBuildPlan> plans = new ArrayList<>();
-        plans.add(planner.scan(this));
         int wanted = setting.getModuleBuild();
         IMultiController controller = state.getController();
-        if (wanted <= 0 || controller == null) return plans;
+        if (wanted <= 0 || controller == null) {
+            plans.add(planner.scan(this));
+            return plans;
+        }
         List<BlockPattern> modules = new ArrayList<>(GTNASubPatterns.get(controller.self().getDefinition()));
         if (controller.self() instanceof ISubPatternMachine host) modules.addAll(host.gtna$getSubPatterns());
+        // EN: past the last module the count picks an alternative structure (Nano Forge tier 4), built alone: it
+        // EN: replaces the main pattern and the modules, so laying them too would put two blocks in one cell.
+        // PT: depois do último módulo a contagem escolhe uma estrutura alternativa (Nano Forge tier 4), construída
+        // PT: sozinha: ela substitui o padrão principal e os módulos, e pôr os dois poria dois blocos na mesma célula.
+        // ZH: 超过最后一个模块后，数量会选择替代结构（纳米锻炉第 4 级），并且只建造它：
+        // ZH: 它取代主结构和模块，同时建造会让两个方块占用同一格。
+        if (wanted > modules.size() && controller.self() instanceof IAlternativeStructureMachine alternatives) {
+            List<BlockPattern> options = alternatives.gtna$alternativeStructures();
+            if (!options.isEmpty()) {
+                NexusBlockPattern chosen = fromBlockPattern(options.get(Math.min(wanted - modules.size(),
+                        options.size()) - 1));
+                if (chosen != null) {
+                    plans.add(planner.scan(chosen));
+                    return plans;
+                }
+            }
+        }
+        plans.add(planner.scan(this));
         for (BlockPattern module : modules.subList(0, Math.min(wanted, modules.size()))) {
             NexusBlockPattern sub = fromBlockPattern(module);
             if (sub != null) plans.add(planner.scan(sub));

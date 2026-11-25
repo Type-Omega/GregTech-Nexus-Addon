@@ -3520,7 +3520,7 @@
   "gtna.machine.nano_forge.tooltip.kept": "决定等级的纳米蜂群不会被消耗",
   "gtna.machine.nano_forge.tooltip.perfect": "低于机器等级的配方执行无损超频：每次加速%s而非%s",
   "gtna.machine.nano_forge.tooltip.low_tier": "高于机器等级的配方不会启动",
-  "gtna.machine.nano_forge.tooltip.t4": "第%s级需要%s和最后一个扩展",
+  "gtna.machine.nano_forge.tooltip.t4": "第%s级需要%s和独立的结构，它取代塔身及其扩展",
   "gtna.machine.nano_forge.tooltip.t4_drain": "第4级时，若总线中有与产物相同的纳米蜂群，会抽干所有熔融磁物质并消耗一个该纳米蜂群",
   "gtna.machine.nano_forge.tooltip.t4_parallel": "并行数 = 磁物质 / (%s / 2^(%s − 配方等级))",
   "gtna.machine.nano_forge.tooltip.t4_time": "耗时 × %s^并行数",

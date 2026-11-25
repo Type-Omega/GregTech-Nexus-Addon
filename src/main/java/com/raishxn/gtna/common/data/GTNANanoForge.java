@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
+import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 
 import net.minecraft.client.color.item.ItemColor;
@@ -114,7 +115,12 @@ public final class GTNANanoForge {
 
     public static void init() {
         var id = NANO_FORGE.getId();
-        // Order matters: NanoForgeMachine counts consecutive formed extensions from index 0.
+        // EN: Order matters: NanoForgeMachine counts consecutive formed extensions from index 0. Tier 4 is not one of
+        // EN: them: it is a structure of its own (see tierFourPattern).
+        // PT: A ordem importa: o NanoForgeMachine conta extensões formadas em sequência a partir do índice 0. O tier 4
+        // PT: não é uma delas: é uma estrutura própria (ver tierFourPattern).
+        // ZH: 顺序很重要：NanoForgeMachine 从索引 0 起按顺序统计已成型的扩展。第 4 级不属于扩展：它是独立结构
+        // ZH: （见 tierFourPattern）。
         GTNASubPatterns.register(id, def -> GTNAMultiBlockFileReader.start(def, "nano_forge_tier2")
                 .where('C', blocks(GTNABlocks.RADIANT_NAQUADAH_ALLOY_CASING.get()))
                 .where('A', blocks(GTBlocks.CASING_ASSEMBLY_LINE.get()))
@@ -128,7 +134,32 @@ public final class GTNANanoForge {
                 .where('~', controller(blocks(def.getBlock())))
                 .where(' ', any())
                 .build(), Component.translatable("gtna.machine.nano_forge.module", 3));
-        GTNASubPatterns.register(id, def -> GTNAMultiBlockFileReader.start(def, "nano_forge_tier4")
+    }
+
+    private static volatile BlockPattern tierFour;
+
+    /**
+     * The tier-4 structure, built on first use. It is checked and built <b>instead of</b> the tower and its tier 2
+     * and 3 extensions, never together with them.
+     */
+    // EN: GTNH MTENanoForge#construct builds main/tier2/tier3 below tier 4 and only the tier-4 base and render piece at
+    // EN: tier 4. 159 cells of the tower hold a different block in the tier-4 piece, so the two cannot coexist.
+    // PT: o MTENanoForge#construct do GTNH constrói main/tier2/tier3 abaixo do tier 4 e só a base e o render do tier 4
+    // PT: no tier 4. 159 células da torre têm outro bloco na peça do tier 4, então as duas não convivem.
+    // ZH: GTNH 的 MTENanoForge#construct 在第 4 级以下建造 main/tier2/tier3，第 4 级只建造第 4 级的底座和渲染部分。
+    // ZH: 塔身有 159 个格子在第 4 级结构中是不同方块，因此两者不能共存。
+    public static BlockPattern tierFourPattern(MultiblockMachineDefinition definition) {
+        BlockPattern pattern = tierFour;
+        if (pattern == null) {
+            synchronized (GTNANanoForge.class) {
+                if ((pattern = tierFour) == null) tierFour = pattern = buildTierFour(definition);
+            }
+        }
+        return pattern;
+    }
+
+    private static BlockPattern buildTierFour(MultiblockMachineDefinition definition) {
+        return GTNAMultiBlockFileReader.start(definition, "nano_forge_tier4")
                 .where('C', blocks(GTNABlocks.RADIANT_NAQUADAH_ALLOY_CASING.get()))
                 .where('J', blocks(GTNABlocks.PRECISION_FIELD_SYNC_CASING.get()))
                 .where('K', blocks(GTNABlocks.FIELD_ENERGY_ABSORBER_CASING.get()))
@@ -145,8 +176,8 @@ public final class GTNANanoForge {
                 .where('M', frames(GTNAMaterials.MagMatter))
                 .where('N', frames(GTNAMaterials.BlackDwarfMatter))
                 .where('O', frames(GTNAMaterials.WhiteDwarfMatter))
-                .where('~', controller(blocks(def.getBlock())))
+                .where('~', controller(blocks(definition.getBlock())))
                 .where(' ', any())
-                .build(), Component.translatable("gtna.machine.nano_forge.module", 4));
+                .build();
     }
 }

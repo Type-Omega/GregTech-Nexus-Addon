@@ -50,16 +50,29 @@ public final class AutoBuildFormationGameTests {
 
     static MultiblockControllerMachine autoBuild(GameTestHelper helper, MultiblockMachineDefinition definition,
                                                  int repetitions, int lane, Direction front) {
+        return autoBuild(helper, definition, repetitions, 0, lane, front);
+    }
+
+    /** As above, with the terminal's "module build" set: the first {@code modules} extensions are laid as well. */
+    static MultiblockControllerMachine autoBuild(GameTestHelper helper, MultiblockMachineDefinition definition,
+                                                 int repetitions, int modules, int lane, Direction front) {
         ItemStack terminal = GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
         terminal.getOrCreateTag().putInt("Repetitions", repetitions);
+        terminal.getOrCreateTag().putInt("ModuleBuild", modules);
         // EN: out in the lanes there is real terrain, and the terminal never replaces it: lift the controller by what
         // EN: the pattern reaches below it, plus clear air.
         // PT: nas faixas há terreno de verdade, e o terminal nunca o substitui: ergue o controlador pelo que o padrão
         // PT: desce abaixo dele, mais uma folga de ar.
         // ZH: 测试通道里有真实地形，终端不会替换它：按结构在控制器下方延伸的高度抬高控制器，再留出空气余量。
-        var pattern = NexusBlockPattern.fromBlockPattern(definition.getPatternFactory().get());
-        int below = pattern == null ? 0 : -pattern.lowestOffset(front, Direction.NORTH, false,
-                NexusTerminalUIFactory.AutoBuildSetting.getSetting(terminal));
+        var setting = NexusTerminalUIFactory.AutoBuildSetting.getSetting(terminal);
+        var extensions = com.raishxn.gtna.api.machine.multiblock.GTNASubPatterns.get(definition);
+        var patterns = new java.util.ArrayList<>(java.util.List.of(definition.getPatternFactory().get()));
+        patterns.addAll(extensions.subList(0, Math.min(modules, extensions.size())));
+        int below = 0;
+        for (var each : patterns) {
+            var layout = NexusBlockPattern.fromBlockPattern(each);
+            if (layout != null) below = Math.max(below, -layout.lowestOffset(front, Direction.NORTH, false, setting));
+        }
         var local = new BlockPos(8 + 320 * lane, 200 + below, 8);
         var centre = helper.absolutePos(local);
         for (int cx = (centre.getX() - 96) >> 4; cx <= (centre.getX() + 96) >> 4; cx++)

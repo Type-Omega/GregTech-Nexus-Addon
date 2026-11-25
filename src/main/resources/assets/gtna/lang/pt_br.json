@@ -3535,7 +3535,7 @@
   "gtna.machine.nano_forge.tooltip.kept": "A nanita de tier nunca é consumida",
   "gtna.machine.nano_forge.tooltip.perfect": "Receitas de tier menor fazem overclock perfeito: %s mais rápido por overclock em vez de %s",
   "gtna.machine.nano_forge.tooltip.low_tier": "Uma receita acima do tier da máquina não começa",
-  "gtna.machine.nano_forge.tooltip.t4": "O tier %s precisa de %s e da última extensão",
+  "gtna.machine.nano_forge.tooltip.t4": "O tier %s precisa de %s e de uma estrutura própria, construída no lugar da torre e das extensões",
   "gtna.machine.nano_forge.tooltip.t4_drain": "No tier 4, com a nanita de saída num barramento, drena todo o MagMatter fundido e gasta uma dessas nanitas",
   "gtna.machine.nano_forge.tooltip.t4_parallel": "Paralelos = MagMatter / (%s / 2^(%s − tier da receita))",
   "gtna.machine.nano_forge.tooltip.t4_time": "Tempo × %s^paralelos",

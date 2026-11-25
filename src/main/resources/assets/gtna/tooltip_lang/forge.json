@@ -45,9 +45,9 @@
     "高于机器等级的配方不会启动"
   ],
   "gtna.machine.nano_forge.tooltip.t4": [
-    "Tier %s needs %s and the last extension",
-    "O tier %s precisa de %s e da última extensão",
-    "第%s级需要%s和最后一个扩展"
+    "Tier %s needs %s and its own structure, built instead of the tower and its extensions",
+    "O tier %s precisa de %s e de uma estrutura própria, construída no lugar da torre e das extensões",
+    "第%s级需要%s和独立的结构，它取代塔身及其扩展"
   ],
   "gtna.machine.nano_forge.tooltip.t4_drain": [
     "At tier 4, with the output nanite in a bus, it drains all molten MagMatter and spends one of those nanites",
