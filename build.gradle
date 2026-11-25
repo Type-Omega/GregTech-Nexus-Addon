@@ -167,6 +167,10 @@ legacyForge {
             sourceSet = sourceSets.main
             // ./gradlew runGameTestServer -PgameTestNamespaces=<ns> runs only the holders of that namespace (debugging).
             systemProperty('forge.enabledGameTestNamespaces', project.findProperty('gameTestNamespaces') ?: project.mod_id)
+            // EN: -Ptests=a,b runs only the GameTests matching those terms; heavy ones need -Ptests=heavy or all.
+            // PT: -Ptests=a,b roda só as GameTests com esses termos; as pesadas pedem -Ptests=heavy ou all.
+            // ZH: -Ptests=a,b 只运行匹配这些词的 GameTest；重型测试需 -Ptests=heavy 或 all。
+            systemProperty('typeomega.tests', project.findProperty('tests') ?: '')
         }
         data {
             data()

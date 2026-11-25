@@ -25,6 +25,7 @@ import java.util.Set;
  * tier-4
  * blocks claim different blocks in the same cells.
  */
+@com.typeomega.lib.test.HeavyTest
 @GameTestHolder(GTNACORE.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class NexusNanoForgeTierGameTests {

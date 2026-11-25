@@ -32,6 +32,7 @@ import java.util.UUID;
  * The Nexus Terminal auto-build, as a creative player uses it: only the controller is placed by hand, the terminal
  * lays the rest, and the structure must form. One batch each, because these structures reach far past the template.
  */
+@com.typeomega.lib.test.HeavyTest
 @GameTestHolder(GTNACORE.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class AutoBuildFormationGameTests {
