@@ -52,6 +52,12 @@ public final class NexusStructurePlanner {
     private final Map<Item, Boolean> partItems = new IdentityHashMap<>();
     private final NexusHatchPlan hatchPlan;
 
+    /**
+     * Block per world position that a paste of a saved structure asks for (GTIA-D-440); a cell takes it when the
+     * pattern allows that block there. Set only around one build, on the server thread.
+     */
+    public static final ThreadLocal<Map<BlockPos, Item>> OVERRIDES = new ThreadLocal<>();
+
     public NexusStructurePlanner(MultiblockState state, AutoBuildSetting setting, ItemStack terminal) {
         IMultiController controller = state.getController();
         this.level = controller.self().getLevel();
@@ -124,6 +130,17 @@ public final class NexusStructurePlanner {
             Item there = existing.getBlock().asItem();
             kind = candidates.stream().anyMatch(stack -> stack.is(there)) ? NexusBuildPlan.Kind.SATISFIED :
                     NexusBuildPlan.Kind.REPLACE;
+        }
+        Map<BlockPos, Item> overrides = OVERRIDES.get();
+        if (overrides != null && !candidates.isEmpty()) {
+            Item wanted = overrides.get(pos);
+            if (wanted != null && candidates.stream().anyMatch(stack -> stack.is(wanted))) {
+                candidates = List.of(new ItemStack(wanted));
+                if (kind == NexusBuildPlan.Kind.SATISFIED && !existing.is(((net.minecraft.world.item.BlockItem) wanted)
+                        .getBlock())) {
+                    kind = NexusBuildPlan.Kind.REPLACE;
+                }
+            }
         }
         boolean hatch = !candidates.isEmpty() && candidates.stream().allMatch(this::isPart);
         plan.cells.add(new NexusBuildPlan.Cell(pos, kind, existing, candidates, hatch));
