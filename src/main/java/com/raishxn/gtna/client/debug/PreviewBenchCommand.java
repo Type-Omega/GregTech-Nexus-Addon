@@ -56,6 +56,7 @@ public final class PreviewBenchCommand {
         controller.self().setOwnerUUID(uuid);
         long t0 = System.nanoTime();
         com.raishxn.gtna.common.item.terminal.NexusAutoBuilder.autoBuild(player, controller, terminal);
+        com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs.drain(player);
         GTNACORE.LOGGER.info("[GTNA perf] dev build {} at {}: {} ms", id, pos, (System.nanoTime() - t0) / 1_000_000);
         lastBuilt = pos;
         var built = pos;
@@ -67,6 +68,31 @@ public final class PreviewBenchCommand {
     }
 
     private static net.minecraft.core.BlockPos lastBuilt;
+
+    private static int devTerminal(boolean scan) {
+        var mc = net.minecraft.client.Minecraft.getInstance();
+        var server = mc.getSingleplayerServer();
+        if (server == null || mc.player == null) return 0;
+        var uuid = mc.player.getUUID();
+        server.execute(() -> {
+            var player = server.getPlayerList().getPlayer(uuid);
+            if (player == null) return;
+            var held = player.getMainHandItem();
+            if (!held.is(com.raishxn.gtna.common.data.GTNAItems.NEXUS_STRUCTURE_TERMINAL.get())) {
+                held = com.raishxn.gtna.common.data.GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack();
+                player.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, held);
+            }
+            if (scan && lastBuilt != null && com.gregtechceu.gtceu.api.machine.MetaMachine.getMachine(
+                    player.serverLevel(),
+                    lastBuilt) instanceof com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController c) {
+                com.raishxn.gtna.common.item.terminal.plan.NexusScan.scanAndShow(player, c, held);
+            } else if (!scan) {
+                com.lowdragmc.lowdraglib.gui.factory.HeldItemUIFactory.INSTANCE.openUI(player,
+                        net.minecraft.world.InteractionHand.MAIN_HAND);
+            }
+        });
+        return 1;
+    }
 
     private static void placeMEStorage(net.minecraft.server.level.ServerLevel level, net.minecraft.core.BlockPos origin,
                                        int slices) {
@@ -240,6 +266,9 @@ public final class PreviewBenchCommand {
                     server.execute(() -> devSwap(server, uuid, id));
                     return 1;
                 })));
+        // /gtna_dev_terminal [scan]: puts a Nexus Terminal in the main hand and opens it, or scans the last dev build.
+        event.getDispatcher().register(Commands.literal("gtna_dev_terminal").executes(ctx -> devTerminal(false))
+                .then(Commands.literal("scan").executes(ctx -> devTerminal(true))));
         // /gtna_dev_open: opens the controller UI of the last dev build.
         event.getDispatcher().register(Commands.literal("gtna_dev_open").executes(ctx -> {
             var mc = net.minecraft.client.Minecraft.getInstance();

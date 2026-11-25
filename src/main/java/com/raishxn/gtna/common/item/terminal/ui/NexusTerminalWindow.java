@@ -1,0 +1,209 @@
+package com.raishxn.gtna.common.item.terminal.ui;
+
+import com.gregtechceu.gtceu.api.gui.GuiTextures;
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
+
+import com.lowdragmc.lowdraglib.gui.widget.DraggableScrollableWidgetGroup;
+import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+
+import appeng.api.stacks.AEItemKey;
+import com.raishxn.gtna.common.item.terminal.NexusAutoBuilder;
+import com.raishxn.gtna.common.item.terminal.plan.*;
+import com.raishxn.gtna.integration.ae2.NexusAE2Link;
+import com.typeomega.lib.ui.tool.ToolWindow;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * The Nexus Terminal window (GTIA-D-439 T3): four tabs in the lib's GTNH-style {@link ToolWindow}: Build (modes,
+ * numbers, ME link, scan, build, cancel, report), Tiers, Hatches and Materials. Buttons act on the controller of the
+ * last scan; the texts the server owns (summary, ME state, materials) are synced labels.
+ */
+public final class NexusTerminalWindow {
+
+    public static final int WIDTH = 330, HEIGHT = 214;
+    static final int MATERIAL_ROWS = 48;
+
+    private final Player player;
+    private final ItemStack stack;
+
+    public NexusTerminalWindow(Player player, ItemStack stack) {
+        this.player = player;
+        this.stack = stack;
+    }
+
+    public ToolWindow build() {
+        ToolWindow window = new ToolWindow(WIDTH, HEIGHT);
+        window.tab(Component.translatable("gtna.terminal.nexus.tab.build"), buildPage(window));
+        window.tab(Component.translatable("gtna.terminal.nexus.tab.tiers"),
+                new NexusTerminalTiersPage(stack).build(window.pageWidth(), window.pageHeight()));
+        window.tab(Component.translatable("gtna.terminal.nexus.tab.hatches"),
+                NexusTerminalHatchPage.build(stack, window.pageWidth(), window.pageHeight()));
+        window.tab(Component.translatable("gtna.terminal.nexus.tab.materials"), materialsPage(window));
+        return window;
+    }
+
+    private WidgetGroup buildPage(ToolWindow window) {
+        WidgetGroup page = new WidgetGroup(0, 0, window.pageWidth(), window.pageHeight());
+        int half = window.pageWidth() / 2 - 4;
+        page.addWidget(ToolWindow.number(0, 0, half, Component.translatable("gtna.terminal.nexus.repetitions"), 0,
+                1000, () -> stack.getOrCreateTag().getInt("Repetitions"),
+                v -> stack.getOrCreateTag().putInt("Repetitions", v)));
+        page.addWidget(ToolWindow.number(0, 32, half, Component.translatable("gtna.terminal.nexus.module_build"), 0,
+                100, () -> stack.getOrCreateTag().getInt("ModuleBuild"),
+                v -> stack.getOrCreateTag().putInt("ModuleBuild", v)));
+        String[][] toggles = { { "ReplaceMode", "gtna.terminal.nexus.replace_mode" },
+                { "DemolitionMode", "gtna.terminal.nexus.demolition_mode" },
+                { "DismantleMode", "gtna.terminal.nexus.dismantle_mode" },
+                { "UseAE", "gtna.terminal.nexus.use_ae" }, { "MirrorBuild", "gtna.terminal.nexus.mirror_build" },
+                { "NoHatchMode", "gtna.terminal.nexus.no_hatch" } };
+        int y = 66;
+        for (String[] t : toggles) {
+            String key = t[0];
+            page.addWidget(ToolWindow.toggle(0, y, half, Component.translatable(t[1]),
+                    () -> stack.getOrCreateTag().getBoolean(key),
+                    () -> stack.getOrCreateTag().putBoolean(key, !stack.getOrCreateTag().getBoolean(key))));
+            y += 16;
+        }
+        int x = half + 8, w = window.pageWidth() - x;
+        page.addWidget(ToolWindow.label(x, 0, Component.translatable("gtna.terminal.nexus.me")));
+        page.addWidget(ToolWindow.label(x, 11, this::meState));
+        page.addWidget(ToolWindow.label(x, 26, Component.translatable("gtna.terminal.nexus.last_scan")));
+        for (int line = 0; line < 4; line++) {
+            int index = line;
+            page.addWidget(ToolWindow.label(x, 37 + 10 * line, () -> scanLine(index)));
+        }
+        int bw = (w - 4) / 2;
+        page.addWidget(ToolWindow.button(x, 84, bw, 18, Component.translatable("gtna.terminal.nexus.scan"),
+                cd -> {
+                    if (!cd.isRemote) onController(c -> NexusScan.scanAndShow((ServerPlayer) player, c, stack));
+                }));
+        page.addWidget(ToolWindow.button(x + bw + 4, 84, bw, 18, Component.translatable("gtna.terminal.nexus.build"),
+                cd -> {
+                    if (!cd.isRemote) onController(c -> NexusAutoBuilder.autoBuild(player, c, stack));
+                }));
+        page.addWidget(ToolWindow.button(x, 106, bw, 18, Component.translatable("gtna.terminal.nexus.cancel"),
+                cd -> {
+                    if (!cd.isRemote) NexusBuildJobs.cancel(player);
+                }));
+        page.addWidget(ToolWindow.button(x + bw + 4, 106, bw, 18,
+                Component.translatable("gtna.terminal.nexus.report.button"), cd -> {
+                    if (!cd.isRemote && player instanceof ServerPlayer sp && !NexusReport.send(sp)) {
+                        sp.displayClientMessage(Component.translatable("gtna.terminal.nexus.report.none"), true);
+                    }
+                }));
+        page.addWidget(ToolWindow.label(x, 130, () -> jobLine()));
+        return page;
+    }
+
+    private WidgetGroup materialsPage(ToolWindow window) {
+        WidgetGroup page = new WidgetGroup(0, 0, window.pageWidth(), window.pageHeight());
+        page.addWidget(ToolWindow.label(0, 0, Component.translatable("gtna.terminal.nexus.materials.header")));
+        var list = new DraggableScrollableWidgetGroup(0, 12, window.pageWidth(), window.pageHeight() - 36);
+        list.setBackground(GuiTextures.DISPLAY);
+        list.setYScrollBarWidth(4);
+        for (int row = 0; row < MATERIAL_ROWS; row++) {
+            int index = row;
+            list.addWidget(ToolWindow.label(3, 3 + row * 10, () -> materialLine(index))
+                    .setTextColor(0xFFFFFFFF));
+        }
+        page.addWidget(list);
+        int bw = (window.pageWidth() - 4) / 2, by = window.pageHeight() - 20;
+        page.addWidget(ToolWindow.button(0, by, bw, 18, Component.translatable("gtna.terminal.nexus.materials.refresh"),
+                cd -> {
+                    if (!cd.isRemote) onController(c -> NexusScan.scanAndShow((ServerPlayer) player, c, stack));
+                }));
+        page.addWidget(
+                ToolWindow.button(bw + 4, by, bw, 18, Component.translatable("gtna.terminal.nexus.materials.ask"),
+                        cd -> {
+                            if (!cd.isRemote) askMe();
+                        }));
+        return page;
+    }
+
+    /** "Ask the ME": crafts every missing item of the last scan that has a pattern (GTIA-D-439 T9). */
+    private void askMe() {
+        NexusLastScan.Entry last = NexusLastScan.get(player);
+        if (last == null) {
+            player.displayClientMessage(Component.translatable("gtna.terminal.nexus.report.none"), true);
+            return;
+        }
+        NexusAE2Link.Session me = NexusAE2Link.open(stack, player);
+        if (me == null) {
+            player.displayClientMessage(Component.translatable("gtna.terminal.nexus.ae2.tooltip.not_linked"), true);
+            return;
+        }
+        int started = NexusCrafting.request(player, me, NexusMaterials.missing(last.result().plans()));
+        player.displayClientMessage(Component.translatable("gtna.terminal.nexus.materials.asked", started), true);
+    }
+
+    private void onController(java.util.function.Consumer<IMultiController> action) {
+        NexusLastScan.Entry last = NexusLastScan.get(player);
+        if (last == null || player.getServer() == null) {
+            player.displayClientMessage(Component.translatable("gtna.terminal.nexus.report.none"), true);
+            return;
+        }
+        var level = player.getServer().getLevel(last.controller().dimension());
+        if (level != null && MetaMachine.getMachine(level, last.controller().pos()) instanceof IMultiController c) {
+            action.accept(c);
+        }
+    }
+
+    private String meState() {
+        if (player.level().isClientSide) return "";
+        if (!NexusAE2Link.isLinked(stack)) return Component.translatable("gtna.terminal.nexus.me.unlinked").getString();
+        return NexusAE2Link.grid(stack, player.getServer()) != null ?
+                Component.translatable("gtna.terminal.nexus.me.online").getString() :
+                Component.translatable("gtna.terminal.nexus.me.offline").getString();
+    }
+
+    @Nullable
+    private NexusScan.Result last() {
+        NexusLastScan.Entry entry = player.level().isClientSide ? null : NexusLastScan.get(player);
+        return entry == null ? null : entry.result();
+    }
+
+    private String scanLine(int line) {
+        NexusScan.Result r = last();
+        if (r == null) return line == 0 ? Component.translatable("gtna.terminal.nexus.no_scan").getString() : "";
+        return switch (line) {
+            case 0 -> Component.translatable("gtna.terminal.nexus.line.place", r.count(NexusBuildPlan.Kind.PLACE),
+                    r.count(NexusBuildPlan.Kind.REPLACE)).getString();
+            case 1 -> Component.translatable("gtna.terminal.nexus.line.blocked",
+                    r.count(NexusBuildPlan.Kind.BLOCKED), r.count(NexusBuildPlan.Kind.CLEAR)).getString();
+            case 2 -> Component.translatable("gtna.terminal.nexus.line.missing", r.missing()).getString();
+            default -> Component.translatable("gtna.terminal.nexus.line.hatches", r.hatches()).getString();
+        };
+    }
+
+    private String jobLine() {
+        if (player.level().isClientSide || !NexusBuildJobs.isRunning(player)) return "";
+        return Component.translatable("gtna.terminal.nexus.job.running").getString();
+    }
+
+    private String materialLine(int row) {
+        NexusScan.Result r = last();
+        if (r == null) return "";
+        List<Map.Entry<AEItemKey, Long>> rows = new ArrayList<>(r.need().entrySet());
+        if (row >= rows.size()) return "";
+        AEItemKey key = rows.get(row).getKey();
+        long need = rows.get(row).getValue();
+        long[] stock = r.stock().getOrDefault(key, new long[2]);
+        long missing = r.creative() ? 0 : Math.max(0, need - stock[0] - stock[1]);
+        var status = NexusCrafting.statuses(player).get(key);
+        String text = Component.translatable("gtna.terminal.nexus.report.material", key.getDisplayName(), need,
+                stock[0], stock[1], missing).getString();
+        if (status != null) text += " " + Component.translatable(
+                "gtna.terminal.nexus.craft." + status.name().toLowerCase(java.util.Locale.ROOT)).getString();
+        return (missing > 0 ? "§d" : "§a") + text;
+    }
+}

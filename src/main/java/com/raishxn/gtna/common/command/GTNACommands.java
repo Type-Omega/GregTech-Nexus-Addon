@@ -97,6 +97,14 @@ public class GTNACommands {
                                                 IntegerArgumentType.getInteger(context, "amount")))))));
 
         dispatcher.register(Commands.literal("gtna")
+                .then(Commands.literal("nexus_report").executes(ctx -> {
+                    var player = ctx.getSource().getPlayerOrException();
+                    if (!com.raishxn.gtna.common.item.terminal.plan.NexusReport.send(player)) {
+                        ctx.getSource().sendFailure(Component.translatable("gtna.terminal.nexus.report.none"));
+                    }
+                    return 1;
+                })));
+        dispatcher.register(Commands.literal("gtna")
                 .then(Commands.literal("planner")
                         .executes(context -> plannerReport(context.getSource()))));
     }

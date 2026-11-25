@@ -215,6 +215,7 @@ public final class EyeOfHarmonyStructureGameTests {
                 new com.mojang.authlib.GameProfile(UUID.randomUUID(), "EOHStructureQA"));
         player.setGameMode(net.minecraft.world.level.GameType.CREATIVE);
         NexusAutoBuilder.autoBuild(player, machine, GTNAItems.NEXUS_STRUCTURE_TERMINAL.asStack());
+        com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs.drain(player);
         helper.assertTrue(machine.checkPatternWithLock(),
                 "Nexus Terminal must build a valid structure with exactly five ports: " +
                         machine.getMultiblockState().error);

@@ -432,6 +432,15 @@ GTCEu's `BlockPattern` (LGPL-3.0). It keeps GTCEu's pattern-to-world transform a
 built structures pass GTCEu's own check. The previous version, based on third-party code without a
 declared license, was removed, and GTNA no longer uses any code or assets from that project.
 
+### Nexus Terminal v2 (gt_shanhai, LGPL-3.0)
+
+The Nexus Terminal v2 (GTIA-D-439) follows the architecture and several functions of the Ultimate Terminal of
+gt_shanhai (`dishanhai/gtl_shanhai-dishanhai`, LGPL-3.0): scan into a reusable plan, cell classification (place,
+replace, blocked, clear), batch reservation of materials per item (`prepareBuildBatch`), safe swap with return and
+rollback, full dismantling, the world highlight and the report. The code was rewritten in GTNA's style; the closest
+classes are `common/item/terminal/plan/NexusStructurePlanner`, `NexusMaterials`, `NexusBuildExecutor` and the
+scan, report and materials classes next to them. No asset of gt_shanhai is used.
+
 ### Planet ore veins (GTOCore `GTOOres`, LGPL-3.0)
 
 `GTNAPlanetOres` ports the 33 GTOCore vein definitions that include the Moon, Mars, Venus, Mercury or Glacio

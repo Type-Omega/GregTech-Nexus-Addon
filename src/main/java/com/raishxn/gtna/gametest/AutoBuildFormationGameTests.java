@@ -68,6 +68,7 @@ public final class AutoBuildFormationGameTests {
         player.setGameMode(GameType.CREATIVE);
         player.setItemInHand(InteractionHand.MAIN_HAND, terminal);
         NexusAutoBuilder.autoBuild(player, controller, terminal);
+        com.raishxn.gtna.common.item.terminal.plan.NexusBuildJobs.drain(player);
         NexusBuildCheckGuard.flushPending();
         return controller;
     }

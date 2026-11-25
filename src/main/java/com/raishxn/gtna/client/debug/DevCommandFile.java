@@ -15,7 +15,8 @@ import java.util.Deque;
 /**
  * Development aid for driving a test client without the keyboard: every line of {@code gtna_dev_commands.txt} in the
  * game directory runs as a chat command, one per second; {@code close} closes the open screen, {@code inv} opens the
- * inventory, {@code lang <code>} switches the language, {@code mouse <x> <y>} moves the cursor, {@code shot <name>}
+ * inventory, {@code lang <code>} switches the language, {@code mouse <x> <y>} moves the cursor, {@code click <x> <y>}
+ * clicks the open screen (GUI-scaled), {@code shot <name>}
  * saves a screenshot, {@code hud on|off} toggles the HUD, {@code renders off|low|high} sets the machine render level,
  * {@code emi <category>} opens an
  * EMI category of GTNA, {@code wait <s>} pauses. Only outside production.

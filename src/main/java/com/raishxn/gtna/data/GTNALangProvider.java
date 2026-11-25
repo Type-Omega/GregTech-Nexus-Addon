@@ -1115,10 +1115,81 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.terminal.config.me_storage_access", "§dME Storage Access");
 
         // AE2 Network linking
-        add("gtna.terminal.nexus.ae2.linked", "§a[GTNA] §fLinked to ME Wireless Access Point!");
+        add("gtna.terminal.nexus.too_high", "§cThe structure would leave the world's height limits");
+        add("gtna.terminal.nexus.job.started",
+                "§bBuilding %s blocks over several ticks; Shift+click a controller to cancel");
+        add("gtna.terminal.nexus.job.progress", "Building %s §f%s%%");
+        add("gtna.terminal.nexus.job.done", "§aBuild done: %s blocks placed, %s skipped");
+        add("gtna.terminal.nexus.job.cancelled", "§eBuild cancelled after %s blocks; unused material returned");
+        add("gtna.terminal.nexus.scan.complete", "[Nexus Terminal] Structure complete: nothing to place");
+        add("gtna.terminal.nexus.scan.summary",
+                "[Nexus Terminal] Scan: %s to place, %s to replace, %s blocked, %s to clear, %s without material, %s hatches. Boxes shown for 15 s.");
+        add("gtna.terminal.nexus.craft.summary",
+                "[Nexus Terminal] ME crafting: %s submitted, %s without pattern, %s missing inputs, %s failed");
+        add("gtna.terminal.nexus.dismantle.done",
+                "§aDismantled %s blocks into the ME and the inventory (%s kept: not removable or not empty)");
+        add("gtna.terminal.nexus.dismantle.no_room",
+                "§cNot dismantled: the drops do not fit in the ME and the inventory");
+        add("gtna.terminal.nexus.dismantle.nothing", "§eNothing of this structure to dismantle");
+        add("gtna.terminal.nexus.dismantle_mode", "Dismantle");
+        add("gtna.terminal.nexus.dismantle_mode.tooltip",
+                "Shift+click a controller to take the whole structure apart into the ME, then the inventory; refused if it does not fit");
+        add("gtna.terminal.nexus.report.title", "Nexus Terminal report");
+        add("gtna.terminal.nexus.report.link", "[report]");
+        add("gtna.terminal.nexus.report.none", "No scan yet: left-click a controller with the terminal");
+        add("gtna.terminal.nexus.report.missing", "Missing material");
+        add("gtna.terminal.nexus.report.blocked", "Blocked");
+        add("gtna.terminal.nexus.report.replace", "To replace");
+        add("gtna.terminal.nexus.report.clear", "To clear");
+        add("gtna.terminal.nexus.report.hatches", "Hatches");
+        add("gtna.terminal.nexus.report.place", "To place");
+        add("gtna.terminal.nexus.report.materials", "Materials");
+        add("gtna.terminal.nexus.report.material", "%s: need %s, inventory %s, ME %s, missing %s");
+        add("gtna.terminal.nexus.craft.calculating", "§7(crafting: calculating)");
+        add("gtna.terminal.nexus.craft.submitted", "§a(crafting: submitted)");
+        add("gtna.terminal.nexus.craft.no_pattern", "§8(no pattern)");
+        add("gtna.terminal.nexus.craft.missing_inputs", "§c(crafting: missing inputs)");
+        add("gtna.terminal.nexus.craft.failed", "§c(crafting: failed)");
+        add("gtna.terminal.nexus.hatch.input_bus", "Input bus");
+        add("gtna.terminal.nexus.hatch.output_bus", "Output bus");
+        add("gtna.terminal.nexus.hatch.input_hatch", "Input hatch");
+        add("gtna.terminal.nexus.hatch.output_hatch", "Output hatch");
+        add("gtna.terminal.nexus.hatch.energy", "Energy hatch");
+        add("gtna.terminal.nexus.hatch.dynamo", "Dynamo hatch");
+        add("gtna.terminal.nexus.hatch.maintenance", "Maintenance");
+        add("gtna.terminal.nexus.hatch.muffler", "Muffler");
+        add("gtna.terminal.nexus.hatch.parallel", "Parallel");
+        add("gtna.terminal.nexus.hatch.auto", "Automatic");
+        add("gtna.terminal.nexus.hatch.none", "None");
+        add("gtna.terminal.nexus.tab.build", "Build");
+        add("gtna.terminal.nexus.tab.tiers", "Tiers");
+        add("gtna.terminal.nexus.tab.hatches", "Hatches");
+        add("gtna.terminal.nexus.tab.materials", "Materials");
+        add("gtna.terminal.nexus.me", "ME network");
+        add("gtna.terminal.nexus.me.unlinked", "§cnot linked (Shift+click an ME block)");
+        add("gtna.terminal.nexus.me.online", "§2online");
+        add("gtna.terminal.nexus.me.offline", "§coffline");
+        add("gtna.terminal.nexus.last_scan", "Last scan");
+        add("gtna.terminal.nexus.no_scan", "Left-click a controller");
+        add("gtna.terminal.nexus.line.place", "%s to place, %s to replace");
+        add("gtna.terminal.nexus.line.blocked", "%s blocked, %s to clear");
+        add("gtna.terminal.nexus.line.missing", "%s without material");
+        add("gtna.terminal.nexus.line.hatches", "%s hatches");
+        add("gtna.terminal.nexus.scan", "Scan");
+        add("gtna.terminal.nexus.build", "Build");
+        add("gtna.terminal.nexus.cancel", "Cancel");
+        add("gtna.terminal.nexus.report.button", "Report");
+        add("gtna.terminal.nexus.job.running", "§bBuild running...");
+        add("gtna.terminal.nexus.materials.header", "Need / inventory / ME / missing, from the last scan");
+        add("gtna.terminal.nexus.materials.refresh", "Scan again");
+        add("gtna.terminal.nexus.materials.ask", "Ask the ME");
+        add("gtna.terminal.nexus.materials.asked", "§bME crafting requested for %s items");
+        add("gtna.terminal.nexus.hatch.header", "Hatch per function (the pattern's limits still apply)");
+        add("gtna.terminal.nexus.ae2.linked", "§a[GTNA] §fLinked to the ME network");
         add("gtna.terminal.nexus.ae2.tooltip.linked", "§a⚡ ME Network linked at [%s, %s, %s]");
         add("gtna.terminal.nexus.ae2.tooltip.not_linked", "§c✖ ME Network: Not connected");
-        add("gtna.terminal.nexus.ae2.tooltip.how_to_link", "§8Right-click a Wireless Access Point to link");
+        add("gtna.terminal.nexus.ae2.tooltip.how_to_link",
+                "§8Shift+right-click any ME block to link (any distance, any dimension)");
         add("gtna.terminal.nexus.ae2.tooltip.in_range", "§a✔ Wireless: In Range");
         add("gtna.terminal.nexus.ae2.tooltip.out_of_range", "§c✖ Wireless: Out of Range");
 

@@ -14,6 +14,8 @@ import com.raishxn.gtna.network.packet.CStructureRefreshPacket;
 import com.raishxn.gtna.network.packet.SKnowledgeSync;
 import com.raishxn.gtna.network.packet.SKubeModuleDescriptions;
 import com.raishxn.gtna.network.packet.SModuleCountPacket;
+import com.raishxn.gtna.network.packet.SNexusReport;
+import com.raishxn.gtna.network.packet.SNexusScanHighlight;
 import com.raishxn.gtna.network.packet.SRegionHighlightPacket;
 import com.raishxn.gtna.network.packet.SStructureDetectHighlight;
 import com.raishxn.gtna.network.packet.SStructureGhostPreviewPacket;
@@ -61,6 +63,18 @@ public class GTNANetworkHandler {
                 .encoder(SModuleCountPacket::encode)
                 .decoder(SModuleCountPacket::decode)
                 .consumerMainThread(SModuleCountPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(SNexusScanHighlight.class, packetId++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SNexusScanHighlight::encode)
+                .decoder(SNexusScanHighlight::decode)
+                .consumerMainThread(SNexusScanHighlight::handle)
+                .add();
+
+        CHANNEL.messageBuilder(SNexusReport.class, packetId++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SNexusReport::encode)
+                .decoder(SNexusReport::decode)
+                .consumerMainThread(SNexusReport::handle)
                 .add();
 
         CHANNEL.messageBuilder(SStructureGhostPreviewPacket.class, packetId++, NetworkDirection.PLAY_TO_CLIENT)
