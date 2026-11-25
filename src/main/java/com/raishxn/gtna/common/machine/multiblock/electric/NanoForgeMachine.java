@@ -180,7 +180,12 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine {
     public void addDisplayText(List<Component> textList) {
         super.addDisplayText(textList);
         if (!isFormed()) return;
-        textList.add(Component.translatable("gtna.machine.nano_forge.tier", getNanoTier(), getStructureTier(),
-                getNaniteTier()));
+        // EN: Two short lines: the old single line ran past the edge of the machine screen.
+        // PT: Duas linhas curtas: a linha única antiga passava da borda da tela da máquina.
+        // ZH: 拆成两行短文本：原来的一行会超出机器界面边缘。
+        textList.add(Component.translatable("gtna.machine.nano_forge.tier",
+                Component.literal(String.valueOf(getNanoTier())).withStyle(net.minecraft.ChatFormatting.AQUA)));
+        textList.add(Component.translatable("gtna.machine.nano_forge.tier_parts", getStructureTier(),
+                getNaniteTier()).withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 }

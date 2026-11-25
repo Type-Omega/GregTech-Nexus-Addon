@@ -1331,8 +1331,8 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.recipe.wireless_cost", "Wireless cost: %s EU");
         add("gtna.machine.nano_forge.module",
                 "Tier %1$s extension: raises the structure to tier %1$s if every lower extension is built");
-        add("gtna.machine.nano_forge.tier",
-                "Nano Forge tier %s (structure %s, nanite %s)");
+        add("gtna.machine.nano_forge.tier", "Nano Forge tier: %s");
+        add("gtna.machine.nano_forge.tier_parts", "Structure %s, nanite %s");
         add("gtna.machine.nano_forge.low_tier",
                 "Needs Nano Forge tier %s");
         add("gtna.recipe.nano_forge_tier",
