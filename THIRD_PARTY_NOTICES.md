@@ -441,6 +441,11 @@ rollback, full dismantling, the world highlight and the report. The code was rew
 classes are `common/item/terminal/plan/NexusStructurePlanner`, `NexusMaterials`, `NexusBuildExecutor` and the
 scan, report and materials classes next to them. No asset of gt_shanhai is used.
 
+The machine renders of gt_shanhai (the Stellar Cloud Library core floating under its glass dome, anchored from
+structure constants; render geometry kept as pure, testable math; additive beam layers with a view distance) were
+studied for the Nexus ME Hypercore hologram, now drawn inside its glass chamber, and the ME Storage conduit render.
+No code, shader or asset of gt_shanhai was copied.
+
 ### Planet ore veins (GTOCore `GTOOres`, LGPL-3.0)
 
 `GTNAPlanetOres` ports the 33 GTOCore vein definitions that include the Moon, Mars, Venus, Mercury or Glacio

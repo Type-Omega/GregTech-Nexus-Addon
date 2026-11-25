@@ -34,8 +34,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Holographic core of the Nexus ME Hypercore (GTIA-D-434, U8): one cube per installed crafting module orbiting the
- * lattice in a shell per tier, data streams running to every crafting CPU interface, and a pulse while crafting jobs
+ * Holographic core of the Nexus ME Hypercore (GTIA-D-434, U8), inside the glass chamber: a glowing sheath around the
+ * central conduit, one cube per installed crafting module orbiting it in a helix per tier, data streams running to
+ * every crafting CPU interface, and a pulse while crafting jobs
  * run (a strong one when a new job starts). In transcendent mode a gold fractal shell wraps the core.
  */
 public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachine, HypercoreRenderer> {
@@ -45,17 +46,25 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
             .register(GTNACORE.id("nexus_me_hypercore/render"), new DynamicRenderType<>(CODEC));
 
     private static final int REACH = 160;
-    /** Shell radius, cube half-size and colour of tiers I to IV. */
-    private static final float[] SHELL = { 6, 8.5f, 11, 13.5f }, SIZE = { 0.22f, 0.3f, 0.38f, 0.48f };
+    /** Cube half-size and colour of tiers I to IV. */
+    private static final float[] SIZE = { 0.16f, 0.2f, 0.24f, 0.28f };
+    // EN: the open ring between the central conduit column (3 blocks from the chamber axis) and the crafting cores
+    // EN: (4.5 blocks away): module cubes orbit there, so the whole hologram stays inside the glass chamber.
+    // PT: o anel livre entre a coluna central (a 3 blocos do eixo da câmara) e os núcleos de crafting (a 4,5 blocos):
+    // PT: os cubos dos módulos orbitam ali, então o holograma inteiro fica dentro da câmara de vidro.
+    // ZH: 中央导管柱（距腔室轴 3 格）与合成核心（距 4.5 格）之间的空环：模块立方体在此环绕，使整个全息影像留在玻璃腔内。
+    private static final float ORBIT = 3.75f, SHEATH = 3.3f;
     private static final float[][] TIER_COLOUR = { { 0.35f, 0.85f, 1f }, { 0.4f, 1f, 0.6f }, { 1f, 0.75f, 0.3f },
             { 0.95f, 0.4f, 1f } };
 
     private static final Map<BlockPos, NexusMEHyperCoreMachine> QUEUE = new LinkedHashMap<>();
     private static final Map<BlockPos, float[]> PULSES = new HashMap<>();
     /**
-     * Hologram centre (above the lattice) and interface positions as (up, left, forward) offsets from the controller.
+     * Glass chamber centre as two (up, left, forward) offsets from the controller whose midpoint is the exact centre
+     * (the chamber is an even number of blocks wide), its half height, and the interface positions.
      */
-    private static int[] centre;
+    private static int[] centre, centreHi;
+    private static float halfHeight = 8;
     private static List<int[]> interfaces;
 
     @Override
@@ -109,16 +118,35 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
                     else if (ch == 'P') ports.add(new int[] { r, c, a });
                 }
         if (q == null) q = new int[3];
-        double[] sum = new double[3];
-        for (int[] p : cores) for (int i = 0; i < 3; i++) sum[i] += p[i];
-        int n = Math.max(1, cores.size());
-        int top = 0;
-        for (String[] aisle : aisles) top = Math.max(top, aisle.length - 1);
-        // EN: the lattice is closed, so the hologram floats above its roof, over the centre of the cores.
-        // PT: a treliça é fechada, então o holograma flutua acima do teto, sobre o centro dos núcleos.
-        // ZH: 晶格是封闭的，因此全息影像悬浮在顶部之上、核心中心的正上方。
-        centre = new int[] { top - q[0] + 16, (int) Math.round(sum[1] / n) - q[1],
-                (int) Math.round(sum[2] / n) - q[2] };
+        // EN: the hologram lives inside the laminated-glass chamber ('J') around the crafting cores, seen through
+        // EN: the glass (author's request, GTIA-D-434): its centre is the middle of the glass box.
+        // PT: o holograma fica dentro da câmara de vidro laminado ('J') em volta dos núcleos, visto através do vidro
+        // PT: (pedido do autor, GTIA-D-434): o centro é o meio da caixa de vidro.
+        // ZH: 全息影像位于合成核心周围的夹层玻璃腔（'J'）内，透过玻璃可见（作者要求，GTIA-D-434）：中心为玻璃箱中点。
+        int[] lo = { Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE }, hi = { -1, -1, -1 };
+        for (int a = 0; a < aisles.length; a++)
+            for (int r = 0; r < aisles[a].length; r++)
+                for (int c = 0; c < aisles[a][r].length(); c++) {
+                    if (aisles[a][r].charAt(c) != 'J') continue;
+                    int[] p = { r, c, a };
+                    for (int i = 0; i < 3; i++) {
+                        lo[i] = Math.min(lo[i], p[i]);
+                        hi[i] = Math.max(hi[i], p[i]);
+                    }
+                }
+        if (hi[0] < 0) {
+            for (int[] p : cores) for (int i = 0; i < 3; i++) {
+                lo[i] = Math.min(lo[i], p[i]);
+                hi[i] = Math.max(hi[i], p[i]);
+            }
+        }
+        centre = new int[3];
+        centreHi = new int[3];
+        for (int i = 0; i < 3; i++) {
+            centre[i] = Math.floorDiv(lo[i] + hi[i], 2) - q[i];
+            centreHi[i] = Math.floorDiv(lo[i] + hi[i] + 1, 2) - q[i];
+        }
+        halfHeight = Math.max(2, (hi[0] - lo[0]) / 2f - 1.5f);
         interfaces = new ArrayList<>();
         for (int[] p : ports) interfaces.add(new int[] { p[0] - q[0], p[1] - q[1], p[2] - q[2] });
     }
@@ -143,8 +171,10 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
                 if (m.isInValid() || !m.isFormed() && !MachineRenders.SHOWCASE) continue;
                 BlockPos c = at(m, centre());
                 if (!MachineRenders.inReach(c, cam, REACH)) continue;
+                BlockPos c2 = at(m, centreHi);
                 pose.pushPose();
-                pose.translate(c.getX() + 0.5 - cam.x, c.getY() + 0.5 - cam.y, c.getZ() + 0.5 - cam.z);
+                pose.translate((c.getX() + c2.getX()) / 2.0 + 0.5 - cam.x, (c.getY() + c2.getY()) / 2.0 + 0.5 - cam.y,
+                        (c.getZ() + c2.getZ()) / 2.0 + 0.5 - cam.z);
                 draw(m, new Matrix4f(pose.last().pose()), projection, time, c);
                 pose.popPose();
             }
@@ -176,13 +206,15 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
         var core = FxDraw.fx(8, time, transcendent ? 1f : 0.4f, transcendent ? 0.85f : 0.9f, transcendent ? 0.4f : 1f,
                 0.9f, 6, 0, 0, 0);
         if (core == null) return;
-        FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).rotateY(time * 0.4f).scale(2.6f + 0.2f *
-                (float) Math.sin(time * 3)), projection, core);
+        // A glowing sheath around the central conduit column, the height of the chamber.
+        float breathe = 1 + 0.04f * (float) Math.sin(time * 3);
+        FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).rotateY(time * 0.4f).scale(SHEATH * breathe,
+                halfHeight + 1, SHEATH * breathe), projection, core);
         if (transcendent && MachineRenders.high()) {
             var shell = FxDraw.fx(8, time, 1f, 0.8f, 0.35f, 0.6f, 14, 0, 0, 0);
             for (int k = 0; k < 3; k++)
-                FxMeshes.draw(FxMeshes.cube(), new Matrix4f(centre).rotateXYZ(time * 0.3f * (k + 1), time * 0.2f,
-                        k * 0.7f).scale(3.6f + k * 0.9f), projection, shell);
+                FxMeshes.draw(FxMeshes.cube(), new Matrix4f(centre).rotateY(time * 0.3f * (k + 1))
+                        .scale(ORBIT + 0.3f * k, halfHeight * (0.6f + 0.15f * k), ORBIT + 0.3f * k), projection, shell);
         }
 
         // EN: one cube per installed module; LOW caps the count (LOD), the shells still show every tier.
@@ -198,13 +230,13 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
             var cube = FxDraw.fx(8, time, col[0], col[1], col[2], 0.55f + 0.45f * activity, 18, 0, 0, 0);
             float speed = (0.25f - tier * 0.04f) * (busy > 0 ? 2.2f : 1);
             for (int i = 0; i < count; i++) {
-                // Fibonacci sphere: an even shell whatever the count; the shell spins about a tilted axis.
-                float y = 1 - 2 * (i + 0.5f) / count;
-                float ring = (float) Math.sqrt(1 - y * y);
+                // A helix per tier, stacked bottom (I) to top (IV) in the ring around the column.
+                float band = 2 * halfHeight / 4;
+                float y = -halfHeight + band * (tier + (i + 0.5f) / count);
                 double a = i * 2.39996 + time * speed * (tier % 2 == 0 ? 1 : -1);
-                Vector3f p = new Vector3f((float) Math.cos(a) * ring, y, (float) Math.sin(a) * ring)
-                        .mul(SHELL[tier] + 0.4f * (float) Math.sin(time * 2 + i));
-                FxMeshes.draw(FxMeshes.cube(), new Matrix4f(centre).rotateZ(0.35f * tier).translate(p)
+                float rad = ORBIT + 0.15f * (float) Math.sin(time * 2 + i);
+                Vector3f p = new Vector3f((float) Math.cos(a) * rad, y, (float) Math.sin(a) * rad);
+                FxMeshes.draw(FxMeshes.cube(), new Matrix4f(centre).translate(p)
                         .rotateXYZ(time + i, time * 0.7f + i, 0).scale(SIZE[tier]), projection, cube);
             }
         }
@@ -214,11 +246,13 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
             float t = busy > 0 ? (time % 1.6f) / 1.6f : 1;
             if (wave != null && busy > 0) {
                 wave.safeGetUniform("Tint").set(0.5f, 0.9f, 1f, 0.35f * (1 - t));
-                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).scale(3 + t * 12), projection, wave);
+                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).scale(3 + t * 4.5f, halfHeight, 3 + t * 4.5f),
+                        projection, wave);
             }
             if (wave != null && since < 2) {
                 wave.safeGetUniform("Tint").set(1f, 1f, 1f, 0.8f * (1 - since / 2));
-                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).scale(2.5f + since * 14), projection, wave);
+                FxMeshes.draw(FxMeshes.sphere(), new Matrix4f(centre).scale(3 + since * 2.5f, halfHeight,
+                        3 + since * 2.5f), projection, wave);
             }
         }
         streams(m, centre, time, busy, centrePos);
