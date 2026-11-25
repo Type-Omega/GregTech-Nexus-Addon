@@ -48,7 +48,7 @@ public final class ColliderFx {
             // Two beams side by side, half a block apart, so the crossing at the detectors reads.
             float off = beam == 0 ? 0.45f : -0.45f;
             var path = FxDraw.arc(r, 0, 2 * Math.PI, segments);
-            FxDraw.ribbon(shader, new Matrix4f(m).translate(0, 0, off), path, 1.6f, 1f);
+            FxDraw.ribbon(shader, new Matrix4f(m).translate(0, 0, off), path, 2.5f, 1f);
             // EN: the glow that crosses the casing: the beam path moved towards the camera past the tube wall, so the
             // EN: ring hides its own far side but the beam reads from outside; terrain in front still hides it.
             // PT: o brilho que atravessa o casing: o caminho do feixe trazido para a câmera além da parede do tubo,
@@ -56,10 +56,22 @@ public final class ColliderFx {
             // tapa.
             // ZH: 穿透外壳的辉光：把光束路径朝相机方向移出管壁，环仍遮挡自身背面，但从外面能看到光束；前方地形照样遮挡。
             var lifted = lift(path, new Vector3f(cam).sub(0, 0, off), TUBE_LIFT);
-            var glow = FxDraw.fx(6, time, col[0], col[1], col[2], 0.8f, speed, dir, 0.35f, 0);
-            FxDraw.ribbon(glow, new Matrix4f(m).translate(0, 0, off), lifted, 2.4f, 1f);
-            var halo = FxDraw.fx(6, time, col[0], col[1], col[2], high ? 0.3f : 0.22f, speed * 0.5f, dir, 0.08f, 0);
-            FxDraw.ribbon(halo, new Matrix4f(m).translate(0, 0, off * 4), lifted, high ? 11f : 7f, 1f);
+            // EN: three layers, hot core, glow and wide halo, sized for a ring ~80 blocks across seen from 200+
+            // EN: blocks away: at the old widths (2.4 and 11) the beams vanished in a distant view. LOW keeps all
+            // EN: three, a little narrower.
+            // PT: três camadas, núcleo quente, brilho e halo largo, dimensionadas para um anel de ~80 blocos visto a
+            // PT: mais de 200 blocos: com as larguras antigas (2,4 e 11) os feixes sumiam de longe. O LOW mantém as
+            // PT: três, um pouco mais estreitas.
+            // ZH: 三层：炽热核心、辉光和宽光晕，按约 80 格宽、在 200 格外观看的环来设定；旧宽度（2.4 和 11）远看时
+            // ZH: 光束会消失。LOW 保留三层，只是略窄。
+            var core = FxDraw.fx(6, time, 1f, 1f, 1f, 1f, speed, dir, 0.6f, 0);
+            FxDraw.ribbon(core, new Matrix4f(m).translate(0, 0, off), lifted, 1.8f, 1f);
+            var glow = FxDraw.fx(6, time, col[0], col[1], col[2], 1f, speed, dir, 0.35f, 0);
+            FxDraw.ribbon(glow, new Matrix4f(m).translate(0, 0, off), lifted, high ? 6f : 5f, 1f);
+            var halo = FxDraw.fx(6, time, col[0], col[1], col[2], high ? 0.5f : 0.42f, speed * 0.5f, dir, 0.08f, 0);
+            FxDraw.ribbon(halo, new Matrix4f(m).translate(0, 0, off * 4), lifted, high ? 22f : 16f, 1f);
+            var haze = FxDraw.fx(6, time, col[0], col[1], col[2], 0.18f, speed * 0.3f, dir, 0.03f, 0);
+            FxDraw.ribbon(haze, new Matrix4f(m).translate(0, 0, off * 4), lifted, high ? 44f : 30f, 1f);
         }
         // A collision event every 0.4 s at each detector: a sharp flash that decays, and a shock disc across the beam.
         float rate = 2.5f;
