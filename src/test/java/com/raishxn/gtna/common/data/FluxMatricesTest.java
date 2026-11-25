@@ -4,7 +4,7 @@ import com.typeomega.lib.data.Int128;
 
 import java.util.List;
 
-/** GTIA-D-426: the Flux Matrices of one network add up; one that leaves takes only its share. */
+/** D-426: the Flux Matrices of one network add up; one that leaves takes only its share. */
 public final class FluxMatricesTest {
 
     private FluxMatricesTest() {}

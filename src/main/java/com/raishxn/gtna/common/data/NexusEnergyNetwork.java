@@ -57,7 +57,7 @@ public class NexusEnergyNetwork extends SavedData {
         DirectDebit lastDirectDebit;
 
         public Map<GlobalPos, ConnectionInfo> connections = new ConcurrentHashMap<>();
-        /** Formed Flux Matrices by controller position; the stats below are their sum (GTIA-D-426). */
+        /** Formed Flux Matrices by controller position; the stats below are their sum (D-426). */
         final Map<GlobalPos, FluxMatrices.Matrix> matrices = new LinkedHashMap<>();
 
         public long totalCapacitors = 0;
@@ -116,7 +116,7 @@ public class NexusEnergyNetwork extends SavedData {
         return tag;
     }
 
-    /** The key the owner's network is stored under: his FTB team, or himself (GTIA-D-386). */
+    /** The key the owner's network is stored under: his FTB team, or himself (D-386). */
     public UUID networkOf(UUID owner) {
         return teams.networkOf(owner);
     }
@@ -251,7 +251,7 @@ public class NexusEnergyNetwork extends SavedData {
 
     /**
      * Adds or replaces the matrix whose controller is at {@code controller}; the network's capacity and stats
-     * become the sum of its matrices (GTIA-D-426). A controller is in one network only, so it leaves any other.
+     * become the sum of its matrices (D-426). A controller is in one network only, so it leaves any other.
      */
     public void putMatrix(UUID owner, GlobalPos controller, FluxMatrices.Matrix matrix) {
         if (owner == null || controller == null || matrix == null) return;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/** GTIA-D-386: per-player wireless networks move to the team once, without loss or duplication. */
+/** D-386: per-player wireless networks move to the team once, without loss or duplication. */
 public final class TeamWirelessNetworkTest {
 
     private TeamWirelessNetworkTest() {}

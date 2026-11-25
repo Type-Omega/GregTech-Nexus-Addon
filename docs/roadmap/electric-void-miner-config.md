@@ -6,14 +6,14 @@
 > mineração agora consomem essências; chips planetários são produzidos pelo scanner.
 
 
-O `gtna:electric_void_miner` é a máquina nova prevista pelas decisões GTIA-D-159 a GTIA-D-162:
+O `gtna:electric_void_miner` é a máquina nova prevista pelas decisões D-159 a D-162:
 entrada em EV, um programa por máquina, energia + Drilling Fluid por operação e paralelismo
 apenas a partir de IV. O `gtna:void_miner_steam_gate_aged` continua independente e intacto.
 
 ## Arquivo
 
 `config/gtna/balance/electric_void_miner.json` (exemplo Type Omega em
-`docs/config-examples/gtia/electric_void_miner.json`). A configuração é lida na inicialização;
+`docs/config-examples/typeomega/electric_void_miner.json`). A configuração é lida na inicialização;
 reinicie o jogo/servidor após editar. O campo `enabled: false` **não registra** o bloco — use
 apenas antes de distribuir o mundo, já que blocos colocados deixariam de existir.
 
@@ -65,8 +65,8 @@ os ingredientes do programa, incluindo chip e amostra.
 
 ## Referências
 
-- GTIA-D-159 (máquina nova separada da Steam), GTIA-D-160 (energia + Drilling Fluid), GTIA-D-161
-  (controller EV com Titanium terrestre, sem Lua/amostra/dado), GTIA-D-162 (um programa, overclock
+- D-159 (máquina nova separada da Steam), D-160 (energia + Drilling Fluid), D-161
+  (controller EV com Titanium terrestre, sem Lua/amostra/dado), D-162 (um programa, overclock
   elétrico, paralelo a partir de IV).
-- GTIA-D-172: não adicionar saída de fluidos descobertos ao minerador por inferência; a máquina de
+- D-172: não adicionar saída de fluidos descobertos ao minerador por inferência; a máquina de
   automação de fluidos ainda não foi escolhida.

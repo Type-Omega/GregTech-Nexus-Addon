@@ -124,7 +124,7 @@ public class SteamNetworkData extends SavedData {
         return sum < 0 ? Long.MAX_VALUE : sum;
     }
 
-    /** The key the owner's pool is stored under: his FTB team, or himself (GTIA-D-386). */
+    /** The key the owner's pool is stored under: his FTB team, or himself (D-386). */
     public UUID networkOf(UUID owner) {
         return teams.networkOf(owner);
     }

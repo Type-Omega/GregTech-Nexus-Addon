@@ -1,7 +1,7 @@
 # Teste manual de descoberta e produção de fluidos
 
 Ambiente: cliente de desenvolvimento com GTNA + TypeOmegaCore e perfil Type Omega. O perfil contém
-seis programas terrestres e Radon de Marte. O lançador `tools/run_gtia_client.py` instala
+seis programas terrestres e Radon de Marte. O lançador `tools/run_typeomega_client.py` instala
 as configurações e o depósito de Marte via KubeJS, com backup dos arquivos anteriores.
 O TypeOmegaCore sozinho não instala esse perfil no GTNA.
 

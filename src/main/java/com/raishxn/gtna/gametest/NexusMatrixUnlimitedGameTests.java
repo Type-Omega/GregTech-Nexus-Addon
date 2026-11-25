@@ -31,7 +31,7 @@ import java.util.UUID;
 @PrefixGameTestTemplate(false)
 public final class NexusMatrixUnlimitedGameTests {
 
-    /** Builds the Tesla Coil matrix (GTIA-D-437) with {@code floors} floors; capacitors from {@code capacitor}. */
+    /** Builds the Tesla Coil matrix (D-437) with {@code floors} floors; capacitors from {@code capacitor}. */
     static TextAislePlacer.Placed buildMatrix(GameTestHelper helper, int floors, Block capacitor) {
         var placed = TextAislePlacer.place(helper, NexusFluxMatrixStructure.RESOURCE, new BlockPos(2, 1, 2), true,
                 floors, 'B', (symbol, pos) -> switch (symbol) {

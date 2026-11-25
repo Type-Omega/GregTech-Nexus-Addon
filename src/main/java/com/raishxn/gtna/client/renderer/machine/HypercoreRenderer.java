@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Holographic core of the Nexus ME Hypercore (GTIA-D-434, U8), inside the glass chamber: a glowing sheath around the
+ * Holographic core of the Nexus ME Hypercore (D-434, U8), inside the glass chamber: a glowing sheath around the
  * central conduit, one cube per installed crafting module orbiting it in a helix per tier, data streams running to
  * every crafting CPU interface, and a pulse while crafting jobs
  * run (a strong one when a new job starts). In transcendent mode a gold fractal shell wraps the core.
@@ -119,10 +119,10 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
                 }
         if (q == null) q = new int[3];
         // EN: the hologram lives inside the laminated-glass chamber ('J') around the crafting cores, seen through
-        // EN: the glass (author's request, GTIA-D-434): its centre is the middle of the glass box.
+        // EN: the glass (author's request, D-434): its centre is the middle of the glass box.
         // PT: o holograma fica dentro da câmara de vidro laminado ('J') em volta dos núcleos, visto através do vidro
-        // PT: (pedido do autor, GTIA-D-434): o centro é o meio da caixa de vidro.
-        // ZH: 全息影像位于合成核心周围的夹层玻璃腔（'J'）内，透过玻璃可见（作者要求，GTIA-D-434）：中心为玻璃箱中点。
+        // PT: (pedido do autor, D-434): o centro é o meio da caixa de vidro.
+        // ZH: 全息影像位于合成核心周围的夹层玻璃腔（'J'）内，透过玻璃可见（作者要求，D-434）：中心为玻璃箱中点。
         int[] lo = { Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE }, hi = { -1, -1, -1 };
         for (int a = 0; a < aisles.length; a++)
             for (int r = 0; r < aisles[a].length; r++)

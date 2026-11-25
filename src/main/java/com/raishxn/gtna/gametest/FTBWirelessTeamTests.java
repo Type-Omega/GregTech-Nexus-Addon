@@ -13,7 +13,7 @@ import java.math.BigInteger;
 import java.util.Map;
 import java.util.UUID;
 
-/** Optional FTB Teams test body for GTIA-D-386: legacy per-player networks move to the party once. */
+/** Optional FTB Teams test body for D-386: legacy per-player networks move to the party once. */
 final class FTBWirelessTeamTests {
 
     private FTBWirelessTeamTests() {}
@@ -62,7 +62,7 @@ final class FTBWirelessTeamTests {
                     energy.getExactEnergy(first).equals(BigInteger.valueOf(150)), "members' EU is summed");
             h.assertTrue(energy.getExactEnergy(second).equals(BigInteger.valueOf(150)), "and read by every member");
             h.assertTrue(energy.getMaxCapacity(first).equals(new Int128(3_000)) && energy.getMatrixCount(second) == 2,
-                    "both members' Flux Matrices add up in the party (GTIA-D-426)");
+                    "both members' Flux Matrices add up in the party (D-426)");
             h.assertTrue(energy.getExactEnergy(first).equals(BigInteger.valueOf(150)), "never added twice");
             h.assertTrue(energy.networkOf(solo).equals(solo) &&
                     energy.getExactEnergy(solo).equals(BigInteger.valueOf(30)), "a solo player keeps his network");

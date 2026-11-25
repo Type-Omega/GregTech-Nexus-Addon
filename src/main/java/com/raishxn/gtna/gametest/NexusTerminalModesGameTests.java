@@ -27,7 +27,7 @@ import java.util.Map;
 
 import static com.raishxn.gtna.gametest.NexusTerminalPlanGameTests.*;
 
-/** GameTests of the Nexus Terminal v2 modes (GTIA-D-439): swap, dismantle, hatch plan, report. */
+/** GameTests of the Nexus Terminal v2 modes (D-439): swap, dismantle, hatch plan, report. */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class NexusTerminalModesGameTests {

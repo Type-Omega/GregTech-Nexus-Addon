@@ -20,7 +20,7 @@ import appeng.api.storage.MEStorage;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * ME link of the Nexus Structure Terminal (GTIA-D-439): the terminal remembers one ME node (any active grid node:
+ * ME link of the Nexus Structure Terminal (D-439): the terminal remembers one ME node (any active grid node:
  * interface, controller, drive, access point...) and reaches its grid from any distance and any dimension. AE2 is a
  * hard dependency of GTNA, so the API is called directly.
  */
@@ -71,9 +71,9 @@ public final class NexusAE2Link {
         return GlobalPos.CODEC.parse(NbtOps.INSTANCE, tag.get(NBT_ACCESS_POINT)).result().orElse(null);
     }
 
-    // EN: no range or dimension limit (GTIA-D-439 T8); reading the node loads its chunk if needed.
-    // PT: sem limite de alcance nem de dimensão (GTIA-D-439 T8); ler o nó carrega o chunk dele se preciso.
-    // ZH: 没有距离和维度限制（GTIA-D-439 T8）；读取节点时会按需加载其区块。
+    // EN: no range or dimension limit (D-439 T8); reading the node loads its chunk if needed.
+    // PT: sem limite de alcance nem de dimensão (D-439 T8); ler o nó carrega o chunk dele se preciso.
+    // ZH: 没有距离和维度限制（D-439 T8）；读取节点时会按需加载其区块。
     /** The linked grid, or null when unlinked, the node is gone or the grid is offline. */
     @Nullable
     public static IGrid grid(ItemStack terminal, @Nullable MinecraftServer server) {

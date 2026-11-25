@@ -10,7 +10,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 
 /**
- * Lazy move of per-player wireless networks into team networks (GTIA-D-386). No Minecraft types, so it is
+ * Lazy move of per-player wireless networks into team networks (D-386). No Minecraft types, so it is
  * unit-tested on its own.
  *
  * <p>

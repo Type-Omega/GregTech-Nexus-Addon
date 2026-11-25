@@ -1,4 +1,4 @@
-# ME Storage, "Data Conduit" (GTIA-D-437, proposal B). Aisles back to front, rows bottom-up.
+# ME Storage, "Data Conduit" (D-437, proposal B). Aisles back to front, rows bottom-up.
 # The repeated slice holds 6 storage cores: 1 to 128 slices, 6 to 768 cores.
 aisle
 |BBBBBBBBBBB|

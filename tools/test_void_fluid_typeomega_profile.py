@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate GTIA's fluid profile and deposit with the normal GameTests; restore dev files."""
+"""Validate Type Omega's fluid profile and deposit with the normal GameTests; restore dev files."""
 import argparse
 import json
 import os
@@ -10,10 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "run/config/gtna/balance/void_fluid_drill.json"
-EXAMPLE = ROOT / "docs/config-examples/gtia/void_fluid_drill.json"
+EXAMPLE = ROOT / "docs/config-examples/typeomega/void_fluid_drill.json"
 DEPOSIT = ROOT / "run/kubejs/data/typeomega/gtceu/fluid_veins/mars_radon.json"
-DEPOSIT_EXAMPLE = ROOT / "docs/config-examples/gtia/void-fluid-datapack/data/typeomega/gtceu/fluid_veins/mars_radon.json"
-LOG = ROOT / "build/test-results/void-fluid-gtia/profile.log"
+DEPOSIT_EXAMPLE = ROOT / "docs/config-examples/typeomega/void-fluid-datapack/data/typeomega/gtceu/fluid_veins/mars_radon.json"
+LOG = ROOT / "build/test-results/void-fluid-typeomega/profile.log"
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     args = parser.parse_args()
     command = ["./gradlew", "runGameTestServer", "--offline"]
     if args.core_dev_jar:
-        command.append(f"-PgtiaDevJar={args.core_dev_jar.resolve()}")
+        command.append(f"-PtypeOmegaDevJar={args.core_dev_jar.resolve()}")
     originals = {path: path.read_bytes() if path.exists() else None for path in (CONFIG, DEPOSIT)}
     LOG.parent.mkdir(parents=True, exist_ok=True)
     try:
@@ -45,9 +45,9 @@ def main():
         if args.core_dev_jar:
             passed = passed and "with {typeomega} mods - versions {0.1.0}" in log
         passed = passed and "Void Fluid Drill: 7 programs" in log
-        passed = passed and "GTIA Mars native extraction -> recorded data -> remote Radon: PASS" in log
+        passed = passed and "Type Omega Mars native extraction -> recorded data -> remote Radon: PASS" in log
         passed = passed and "FTB effective party discovery, copying and membership gates: PASS" in log
-        print(f"GTIA fluid profile: {'PASS' if passed else 'FAIL'} ({LOG})", flush=True)
+        print(f"Type Omega fluid profile: {'PASS' if passed else 'FAIL'} ({LOG})", flush=True)
         return 0 if passed else 1
     finally:
         for path, data in originals.items():

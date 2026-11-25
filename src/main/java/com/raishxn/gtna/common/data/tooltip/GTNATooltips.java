@@ -32,7 +32,7 @@ import java.util.function.ToDoubleFunction;
 import static com.typeomega.lib.tooltip.TooltipArg.value;
 
 /**
- * GTNA multiblocks already migrated to the GTNH-style tooltip of the lib (GTIA-D-410). Each family registers its
+ * GTNA multiblocks already migrated to the GTNH-style tooltip of the lib (D-410). Each family registers its
  * machines here; {@code GTNAMultiblockTooltips} uses these instead of the old generated layout. The tooltip is built
  * when it is shown, so the language and the pack's steam balance are current.
  */
@@ -120,7 +120,7 @@ public final class GTNATooltips {
 
     /**
      * Lines every GTNA multiblock gets from its definition: the modes when it switches recipe types and the
-     * "Supports ...!" line read from its pattern. No structure section and no pollution line (GTIA-D-431).
+     * "Supports ...!" line read from its pattern. No structure section and no pollution line (D-431).
      */
     public static MultiblockTooltipBuilder machine(MultiblockTooltipBuilder builder, String id) {
         if (!(GTRegistries.MACHINES
@@ -129,9 +129,9 @@ public final class GTNATooltips {
         }
         builder.modes(GtceuPatterns.modes(definition));
         StructureInfo info = structure(definition);
-        // EN: Only the "Supports" line is taken from the pattern; the structure section is off (GTIA-D-431).
-        // PT: Só a linha "Suporta" vem do padrão; a seção de estrutura está desligada (GTIA-D-431).
-        // ZH: 只从结构模式读取“支持”一行；结构部分已关闭（GTIA-D-431）。
+        // EN: Only the "Supports" line is taken from the pattern; the structure section is off (D-431).
+        // PT: Só a linha "Suporta" vem do padrão; a seção de estrutura está desligada (D-431).
+        // ZH: 只从结构模式读取“支持”一行；结构部分已关闭（D-431）。
         if (info != null) builder.hatches(info);
         return builder;
     }

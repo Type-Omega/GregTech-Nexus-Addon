@@ -137,11 +137,11 @@ public final class NexusBlockPattern {
         NexusMaterials materials = new NexusMaterials(player, me);
         materials.survey(plans);
         materials.assign(plans);
-        // EN: what is missing and has a pattern is requested from the ME on its own (GTIA-D-439 T9); the build
+        // EN: what is missing and has a pattern is requested from the ME on its own (D-439 T9); the build
         // EN: goes on with what exists, and a second build fills the rest once the crafts are done.
-        // PT: o que falta e tem padrão é pedido sozinho ao ME (GTIA-D-439 T9); a construção segue com o que existe,
+        // PT: o que falta e tem padrão é pedido sozinho ao ME (D-439 T9); a construção segue com o que existe,
         // PT: e uma segunda construção completa o resto quando os crafts terminarem.
-        // ZH: 缺少且有样板的物品会自动向 ME 下单（GTIA-D-439 T9）；建造先用现有材料继续，合成完成后再建一次补齐。
+        // ZH: 缺少且有样板的物品会自动向 ME 下单（D-439 T9）；建造先用现有材料继续，合成完成后再建一次补齐。
         if (me != null) {
             Map<appeng.api.stacks.AEItemKey, Long> missing = NexusMaterials.missing(plans);
             if (!missing.isEmpty()) NexusCrafting.request(player, me, missing);

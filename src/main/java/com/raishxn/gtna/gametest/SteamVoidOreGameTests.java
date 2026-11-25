@@ -16,7 +16,7 @@ import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.common.data.GTNAMachines;
 import com.raishxn.gtna.common.data.GTNARecipeType;
 
-/** Steam Void Ore "portal house" (GTIA-D-361): forms from its preview, breaks without a firebox, has its own type. */
+/** Steam Void Ore "portal house" (D-361): forms from its preview, breaks without a firebox, has its own type. */
 @PrefixGameTestTemplate(false)
 @GameTestHolder(GTNACORE.MOD_ID)
 public final class SteamVoidOreGameTests {

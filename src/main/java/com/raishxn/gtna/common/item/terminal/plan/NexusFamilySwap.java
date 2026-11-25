@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * Tier swap by family (GTIA-D-440): the tiered families a built structure holds (coils, casings, capacitors...),
+ * Tier swap by family (D-440): the tiered families a built structure holds (coils, casings, capacitors...),
  * each with the tier found in the world, and a one-step swap of a whole family to another tier. The swap is a
  * replace-mode build with that family's pick, so it keeps the safe swap rules (old block back to the ME or the
  * inventory, nothing replaced without room).

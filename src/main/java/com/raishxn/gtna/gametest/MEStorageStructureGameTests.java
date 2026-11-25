@@ -23,7 +23,7 @@ import com.raishxn.gtna.common.data.GTNAMachines2;
 import com.raishxn.gtna.common.data.multiblock.MEStorageStructure;
 import com.raishxn.gtna.common.data.multiblock.TextAisles;
 
-/** ME Storage "Data Conduit" (GTIA-D-437): forms with its cores and one access hatch, and keeps the 768 contract. */
+/** ME Storage "Data Conduit" (D-437): forms with its cores and one access hatch, and keeps the 768 contract. */
 @GameTestHolder(GTNACORE.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class MEStorageStructureGameTests {

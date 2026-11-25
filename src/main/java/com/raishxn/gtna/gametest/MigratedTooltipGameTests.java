@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Multiblocks migrated to the GTNH-style tooltip of the lib (GTIA-D-410, D-428, D-429, D-431). */
+/** Multiblocks migrated to the GTNH-style tooltip of the lib (D-410, D-428, D-429, D-431). */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class MigratedTooltipGameTests {
@@ -59,7 +59,7 @@ public final class MigratedTooltipGameTests {
             h.assertTrue(sources == (GTNASources.sourceOf(path) != null ? 1 : 0),
                     path + " must credit its origin exactly once, got " + sources);
             for (String k : keys(tooltip)) {
-                h.assertFalse(k.contains("shift"), path + " uses " + k + " (GTIA-D-428)");
+                h.assertFalse(k.contains("shift"), path + " uses " + k + " (D-428)");
                 if (!k.startsWith("gtna.")) continue;
                 h.assertTrue(en.has(k) && pt.has(k) && zh.has(k), path + ": " + k + " missing in en/pt/zh");
             }
@@ -70,7 +70,7 @@ public final class MigratedTooltipGameTests {
     }
 
     /**
-     * No GTNA multiblock shows a structure section or a pollution line (GTIA-D-431): dimensions, controller, block
+     * No GTNA multiblock shows a structure section or a pollution line (D-431): dimensions, controller, block
      * counts and hatch counts stay out of the tooltip. The "Supports ...!" line and the modes stay.
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 200)

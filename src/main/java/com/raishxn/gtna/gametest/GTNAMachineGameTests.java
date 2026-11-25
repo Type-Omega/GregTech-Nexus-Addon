@@ -3833,7 +3833,7 @@ public final class GTNAMachineGameTests {
     }
 
     /**
-     * Every GTNA multiblock uses the lib tooltip with the full mechanics (GTIA-D-432): none may be left on the old
+     * Every GTNA multiblock uses the lib tooltip with the full mechanics (D-432): none may be left on the old
      * generated layout or without a tooltip.
      */
     @GameTest(template = TEMPLATE, timeoutTicks = 20)

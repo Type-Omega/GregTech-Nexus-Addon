@@ -16,7 +16,7 @@ import com.typeomega.lib.data.Int128;
 import java.math.BigInteger;
 import java.util.Map;
 
-/** Save format of one Nexus network and the merge of a member's network into a team's (GTIA-D-386). */
+/** Save format of one Nexus network and the merge of a member's network into a team's (D-386). */
 final class NexusNetworkStateCodec {
 
     private NexusNetworkStateCodec() {}
@@ -79,15 +79,15 @@ final class NexusNetworkStateCodec {
     }
 
     /**
-     * EN: Stored EU is summed and the member's Flux Matrices join the team's, which then sum (GTIA-D-426). A save
+     * EN: Stored EU is summed and the member's Flux Matrices join the team's, which then sum (D-426). A save
      * from before 0.6.2 has no matrix list: the team keeps its own matrix and takes the member's only when it has
      * none; the next time a matrix forms, the list replaces it. EU above the capacity stays stored and only blocks
      * new input.
-     * PT: O EU guardado é somado e as Flux Matrix do membro entram nas do time, que passam a somar (GTIA-D-426). Um
+     * PT: O EU guardado é somado e as Flux Matrix do membro entram nas do time, que passam a somar (D-426). Um
      * save anterior à 0.6.2 não tem a lista de matrizes: o time fica com a própria e só herda a do membro se não
      * tiver nenhuma; na próxima formação de uma matriz, a lista a substitui. EU acima da capacidade continua guardado
      * e só bloqueia entrada nova.
-     * ZH: 存储的 EU 相加，成员的 Flux Matrix 并入队伍的矩阵并一起累加（GTIA-D-426）。0.6.2 之前的存档没有矩阵列表：
+     * ZH: 存储的 EU 相加，成员的 Flux Matrix 并入队伍的矩阵并一起累加（D-426）。0.6.2 之前的存档没有矩阵列表：
      * 队伍保留自己的矩阵，只有在没有矩阵时才继承成员的；下次有矩阵成型时，列表会取而代之。超出容量的 EU 仍然保存，
      * 只会阻止新的输入。
      */

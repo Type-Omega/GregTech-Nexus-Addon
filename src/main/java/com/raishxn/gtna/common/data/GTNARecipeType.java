@@ -32,7 +32,7 @@ public class GTNARecipeType {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.BATH);
 
-    /** Steam Void Ore (GTIA-D-361): the pack supplies the ores; GTNA only registers the type. */
+    /** Steam Void Ore (D-361): the pack supplies the ores; GTNA only registers the type. */
     public static final GTRecipeType STEAM_VOID_ORE = register("steam_void_ore",
             com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK)
             .setMaxIOSize(1, 6, 0, 0)

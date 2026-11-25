@@ -8,7 +8,7 @@ import com.raishxn.gtna.GTNACORE;
 import com.raishxn.gtna.common.data.tooltip.GTNATooltips;
 
 /**
- * Tooltip of every GTNA multiblock: the GTNH-style layout of the lib built by {@link GTNATooltips} (GTIA-D-410,
+ * Tooltip of every GTNA multiblock: the GTNH-style layout of the lib built by {@link GTNATooltips} (D-410,
  * D-432). Runs after every other tooltip pass and replaces the builder, so the multiblock shows only this layout. A
  * multiblock without a lib tooltip gets none, and {@code everyMultiblockUsesTheStandardTooltip} fails.
  */

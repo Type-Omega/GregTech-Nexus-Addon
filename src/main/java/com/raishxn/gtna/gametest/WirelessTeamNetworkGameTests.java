@@ -5,7 +5,7 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
-/** GTIA-D-386: the wireless energy and steam networks follow the FTB team; legacy worlds migrate once. */
+/** D-386: the wireless energy and steam networks follow the FTB team; legacy worlds migrate once. */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class WirelessTeamNetworkGameTests {

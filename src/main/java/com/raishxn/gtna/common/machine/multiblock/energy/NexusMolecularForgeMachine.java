@@ -54,7 +54,7 @@ public class NexusMolecularForgeMachine extends WorkableElectricMultiblockMachin
     private int activeBatchDuration;
     private long pendingBatchStartTick = -1L;
     private long pendingBatchLastChangeTick = -1L;
-    /** The item the holographic forge shows (GTIA-D-434) and the game time until which it shows it. */
+    /** The item the holographic forge shows (D-434) and the game time until which it shows it. */
     @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
     private ItemStack renderItem = ItemStack.EMPTY;
     @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced

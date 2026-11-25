@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
- * Every GTNA multiblock uses the GTNH-style tooltip of the lib (GTIA-D-410, D-432): each registered multiblock id has
+ * Every GTNA multiblock uses the GTNH-style tooltip of the lib (D-410, D-432): each registered multiblock id has
  * its humour line in {@code tooltip_lang} (which {@code GTNATooltips.finish} always adds), and no numbered line of the
  * old generated layout ({@code gtna.machine.<id>.tooltip.N}) of a multiblock is left in pt_br. GTLCore style:
  * {@code main()} + asserts.

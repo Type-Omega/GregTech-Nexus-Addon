@@ -67,7 +67,7 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
             NexusFluxMatrixMachine.class,
             WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
 
-    /** For the plasma column (GTIA-D-434): network fill 0..1, average tier, flow sign and floors built. */
+    /** For the plasma column (D-434): network fill 0..1, average tier, flow sign and floors built. */
     @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
     private float renderFill;
     @com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced
@@ -151,15 +151,15 @@ public class NexusFluxMatrixMachine extends WorkableMultiblockMachine implements
                 low = Math.min(low, pos.getY());
                 high = Math.max(high, pos.getY());
             }
-            // EN: everything but the repeated floors is 13 blocks tall (Tesla Coil, GTIA-D-437).
-            // PT: tudo menos os andares repetidos tem 13 blocos de altura (Bobina de Tesla, GTIA-D-437).
-            // ZH: 除重复层外整体高 13 格（特斯拉线圈，GTIA-D-437）。
+            // EN: everything but the repeated floors is 13 blocks tall (Tesla Coil, D-437).
+            // PT: tudo menos os andares repetidos tem 13 blocos de altura (Bobina de Tesla, D-437).
+            // ZH: 除重复层外整体高 13 格（特斯拉线圈，D-437）。
             renderFloors = Math.max(0, high - low + 1 - 13);
         }
         if (getLevel() instanceof ServerLevel serverLevel && getOwnerUUID() != null) {
-            // EN: Every matrix of a team adds to the network instead of overwriting it (GTIA-D-426).
-            // PT: Cada matriz do time soma na rede em vez de sobrescrevê-la (GTIA-D-426).
-            // ZH: 队伍的每个矩阵都累加到网络中，而不是覆盖它（GTIA-D-426）。
+            // EN: Every matrix of a team adds to the network instead of overwriting it (D-426).
+            // PT: Cada matriz do time soma na rede em vez de sobrescrevê-la (D-426).
+            // ZH: 队伍的每个矩阵都累加到网络中，而不是覆盖它（D-426）。
             NexusEnergyNetwork.get(serverLevel).putMatrix(getOwnerUUID(), controllerPos(serverLevel),
                     new FluxMatrices.Matrix(totalCapacitors, averageTier, efficiency, maxCapacity, transferLimit,
                             unlimited, serverLevel.dimension().location().toString()));

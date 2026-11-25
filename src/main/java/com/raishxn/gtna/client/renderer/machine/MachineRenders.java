@@ -9,7 +9,7 @@ import com.raishxn.gtna.config.ClientConfig.MachineRenderLevel;
 import com.raishxn.gtna.config.ConfigHolder;
 
 /**
- * The client's render level for every GTNA machine render (GTIA-D-434, U11): {@code OFF} hides the effects,
+ * The client's render level for every GTNA machine render (D-434, U11): {@code OFF} hides the effects,
  * {@code LOW} halves their reach and skips the expensive passes (LOD), {@code HIGH} draws everything.
  */
 @OnlyIn(Dist.CLIENT)

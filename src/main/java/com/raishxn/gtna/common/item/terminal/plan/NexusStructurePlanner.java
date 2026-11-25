@@ -28,7 +28,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.*;
 
 /**
- * Walks a pattern once and classifies every cell (GTIA-D-439 P0.1, P0.3). Hatch limits are honoured in GTCEu's order
+ * Walks a pattern once and classifies every cell (D-439 P0.1, P0.3). Hatch limits are honoured in GTCEu's order
  * ({@link #pickCandidates}), so the plan is the structure GTCEu checks. The terminal's block picks are read once per
  * scan, and the candidate list of a cell is cached by the limits it was resolved under, so the thousands of casing
  * cells of a big structure share one list.
@@ -53,7 +53,7 @@ public final class NexusStructurePlanner {
     private final NexusHatchPlan hatchPlan;
 
     /**
-     * Block per world position that a paste of a saved structure asks for (GTIA-D-440); a cell takes it when the
+     * Block per world position that a paste of a saved structure asks for (D-440); a cell takes it when the
      * pattern allows that block there. Set only around one build, on the server thread.
      */
     public static final ThreadLocal<Map<BlockPos, Item>> OVERRIDES = new ThreadLocal<>();

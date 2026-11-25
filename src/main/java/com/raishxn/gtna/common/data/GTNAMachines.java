@@ -2947,9 +2947,9 @@ public class GTNAMachines {
                     .appearanceBlock(GTBlocks.CASING_BRONZE_BRICKS)
                     .recipeModifier(VoidMinerSteamGateAged::recipeModifier)
                     .pattern(definition -> FactoryBlockPattern.start()
-                            // EN: "Portal house" (GTIA-D-361): the GTO ring and gallery with fireboxes, steam lines,
-                            // windows and a chimney. PT: "Casa do portal" (GTIA-D-361): o anel e a galeria do GTO com
-                            // fornalhas, linhas de vapor, janelas e chaminé. ZH: "传送门之屋"（GTIA-D-361）。
+                            // EN: "Portal house" (D-361): the GTO ring and gallery with fireboxes, steam lines,
+                            // windows and a chimney. PT: "Casa do portal" (D-361): o anel e a galeria do GTO com
+                            // fornalhas, linhas de vapor, janelas e chaminé. ZH: "传送门之屋"（D-361）。
                             .aisle("SSSSSSSSS", "BBBBBBBBB", "BBBBBBBBB", "BVVVVVVVB", "BVVVVVVVB", "BVVVVVVVB",
                                     "BBBBBBBBB", "BFFFFFFFB", "BFFFFFFFB", "B       B", "G       G", "R        ",
                                     "R        ", "R        ", "I        ")
@@ -3000,7 +3000,7 @@ public class GTNAMachines {
                     .register());
 
     /**
-     * GTIA-era electric Void Miner (GTIA-D-159..D-162). Registration honours
+     * Type Omega-era electric Void Miner (D-159..D-162). Registration honours
      * {@code electric_void_miner.json}'s {@code enabled}; the controller recipe is EV-only and
      * uses terrestrial Titanium without Lua, samples, Planet Data Chips or the Steam miner.
      */

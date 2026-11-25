@@ -21,7 +21,7 @@ import com.typeomega.lib.ui.tool.ToolWindow;
 import java.util.List;
 
 /**
- * The Machines and Saved Structures tabs of the Nexus Terminal (GTIA-D-440). Rows are fixed widgets whose texts the
+ * The Machines and Saved Structures tabs of the Nexus Terminal (D-440). Rows are fixed widgets whose texts the
  * server fills (LDLib syncs them); a row's button acts on the row's entry in the server's current list.
  * <p>
  * Both follow ideas of GregTech Terminals (BgameXL, MIT): the Multi-Structure Manager's nearby list and the

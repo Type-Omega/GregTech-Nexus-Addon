@@ -271,9 +271,9 @@ tasks.register('plannerQa', JavaExec) {
 tasks.named('check').configure { dependsOn 'runUnitTests' }
 
 dependencies {
-    // Mapped GTIACore jar for integrated dev testing; never bundled or required by GTNA.
-    if (project.hasProperty('gtiaDevJar')) {
-        runtimeOnly files(project.property('gtiaDevJar'))
+    // Mapped TypeOmegaCore jar for integrated dev testing; never bundled or required by GTNA.
+    if (project.hasProperty('typeOmegaDevJar')) {
+        runtimeOnly files(project.property('typeOmegaDevJar'))
     }
     // EN: gate runs runData too, so it loads the data-run classpath (the dev-only mods crash datagen).
     // PT: O gate também roda o runData, então usa o classpath de data run (os mods só de dev quebram o datagen).
@@ -327,7 +327,7 @@ dependencies {
         modRuntimeOnly('local:modernspace:0.2.0')
     }
     modImplementation("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim") { transitive = false }
-    modImplementation("com.typeomega:typeomega-lib:${gtialib_version}") { transitive = false }
+    modImplementation("com.typeomega:typeomega-lib:${typeomegalib_version}") { transitive = false }
     modImplementation("com.lowdragmc.ldlib:ldlib-forge-${minecraft_version}:${ldlib_version}") { transitive = false }
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
@@ -391,7 +391,7 @@ tasks.named('processResources', ProcessResources).configure {
             "forge_version": forge_version.split("\\.")[0], // only specify major version of forge
             "minecraft_version": minecraft_version,
             "gtceu_version": gtceu_version,
-            "gtialib_version": gtialib_version,
+            "typeomegalib_version": typeomegalib_version,
     ]
     inputs.properties(properties)
 

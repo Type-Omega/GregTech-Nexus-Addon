@@ -18,7 +18,7 @@ import java.util.*;
 import java.util.concurrent.Future;
 
 /**
- * Crafting requests of the Nexus Terminal (GTIA-D-439 T9): for every missing item that has a pattern in the linked
+ * Crafting requests of the Nexus Terminal (D-439 T9): for every missing item that has a pattern in the linked
  * network, AE2 calculates the job on its own thread; when the plan is ready and complete it is submitted. The
  * status of each request is kept for the Materials tab and the report. Requests time out after 20 s.
  * <p>

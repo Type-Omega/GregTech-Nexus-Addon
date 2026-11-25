@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * The illustrated EMI pages of the four original multiblocks (GTIA-D-435, U5): they have no GT recipe (their recipe
+ * The illustrated EMI pages of the four original multiblocks (D-435, U5): they have no GT recipe (their recipe
  * type is a dummy), so each page is built here from the rules of the machine's core and the materials the machine
  * really takes and drops. Plain data: the EMI plugin draws it, the GameTests check it without a client.
  */

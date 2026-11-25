@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Antimatter Collider Ring effects (GTIA-D-434): two counter-rotating beams on shaded ribbons inside the ring, with a
+ * Antimatter Collider Ring effects (D-434): two counter-rotating beams on shaded ribbons inside the ring, with a
  * glow that reads through the casing; at both interaction points a collision every 0.4 s with a white-hot flash, a
  * shock disc across the beam and bubble-chamber tracks curling out (tracks on HIGH only).
  * The frame has the ring in its XY plane, centred at the origin.

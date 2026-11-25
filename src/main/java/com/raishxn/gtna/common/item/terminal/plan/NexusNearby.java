@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * The multiblock controllers near the player (GTIA-D-440), nearest first, for the terminal's Machines tab: pick one
+ * The multiblock controllers near the player (D-440), nearest first, for the terminal's Machines tab: pick one
  * and it becomes the terminal's target without walking to it. Only loaded chunks are read, from their block entity
  * maps, so the cost is the number of block entities nearby, not the volume.
  * <p>

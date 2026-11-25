@@ -23,7 +23,7 @@ import com.raishxn.gtna.GTNACORE;
 
 /**
  * Draws the coloured boxes of the last Nexus Terminal scan through terrain, so a hidden missing block is found
- * (GTIA-D-439 P1.1). One batch for all faces and one for all frames.
+ * (D-439 P1.1). One batch for all faces and one for all frames.
  */
 @Mod.EventBusSubscriber(modid = GTNACORE.MOD_ID, value = Dist.CLIENT)
 public final class NexusScanHighlights {

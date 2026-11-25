@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * Puts a plan into the world, one cell at a time so a job can spread it over ticks (GTIA-D-439 P0.4, P0.5). A plain
+ * Puts a plan into the world, one cell at a time so a job can spread it over ticks (D-439 P0.4, P0.5). A plain
  * block gets its facing before it is placed, so it costs one {@code setBlock}; machines (hatches) still go through
  * {@link BlockItem#place} so their block entity is set up, and are turned once at the end. Placement sound plays once
  * per build, not per block.
@@ -194,10 +194,10 @@ public final class NexusBuildExecutor {
         }
         if (!ok) {
             materials.putBack(key);
-            // EN: put the old block back so a failed swap leaves the structure as it was (GTIA-D-439 T5).
-            // PT: recoloca o bloco antigo para que uma troca que falhou deixe a estrutura como estava (GTIA-D-439
+            // EN: put the old block back so a failed swap leaves the structure as it was (D-439 T5).
+            // PT: recoloca o bloco antigo para que uma troca que falhou deixe a estrutura como estava (D-439
             // PT: T5).
-            // ZH: 放回旧方块，使失败的替换让结构保持原样（GTIA-D-439 T5）。
+            // ZH: 放回旧方块，使失败的替换让结构保持原样（D-439 T5）。
             if (replacing) level.setBlock(pos, existing, 3);
             skipped++;
             return false;

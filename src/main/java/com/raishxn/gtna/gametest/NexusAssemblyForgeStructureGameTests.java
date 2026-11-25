@@ -25,7 +25,7 @@ import com.raishxn.gtna.common.data.GTNAMaterials;
 import com.raishxn.gtna.common.data.multiblock.NexusAssemblyForgeStructure;
 
 /**
- * Nexus Assembly Forge "Orbital Forge of Crossed Rings" (GTIA-D-437): the plain zirconia behind the panel counts
+ * Nexus Assembly Forge "Orbital Forge of Crossed Rings" (D-437): the plain zirconia behind the panel counts
  * toward the minimum of 20, hatches only go on the front panel, and the core spindle is load-bearing.
  */
 @GameTestHolder(GTNACORE.MOD_ID)

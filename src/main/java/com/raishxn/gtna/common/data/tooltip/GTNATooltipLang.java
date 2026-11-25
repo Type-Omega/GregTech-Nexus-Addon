@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Texts of the GTNH-style multiblock tooltips (GTIA-D-410), in {@code assets/gtna/tooltip_lang/<family>.json}: each
+ * Texts of the GTNH-style multiblock tooltips (D-410), in {@code assets/gtna/tooltip_lang/<family>.json}: each
  * key maps to [en_us, pt_br, zh_cn]. English goes to the generated en_us through {@code GTNALangProvider};
  * {@code tools/tooltip_lang.py} copies the other two into lang/pt_br.json and lang/zh_cn.json.
  */

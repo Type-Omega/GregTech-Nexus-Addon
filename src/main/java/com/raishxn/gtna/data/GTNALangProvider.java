@@ -99,7 +99,7 @@ public class GTNALangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        // GTNH-style multiblock tooltips (GTIA-D-410); pt_br and zh_cn come from tools/tooltip_lang.py
+        // GTNH-style multiblock tooltips (D-410); pt_br and zh_cn come from tools/tooltip_lang.py
         com.raishxn.gtna.common.data.tooltip.GTNATooltipLang.texts().forEach((key, text) -> add(key, text[0]));
         // Forge of Gods (GTNH)
         com.raishxn.gtna.data.lang.GodforgeLang.add(this);

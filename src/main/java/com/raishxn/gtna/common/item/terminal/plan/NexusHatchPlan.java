@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * The hatch plan of the Nexus Terminal (GTIA-D-439 T7): for each function (input bus, energy hatch...) the player
+ * The hatch plan of the Nexus Terminal (D-439 T7): for each function (input bus, energy hatch...) the player
  * picks one hatch (type and tier), "none", or leaves it automatic. The planner applies it after the pattern's hatch
  * limits have chosen what a cell may hold, so the limits are always kept; when a plan would leave a cell with no
  * candidate at all (a hatch the structure requires), the cell keeps its own candidates.

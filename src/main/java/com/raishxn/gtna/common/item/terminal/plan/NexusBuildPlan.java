@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * The scan of one structure (GTIA-D-439 P0.1): every cell the pattern owns, classified once, and reused by the
+ * The scan of one structure (D-439 P0.1): every cell the pattern owns, classified once, and reused by the
  * build, the world highlight, the materials list and the report.
  */
 public final class NexusBuildPlan {

@@ -403,7 +403,7 @@ public final class GTNAFluidDrillingGameTests {
         var mars = h.getLevel().getServer().getLevel(net.minecraft.resources.ResourceKey.create(
                 net.minecraft.core.registries.Registries.DIMENSION,
                 net.minecraft.resources.ResourceLocation.parse("ad_astra:mars")));
-        h.assertTrue(mars != null, "the GTIA profile requires an actual Mars ServerLevel");
+        h.assertTrue(mars != null, "the Type Omega profile requires an actual Mars ServerLevel");
         var anchor = new BlockPos(514, 240, 514);
         // An isolated fixture above the terrain, with normal GTCEu deposit generation.
         // Never insert a synthetic Radon vein or grant a certificate directly in this path.
@@ -471,7 +471,7 @@ public final class GTNAFluidDrillingGameTests {
     }
 
     @GameTest(template = "empty_12", timeoutTicks = 80)
-    public static void gtiaMarsRadonProfileNeedsDiscoveryUpgradeAndFilter(GameTestHelper h) {
+    public static void typeOmegaMarsRadonProfileNeedsDiscoveryUpgradeAndFilter(GameTestHelper h) {
         var p = VoidFluidDrillConfig.get().program("mars_radon");
         // The default GTNA profile intentionally has no planetary worldgen or production programs.
         if (p == null) {
@@ -481,7 +481,7 @@ public final class GTNAFluidDrillingGameTests {
         var deposit = com.gregtechceu.gtceu.api.registry.GTRegistries.BEDROCK_FLUID_DEFINITIONS.get(
                 net.minecraft.resources.ResourceLocation.parse("typeomega:mars_radon"));
         h.assertTrue(deposit != null && deposit.getStoredFluid().get() == GTMaterials.Radon.getFluid(),
-                "GTIA profile must load the Radon deposit");
+                "Type Omega profile must load the Radon deposit");
         h.assertTrue(
                 deposit.getDimensionFilter().size() == 1 &&
                         deposit.getDimensionFilter().iterator().next().location().toString().equals("ad_astra:mars"),
@@ -516,7 +516,7 @@ public final class GTNAFluidDrillingGameTests {
                 bus.getInventory().getStackInSlot(0).getCount() == 1 &&
                         bus.getInventory().getStackInSlot(1).getCount() == 1,
                 "Mars data and T2 upgrade must remain reusable");
-        GTNACORE.LOGGER.info("GTIA Mars native extraction -> recorded data -> remote Radon: PASS");
+        GTNACORE.LOGGER.info("Type Omega Mars native extraction -> recorded data -> remote Radon: PASS");
         h.succeed();
     }
 }

@@ -16,7 +16,7 @@ import com.typeomega.lib.data.Int128;
 
 import java.util.UUID;
 
-/** GTIA-D-426: several Flux Matrices of one network add their capacity; one that unforms leaves the sum. */
+/** D-426: several Flux Matrices of one network add their capacity; one that unforms leaves the sum. */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class FluxMatrixSumGameTests {

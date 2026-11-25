@@ -187,7 +187,7 @@ public class ForgeOfGodsRenderer extends DynamicRender<ForgeOfGodsMachine, Forge
                 new Vector3f(0, 1, 1).normalize(), 130 + starTimer % 360000);
 
         // 2) Rings: solid and depth writing. They are blocks taken out of the world, so every render level draws
-        // them (GTIA-D-434, U11).
+        // them (D-434, U11).
         RenderSystem.enableCull();
         renderRings(machine, level, state, center, projection, axis, timer, rings);
         if (!effects) return;

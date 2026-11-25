@@ -17,7 +17,7 @@ import com.raishxn.gtna.common.data.GTNABlocks;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 
 /**
- * ME Storage, "Data Conduit" (GTIA-D-437, proposal B): an octagonal data duct on a titanium keel, cores behind
+ * ME Storage, "Data Conduit" (D-437, proposal B): an octagonal data duct on a titanium keel, cores behind
  * laminated glass. Each repeated slice holds {@link #CORES_PER_SLICE} cores, from 1 to {@link #MAX_SLICES} slices.
  */
 public final class MEStorageStructure {

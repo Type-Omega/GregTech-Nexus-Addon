@@ -20,7 +20,7 @@ import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.INPUT_ENE
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 
 /**
- * Nexus Assembly Forge, "Orbital Forge of Crossed Rings" (GTIA-D-437, proposal A): a chamfered cross base, two
+ * Nexus Assembly Forge, "Orbital Forge of Crossed Rings" (D-437, proposal A): a chamfered cross base, two
  * crossed rings with an equatorial band and an octahedral core on a europium spindle. Hatches only go on the 5x5
  * front panel ({@code D}); the plain zirconia behind it ({@code d}) shares the panel's zirconia predicate, so both
  * count toward the {@link #MIN_ZIRCONIA} minimum.

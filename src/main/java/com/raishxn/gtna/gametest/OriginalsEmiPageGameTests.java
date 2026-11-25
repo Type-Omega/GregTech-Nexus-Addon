@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Illustrated EMI pages of the originals (GTIA-D-435): the four categories are registered, every page fits its
+ * Illustrated EMI pages of the originals (D-435): the four categories are registered, every page fits its
  * picture and every number comes from the machine's core.
  */
 @GameTestHolder(GTNACORE.MOD_ID)

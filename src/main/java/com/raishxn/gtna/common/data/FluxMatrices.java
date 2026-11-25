@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 
 /**
- * The Flux Matrices of one wireless network and their sum (GTIA-D-426). No Minecraft types, so it is unit-tested
+ * The Flux Matrices of one wireless network and their sum (D-426). No Minecraft types, so it is unit-tested
  * on its own.
  */
 public final class FluxMatrices {

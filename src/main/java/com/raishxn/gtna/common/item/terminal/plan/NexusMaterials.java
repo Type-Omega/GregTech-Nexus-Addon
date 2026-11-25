@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * Materials of one build (GTIA-D-439 P0.2, P0.6): availability is read once per distinct item (one inventory pass,
+ * Materials of one build (D-439 P0.2, P0.6): availability is read once per distinct item (one inventory pass,
  * one ME simulation per item), every cell is assigned an item, and the whole need is taken in one batch per item
  * (ME first, then the inventory). What the build does not use goes back at the end.
  * <p>

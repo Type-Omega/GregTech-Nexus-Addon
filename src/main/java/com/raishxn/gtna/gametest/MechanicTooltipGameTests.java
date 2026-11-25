@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The mechanic lines of the GTNH-style tooltips (GTIA-D-432): each migrated machine keeps at least as many lines as
+ * The mechanic lines of the GTNH-style tooltips (D-432): each migrated machine keeps at least as many lines as
  * the GTNH or GTNL original gives, and a few numbers are checked against the code that applies them.
  */
 @GameTestHolder("gtna")

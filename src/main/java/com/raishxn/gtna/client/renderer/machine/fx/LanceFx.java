@@ -16,7 +16,7 @@ import org.joml.Vector3f;
 import java.util.List;
 
 /**
- * Kinetic Orbital Lance effects (GTIA-D-434): the shot (shaded beam, muzzle flash, shock rings, then a trail fading
+ * Kinetic Orbital Lance effects (D-434): the shot (shaded beam, muzzle flash, shock rings, then a trail fading
  * up to the sky), the capacitor glow pulsing down the bore between shots, and a return capsule re-entering in a
  * plasma sheath before it lands. The muzzle frame has +Z out of the barrel.
  */

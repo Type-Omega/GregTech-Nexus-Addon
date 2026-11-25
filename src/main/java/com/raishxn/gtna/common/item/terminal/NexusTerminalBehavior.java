@@ -61,7 +61,7 @@ public class NexusTerminalBehavior implements IItemUIFactory, IAddInformation {
         BlockPos blockPos = context.getClickedPos();
         ItemStack terminalStack = player.getItemInHand(context.getHand());
 
-        // ── ME link: Shift+click any active ME node (no range or dimension limit, GTIA-D-439) ──
+        // ── ME link: Shift+click any active ME node (no range or dimension limit, D-439) ──
         if (player.isShiftKeyDown() && NexusAE2Link.isLinkable(level, blockPos)) {
             if (!level.isClientSide()) {
                 NexusAE2Link.link(terminalStack, level, blockPos);

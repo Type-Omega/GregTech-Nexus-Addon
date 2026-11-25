@@ -24,7 +24,7 @@ import java.util.Map;
 
 import static com.raishxn.gtna.gametest.NexusTerminalPlanGameTests.*;
 
-/** GameTests of the Nexus Terminal console functions (GTIA-D-440): family swap, nearby machines, saved structures. */
+/** GameTests of the Nexus Terminal console functions (D-440): family swap, nearby machines, saved structures. */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class NexusTerminalConsoleGameTests {

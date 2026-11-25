@@ -27,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Dynamic renders of the three redesigned Nexus structures (GTIA-D-434, D-437): the Flux Matrix plasma column, the
+ * Dynamic renders of the three redesigned Nexus structures (D-434, D-437): the Flux Matrix plasma column, the
  * ME Storage cell lights and the Assembly Forge hologram. The block entity pass only queues the machine; drawing
  * happens after the translucent blocks ({@link StructureFx}).
  */

@@ -7,7 +7,7 @@ import com.raishxn.gtna.client.renderer.terminal.NexusScanHighlights;
 
 import java.util.function.Supplier;
 
-/** Coloured boxes of a Nexus Terminal scan (GTIA-D-439 P1.1): packed positions, ARGB colours and a lifetime. */
+/** Coloured boxes of a Nexus Terminal scan (D-439 P1.1): packed positions, ARGB colours and a lifetime. */
 public final class SNexusScanHighlight {
 
     private final long[] positions;

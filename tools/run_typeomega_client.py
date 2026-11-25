@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Open GTNA + a mapped GTIACore jar with the checked-in GTIA fluid profile."""
+"""Open GTNA + a mapped TypeOmegaCore jar with the checked-in Type Omega fluid profile."""
 import argparse
 import datetime
 import shutil
@@ -20,12 +20,12 @@ def main():
         metadata = tomllib.loads(jar.read("META-INF/mods.toml").decode())
         dependencies = {d["modId"]: d for d in metadata["dependencies"]["typeomega"]}
         if not dependencies["gtna"]["mandatory"]:
-            raise ValueError("GTIACore must require GTNA even in development")
+            raise ValueError("TypeOmegaCore must require GTNA even in development")
         if any(dependencies[name]["mandatory"] for name in ("avaritia", "gtmthings")):
-            raise ValueError("Build GTIACore dev jar with -PgtiaDevOptionalDependencies=true")
-    backup = ROOT / "run/gtia-profile-backups" / datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+            raise ValueError("Build TypeOmegaCore dev jar with -PtypeOmegaDevOptionalDependencies=true")
+    backup = ROOT / "run/typeomega-profile-backups" / datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     backup.mkdir(parents=True)
-    example = ROOT / "docs/config-examples/gtia"
+    example = ROOT / "docs/config-examples/typeomega"
     pairs = [
         (example / "void_fluid_drill.json", ROOT / "run/config/gtna/balance/void_fluid_drill.json"),
         (example / "electric_void_miner.json", ROOT / "run/config/gtna/balance/electric_void_miner.json"),
@@ -40,9 +40,9 @@ def main():
             shutil.copy2(destination, saved)
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
-    print(f"GTIA profile installed. Previous files preserved in {backup}", flush=True)
+    print(f"Type Omega profile installed. Previous files preserved in {backup}", flush=True)
     # Keep the profile installed after closing so this QA world can be reopened consistently.
-    return subprocess.call(["./gradlew", "runClient", "--offline", f"-PgtiaDevJar={core}"], cwd=ROOT)
+    return subprocess.call(["./gradlew", "runClient", "--offline", f"-PtypeOmegaDevJar={core}"], cwd=ROOT)
 
 
 if __name__ == "__main__":

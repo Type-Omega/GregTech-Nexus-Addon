@@ -16,7 +16,7 @@ import com.raishxn.gtna.common.item.terminal.NexusBuildCheckGuard;
 import java.util.*;
 
 /**
- * Builds that are too big for one tick (GTIA-D-439 T4): above {@link #INSTANT_LIMIT} cells of work the build becomes a
+ * Builds that are too big for one tick (D-439 T4): above {@link #INSTANT_LIMIT} cells of work the build becomes a
  * server job that places at most {@link #BLOCKS_PER_TICK} blocks or {@link #NANOS_PER_TICK} per tick, shows its
  * progress on the action bar and can be cancelled; the reserved material goes back when it is cancelled.
  */

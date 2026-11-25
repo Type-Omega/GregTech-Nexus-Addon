@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Full dismantling of a structure (GTIA-D-439 T6): every block the pattern recognises, controller last, goes to the
+ * Full dismantling of a structure (D-439 T6): every block the pattern recognises, controller last, goes to the
  * linked ME, then to the inventory. It is all or nothing: if the drops do not fit, nothing is removed. Hatches are
  * dismantled only when they hold nothing (an item or fluid inside would be spilled).
  * <p>

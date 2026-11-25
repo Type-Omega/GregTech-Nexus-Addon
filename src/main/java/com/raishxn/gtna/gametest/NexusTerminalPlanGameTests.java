@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/** GameTests of the Nexus Terminal v2 foundation (GTIA-D-439 P0): plan, batch materials, per-tick job. */
+/** GameTests of the Nexus Terminal v2 foundation (D-439 P0): plan, batch materials, per-tick job. */
 @GameTestHolder("gtna")
 @PrefixGameTestTemplate(false)
 public final class NexusTerminalPlanGameTests {

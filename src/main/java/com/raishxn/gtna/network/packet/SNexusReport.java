@@ -9,7 +9,7 @@ import com.typeomega.lib.ui.report.Report;
 
 import java.util.function.Supplier;
 
-/** Opens a Nexus Terminal report on the client (GTIA-D-439 P1.3). The lib caps the lines, so the packet is bounded. */
+/** Opens a Nexus Terminal report on the client (D-439 P1.3). The lib caps the lines, so the packet is bounded. */
 public final class SNexusReport {
 
     private final Report report;

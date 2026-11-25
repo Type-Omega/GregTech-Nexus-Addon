@@ -14,7 +14,7 @@ import com.raishxn.gtna.common.machine.multiblock.originals.RiftGateMachine;
 import org.joml.Matrix4f;
 
 /**
- * Dimensional Rift Gate extras around the horizon (GTIA-D-434): a shimmering lens rim where light bends around the
+ * Dimensional Rift Gate extras around the horizon (D-434): a shimmering lens rim where light bends around the
  * horizon, and debris spiralling in from the rim (more on HIGH). The frame has the horizon in its XY plane.
  */
 @OnlyIn(Dist.CLIENT)

@@ -598,7 +598,7 @@ public final class GTNABalance {
     }
 
     /**
-     * Balance of the GTIA-era electric Void Miner. Program recipes (datapack/KubeJS) define the
+     * Balance of the Type Omega-era electric Void Miner. Program recipes (datapack/KubeJS) define the
      * outputs and the Drilling Fluid cost; these values bound what a program may declare and
      * parameterize the optional fixed fallback recipe.
      */

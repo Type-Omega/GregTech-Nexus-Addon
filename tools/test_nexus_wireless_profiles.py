@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "run/config/gtna/balance/nexus_flux_matrix.json"
-EXAMPLE = ROOT / "docs/config-examples/gtia/nexus_flux_matrix.json"
+EXAMPLE = ROOT / "docs/config-examples/typeomega/nexus_flux_matrix.json"
 LOG_DIR = ROOT / "build/test-results/nexus-wireless-profiles"
 
 

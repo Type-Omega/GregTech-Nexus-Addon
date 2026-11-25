@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * Saved structures of the Nexus Terminal (GTIA-D-440): the blocks of a built structure, saved under a name and
+ * Saved structures of the Nexus Terminal (D-440): the blocks of a built structure, saved under a name and
  * pasted later onto another controller of the same machine, turned to its facing. A paste plans the target as usual
  * and asks each cell for the saved block when the pattern allows it, so the result always passes the structure
  * check. Kept per player in the world's saved data (a big structure is too large for the item's NBT).

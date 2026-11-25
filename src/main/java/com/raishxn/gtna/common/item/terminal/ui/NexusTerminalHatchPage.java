@@ -19,7 +19,7 @@ import com.typeomega.lib.ui.tool.ToolWindow;
 import java.util.List;
 
 /**
- * The Hatches tab (GTIA-D-439 T7): one row per function; the arrows step through Automatic, None and every hatch of
+ * The Hatches tab (D-439 T7): one row per function; the arrows step through Automatic, None and every hatch of
  * that function (type and tier). The pattern's hatch limits still decide where hatches go.
  */
 final class NexusTerminalHatchPage {

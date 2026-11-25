@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Nexus Terminal window (GTIA-D-439, console layout GTIA-D-440) in the lib's GTNH-style {@link ToolWindow}: the
+ * The Nexus Terminal window (D-439, console layout D-440) in the lib's GTNH-style {@link ToolWindow}: the
  * Engineering Console (steps, page, action bar), the nearby machines and the saved structures. Buttons act on the
  * controller of the
  * last scan; the texts the server owns (summary, ME state, materials) are synced labels.
@@ -54,7 +54,7 @@ public final class NexusTerminalWindow {
     }
 
     /**
-     * The Engineering Console (GTIA-D-440): numbered steps on the left (structure, tiers, hatches, materials), the
+     * The Engineering Console (D-440): numbered steps on the left (structure, tiers, hatches, materials), the
      * step's page in the middle and a fixed action bar at the bottom with the scan summary and the actions.
      */
     private WidgetGroup consolePage(ToolWindow window) {
@@ -211,7 +211,7 @@ public final class NexusTerminalWindow {
         return page;
     }
 
-    /** "Ask the ME": crafts every missing item of the last scan that has a pattern (GTIA-D-439 T9). */
+    /** "Ask the ME": crafts every missing item of the last scan that has a pattern (D-439 T9). */
     private void askMe() {
         NexusLastScan.Entry last = NexusLastScan.get(player);
         if (last == null) {

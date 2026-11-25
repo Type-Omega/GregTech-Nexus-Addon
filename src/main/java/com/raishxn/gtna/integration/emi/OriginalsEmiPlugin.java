@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Native EMI categories of the four original multiblocks (GTIA-D-435, U4/U5): Antimatter Collider Ring, Dimensional
+ * Native EMI categories of the four original multiblocks (D-435, U4/U5): Antimatter Collider Ring, Dimensional
  * Rift Gate, Kinetic Orbital Lance and Stellar Containment Chamber. Their GT recipe type is a dummy, so without these
  * pages they were missing from EMI.
  */

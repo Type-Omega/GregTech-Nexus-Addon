@@ -164,7 +164,7 @@ public class GTNAMachineRecipes {
         }
         if (enabled(GTNAMachines.LARGE_STEAM_EXTRACTOR)) {
             // GTNL: reinforced glass, hydraulic piston, Breel tiny pipe, hydraulic pump, steam extractor.
-            // GTIA: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
+            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GTNAMachines.LARGE_STEAM_EXTRACTOR.asStack().getItem())
                     .pattern("ABA")
                     .pattern("CDC")
@@ -211,7 +211,7 @@ public class GTNAMachineRecipes {
         }
         if (enabled(GTNAMachines.LARGE_STEAM_MIXER)) {
             // GTNL: reinforced glass, steel rotor, hydraulic motor, precision mechanism, mixer.
-            // GTIA: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
+            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GTNAMachines.LARGE_STEAM_MIXER.asStack().getItem())
                     .pattern("ABA")
                     .pattern("ACA")
@@ -727,7 +727,7 @@ public class GTNAMachineRecipes {
             // get GTNL's values: charcoal/coal = cactus charcoal (8000), their blocks = block (90000),
             // coke = cactus coke (16000), coke block = block (180000). Superheated and supercritical steam come
             // only from GTNL's double-compressed blocks and up, which do not exist here, so all output is
-            // plain steam (GTIA balance, 2026-10-05).
+            // plain steam (Type Omega balance, 2026-10-05).
             cactusWonder(provider, "cactus_wonder_steam_from_charcoal", new ItemStack(Items.CHARCOAL), 8_000);
             cactusWonder(provider, "cactus_wonder_steam_from_coal", new ItemStack(Items.COAL), 8_000);
             cactusWonder(provider, "cactus_wonder_steam_from_charcoal_block",
@@ -1286,7 +1286,7 @@ public class GTNAMachineRecipes {
         }
 
         if (GTNAMachines.ELECTRIC_VOID_MINER != null) {
-            // GTIA-D-161: EV controller with terrestrial Titanium and EV components; no Lua,
+            // D-161: EV controller with terrestrial Titanium and EV components; no Lua,
             // samples, Planet Data Chips or the Steam miner.
             GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("electric_void_miner")
                     .inputItems(ChemicalHelper.get(TagPrefix.frameGt, GTMaterials.Titanium).getItem(), 4)
@@ -2353,7 +2353,7 @@ public class GTNAMachineRecipes {
         if (!ModList.get().isLoaded("ad_astra")) {
             return;
         }
-        // Materials mirror the GTO ore veins of each planet (GTOOres), keeping the GTIA decisions
+        // Materials mirror the GTO ore veins of each planet (GTOOres), keeping the Type Omega decisions
         // for the Moon (D-150) and Mars (D-158/D-164).
         planetProgram(provider, 0, "moon_stone", 2000, 1200,
                 rawOre(GTMaterials.Bauxite, 2), rawOre(GTMaterials.Ilmenite, 2));

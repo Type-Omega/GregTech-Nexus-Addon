@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * One illustrated page of an original multiblock in EMI (GTIA-D-435, U5): the lib's panel with the art of the
+ * One illustrated page of an original multiblock in EMI (D-435, U5): the lib's panel with the art of the
  * machine, read-only slots placed in the drawing and the lines from the core. LDLib's {@link ModularEmiRecipe} reads
  * the inputs, outputs and catalysts from the slots, so "uses" and "recipes" lookups find the page.
  */

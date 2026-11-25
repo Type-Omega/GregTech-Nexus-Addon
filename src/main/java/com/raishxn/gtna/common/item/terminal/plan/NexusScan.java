@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 /**
- * Read-only scan of a structure (GTIA-D-439 P1.1): plans it with the terminal's settings, works out which item each
+ * Read-only scan of a structure (D-439 P1.1): plans it with the terminal's settings, works out which item each
  * cell would get, and shows the result as a chat summary and coloured boxes in the world. Nothing is changed.
  * Left-clicking a controller with the terminal scans it (once per click: the client repeats the attack while the
  * button is held).

@@ -65,7 +65,7 @@ public class NexusMEHyperCoreMachine extends WorkableMultiblockMachine implement
     private long matrixIII;
     @DescSynced
     private long matrixIV;
-    /** Busy crafting CPUs, sampled every second for the holographic core (GTIA-D-434). */
+    /** Busy crafting CPUs, sampled every second for the holographic core (D-434). */
     @DescSynced
     private int busyCpus;
     @Nullable

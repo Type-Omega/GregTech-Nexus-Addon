@@ -1,6 +1,6 @@
 # Void Fluid Drilling Rig — discovered-fluid prototype
 
-GTIA-D-177–D-187, 2026-09-29. Native GTNA implementation inspired by GTL's 3×7×3
+D-177–D-187, 2026-09-29. Native GTNA implementation inspired by GTL's 3×7×3
 Void Fluid Drilling Rig. This is separate from ore mining and does not change bedrock reserves.
 
 ## Player flow
@@ -77,7 +77,7 @@ Upgrade crafting: Data Orb, two Sensors, two Field Generators and four circuits 
 576 mB Soldering Alloy, 600 ticks; research items non-consumable. A remote upgrade never grants discovery,
 changes the program's minimum tier or unlocks the preceding upgrades.
 
-The example `docs/config-examples/gtia/void_fluid_drill.json` adds only the approved Mars Radon.
+The example `docs/config-examples/typeomega/void_fluid_drill.json` adds only the approved Mars Radon.
 The sibling `void-fluid-datapack/` contains a pack-owned Mars bedrock deposit; copy its data into KubeJS's
 `data/` folder or install as a world datapack. Its provisional deposit parameters follow GTO's Mars
 reference (weight 20, yield 50–80, depleted yield 40), distinct from the void production rate. Those
@@ -90,7 +90,7 @@ GameTests exercise native extraction and recorder interaction, copying, ownershi
 and NBT persistence, EV output/cost/data preservation, full-output pause before and during a cycle,
 IV parallel cost and output, remote upgrade/tier gates and gas reagents. The latest full gate passed
 28 unit test classes and 125/125 GameTests, including resource generation with FTB Teams absent.
-The profile runner (`tools/test_void_fluid_gtia_profile.py`) also passed 125/125 with FTB Teams loaded.
+The profile runner (`tools/test_void_fluid_typeomega_profile.py`) also passed 125/125 with FTB Teams loaded.
 It now requires explicit success markers for both stronger scenarios:
 
 - Actual Mars ServerLevel, normal GTCEu bedrock deposit generation (no injected vein), formed native

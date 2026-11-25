@@ -80,9 +80,9 @@ public final class OriginalsRenderer {
             RenderSystem.disableCull();
             for (var m : QUEUE.values()) {
                 if (m.isInValid() || !m.isFormed() && !MachineRenders.SHOWCASE) continue;
-                // EN: effects only; the captured parts above are blocks and draw at every level (GTIA-D-434, U11).
-                // PT: só os efeitos; as peças capturadas acima são blocos e aparecem em todo nível (GTIA-D-434, U11).
-                // ZH: 这里只画特效；上面捕获的部件是方块，任何等级都会绘制（GTIA-D-434，U11）。
+                // EN: effects only; the captured parts above are blocks and draw at every level (D-434, U11).
+                // PT: só os efeitos; as peças capturadas acima são blocos e aparecem em todo nível (D-434, U11).
+                // ZH: 这里只画特效；上面捕获的部件是方块，任何等级都会绘制（D-434，U11）。
                 int reach = m instanceof LanceMachine ? 768 : 384;
                 if (!MachineRenders.inReach(m.getPos(), cam, reach)) continue;
                 pose.pushPose();

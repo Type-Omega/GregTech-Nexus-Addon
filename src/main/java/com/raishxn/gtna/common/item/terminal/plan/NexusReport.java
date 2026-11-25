@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The report of the last scan (GTIA-D-439 P1.3), shown in the lib's {@link com.typeomega.lib.ui.report.ReportScreen}:
+ * The report of the last scan (D-439 P1.3), shown in the lib's {@link com.typeomega.lib.ui.report.ReportScreen}:
  * one group per kind of cell with its position, the materials and the ME crafting status. Opened from the link at
  * the end of the scan summary or from the terminal window.
  */

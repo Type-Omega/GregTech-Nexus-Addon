@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Effects of the redesigned Nexus structures (GTIA-D-434, D-437). Every frame {@code at} is centred on the
+ * Effects of the redesigned Nexus structures (D-434, D-437). Every frame {@code at} is centred on the
  * controller with world axes; the positions of the parts come from the structure's text aisles.
  */
 public final class StructureFx {

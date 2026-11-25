@@ -59,7 +59,7 @@ public class MEStorageMachine extends WorkableMultiblockMachine implements IDisp
     private boolean accessOnline;
     @DescSynced
     private String accessMode = "";
-    /** Storage cores of the formed structure, for the cell lights (GTIA-D-434). */
+    /** Storage cores of the formed structure, for the cell lights (D-434). */
     @DescSynced
     private int renderCores;
 

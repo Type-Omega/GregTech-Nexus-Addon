@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 
 import java.util.UUID;
 
-/** Save format and log line of the team migration records (GTIA-D-386). */
+/** Save format and log line of the team migration records (D-386). */
 final class TeamNetworkRecords {
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -18,7 +18,7 @@ final class TeamNetworkRecords {
     private TeamNetworkRecords() {}
 
     static void log(String network, UUID member, UUID team) {
-        LOGGER.info("GTNA wireless {} network of {} merged into team network {} (GTIA-D-386)", network, member, team);
+        LOGGER.info("GTNA wireless {} network of {} merged into team network {} (D-386)", network, member, team);
     }
 
     static void load(CompoundTag tag, TeamNetworkMigration<?> migration) {

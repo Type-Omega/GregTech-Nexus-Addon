@@ -17,7 +17,7 @@ import com.raishxn.gtna.common.data.GTNABlocks;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 
 /**
- * Nexus Flux Matrix, "Tesla Coil" (GTIA-D-437, proposal B): a wide steel base, the capacitor column behind
+ * Nexus Flux Matrix, "Tesla Coil" (D-437, proposal B): a wide steel base, the capacitor column behind
  * borosilicate glass, loose busbars and a discharge toroid on top. Aisles go up, so the repeated aisle is one floor
  * of {@link #CAPACITORS_PER_FLOOR} capacitors, from {@link #MIN_FLOORS} to {@link #MAX_FLOORS} floors.
  */
