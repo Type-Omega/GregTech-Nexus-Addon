@@ -60,7 +60,11 @@ public final class OriginalsEmiPageGameTests {
                     page.id() + " has more lines than its category reserves");
             boolean output = false, input = false;
             for (int i = 0; i < page.contents().size(); i++) {
-                var role = page.layout().slots().get(i).role();
+                var slot = page.layout().slots().get(i);
+                var role = slot.role();
+                if (slot.kind() == PanelLayout.Kind.FLUID && role == PanelLayout.Role.INPUT) {
+                    h.assertTrue(page.contents().get(i).fluid() != null, page.id() + " has an empty input tank");
+                }
                 if (page.contents().get(i).isEmpty()) continue;
                 output |= role == PanelLayout.Role.OUTPUT;
                 input |= role == PanelLayout.Role.INPUT;

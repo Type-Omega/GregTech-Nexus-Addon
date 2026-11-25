@@ -14,6 +14,7 @@ import com.typeomega.lib.ui.IllustratedPanel;
 import com.typeomega.lib.ui.InfoLinesWidget;
 import com.typeomega.lib.ui.PanelLayout;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -39,11 +40,14 @@ public final class OriginalsEmiRecipe extends ModularEmiRecipe<Widget> {
         var panel = new IllustratedPanel(page.layout(), lines);
         var slots = page.layout().slots();
         panel.slots(slot -> widget(slot, page.contents().get(slots.indexOf(slot))));
+        panel.flows();
         panel.lines(new InfoLinesWidget(page.lines()));
         return panel;
     }
 
-    private static Widget widget(PanelLayout.Slot slot, Content content) {
+    /** The slot of one content; none for an empty one, as GTNH shows only what the page uses. */
+    private static @Nullable Widget widget(PanelLayout.Slot slot, Content content) {
+        if (content.isEmpty()) return null;
         if (slot.kind() == PanelLayout.Kind.FLUID) {
             List<FluidStack> fluids = content.fluid() == null ? List.of() :
                     List.of(FluidStack.create(content.fluid(), content.amount()));

@@ -88,11 +88,13 @@ public final class OriginalsPages {
     /** Ring with liquid helium at its centre; beam line splitting into the particle grid. */
     public static final PanelLayout COLLIDER_LAYOUT = grid(PanelLayout.builder(160, 80)
             .art(GTNACORE.id("textures/gui/recipe/collider.png"))
+            .mark("flow_right", 63, 17, 27, 46)
             .fluid(PanelLayout.Role.INPUT, 25, 31), 88, 13, 4, 3).build();
 
     /** Open rift with SpaceTime at its heart; probe above and anchor below the beam; the biome's drops on the right. */
     public static final PanelLayout RIFT_LAYOUT = grid(PanelLayout.builder(160, 80)
             .art(GTNACORE.id("textures/gui/recipe/rift_gate.png"))
+            .mark("flow_right", 69, 35, 37, 10)
             .fluid(PanelLayout.Role.INPUT, 27, 31)
             .item(PanelLayout.Role.CATALYST, 76, 8)
             .item(PanelLayout.Role.CATALYST, 76, 54), 106, 22, 3, 2).build();
@@ -100,6 +102,7 @@ public final class OriginalsPages {
     /** Projectile into the breech; the capsule comes back from the target with its cargo along the bottom. */
     public static final PanelLayout LANCE_LAYOUT = PanelLayout.builder(160, 80)
             .art(GTNACORE.id("textures/gui/recipe/lance.png"))
+            .mark("flow_down", 143, 26, 15, 34)
             .item(PanelLayout.Role.INPUT, 4, 44)
             .item(PanelLayout.Role.OUTPUT, 70, 60)
             .item(PanelLayout.Role.OUTPUT, 88, 60)
@@ -111,6 +114,8 @@ public final class OriginalsPages {
     /** Star matter piped into the bands; what the star sheds on the right. */
     public static final PanelLayout STELLAR_LAYOUT = PanelLayout.builder(160, 80)
             .art(GTNACORE.id("textures/gui/recipe/stellar_chamber.png"))
+            .mark("flow_right", 22, 36, 23, 8)
+            .mark("flow_right", 99, 33, 25, 14)
             .fluid(PanelLayout.Role.INPUT, 4, 31)
             .item(PanelLayout.Role.OUTPUT, 124, 31)
             .item(PanelLayout.Role.OUTPUT, 142, 31)
@@ -159,8 +164,21 @@ public final class OriginalsPages {
         return String.format(Locale.US, "%,." + decimals + "f", v);
     }
 
-    private static @Nullable Fluid fluid(@Nullable Material m) {
-        return m == null || !m.hasFluid() ? null : m.getFluid();
+    // EN: Any stored fluid of the material: some only have a gas or a plasma, and getFluid() asks for the liquid,
+    // EN: which left the page's tank empty.
+    // PT: Qualquer fluido guardado do material: alguns só têm gás ou plasma, e getFluid() pede o líquido, o que
+    // PT: deixava o tanque da página vazio.
+    // ZH: 取材料已存储的任一流体：有些只有气体或等离子体，而 getFluid() 只取液体，导致页面储罐为空。
+    static @Nullable Fluid fluid(@Nullable Material m) {
+        if (m == null) return null;
+        var property = m.getProperty(com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.FLUID);
+        if (property == null) return null;
+        for (var key : new com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey[] { FluidStorageKeys.LIQUID,
+                FluidStorageKeys.GAS, FluidStorageKeys.PLASMA, FluidStorageKeys.MOLTEN }) {
+            Fluid fluid = property.getStorage().get(key);
+            if (fluid != null) return fluid;
+        }
+        return null;
     }
 
     // ------------------------------------------------------------------ collider
@@ -172,9 +190,7 @@ public final class OriginalsPages {
 
     static List<Page> collider() {
         List<Page> pages = new ArrayList<>();
-        var helium = GTMaterials.Helium.getProperty(
-                com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.FLUID).getStorage()
-                .get(FluidStorageKeys.LIQUID);
+        var helium = fluid(GTMaterials.Helium);
         for (int tier = 0; tier < ColliderCore.MAGNET_FIELD.length; tier++)
             pages.add(colliderPage(tier, false, helium));
         pages.add(colliderPage(0, true, helium));
