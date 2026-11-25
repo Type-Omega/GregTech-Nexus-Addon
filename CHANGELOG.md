@@ -35,6 +35,8 @@
 - **EMI pages for the four GTNA originals** (GTIA-D-435): Antimatter Collider Ring (one page per magnet tier and the electron mode), Dimensional Rift Gate (one per biome), Kinetic Orbital Lance (one per target body) and Stellar Containment Chamber (neutron star, magnetar, collapse). GTNH-style pages from the `ui` module of TypeOmega Lib: a pixel-art drawing of the process with the slots in it (new art, to be reviewed by the author) and lines whose numbers come from the machines' cores. Their GT recipe type is a dummy, so they were missing from EMI before.
 
 ### Fixed
+- Module and extension lines (Nano Forge tiers, KubeJS modules) now sit above the mod name as their own tooltip section, instead of after it with a second mod name.
+- Nano Forge screen: the tier line is split in two short lines and no longer runs past the edge.
 - Eye of Harmony: the old Z-key manual is gone; it added its own short pages under the tooltip. The GTNH-style tooltip already holds all of its mechanics and is paged by TypeOmega Lib.
 - EMI pages of the Antimatter Collider Ring, Dimensional Rift Gate, Kinetic Orbital Lance and Stellar Containment Chamber: empty slots are gone, the arrows of the art fill like GTNH progress arrows, long lines shrink to stay inside the panel and the input tanks find the material's fluid in any form. Needs TypeOmega Lib 0.8.1.
 - Nexus Terminal, Tiers step: the "stellar" family listed the Stellar Containment Chamber controller; it now lists the stellar containment casings (GTNA has ported only the tier-3 Ultimate Stellar Containment Casing).
