@@ -40,13 +40,17 @@ public final class NexusFluxMatrixStructure {
                 .where('A', blocks(GTBlocks.CASING_STEEL_SOLID.get()))
                 .where('B', controller(blocks(definition.get())))
                 .where('C', blocks(GTNABlocks.BOROSILICATE_GLASS_BLOCK.get()))
-                .where('D', air().or(blocks(GTNABlocks.NEXUS_CAPACITOR_LV.get(), GTNABlocks.NEXUS_CAPACITOR_MV.get(),
+                .where('D', blocks(GTNABlocks.NEXUS_CAPACITOR_LV.get(), GTNABlocks.NEXUS_CAPACITOR_MV.get(),
                         GTNABlocks.NEXUS_CAPACITOR_HV.get(), GTNABlocks.NEXUS_CAPACITOR_EV.get(),
                         GTNABlocks.NEXUS_CAPACITOR_IV.get(), GTNABlocks.NEXUS_CAPACITOR_LUV.get(),
                         GTNABlocks.NEXUS_CAPACITOR_ZPM.get(), GTNABlocks.NEXUS_CAPACITOR_UV.get(),
                         GTNABlocks.NEXUS_CAPACITOR_UHV.get(), GTNABlocks.NEXUS_CAPACITOR_UEV.get(),
                         GTNABlocks.NEXUS_CAPACITOR_UIV.get(), GTNABlocks.NEXUS_CAPACITOR_UXV.get(),
-                        GTNABlocks.NEXUS_CAPACITOR_OPV.get(), GTNABlocks.NEXUS_CAPACITOR_MAX.get())))
+                        GTNABlocks.NEXUS_CAPACITOR_OPV.get(), GTNABlocks.NEXUS_CAPACITOR_MAX.get())
+                        // EN: capacitors first, so the preview and the auto-build show them; empty slots still form.
+                        // PT: capacitores primeiro, para a preview e o auto-build mostrarem; vagas vazias ainda formam.
+                        // ZH: 电容放在前面，预览与自动搭建才会显示它们；空位仍可成型。
+                        .or(air()))
                 .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, GTMaterials.Steel)))
                 .where('G', blocks(GTBlocks.CASING_STEEL_GEARBOX.get()))
                 .where('H', blocks(GTBlocks.CASING_STEEL_SOLID.get())

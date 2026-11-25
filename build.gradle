@@ -165,7 +165,8 @@ legacyForge {
         gameTestServer {
             type = "gameTestServer"
             sourceSet = sourceSets.main
-            systemProperty('forge.enabledGameTestNamespaces', project.mod_id)
+            // ./gradlew runGameTestServer -PgameTestNamespaces=<ns> runs only the holders of that namespace (debugging).
+            systemProperty('forge.enabledGameTestNamespaces', project.findProperty('gameTestNamespaces') ?: project.mod_id)
         }
         data {
             data()

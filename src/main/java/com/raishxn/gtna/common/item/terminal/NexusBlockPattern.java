@@ -102,6 +102,28 @@ public final class NexusBlockPattern {
         }
     }
 
+    /**
+     * How far below the controller the lowest block of the structure goes for this facing and these settings
+     * (0 or negative): a controller placed by a command can be lifted so the build clears the ground.
+     */
+    public int lowestOffset(Direction front, Direction up, boolean mirrored, AutoBuildSetting setting) {
+        int[] repeat = repetitions(setting);
+        int lowest = 0, z = 0;
+        for (int aisle = 0; aisle < centerOffset[2]; aisle++) z -= repeat[aisle];
+        for (int aisle = 0; aisle < cells.length; aisle++) {
+            for (int copy = 0; copy < repeat[aisle]; copy++, z++) {
+                for (int row = 0; row < cells[aisle].length; row++) {
+                    for (int col = 0; col < cells[aisle][row].length; col++) {
+                        if (cells[aisle][row][col].common.contains(SimplePredicate.ANY)) continue;
+                        lowest = Math.min(lowest, toWorldOffset(col - centerOffset[0], row - centerOffset[1], z,
+                                front, up, mirrored).getY());
+                    }
+                }
+            }
+        }
+        return lowest;
+    }
+
     /** How many times each aisle is laid: the setting, clamped to the aisle's allowed range. */
     private int[] repetitions(AutoBuildSetting setting) {
         int[] counts = new int[cells.length];
@@ -150,7 +172,14 @@ public final class NexusBlockPattern {
             structure.put(origin, controller);
             Object2IntOpenHashMap<SimplePredicate> perLayer = state.getLayerCount();
             int[] repeat = pattern.repetitions(setting);
-            int z = -pattern.centerOffset[4];
+            // EN: start behind the controller by the aisles actually laid before it; GTCEu's -maxZ only fits
+            // EN: patterns whose repeated aisles come after the controller (ME Storage repeats before it).
+            // PT: começa atrás do controlador pelas fileiras realmente postas antes dele; o -maxZ do GTCEu só serve
+            // PT: quando as fileiras repetidas vêm depois do controlador (o ME Storage repete antes).
+            // ZH: 以控制器之前实际铺设的层数作为起点；GTCEu 的 -maxZ 只适用于重复层位于控制器之后的结构
+            // ZH: （ME 存储的重复层在控制器之前）。
+            int z = 0;
+            for (int aisle = 0; aisle < pattern.centerOffset[2]; aisle++) z -= repeat[aisle];
             for (int aisle = 0; aisle < pattern.cells.length; aisle++) {
                 for (int copy = 0; copy < repeat[aisle]; copy++, z++) {
                     perLayer.clear();
