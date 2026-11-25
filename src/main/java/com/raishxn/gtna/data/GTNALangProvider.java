@@ -1185,6 +1185,27 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.terminal.nexus.materials.ask", "Ask the ME");
         add("gtna.terminal.nexus.materials.asked", "§bME crafting requested for %s items");
         add("gtna.terminal.nexus.hatch.header", "Hatch per function (the pattern's limits still apply)");
+        add("gtna.terminal.nexus.tab.machines", "Machines");
+        add("gtna.terminal.nexus.tab.blueprints", "Saved structures");
+        add("gtna.terminal.nexus.step.structure", "Structure");
+        add("gtna.terminal.nexus.step.tiers", "Tiers");
+        add("gtna.terminal.nexus.step.hatches", "Hatches");
+        add("gtna.terminal.nexus.step.materials", "Materials");
+        add("gtna.terminal.nexus.family.swap", "Swap families to the chosen tiers");
+        add("gtna.terminal.nexus.family.swapped", "§a%s families swapped");
+        add("gtna.terminal.nexus.machines.header", "Multiblocks within %s blocks; Select makes one the target");
+        add("gtna.terminal.nexus.machines.select", "Select");
+        add("gtna.terminal.nexus.machines.none", "§7No multiblock nearby");
+        add("gtna.terminal.nexus.blueprints.header",
+                "Save the target structure under a name; paste it onto another controller of the same machine");
+        add("gtna.terminal.nexus.blueprints.save", "Save target");
+        add("gtna.terminal.nexus.blueprints.paste", "Paste");
+        add("gtna.terminal.nexus.blueprints.delete", "Delete");
+        add("gtna.terminal.nexus.blueprints.none", "§7No saved structure");
+        add("gtna.terminal.nexus.blueprints.full", "§cSaved structure list is full");
+        add("gtna.terminal.nexus.blueprints.saved", "§aSaved \"%s\" (%s blocks)");
+        add("gtna.terminal.nexus.blueprints.pasted", "§aPasting \"%s\" onto the target");
+        add("gtna.terminal.nexus.blueprints.wrong_machine", "§c\"%s\" was saved from another machine");
         add("gtna.terminal.nexus.ae2.linked", "§a[GTNA] §fLinked to the ME network");
         add("gtna.terminal.nexus.ae2.tooltip.linked", "§a⚡ ME Network linked at [%s, %s, %s]");
         add("gtna.terminal.nexus.ae2.tooltip.not_linked", "§c✖ ME Network: Not connected");

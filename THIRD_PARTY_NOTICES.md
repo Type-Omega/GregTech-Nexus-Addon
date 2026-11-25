@@ -446,6 +446,14 @@ structure constants; render geometry kept as pure, testable math; additive beam 
 studied for the Nexus ME Hypercore hologram, now drawn inside its glass chamber, and the ME Storage conduit render.
 No code, shader or asset of gt_shanhai was copied.
 
+### Nexus Terminal console (GregTech Terminals, MIT)
+
+The tier swap by family, the list of nearby multiblocks and the named saved structures of the Nexus Terminal
+(GTIA-D-440) follow ideas of GregTech Terminals by BgameXL (https://github.com/BgameXL/Gregtech-Terminals, MIT
+License, Copyright (c) 2025 BgameXL): its Multi-Structure Manager and Schematic Interface. The code was written for
+GTNA (`common/item/terminal/plan/NexusFamilySwap`, `NexusNearby`, `NexusBlueprints`,
+`ui/NexusTerminalSidePages`); no code or asset of GregTech Terminals is used.
+
 ### Planet ore veins (GTOCore `GTOOres`, LGPL-3.0)
 
 `GTNAPlanetOres` ports the 33 GTOCore vein definitions that include the Moon, Mars, Venus, Mercury or Glacio
