@@ -246,6 +246,7 @@ tasks.register('runUnitTests') {
             'com.raishxn.gtna.common.data.FluxMatricesTest',
             'com.raishxn.gtna.GodforgeMathTest',
             'com.raishxn.gtna.ClientMixinContractTest',
+            'com.raishxn.gtna.PreviewMixinContractTest',
             'com.raishxn.gtna.SteamBalanceTooltipTest',
             'com.raishxn.gtna.MaterialSetAssetContractTest',
             'com.raishxn.gtna.OriginalsLangKeysTest',
