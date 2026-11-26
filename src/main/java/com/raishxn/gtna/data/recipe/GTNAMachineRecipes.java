@@ -164,7 +164,8 @@ public class GTNAMachineRecipes {
         }
         if (enabled(GTNAMachines.LARGE_STEAM_EXTRACTOR)) {
             // GTNL: reinforced glass, hydraulic piston, Breel tiny pipe, hydraulic pump, steam extractor.
-            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
+            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author,
+            // 2026-10-04).
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GTNAMachines.LARGE_STEAM_EXTRACTOR.asStack().getItem())
                     .pattern("ABA")
                     .pattern("CDC")
@@ -211,7 +212,8 @@ public class GTNAMachineRecipes {
         }
         if (enabled(GTNAMachines.LARGE_STEAM_MIXER)) {
             // GTNL: reinforced glass, steel rotor, hydraulic motor, precision mechanism, mixer.
-            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author, 2026-10-04).
+            // Type Omega: plain glass in place of reinforced glass, so it stays a Steam-age machine (author,
+            // 2026-10-04).
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GTNAMachines.LARGE_STEAM_MIXER.asStack().getItem())
                     .pattern("ABA")
                     .pattern("ACA")
