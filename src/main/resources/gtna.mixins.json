@@ -34,6 +34,7 @@
   "client": [
     "client.SlotWidgetTooltipAccessor",
     "client.PatternPreviewInitMixin",
+    "client.PatternPreviewPageMixin",
     "client.PatternPreviewTimingMixin",
     "client.ClientLevelUniversiumMixin",
     "ae2.CPUSelectionListMixin",
