@@ -35,6 +35,7 @@
     "client.SlotWidgetTooltipAccessor",
     "client.PatternPreviewInitMixin",
     "client.PatternPreviewPageMixin",
+    "client.MultiblockInWorldPreviewMixin",
     "client.PatternPreviewTimingMixin",
     "client.ClientLevelUniversiumMixin",
     "ae2.CPUSelectionListMixin",

@@ -2753,6 +2753,8 @@
   "config.gtna.option.itemShaderEffects": "物品着色器特效",
   "config.gtna.option.itemEffectSpeed": "物品特效速度（%）",
   "config.gtna.option.machineRenders": "机器渲染（OFF / LOW / HIGH）",
+  "config.gtna.option.hologramBlockCap": "全息投影方块上限",
+  "gtna.hologram.too_large": "§e[GTNA] 该结构有 §f%s§e 个方块（全息投影上限 §f%s§e）。当前显示第 §f%s§e / §f%s§e 层；再次 Shift + 右键切换到下一层。",
   "block.gtna.degenerate_matter_core": "简并物质核心",
   "block.gtna.stellar_containment_chamber": "恒星约束舱",
   "gtna.machine.stellar_containment_chamber.lit": "§b恒星已点燃",

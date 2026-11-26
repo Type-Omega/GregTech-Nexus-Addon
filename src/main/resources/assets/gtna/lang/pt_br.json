@@ -2768,6 +2768,8 @@
   "config.gtna.option.itemShaderEffects": "Efeitos de Shader em Itens",
   "config.gtna.option.itemEffectSpeed": "Velocidade dos Efeitos de Item (%)",
   "config.gtna.option.machineRenders": "Renders de Máquinas (OFF / LOW / HIGH)",
+  "config.gtna.option.hologramBlockCap": "Limite de Blocos do Holograma",
+  "gtna.hologram.too_large": "§e[GTNA] Esta estrutura tem §f%s§e blocos (limite do holograma §f%s§e). Mostrando a camada §f%s§e de §f%s§e; Shift + clique direito de novo para a próxima camada.",
   "block.gtna.degenerate_matter_core": "Núcleo de Matéria Degenerada",
   "block.gtna.stellar_containment_chamber": "Câmara de Contenção Estelar",
   "gtna.machine.stellar_containment_chamber.lit": "§bEstrela acesa",

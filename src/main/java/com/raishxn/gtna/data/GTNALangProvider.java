@@ -1673,6 +1673,9 @@ public class GTNALangProvider extends LanguageProvider {
         add("config.gtna.option.wirelessEnergyHud", "Wireless Energy HUD");
         add("config.gtna.option.wirelessSteamHudHistorySeconds", "Wireless Steam HUD History Seconds");
         add("config.gtna.option.itemHalo", "Item Halos");
+        add("config.gtna.option.hologramBlockCap", "Hologram Block Limit");
+        add("gtna.hologram.too_large",
+                "§e[GTNA] This structure has §f%s§e blocks (hologram limit §f%s§e). Showing layer §f%s§e of §f%s§e; Shift + right-click again for the next layer.");
         add("gtna.machine.antimatter_collider_ring.mode_physics", "§b[Run: physics]");
         add("gtna.machine.antimatter_collider_ring.mode_production", "§a[Run: production]");
         add("gtna.machine.antimatter_collider_ring.magnet", "Magnets: §e%s §7(%s T)");

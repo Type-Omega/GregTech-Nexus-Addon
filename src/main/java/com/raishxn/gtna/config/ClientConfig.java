@@ -49,6 +49,16 @@ public class ClientConfig {
     public int itemEffectSpeed = 100;
 
     @Configurable
+    @Range(min = 0, max = 2000000)
+    @Comment({ "En: Largest structure (in blocks) whose Shift+right-click hologram is drawn whole.",
+            "En: Above it only one layer is drawn, starting with the controller's, and each click changes layer.",
+            "En: 0 removes the limit. A hologram of 100000 blocks can freeze the game for seconds.",
+            "Pt: Maior estrutura (em blocos) cujo holograma de Shift+clique direito e desenhado inteiro.",
+            "Pt: Acima disso so uma camada e desenhada, a do controlador primeiro, e cada clique troca de camada.",
+            "Pt: 0 remove o limite. Um holograma de 100000 blocos pode travar o jogo por segundos." })
+    public int hologramBlockCap = com.raishxn.gtna.preview.HologramLimits.DEFAULT_CAP;
+
+    @Configurable
     @Comment({ "En: Level of the GTNA machine renders (stars, beams, holograms, fields).",
             "En: OFF hides the effects only: parts taken out of the world (Forge of Gods rings, collider ring,",
             "En: lance gun) stay drawn, and the Stellar Chamber's gravity and sound stay on.",
