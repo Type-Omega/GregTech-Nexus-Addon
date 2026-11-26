@@ -19,6 +19,7 @@
     "gtceu.LargeBoilerWirelessSteamMixin",
     "gtceu.BlockPatternAccessor",
     "gtceu.BlockPatternPreviewMapMixin",
+    "gtceu.BlockPatternPredicatesMixin",
     "gtceu.BlockPatternSparseWalkMixin",
     "gtceu.FancyMachineUIWidgetStructureMixin",
     "gtceu.MetaMachineBlockMixin",
@@ -32,7 +33,7 @@
   ],
   "client": [
     "client.SlotWidgetTooltipAccessor",
-    "client.PatternPreviewAirMixin",
+    "client.PatternPreviewInitMixin",
     "client.PatternPreviewTimingMixin",
     "client.ClientLevelUniversiumMixin",
     "ae2.CPUSelectionListMixin",

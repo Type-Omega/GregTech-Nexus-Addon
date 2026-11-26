@@ -13,6 +13,7 @@ import com.gregtechceu.gtceu.api.pattern.error.SinglePredicateError;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 
+import com.typeomega.lib.data.BlockPosHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import org.spongepowered.asm.mixin.Final;
@@ -23,7 +24,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -115,7 +115,7 @@ public abstract class BlockPatternSparseWalkMixin {
                             .offset(centerPos.getX(), centerPos.getY(), centerPos.getZ());
                     if (!worldState.update(pos, predicate)) return false;
                     worldState.addPosCache(pos);
-                    if (savePredicate) matchContext.getOrCreate("predicates", HashMap::new).put(pos, predicate);
+                    if (savePredicate) matchContext.getOrCreate("predicates", BlockPosHashMap::new).put(pos, predicate);
                     boolean canPartShared = true;
                     if (worldState.getTileEntity() instanceof IMachineBlockEntity machineBlockEntity &&
                             machineBlockEntity.getMetaMachine() instanceof IMultiPart part) {
