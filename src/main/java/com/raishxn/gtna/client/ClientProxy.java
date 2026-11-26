@@ -1,11 +1,9 @@
 package com.raishxn.gtna.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.raishxn.gtna.client.hud.HudEditorScreen;
 import com.raishxn.gtna.client.hud.WirelessEnergyHudBridge;
 import com.raishxn.gtna.client.hud.WirelessEnergyHudOverlay;
 import com.raishxn.gtna.client.hud.WirelessSteamHudBridge;
@@ -15,6 +13,7 @@ import com.raishxn.gtna.client.renderer.machine.BallHatchRenderer;
 import com.raishxn.gtna.client.renderer.machine.EyeOfHarmonyRenderer;
 import com.raishxn.gtna.client.renderer.machine.EyeOfWoodRenderer;
 import com.raishxn.gtna.common.CommonProxy;
+import com.typeomega.lib.ui.hud.HudRegistry;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -25,18 +24,21 @@ public class ClientProxy extends CommonProxy {
         // Configuration#getConfigScreen, which no longer exists in the 3.1.0 the pack runs - so that
         // registration is gone.
 
+        HudRegistry.register(WirelessEnergyHudOverlay.INSTANCE);
+        HudRegistry.register(WirelessSteamHudOverlay.INSTANCE);
+
         // The wireless steam hatch UI is common code, so it reaches the client-only HUD through
         // this hook instead of referencing a client class directly (dedicated-server safety).
         WirelessSteamHudBridge.toggleHud = () -> {
             WirelessSteamHudOverlay hud = WirelessSteamHudOverlay.INSTANCE;
             hud.setEnabled(!hud.isEnabled());
         };
-        WirelessSteamHudBridge.openEditor = () -> Minecraft.getInstance().setScreen(new HudEditorScreen());
+        WirelessSteamHudBridge.openEditor = HudRegistry::openEditor;
         WirelessEnergyHudBridge.toggleHud = () -> {
             var hud = WirelessEnergyHudOverlay.INSTANCE;
             hud.setEnabled(!hud.isEnabled());
         };
-        WirelessEnergyHudBridge.openEditor = () -> Minecraft.getInstance().setScreen(new HudEditorScreen());
+        WirelessEnergyHudBridge.openEditor = HudRegistry::openEditor;
 
         // Dynamic render codecs must exist before GTCEu starts baking machine models.
         // FMLClientSetupEvent runs too late for models that reference these IDs.

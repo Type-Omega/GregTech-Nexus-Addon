@@ -22,6 +22,11 @@ public class GTNACORE {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public GTNACORE() {
+        // EN: Migrate old gtna.yaml HUD coordinates before ConfigHolder.init() strips the removed fields.
+        // PT: Migra as posições antigas do gtna.yaml antes do ConfigHolder.init() remover os campos antigos.
+        // ZH: 在 ConfigHolder.init() 移除旧字段前，先迁移 gtna.yaml 中的旧 HUD 坐标。
+        DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,
+                () -> com.raishxn.gtna.client.hud.GtnaHudMigration::migrateFromLegacyConfig);
         GTNAConfigBootstrap.init();
         RestrictedItemsEnabledForgeCondition.register();
         // NOTE: the config screen factory is registered in ClientProxy, NOT here. ConfigScreenHandler

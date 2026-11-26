@@ -263,25 +263,20 @@ public final class SteamWiringContractTest {
 
         Path overlay = Path.of("src/main/java/com/raishxn/gtna/client/hud/WirelessSteamHudOverlay.java");
         String overlaySource = Files.readString(overlay, StandardCharsets.UTF_8);
-        if (!overlaySource.contains("registerAboveAll")) {
-            throw new AssertionError("WirelessSteamHudOverlay does not register itself with " +
-                    "RegisterGuiOverlaysEvent; the HUD would never render");
-        }
         if (!overlaySource.contains("wirelessSteamHud")) {
             throw new AssertionError("WirelessSteamHudOverlay does not read the wirelessSteamHud config toggle");
         }
-        if (!overlaySource.contains("implements IGuiOverlay, IMoveableHud") ||
-                !overlaySource.contains("HudEditorScreen.register")) {
-            throw new AssertionError("WirelessSteamHudOverlay must be an IMoveableHud registered with the " +
-                    "HUD editor, so the drag system can move it");
+        if (!overlaySource.contains("implements MoveableHud")) {
+            throw new AssertionError("WirelessSteamHudOverlay must implement TypeOmega Lib's MoveableHud, " +
+                    "so the shared HUD editor can render and move it");
         }
 
-        Path editor = Path.of("src/main/java/com/raishxn/gtna/client/hud/HudEditorScreen.java");
-        String editorSource = Files.readString(editor, StandardCharsets.UTF_8);
-        if (!editorSource.contains("mouseDragged") || !editorSource.contains("mouseReleased") ||
-                !editorSource.contains("getAnchorBounds")) {
-            throw new AssertionError("HudEditorScreen must forward drag events to the moveable HUDs and outline " +
-                    "them while dragging");
+        Path clientProxy = Path.of("src/main/java/com/raishxn/gtna/client/ClientProxy.java");
+        String clientProxySource = Files.readString(clientProxy, StandardCharsets.UTF_8);
+        if (!clientProxySource.contains("HudRegistry.register(WirelessSteamHudOverlay.INSTANCE)") ||
+                !clientProxySource.contains("HudRegistry::openEditor")) {
+            throw new AssertionError("ClientProxy must register WirelessSteamHudOverlay with HudRegistry and " +
+                    "route the HUD editor button to HudRegistry::openEditor");
         }
 
         // GTOCore parity: the toggle lives in the machine UI, not on a keybind. The common hatch

@@ -1671,10 +1671,6 @@ public class GTNALangProvider extends LanguageProvider {
         add("config.gtna.option.disableFlyInertia", "Disable Fly Inertia");
         add("config.gtna.option.wirelessSteamHud", "Wireless Steam HUD");
         add("config.gtna.option.wirelessEnergyHud", "Wireless Energy HUD");
-        add("config.gtna.option.wirelessEnergyHudX", "Wireless Energy HUD X Position");
-        add("config.gtna.option.wirelessEnergyHudY", "Wireless Energy HUD Y Position");
-        add("config.gtna.option.wirelessSteamHudX", "Wireless Steam HUD X Position");
-        add("config.gtna.option.wirelessSteamHudY", "Wireless Steam HUD Y Position");
         add("config.gtna.option.wirelessSteamHudHistorySeconds", "Wireless Steam HUD History Seconds");
         add("config.gtna.option.itemHalo", "Item Halos");
         add("gtna.machine.antimatter_collider_ring.mode_physics", "§b[Run: physics]");
@@ -2303,11 +2299,6 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.hud.wireless_steam.balance", "§bWireless Steam§7: §f%s §7mB");
         add("gtna.hud.wireless_steam.flow", "§7Flow: §a+%s§7 / §c-%s§7 mB/s");
         add("gtna.hud.wireless_steam.hatches", "§7Hatches: §f%s §7drain / §f%s §7feed");
-        add("gtna.hud.editor.title", "HUD Editor");
-        add("gtna.hud.editor.hint", "Drag the HUD to move it; the position is saved automatically. ESC closes.");
-        add("gtna.hud.editor.toggle", "Wireless Steam HUD: %s");
-        add("gtna.hud.editor.on", "ON");
-        add("gtna.hud.editor.off", "OFF");
         add("gtna.machine.wireless_steam.hud.toggle", "Toggle the wireless steam HUD");
         add("gtna.machine.wireless_steam.hud.editor", "Right click to move the HUD");
 
