@@ -56,8 +56,24 @@ public final class HudConfigValues {
         return null;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    private static void setRaw(ConfigValue value, Object newValue) {
-        value.setValue(newValue);
+    // EN: The pack loads configuration 3.1.0 (setValue), the dev runtime 2.2.0 (set); calling either directly crashes
+    // EN: on the other, so the setter is looked up by name.
+    // PT: O pack carrega a configuration 3.1.0 (setValue) e o runtime de dev a 2.2.0 (set); chamar um direto quebra no
+    // PT: outro, então o setter é procurado pelo nome.
+    // ZH: 整合包加载 configuration 3.1.0（setValue），开发环境为 2.2.0（set）；直接调用任一个都会在另一版本崩溃，
+    // ZH: 因此按名称查找设置方法。
+    private static void setRaw(ConfigValue<?> value, Object newValue) {
+        for (String name : new String[] { "setValue", "set" }) {
+            try {
+                value.getClass().getMethod(name, Object.class).invoke(value, newValue);
+                return;
+            } catch (NoSuchMethodException ignored) {
+                // try the other name
+            } catch (ReflectiveOperationException e) {
+                GTNACORE.LOGGER.warn("Could not save HUD setting {}: {}", value.getId(), e.toString());
+                return;
+            }
+        }
+        GTNACORE.LOGGER.warn("Could not save HUD setting {}: no setter in this configuration version", value.getId());
     }
 }
