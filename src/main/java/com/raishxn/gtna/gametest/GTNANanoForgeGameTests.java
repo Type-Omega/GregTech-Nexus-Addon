@@ -89,4 +89,18 @@ public final class GTNANanoForgeGameTests {
                         machine.getNanoTier());
         helper.succeed();
     }
+
+    /** checkPattern must not throw NPE when MultiblockState.cache is null (e.g. missing/unloaded controller). */
+    @GameTest(template = "empty_12", timeoutTicks = 40)
+    public static void nanoForgeCheckPatternHandlesNullCache(GameTestHelper helper) {
+        var pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, GTNANanoForge.NANO_FORGE.defaultBlockState());
+        var machine = (NanoForgeMachine) ((IMachineBlockEntity) helper.getBlockEntity(pos)).getMetaMachine();
+        // Remove the controller block so BlockPattern.checkPatternAt returns before clean() while cache is null.
+        helper.setBlock(pos, Blocks.AIR);
+        machine.getMultiblockState().cache = null;
+        helper.assertFalse(machine.checkPattern(),
+                "checkPattern must return false without throwing when cache is null");
+        helper.succeed();
+    }
 }

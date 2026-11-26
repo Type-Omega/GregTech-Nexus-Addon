@@ -70,7 +70,12 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine implemen
         }
         var state = getMultiblockState();
         var towerError = state.error;
-        var watched = new LongOpenHashSet(state.cache);
+        // EN: MultiblockState.cache stays null when checkPatternAt returns early before clean() (e.g. unloaded or
+        // EN: removed controller).
+        // PT: MultiblockState.cache permanece nulo quando checkPatternAt retorna cedo antes de clean() (ex.:
+        // PT: controlador descarregado ou removido).
+        // ZH: 当 checkPatternAt 在 clean() 之前提前返回（例如控制器未加载或已移除）时，MultiblockState.cache 为 null。
+        var watched = state.cache != null ? new LongOpenHashSet(state.cache) : new LongOpenHashSet();
         if (GTNANanoForge.tierFourPattern(getDefinition()).checkPatternAt(state, false)) {
             tierFour = true;
             return true;
@@ -82,7 +87,9 @@ public class NanoForgeMachine extends WorkableElectricMultiblockMachine implemen
         // ZH: 两者都未成型：继续报告塔身缺少的第一个方块，并同时监视两种结构的格子，
         // ZH: 这样补上任一结构缺少的方块都会重新检查控制器。
         tierFour = false;
-        watched.addAll(state.cache);
+        if (state.cache != null) {
+            watched.addAll(state.cache);
+        }
         state.cache = watched;
         state.setError(towerError);
         return false;
