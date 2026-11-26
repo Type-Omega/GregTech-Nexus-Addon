@@ -136,4 +136,44 @@ public final class NexusTerminalDismantleGameTests {
         }
         h.succeed();
     }
+
+    @GameTest(template = "empty_16", timeoutTicks = 100)
+    public static void previewCountsMatchWhatDismantleRemoves(GameTestHelper h) {
+        try (var placed = Previews.place(h, GTMultiMachines.ELECTRIC_BLAST_FURNACE, ORIGIN)) {
+            h.assertTrue(placed.forms(), "the blast furnace must form first: " + placed.error());
+            Layout layout = layout(h, placed);
+            var player = player(h, GameType.SURVIVAL);
+            var terminal = terminal(0);
+            terminal.getOrCreateTag().putBoolean("DismantleMode", true);
+            player.setItemInHand(InteractionHand.MAIN_HAND, terminal);
+
+            var preview = NexusDismantle.preview(player, placed.controller(), terminal);
+            h.assertTrue(preview != null, "the blast furnace pattern is readable");
+            h.assertTrue(preview.remove() == layout.structure().size(), "the preview takes " + preview.remove() +
+                    " of " + layout.structure().size() + " structure blocks");
+            h.assertTrue(preview.parts() == layout.parts().size(), "the preview keeps " + preview.parts() +
+                    " of " + layout.parts().size() + " hatches and buses");
+            h.assertTrue(preview.byBlock().stream().mapToInt(NexusDismantle.Entry::count).sum() == preview.remove(),
+                    "the counts by block add up to the total");
+            for (int i = 1; i < preview.byBlock().size(); i++) {
+                h.assertTrue(preview.byBlock().get(i - 1).count() >= preview.byBlock().get(i).count(),
+                        "most numerous first");
+            }
+            for (BlockPos block : layout.structure()) {
+                h.assertFalse(h.getLevel().getBlockState(block).isAir(), "the preview must not remove " + block);
+            }
+            h.assertTrue(player.getInventory().items.stream().filter(stack -> stack != terminal).allMatch(
+                    net.minecraft.world.item.ItemStack::isEmpty), "the preview gives nothing but the terminal in hand");
+            h.assertTrue(terminal.getOrCreateTag().getBoolean("DismantleMode"), "the preview keeps the mode");
+
+            var result = NexusDismantle.useOnce(player, placed.controller(), terminal);
+            h.assertTrue(result.removed() == preview.remove(), "dismantle removed " + result.removed() +
+                    ", the preview said " + preview.remove());
+            h.assertTrue(result.skipped() == preview.parts() + preview.blocked(), "kept " + result.skipped() +
+                    ", the preview said " + (preview.parts() + preview.blocked()));
+            var after = NexusDismantle.preview(player, placed.controller(), terminal);
+            h.assertTrue(after != null && after.remove() == 0, "nothing left to take after it ran");
+        }
+        h.succeed();
+    }
 }

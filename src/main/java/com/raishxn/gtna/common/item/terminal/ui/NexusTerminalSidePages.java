@@ -1,9 +1,9 @@
 package com.raishxn.gtna.common.item.terminal.ui;
 
-import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
 
+import com.lowdragmc.lowdraglib.gui.widget.ImageWidget;
 import com.lowdragmc.lowdraglib.gui.widget.TextFieldWidget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 
@@ -16,7 +16,7 @@ import com.raishxn.gtna.common.item.terminal.plan.NexusBlueprints;
 import com.raishxn.gtna.common.item.terminal.plan.NexusLastScan;
 import com.raishxn.gtna.common.item.terminal.plan.NexusNearby;
 import com.raishxn.gtna.common.item.terminal.plan.NexusScan;
-import com.typeomega.lib.ui.tool.ToolWindow;
+import com.typeomega.lib.ui.tool.ToolTextures;
 
 import java.util.List;
 
@@ -29,28 +29,28 @@ import java.util.List;
  */
 final class NexusTerminalSidePages {
 
-    static final int ROWS = 9;
+    static final int ROWS = 9, ROW_H = 17;
 
     private NexusTerminalSidePages() {}
 
     static WidgetGroup machines(Player player, ItemStack stack, int w, int h) {
-        WidgetGroup page = new WidgetGroup(0, 0, w, h);
-        page.addWidget(ToolWindow.label(0, 0, Component.translatable("gtna.terminal.nexus.machines.header",
-                NexusNearby.RADIUS)));
-        page.addWidget(new com.lowdragmc.lowdraglib.gui.widget.ImageWidget(0, 12, w, ROWS * 20 + 4,
-                GuiTextures.DISPLAY));
-        for (int row = 0; row < ROWS; row++) {
-            int index = row;
-            page.addWidget(ToolWindow.label(4, 19 + row * 20, () -> machineLine(player, index))
-                    .setTextColor(0xFFFFFFFF));
-            page.addWidget(ToolWindow.button(w - 78, 14 + row * 20, 74, 18,
-                    Component.translatable("gtna.terminal.nexus.machines.select"), cd -> {
-                        if (cd.isRemote || !(player instanceof ServerPlayer sp)) return;
-                        var list = NexusNearby.find(player, NexusNearby.RADIUS);
-                        if (index < list.size()) NexusScan.scanAndShow(sp, list.get(index).controller(), stack);
-                    }));
-        }
-        return page;
+        return NexusUi.pane(0, 0, w, h, Component.translatable("gtna.terminal.nexus.machines.header",
+                NexusNearby.RADIUS), page -> {
+                    int cw = page.getSizeWidth();
+                    page.addWidget(NexusUi.display(0, 0, cw, ROWS * ROW_H + 4));
+                    for (int row = 0; row < ROWS; row++) {
+                        int index = row;
+                        page.addWidget(NexusUi.label(6, 6 + row * ROW_H, () -> machineLine(player, index)));
+                        page.addWidget(NexusUi.primary(cw - 82, 2 + row * ROW_H, 78, 15,
+                                Component.translatable("gtna.terminal.nexus.machines.select"), cd -> {
+                                    if (cd.isRemote || !(player instanceof ServerPlayer sp)) return;
+                                    var list = NexusNearby.find(player, NexusNearby.RADIUS);
+                                    if (index < list.size()) {
+                                        NexusScan.scanAndShow(sp, list.get(index).controller(), stack);
+                                    }
+                                }));
+                    }
+                });
     }
 
     private static String machineLine(Player player, int row) {
@@ -67,42 +67,30 @@ final class NexusTerminalSidePages {
     }
 
     static WidgetGroup blueprints(Player player, ItemStack stack, int w, int h) {
-        WidgetGroup page = new WidgetGroup(0, 0, w, h);
+        return NexusUi.pane(0, 0, w, h, Component.translatable("gtna.terminal.nexus.blueprints.header"),
+                page -> fillBlueprints(player, stack, page));
+    }
+
+    private static void fillBlueprints(Player player, ItemStack stack, WidgetGroup page) {
+        int w = page.getSizeWidth();
         String[] name = { "" };
-        page.addWidget(ToolWindow.label(0, 0, Component.translatable("gtna.terminal.nexus.blueprints.header")));
-        var field = new TextFieldWidget(0, 12, w - 112, 18, () -> name[0], s -> name[0] = s);
+        var field = new TextFieldWidget(0, 0, w - 114, 18, () -> name[0], s -> name[0] = s);
         field.setMaxStringLength(32);
-        field.setBackground(GuiTextures.DISPLAY);
+        field.setBordered(false).setTextColor(NexusUi.THEME.text());
+        field.setBackground(ToolTextures.display(NexusUi.THEME));
         page.addWidget(field);
-        page.addWidget(ToolWindow.button(w - 108, 12, 108, 18,
-                Component.translatable("gtna.terminal.nexus.blueprints.save"), cd -> {
-                    if (cd.isRemote || player.getServer() == null) return;
-                    var last = NexusLastScan.get(player);
-                    String n = name[0].isBlank() ? "structure" : name[0].trim();
-                    if (last == null) {
-                        player.displayClientMessage(Component.translatable("gtna.terminal.nexus.report.none"), true);
-                        return;
-                    }
-                    var level = player.getServer().getLevel(last.controller().dimension());
-                    if (level != null &&
-                            MetaMachine.getMachine(level, last.controller().pos()) instanceof IMultiController c) {
-                        var saved = NexusBlueprints.get(player.getServer()).save(player, n, c, last.result());
-                        player.displayClientMessage(saved == null ?
-                                Component.translatable("gtna.terminal.nexus.blueprints.full") :
-                                Component.translatable("gtna.terminal.nexus.blueprints.saved", n, saved.size()), true);
-                    }
-                }));
-        page.addWidget(new com.lowdragmc.lowdraglib.gui.widget.ImageWidget(0, 34, w, ROWS * 20 + 4,
-                GuiTextures.DISPLAY));
+        page.addWidget(NexusUi.primary(w - 110, 0, 110, 18, Component.translatable(
+                "gtna.terminal.nexus.blueprints.save"), cd -> save(player, name[0], cd.isRemote)));
+        int top = 22;
+        page.addWidget(new ImageWidget(0, top, w, ROWS * ROW_H + 4, ToolTextures.display(NexusUi.THEME)));
         for (int row = 0; row < ROWS; row++) {
-            int index = row;
-            page.addWidget(ToolWindow.label(4, 41 + row * 20, () -> blueprintLine(player, index))
-                    .setTextColor(0xFFFFFFFF));
-            page.addWidget(ToolWindow.button(w - 120, 36 + row * 20, 58, 18,
+            int index = row, y = top + 2 + row * ROW_H;
+            page.addWidget(NexusUi.label(6, y + 4, () -> blueprintLine(player, index)));
+            page.addWidget(NexusUi.success(w - 122, y, 56, 15,
                     Component.translatable("gtna.terminal.nexus.blueprints.paste"), cd -> {
                         if (!cd.isRemote) paste(player, stack, index);
                     }));
-            page.addWidget(ToolWindow.button(w - 60, 36 + row * 20, 58, 18,
+            page.addWidget(NexusUi.danger(w - 62, y, 58, 15,
                     Component.translatable("gtna.terminal.nexus.blueprints.delete"), cd -> {
                         if (cd.isRemote || player.getServer() == null) return;
                         var data = NexusBlueprints.get(player.getServer());
@@ -110,7 +98,22 @@ final class NexusTerminalSidePages {
                         if (index < list.size()) data.delete(player, list.get(index).name());
                     }));
         }
-        return page;
+    }
+
+    private static void save(Player player, String typed, boolean remote) {
+        if (remote || player.getServer() == null) return;
+        var last = NexusLastScan.get(player);
+        String n = typed.isBlank() ? "structure" : typed.trim();
+        if (last == null) {
+            player.displayClientMessage(Component.translatable("gtna.terminal.nexus.report.none"), true);
+            return;
+        }
+        var level = player.getServer().getLevel(last.controller().dimension());
+        if (level != null && MetaMachine.getMachine(level, last.controller().pos()) instanceof IMultiController c) {
+            var saved = NexusBlueprints.get(player.getServer()).save(player, n, c, last.result());
+            player.displayClientMessage(saved == null ? Component.translatable("gtna.terminal.nexus.blueprints.full") :
+                    Component.translatable("gtna.terminal.nexus.blueprints.saved", n, saved.size()), true);
+        }
     }
 
     private static String blueprintLine(Player player, int row) {

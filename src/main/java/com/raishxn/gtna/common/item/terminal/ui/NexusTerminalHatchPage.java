@@ -1,9 +1,8 @@
 package com.raishxn.gtna.common.item.terminal.ui;
 
-import com.gregtechceu.gtceu.api.gui.GuiTextures;
-
 import com.lowdragmc.lowdraglib.gui.texture.GuiTextureGroup;
 import com.lowdragmc.lowdraglib.gui.texture.ItemStackTexture;
+import com.lowdragmc.lowdraglib.gui.texture.TextTexture;
 import com.lowdragmc.lowdraglib.gui.widget.ImageWidget;
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 
@@ -14,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 
 import com.raishxn.gtna.common.item.terminal.plan.NexusHatchPlan;
 import com.raishxn.gtna.common.item.terminal.plan.NexusHatchPlan.Function;
-import com.typeomega.lib.ui.tool.ToolWindow;
+import com.typeomega.lib.ui.tool.ToolTextures;
 
 import java.util.List;
 
@@ -26,25 +25,30 @@ final class NexusTerminalHatchPage {
 
     private NexusTerminalHatchPage() {}
 
-    static WidgetGroup build(ItemStack stack, int width, int height) {
-        WidgetGroup page = new WidgetGroup(0, 0, width, height);
-        page.addWidget(ToolWindow.label(0, 0, Component.translatable("gtna.terminal.nexus.hatch.header")));
-        int y = 14;
+    static WidgetGroup build(ItemStack stack, int cw, int ch) {
+        return NexusUi.pane(0, 0, cw, ch, Component.translatable("gtna.terminal.nexus.ui.pane.hatches"),
+                page -> fill(stack, page));
+    }
+
+    /** Nine rows of 20 px in a scrolling list: the pane has room for about seven. */
+    private static void fill(ItemStack stack, WidgetGroup page) {
+        int width = page.getSizeWidth() - 4;
+        var list = NexusUi.scroll(0, 0, page.getSizeWidth(), page.getSizeHeight());
+        int y = 2;
         for (Function function : Function.values()) {
-            page.addWidget(ToolWindow.label(0, y + 5, Component.translatable(function.key())));
-            page.addWidget(new ImageWidget(110, y, 18, 18, () -> new GuiTextureGroup(GuiTextures.SLOT,
-                    new ItemStackTexture(icon(stack, function)))));
-            page.addWidget(ToolWindow.button(132, y, 16, 18, Component.literal("<"),
+            list.addWidget(NexusUi.label(4, y + 5, Component.translatable(function.key())));
+            list.addWidget(new ImageWidget(100, y, 18, 18, () -> NexusUi.slot(new ItemStackTexture(icon(stack,
+                    function)))));
+            list.addWidget(NexusUi.button(122, y, 16, 18, Component.literal("<"),
                     cd -> step(stack, function, cd.isShiftClick ? -10 : -1)));
-            page.addWidget(ToolWindow.button(width - 16, y, 16, 18, Component.literal(">"),
+            list.addWidget(NexusUi.button(width - 18, y, 16, 18, Component.literal(">"),
                     cd -> step(stack, function, cd.isShiftClick ? 10 : 1)));
-            page.addWidget(new ImageWidget(152, y, width - 172, 18, () -> new GuiTextureGroup(GuiTextures.DISPLAY,
-                    new com.lowdragmc.lowdraglib.gui.texture.TextTexture(name(stack, function))
-                            .setWidth(width - 176).setType(
-                                    com.lowdragmc.lowdraglib.gui.texture.TextTexture.TextType.ROLL))));
+            list.addWidget(new ImageWidget(142, y, width - 162, 18, () -> new GuiTextureGroup(
+                    ToolTextures.display(NexusUi.THEME), new TextTexture(name(stack, function))
+                            .setWidth(width - 166).setType(TextTexture.TextType.ROLL))));
             y += 20;
         }
-        return page;
+        page.addWidget(list);
     }
 
     private static ItemStack icon(ItemStack stack, Function function) {

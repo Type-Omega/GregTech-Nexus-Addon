@@ -251,6 +251,7 @@ tasks.register('runUnitTests') {
             'com.raishxn.gtna.MaterialSetAssetContractTest',
             'com.raishxn.gtna.OriginalsLangKeysTest',
             'com.raishxn.gtna.common.machine.multiblock.part.ae.PatternBufferLayoutTest',
+            'com.raishxn.gtna.common.item.terminal.ui.NexusDismantleViewTest',
     ]
     doLast {
         testClasses.each { String cls ->

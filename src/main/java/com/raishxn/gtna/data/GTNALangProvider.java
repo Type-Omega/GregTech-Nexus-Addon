@@ -1163,6 +1163,40 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.terminal.nexus.family.swap", "Swap families to the chosen tiers");
         add("gtna.terminal.nexus.family.swapped", "§a%s families swapped");
         add("gtna.terminal.nexus.machines.header", "Multiblocks within %s blocks; Select makes one the target");
+        add("gtna.terminal.nexus.ui.title",
+                "Nexus Terminal // Console");
+        add("gtna.terminal.nexus.ui.target",
+                "Target: %s [%s, %s, %s]");
+        add("gtna.terminal.nexus.ui.no_target",
+                "No target: left-click a controller or pick a machine");
+        add("gtna.terminal.nexus.ui.mode.build",
+                "MODE: BUILD");
+        add("gtna.terminal.nexus.ui.mode.dismantle",
+                "MODE: DISMANTLE");
+        add("gtna.terminal.nexus.ui.mode.running",
+                "BUILDING...");
+        add("gtna.terminal.nexus.ui.pane.structure",
+                "Structure settings");
+        add("gtna.terminal.nexus.ui.pane.tiers",
+                "Block families by tier");
+        add("gtna.terminal.nexus.ui.pane.hatches",
+                "Hatch per function (pattern limits apply)");
+        add("gtna.terminal.nexus.ui.pane.materials",
+                "Need / inventory / ME / missing");
+        add("gtna.terminal.nexus.ui.dismantle.title",
+                "§c⚠ DISMANTLE MODE ON (1 USE)");
+        add("gtna.terminal.nexus.ui.dismantle.no_target",
+                "§7Pick a target first: left-click a controller or use the Machines tab");
+        add("gtna.terminal.nexus.ui.dismantle.nothing",
+                "§7Nothing to remove here");
+        add("gtna.terminal.nexus.ui.dismantle.removes",
+                "Removes §c%s§f blocks (ME, then inventory)");
+        add("gtna.terminal.nexus.ui.dismantle.stays",
+                "Stays: controller + §b%s§f hatches/buses");
+        add("gtna.terminal.nexus.ui.dismantle.blocked",
+                " §7(+%s not removable)");
+        add("gtna.terminal.nexus.ui.dismantle.others",
+                "+%s other kinds (%s blocks)");
         add("gtna.terminal.nexus.machines.select", "Select");
         add("gtna.terminal.nexus.machines.none", "§7No multiblock nearby");
         add("gtna.terminal.nexus.blueprints.header",
