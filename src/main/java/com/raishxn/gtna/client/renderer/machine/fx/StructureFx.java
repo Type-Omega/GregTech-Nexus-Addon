@@ -264,6 +264,7 @@ public final class StructureFx {
 
         RenderSystem.enableBlend();
         RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+        MachineRenders.depthTested(); // the item batch above ended with the depth test switched off
         RenderSystem.depthMask(false);
         RenderSystem.disableCull();
         Matrix4f centre = new Matrix4f(at).translate(c);

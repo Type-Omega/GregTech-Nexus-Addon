@@ -103,7 +103,7 @@ public final class NexusTerminalModesGameTests {
     }
 
     @GameTest(template = "empty_16", timeoutTicks = 40)
-    public static void dismantleReturnsEveryBlock(GameTestHelper helper) {
+    public static void dismantleReturnsEveryStructureBlockAndKeepsTheController(GameTestHelper helper) {
         var machine = controller(helper, new BlockPos(8, 8, 8));
         var origin = machine.getPos();
         var player = player(helper, GameType.SURVIVAL);
@@ -111,10 +111,11 @@ public final class NexusTerminalModesGameTests {
         var terminal = terminal(0);
         build(helper, goldRow(machine), machine, player, terminal);
         var result = NexusDismantle.run(player, machine, goldRow(machine), terminal);
-        helper.assertTrue(result.outcome() == NexusDismantle.Outcome.DONE && result.removed() == 4,
-                "three gold blocks and the controller: " + result);
-        helper.assertTrue(helper.getLevel().getBlockState(origin.west(2)).isAir() &&
-                helper.getLevel().getBlockState(origin).isAir(), "the structure is gone");
+        helper.assertTrue(result.outcome() == NexusDismantle.Outcome.DONE && result.removed() == 3,
+                "three gold blocks, not the controller: " + result);
+        helper.assertTrue(helper.getLevel().getBlockState(origin.west(2)).isAir(), "the structure is gone");
+        helper.assertTrue(helper.getLevel().getBlockState(origin).is(machine.getBlockState().getBlock()),
+                "the controller stays");
         helper.assertTrue(player.getInventory().countItem(Items.GOLD_BLOCK) == 3, "the blocks are in the inventory");
         helper.succeed();
     }

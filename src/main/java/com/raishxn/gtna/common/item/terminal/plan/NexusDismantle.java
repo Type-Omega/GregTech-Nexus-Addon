@@ -1,6 +1,8 @@
 package com.raishxn.gtna.common.item.terminal.plan;
 
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -23,9 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Full dismantling of a structure (D-439 T6): every block the pattern recognises, controller last, goes to the
- * linked ME, then to the inventory. It is all or nothing: if the drops do not fit, nothing is removed. Hatches are
- * dismantled only when they hold nothing (an item or fluid inside would be spilled).
+ * Dismantling of a structure (D-439 T6): every structure block the pattern recognises (casings, coils, glass,
+ * frames...) goes to the linked ME, then to the inventory. The controller and every part machine (hatches, buses,
+ * anything that is an {@link IMultiPart}) stay where they are, so the wiring and the contents survive and the
+ * structure is rebuilt around them. It is all or nothing: if the drops do not fit, nothing is removed. Other blocks
+ * are removed only when they hold nothing (an item or fluid inside would be spilled).
+ * <p>
+ * The terminal's Dismantle mode switches itself off after one use ({@link #useOnce}).
  * <p>
  * Follows gt_shanhai's dismantle mode (LGPL-3.0) without its SDA disk packing.
  */
@@ -38,9 +44,20 @@ public final class NexusDismantle {
         UNREADABLE
     }
 
+    public static final String MODE_KEY = "DismantleMode";
+
     public record Result(Outcome outcome, int removed, int skipped) {}
 
     private NexusDismantle() {}
+
+    /**
+     * One right-click in Dismantle mode: switches the mode off first (so the next click builds again, whatever the
+     * outcome), then dismantles.
+     */
+    public static Result useOnce(Player player, IMultiController controller, ItemStack terminal) {
+        terminal.getOrCreateTag().putBoolean(MODE_KEY, false);
+        return run(player, controller, terminal);
+    }
 
     public static Result run(Player player, IMultiController controller, ItemStack terminal) {
         return run(player, controller, NexusBlockPattern.fromBlockPattern(controller.getPattern()), terminal);
@@ -63,16 +80,16 @@ public final class NexusDismantle {
             for (NexusBuildPlan.Cell cell : plan.cells) {
                 if (cell.kind != NexusBuildPlan.Kind.SATISFIED || cell.existing.isAir()) continue;
                 if (cell.pos.equals(controllerPos) || targets.contains(cell.pos)) continue;
+                if (isPart(level, cell.pos)) {
+                    skipped++;
+                    continue;
+                }
                 if (!canRemove(player, level, cell.pos, cell.existing) || holdsContents(level, cell.pos)) {
                     skipped++;
                     continue;
                 }
                 targets.add(cell.pos);
             }
-        }
-        if (canRemove(player, level, controllerPos, level.getBlockState(controllerPos)) &&
-                !holdsContents(level, controllerPos)) {
-            targets.add(controllerPos); // the controller goes last, so the structure check runs once at the end
         }
         if (targets.isEmpty()) return new Result(Outcome.NOTHING, 0, skipped);
         for (BlockPos pos : targets) {
@@ -101,6 +118,13 @@ public final class NexusDismantle {
             sink.store(entry.getKey(), entry.getLongValue());
         }
         return new Result(Outcome.DONE, targets.size(), skipped);
+    }
+
+    // EN: the controller and the part machines (every hatch and bus, by IMultiPart) are never taken, even empty.
+    // PT: o controlador e as máquinas de parte (todo hatch e bus, por IMultiPart) nunca são retirados, nem vazios.
+    // ZH: 控制器和部件机器（所有仓和总线，按 IMultiPart 判断）永远不会被拆除，即使是空的。
+    private static boolean isPart(ServerLevel level, BlockPos pos) {
+        return MetaMachine.getMachine(level, pos) instanceof IMultiPart;
     }
 
     private static boolean canRemove(Player player, ServerLevel level, BlockPos pos, BlockState blockState) {

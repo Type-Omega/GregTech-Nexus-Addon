@@ -54,6 +54,7 @@ public final class NexusStructureRenderers {
                 if (m.isInValid() || !m.isFormed() || !MachineRenders.inReach(m.getPos(), cam, REACH)) continue;
                 RenderSystem.enableBlend();
                 RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+                MachineRenders.depthTested();
                 RenderSystem.depthMask(false);
                 RenderSystem.disableCull();
                 pose.pushPose();

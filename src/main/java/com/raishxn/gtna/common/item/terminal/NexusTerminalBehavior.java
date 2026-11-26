@@ -26,6 +26,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
 import com.raishxn.gtna.GTNACORE;
+import com.raishxn.gtna.common.item.terminal.plan.NexusDismantle;
 import com.raishxn.gtna.common.item.terminal.ui.NexusTerminalUIFactory;
 import com.raishxn.gtna.integration.ae2.NexusAE2Link;
 import org.jetbrains.annotations.Nullable;
@@ -80,12 +81,12 @@ public class NexusTerminalBehavior implements IItemUIFactory, IAddInformation {
         // ── Shift+Click on controller: auto-build / replace / build module ────
         if (player.isShiftKeyDown()) {
             if (MetaMachine.getMachine(level, blockPos) instanceof IMultiController controller) {
-                if (terminalStack.getOrCreateTag().getBoolean("DismantleMode")) {
+                if (terminalStack.getOrCreateTag().getBoolean(NexusDismantle.MODE_KEY)) {
                     if (!level.isClientSide()) {
-                        var result = com.raishxn.gtna.common.item.terminal.plan.NexusDismantle.run(player, controller,
+                        var result = NexusDismantle.useOnce(player, controller,
                                 terminalStack);
                         player.displayClientMessage(
-                                com.raishxn.gtna.common.item.terminal.plan.NexusDismantle.message(result), true);
+                                NexusDismantle.message(result), true);
                     }
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }

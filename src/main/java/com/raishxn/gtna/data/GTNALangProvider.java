@@ -1096,13 +1096,13 @@ public class GTNALangProvider extends LanguageProvider {
         add("gtna.terminal.nexus.craft.summary",
                 "[Nexus Terminal] ME crafting: %s submitted, %s without pattern, %s missing inputs, %s failed");
         add("gtna.terminal.nexus.dismantle.done",
-                "§aDismantled %s blocks into the ME and the inventory (%s kept: not removable or not empty)");
+                "§aDismantled %s blocks into the ME and the inventory (%s kept: controller, hatches and buses, or blocks that are not removable or not empty)");
         add("gtna.terminal.nexus.dismantle.no_room",
                 "§cNot dismantled: the drops do not fit in the ME and the inventory");
         add("gtna.terminal.nexus.dismantle.nothing", "§eNothing of this structure to dismantle");
         add("gtna.terminal.nexus.dismantle_mode", "Dismantle");
         add("gtna.terminal.nexus.dismantle_mode.tooltip",
-                "Shift+click a controller to take the whole structure apart into the ME, then the inventory; refused if it does not fit");
+                "Shift+click a controller to take the structure blocks apart into the ME, then the inventory; the controller and all hatches and buses stay; refused if it does not fit. Switches itself off after one use");
         add("gtna.terminal.nexus.report.title", "Nexus Terminal report");
         add("gtna.terminal.nexus.report.link", "[report]");
         add("gtna.terminal.nexus.report.none", "No scan yet: left-click a controller with the terminal");

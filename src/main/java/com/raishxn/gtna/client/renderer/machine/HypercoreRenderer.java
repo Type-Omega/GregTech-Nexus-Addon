@@ -172,6 +172,7 @@ public final class HypercoreRenderer extends DynamicRender<NexusMEHyperCoreMachi
         try {
             RenderSystem.enableBlend();
             RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+            MachineRenders.depthTested();
             RenderSystem.depthMask(false);
             RenderSystem.disableCull();
             for (var m : QUEUE.values()) {

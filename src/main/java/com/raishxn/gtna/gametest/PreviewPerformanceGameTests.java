@@ -34,10 +34,10 @@ import java.util.Map;
 
 /**
  * The data side of the multiblock preview work (EMI page and in-world hologram): the maps hold real blocks only, the
- * block cap picks the controller's layer for big structures, and the EMI scan equals the old one minus air. The
- * client mixins that use these classes are checked against the GTCEu bytecode by {@code PreviewMixinContractTest}.
- * The Stellar Containment Chamber (about 22 000 blocks) is under the default cap and the Kinetic Orbital Lance
- * (about 171 000) is over it.
+ * optional block cap (off by default, so every size starts with all layers) picks the controller's layer when the
+ * player sets one, and the EMI scan equals the old one minus air. The client mixins that use these classes are checked
+ * against the GTCEu bytecode by {@code PreviewMixinContractTest}. The Stellar Containment Chamber (about 22 000
+ * blocks) and the Kinetic Orbital Lance (about 171 000) are the small and the big structure of these tests.
  */
 @GameTestHolder(GTNACORE.MOD_ID)
 @PrefixGameTestTemplate(false)
@@ -151,30 +151,42 @@ public final class PreviewPerformanceGameTests {
     }
 
     @GameTest(template = TEMPLATE, timeoutTicks = 1200)
-    public static void blockCapFallsBackToTheControllerLayerAboveTheLimit(GameTestHelper h) {
+    public static void hologramShowsEveryLayerFirstByDefault(GameTestHelper h) {
         h.assertTrue(new ClientConfig().hologramBlockCap == HologramLimits.DEFAULT_CAP &&
-                HologramLimits.DEFAULT_CAP == 32768, "the default cap changed");
+                HologramLimits.DEFAULT_CAP == 0, "the default must be no cap");
         int cap = HologramLimits.DEFAULT_CAP;
 
-        var smallShape = shape(GTNAOriginals.STELLAR_CONTAINMENT_CHAMBER);
-        HologramScan small = HologramScan.of(smallShape);
-        h.assertFalse(PreviewLayers.overCap(small.solid(), cap),
-                "the chamber (" + small.solid() + ") is under the cap");
-        h.assertTrue(PreviewLayers.firstLayer(false, small.controller().getY()) == PreviewLayers.ALL,
-                "under the cap the hologram starts with every layer");
+        for (var definition : new MultiblockMachineDefinition[] { GTNAOriginals.STELLAR_CONTAINMENT_CHAMBER,
+                GTNAOriginals.KINETIC_ORBITAL_LANCE }) {
+            var shape = shape(definition);
+            HologramScan scan = HologramScan.of(shape);
+            h.assertTrue(scan.solid() == solidCells(shape), definition.getId() + " count " + scan.solid());
+            boolean over = PreviewLayers.overCap(scan.solid(), cap);
+            h.assertFalse(over, definition.getId() + " (" + scan.solid() + " blocks) is over the default cap");
+            h.assertTrue(PreviewLayers.firstLayer(over, scan.controller().getY()) == PreviewLayers.ALL,
+                    definition.getId() + " does not start with every layer");
+            var built = HologramBuild.build(shape, scan.controller(), Direction.NORTH, Direction.NORTH,
+                    new BlockPos(100, 64, 100), PreviewLayers.ALL, h.getLevel());
+            h.assertTrue(built.blocks().size() + 1 == scan.solid(), definition.getId() + " first view has " +
+                    built.blocks().size() + " blocks, expected " + (scan.solid() - 1));
+        }
+        h.succeed();
+    }
 
+    @GameTest(template = TEMPLATE, timeoutTicks = 1200)
+    public static void anOptionalCapStillFallsBackToTheControllerLayer(GameTestHelper h) {
+        int cap = 32768;
         var bigShape = shape(GTNAOriginals.KINETIC_ORBITAL_LANCE);
         HologramScan big = HologramScan.of(bigShape);
-        h.assertTrue(big.solid() == solidCells(bigShape), "lance count " + big.solid());
-        h.assertTrue(PreviewLayers.overCap(big.solid(), cap), "the lance (" + big.solid() + ") is over the cap");
+        h.assertTrue(PreviewLayers.overCap(big.solid(), cap), "the lance (" + big.solid() + ") is over " + cap);
+        h.assertFalse(PreviewLayers.overCap(big.solid(), 0), "a cap of 0 means no limit");
         int layer = PreviewLayers.firstLayer(true, big.controller().getY());
-        h.assertTrue(layer == big.controller().getY(), "over the cap the first layer is the controller's");
+        h.assertTrue(layer == big.controller().getY(), "over a set cap the first layer is the controller's");
         var built = HologramBuild.build(bigShape, big.controller(), Direction.NORTH, Direction.NORTH,
                 new BlockPos(100, 64, 100), layer, h.getLevel());
         int expected = solidCellsInLayer(bigShape, layer) - 1;
         h.assertTrue(built.blocks().size() == expected && expected > 0 && expected < cap,
                 "the controller's layer has " + built.blocks().size() + " blocks, expected " + expected);
-        h.assertTrue(PreviewLayers.overCap(big.solid(), 0) == false, "a cap of 0 means no limit");
 
         int steps = 0;
         boolean[] seen = new boolean[big.height()];
@@ -184,6 +196,22 @@ public final class PreviewPerformanceGameTests {
             current = PreviewLayers.nextLayer(current, big.height(), true);
         }
         for (boolean s : seen) h.assertTrue(s, "the capped cycle skipped a layer");
+        h.succeed();
+    }
+
+    @GameTest(template = TEMPLATE, timeoutTicks = 200)
+    public static void withoutACapTheClicksCycleAllThenEachLayer(GameTestHelper h) {
+        int height = 7;
+        int current = PreviewLayers.firstLayer(false, 3);
+        h.assertTrue(current == PreviewLayers.ALL, "the first state is all layers");
+        boolean[] seen = new boolean[height];
+        for (int i = 0; i <= height; i++) {
+            current = PreviewLayers.nextLayer(current, height, false);
+            if (current >= 0) seen[current] = true;
+        }
+        for (boolean s : seen) h.assertTrue(s, "the uncapped cycle skipped a layer");
+        h.assertTrue(PreviewLayers.nextLayer(height - 1, height, false) == PreviewLayers.ALL,
+                "after the last layer the cycle returns to all layers");
         h.succeed();
     }
 
