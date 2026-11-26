@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.UUID;
 
 /** The scope the saved networks use in game: the effective FTB team, or the player without FTB Teams. */
-final class FtbAwareNetworkScope implements WirelessNetworkScope {
+public final class FtbAwareNetworkScope implements WirelessNetworkScope {
 
-    static final WirelessNetworkScope INSTANCE = new FtbAwareNetworkScope();
+    public static final WirelessNetworkScope INSTANCE = new FtbAwareNetworkScope();
 
     private FtbAwareNetworkScope() {}
 

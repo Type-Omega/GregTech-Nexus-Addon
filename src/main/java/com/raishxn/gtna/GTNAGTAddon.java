@@ -77,6 +77,7 @@ public class GTNAGTAddon implements IGTAddon {
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         GTNAMaterialRecipes.register(provider);
         GTNAItemRecipes.register(provider);
+        com.raishxn.gtna.data.recipe.GTNAWirelessRecipes.register(provider);
         GTNAMachineRecipes.register(provider);
         GTNAGreenhouseRecipes.register(provider);
         GTNAComponentRecipes.register(provider);

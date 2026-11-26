@@ -1,5 +1,6 @@
 {
   "values": [
+    "gtna:wireless_network_core",
     "gtna:breel_pipe_casing",
     "gtna:hyper_pressure_breel_casing",
     "gtna:steam_compact_pipe_casing",

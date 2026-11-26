@@ -24,7 +24,7 @@ import com.raishxn.gtna.network.packet.SWirelessSteamStats;
 
 public class GTNANetworkHandler {
 
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "2";
 
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(GTNACORE.MOD_ID, "main"),
@@ -121,6 +121,9 @@ public class GTNANetworkHandler {
                 .decoder(CKnowledgePurchase::decode)
                 .consumerMainThread(CKnowledgePurchase::handle)
                 .add();
+
+        // C2S – wireless ME network: picker, saved network and core name (D-444)
+        com.raishxn.gtna.integration.ae2.wireless.WirelessAePackets.register(CHANNEL, () -> packetId++);
     }
 
     // ── Instance methods (used via INSTANCE) ──

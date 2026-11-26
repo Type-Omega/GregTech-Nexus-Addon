@@ -345,6 +345,8 @@ dependencies {
     //ae2 and guideme
     modImplementation("curse.maven:applied-energistics-2-223794:7148487")
     modImplementation("curse.maven:guideme-1173950:7127447")
+    // Optional: the Wireless ME Network Binding Tool is also found in Curios slots when Curios is installed.
+    modCompileOnly("curse.maven:curios-309927:6418456")
 
     modImplementation("curse.maven:configuration-444699:5840405")
 

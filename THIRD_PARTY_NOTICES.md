@@ -23,6 +23,7 @@ If you are a rightsholder and want an entry corrected or removed, please open an
 | Twist Space Technology (TST) | [Nxer/Twist-Space-Technology-Mod](https://github.com/Nxer/Twist-Space-Technology-Mod) | **GPL-3.0** | `eye_of_wood` structure (overworld ore condenser) and its controller tooltip text (adapted in `assets/gtna/tooltip_lang/forge.json`) | **Permission granted** — free to use openly; the TST author asks that the part using a TST structure states **in game** that it is referenced from TST (the `gtna.source.tst` "Source: TST" tooltip line covers this) |
 | cmme-additions → Modernity-GTNH | [CristalGaming/cmme-additions](https://github.com/CristalGaming/cmme-additions) → [ModernityGTNH/Modernity-GTNH](https://github.com/ModernityGTNH/Modernity-GTNH) | ARR → **CC BY-NC-SA 4.0** | Plate/ingot textures (triple/quadruple/quintuple, etc.), the **Industrial / Advanced Industrial Steam Casing** textures (`MetaCasing02/1`, `2`) and the **`EM_COMPUTER`** elevator overlay (`gregtech/textures/blocks/iconsets/EM_COMPUTER{,_ACTIVE}`) | **Pending** — permission requested; same author as GTNL per the project owner |
 | GTLCore | [nutant233/GTLCore](https://github.com/nutant233/GTLCore) | Declared LGPLv3.0 (`gradle.properties`; no `LICENSE` file found) | Textures (including Pattern Buffer Copy/Cut Card icons), pattern-buffer parity code (`Int128` now lives in TypeOmega Lib), **Integrated / Advanced Integrated Ore Processor** (structure + faithful recipe generation) | Attribution (license to confirm) |
+| GTLCore (wireless ME network) | [AaAdoniSsS/GTLCore](https://github.com/AaAdoniSsS/GTLCore) branch `gtl-1431-skyblock` | LGPL-3.0 (`LICENSE` of the repository) | Wireless ME network (D-444): Wireless ME Network Core, Wireless ME Network Binding Tool, saved data, member scheduler, topology and target resolution, network picker, packets, screens, GUI/block/item/Curios-slot textures | Licensed reuse with attribution; each ported file keeps a credit header |
 | GTLsupb | GTLsupb (LGPLv3) | LGPLv3 | Universal Factory, Primitive Stone Furnace | Attribution only |
 | GregTech CEu Modern | [GregTechCEu/GregTech-Modern](https://github.com/GregTechCEu/GregTech-Modern) | LGPL-3.0 | Base API / framework; the pattern-to-world transform, hatch-limit order and facing pass of `BlockPattern#autoBuild`, kept identical in `NexusBlockPattern` | Attribution only |
 | GT5-Unofficial, GTNL and TST (multiblock tooltips) | [GTNewHorizons/GT5-Unofficial](https://github.com/GTNewHorizons/GT5-Unofficial) `MultiblockTooltipBuilder`, the controllers' `createTooltip()` and the en_US tooltip pages (`assets/gregtech/lang/en_US/tooltip/*.md`); [GT: Not Leisure (GTNL)](https://github.com/ABKQPO/GT-Not-Leisure) current controller tooltips; [Twist Space Technology](https://github.com/Nxer/Twist-Space-Technology-Mod) current controller tooltips | GT5-Unofficial: LGPL-3.0 · GTNL: GPL-3.0 (LGPL-3.0 until `a90b8cb`) · TST: GPL-3.0 | Layout of the multiblock tooltips (D-410) and their mechanics lines (D-429, D-432): the lines in `assets/gtna/tooltip_lang/` start from the original lines (Eye of Harmony, Forge of Gods and modules, Nano Forge, Plasma Forge, Transcendent Plasma Mixer and the other GTNH ports; the GTNL steam family and the Steam Elevator modules, whose humour lines keep GTNL's current module text at `c8d9edb`; `eye_of_wood` from TST; GTO, GTL and GTLsupb ports and GTNA originals use GTNA's own text written from GTNA's code) and were reworded for GTNA's numbers, which are read from GTNA's balance constants, and Type Omega's humour | GT5-Unofficial: licensed reuse with attribution. GTNL and TST: **Permission granted** by their authors (covers assets, models and text; the TST author asks for the in-game "Source: TST" line, kept). Text adapted, not copied unchanged |
@@ -431,6 +432,24 @@ and `KeyStorage`, with long fluid amounts. The overlay is GTCEu's `block/overlay
 GTCEu's `BlockPattern` (LGPL-3.0). It keeps GTCEu's pattern-to-world transform and hatch-limit order so
 built structures pass GTCEu's own check. The previous version, based on third-party code without a
 declared license, was removed, and GTNA no longer uses any code or assets from that project.
+
+### Wireless ME network (GTLCore, LGPL-3.0)
+
+The wireless ME network (D-444) is ported from GTLCore (`AaAdoniSsS/GTLCore`, branch `gtl-1431-skyblock`, LGPL-3.0,
+packages `integration/ae2/wireless` and `client/ae2/wireless`): the Wireless ME Network Core (block, block entity,
+menu, screen), the Wireless ME Network Binding Tool (item, network picker menu and screen, picker key), the sneak-place
+auto-bind, the saved data of networks and members, the member scheduler, the topology snapshot and the resolution of
+any AE2 grid node as a target. Every ported Java file starts with the line `Ported from GTLCore (LGPL-3.0),
+https://github.com/AaAdoniSsS/GTLCore`. Changes: the 1,575-line runtime is split by responsibility (`WirelessAeNetworkRuntime`,
+`WirelessLinks`, `WirelessNodes`, `WirelessTargets`, `WirelessTopology`, `WirelessTickCache`, `WirelessReflection`,
+`WirelessAccess`); networks belong to the effective FTB team through GTNA's own scope (D-386) instead of GTLCore's
+FTB reflection; AE2 blocks and parts (interfaces, pattern providers) and any GregTech machine that is an AE2 grid node
+are accepted as targets; the block is a plain block with GregTech wrench rotation; the Curios slot is data-driven and
+Curios stays optional; every member is re-checked every 10 seconds; Registrate registration and `gtna.*` lang keys;
+the terminals, monitors and target tab of GTLCore are not ported. The block front, tool and GUI textures
+(`textures/block/wireless_network_core_front`, `textures/item/wireless_network_binding_tool`,
+`textures/gui/wireless/*`, `textures/slot/wireless_connector`) are copied from the same repository under its
+LGPL-3.0 `LICENSE`; the repository states no separate asset licence.
 
 ### Nexus Terminal v2 (gt_shanhai, LGPL-3.0)
 

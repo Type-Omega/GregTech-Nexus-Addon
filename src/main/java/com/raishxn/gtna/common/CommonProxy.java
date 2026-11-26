@@ -71,6 +71,7 @@ public class CommonProxy {
 
     public static void init() {
         GTNACreativeModeTabs.init();
+        com.raishxn.gtna.integration.ae2.wireless.WirelessAeContent.init();
     }
 
     private void serverStarting(ServerStartingEvent event) {
