@@ -433,6 +433,15 @@ GTCEu's `BlockPattern` (LGPL-3.0). It keeps GTCEu's pattern-to-world transform a
 built structures pass GTCEu's own check. The previous version, based on third-party code without a
 declared license, was removed, and GTNA no longer uses any code or assets from that project.
 
+### Debug Energy Hatch and Debug Laser Target Hatch (GTMThings, LGPL-3.0)
+
+`DebugEnergyHatchPartMachine` follows the logic of GTMThings' `CreativeEnergyHatchPartMachine` and
+`CreativeLaserHatchPartMachine` (Hepdd, LGPL-3.0, `com.hepdd.gtmthings`): an input-only receiver container
+(16 ticks of voltage x amperage; 64 for the laser hatch) topped up on every server tick, the GUI controls
+(tier selector, voltage field, amperage with -/+), the data-info line and the laser hatch limits (IV or higher,
+256 A or more). The code is rewritten for GTNA on GTCEu's API; names, model and the immediate re-form of the
+controllers are GTNA's. No assets are used from GTMThings.
+
 ### Wireless ME network (GTLCore, LGPL-3.0)
 
 The wireless ME network (D-444) is ported from GTLCore (`AaAdoniSsS/GTLCore`, branch `gtl-1431-skyblock`, LGPL-3.0,

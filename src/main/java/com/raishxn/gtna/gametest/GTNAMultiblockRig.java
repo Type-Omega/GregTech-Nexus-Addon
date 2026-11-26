@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.raishxn.gtna.common.data.GTNAMachines2;
+import com.raishxn.gtna.common.machine.multiblock.part.DebugEnergyHatchPartMachine;
 import com.raishxn.gtna.common.machine.trait.GTNAMultipleRecipesLogic;
 
 import java.util.ArrayList;
@@ -66,7 +67,17 @@ final class GTNAMultiblockRig {
 
     /** Builds the preview, upgrades hatches to {@link #TIER} and coils to Tritanium. Does not form yet. */
     static GTNAMultiblockRig build(GameTestHelper helper, MultiblockMachineDefinition definition) {
+        return build(helper, definition, false);
+    }
+
+    /**
+     * Same, with the Debug Energy Hatch as the only energy input when {@code debugEnergy}: the rig then tops the
+     * hatches up like their server tick instead of filling every energy container.
+     */
+    static GTNAMultiblockRig build(GameTestHelper helper, MultiblockMachineDefinition definition,
+                                   boolean debugEnergy) {
         GTNAMultiblockRig rig = new GTNAMultiblockRig(helper, definition);
+        rig.debugEnergy = debugEnergy;
         var shape = definition.getMatchingShapes().get(0).getBlocks();
         for (int x = 0; x < shape.length; x++) {
             for (int y = 0; y < shape[x].length; y++) {
@@ -114,7 +125,8 @@ final class GTNAMultiblockRig {
                     rig.replace(pos, in ? GTMachines.FLUID_IMPORT_HATCH[TIER] : GTMachines.FLUID_EXPORT_HATCH[TIER]);
                     (in ? rig.fluidInPos : rig.fluidOutPos).add(pos);
                 } else if (machine instanceof EnergyHatchPartMachine) {
-                    rig.replace(pos, GTMachines.ENERGY_INPUT_HATCH[TIER]);
+                    rig.replace(pos, debugEnergy ? GTNAMachines2.DEBUG_ENERGY_HATCH :
+                            GTMachines.ENERGY_INPUT_HATCH[TIER]);
                 } else if (machine instanceof com.gregtechceu.gtceu.api.capability.IParallelHatch) {
                     rig.replace(pos, GCYMMachines.PARALLEL_HATCH[TIER]);
                     rig.hasParallelHatch = true;
@@ -136,6 +148,8 @@ final class GTNAMultiblockRig {
     }
 
     boolean hasParallelHatch;
+    private boolean debugEnergy;
+    final List<DebugEnergyHatchPartMachine> debugHatches = new ArrayList<>();
     boolean hasThreadHatch;
     private final java.util.Set<BlockPos> used = new java.util.HashSet<>();
     private int nextFluidHatch;
@@ -214,16 +228,20 @@ final class GTNAMultiblockRig {
         fluidIn.clear();
         fluidOut.clear();
         energy.clear();
+        debugHatches.clear();
         for (var part : controller.getParts()) {
             if (part instanceof ItemBusPartMachine bus) {
                 (bus.getInventory().getHandlerIO() == IO.IN ? itemIn : itemOut).add(bus);
             } else if (part instanceof FluidHatchPartMachine hatch) {
                 (hatch.tank.getHandlerIO() == IO.IN ? fluidIn : fluidOut).add(hatch);
+            } else if (part instanceof DebugEnergyHatchPartMachine hatch) {
+                debugHatches.add(hatch);
             } else if (part instanceof EnergyHatchPartMachine hatch) {
                 energy.add(hatch);
             }
         }
-        helper.assertTrue(!energy.isEmpty(), definition.getId() + " formed without an energy hatch");
+        helper.assertTrue(!energy.isEmpty() || !debugHatches.isEmpty(),
+                definition.getId() + " formed without an energy hatch");
     }
 
     String patternError() {
@@ -380,6 +398,10 @@ final class GTNAMultiblockRig {
 
     /** Fills every energy input container of the machine (energy hatches, laser hatches, ...). */
     private void charge() {
+        if (debugEnergy) {
+            for (var hatch : debugHatches) hatch.refill();
+            return;
+        }
         var holder = (com.gregtechceu.gtceu.api.capability.recipe.IRecipeCapabilityHolder) controller;
         var handlers = holder.getCapabilitiesFlat().getOrDefault(IO.IN, java.util.Map.of())
                 .get(com.gregtechceu.gtceu.api.capability.recipe.EURecipeCapability.CAP);

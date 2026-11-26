@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- **Debug Energy Hatch and Debug Laser Target Hatch now behave like the GTMThings creative hatches** instead of the GTCEu Creative Energy Container: a real input-only receiver buffer that recipes drain and the tick refills, no push into neighbours, no on/off switch, accepts energy on every side and never explodes. Fixed: changing the tier, voltage or amperage in the GUI of a hatch inside a formed multiblock dropped it from the machine's energy inputs (the machine saw 0 V) until the next structure check; the multiblock is now re-formed at once. New GameTests form an Electric Blast Furnace and a GTNA multiblock with the debug hatch as the only energy input and run a recipe. Tooltips in en_us, pt_br and zh_cn.
 - **Nexus Terminal in the purple and black look** (D-447): the window uses the new `ToolTheme.NEXUS_PURPLE` of TypeOmega Lib 0.8.6, drawn entirely in code (flat frames, no PNG), still 420 by 236, with a title bar (target and mode badge), a step list with the ME state, hover, active and disabled button states (Cancel is dim while no job runs) and spacing made for GUI scale 3 and 4. All functions stay: Build steps 1 to 4, Tiers, Machines nearby, Saved structures and the action bar. Dismantle stays a switch in the Structure step; while it is on, a red warning panel replaces the last-scan summary and previews what the dismantle would take by block kind and what stays (the controller and every hatch and bus). The count comes from `NexusDismantle.preview`, the same selection the dismantle uses, without firing break events. Texts in en_us, pt_br and zh_cn. GTNA now needs TypeOmega Lib 0.8.6.
 - Build properties renamed for the Type Omega name: `gtialib_version` is now `typeomegalib_version` (0.8.2) and the dev flag `-PgtiaDevJar` is `-PtypeOmegaDevJar`; the profile tools are `tools/run_typeomega_client.py` and `tools/test_void_fluid_typeomega_profile.py`, and the config examples moved to `docs/config-examples/typeomega`. Decision IDs lost the `GTIA-` prefix.
 - **Multiblock tooltips move to the GTNH layout** of TypeOmega Lib (`MultiblockTooltip.builder()`): `Machine Type:` with the types in yellow, short lines with the numbers in cyan and the configurable parts in green, separators, a humour line, the origin of a port and the mod name in blue italics. First family: the 19 large steam multiblocks from GT: Not Leisure. Their parallels and speeds are read from the same numbers the recipe logic uses and follow the pack's steam balance. The speed is now compared with the steam single block of the same tier (a bronze single block runs at twice the recipe time) where GTCEu has one, and with the recipe's listed time otherwise. Texts in English, Portuguese and Chinese.
@@ -191,9 +192,11 @@
 
 ### Debug parts for testing (creative only, no recipes)
 
-- **Debug Energy Hatch** and **Debug Laser Target Hatch**: always full. Their GUI works like the GTCEu creative energy
-  container (and the GTMThings creative hatches): tier selector, free voltage field, amperage with -/+ buttons and an
-  on/off switch. The laser hatch starts at 4096 A. Any change re-forms the multiblock at once.
+- **Debug Energy Hatch** and **Debug Laser Target Hatch**: work like the GTMThings Creative Energy Hatch and Creative
+  Laser Hatch. They are input-only parts with a receiver buffer (16 ticks of voltage x amperage, 64 for the laser
+  hatch) that recipes drain and the tick refills; they never push energy into neighbours. GUI: tier selector, free
+  voltage field and amperage with -/+ buttons. The laser hatch starts at 4096 A, is at least IV and 256 A, and is a
+  laser container. Any change re-forms the multiblock at once.
 - **Debug Input Bus** and **Debug Input Hatch**: mark items or fluids in their 3x3 ghost slots; recipes get endless
   amounts and nothing is consumed. Both keep the circuit slot.
 - **Debug Energy Cover**: keeps the energy buffer of any GregTech machine full.

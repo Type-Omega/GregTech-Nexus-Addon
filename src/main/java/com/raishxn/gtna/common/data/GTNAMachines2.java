@@ -349,7 +349,7 @@ public class GTNAMachines2 {
     private static void registerDebugParts() {
         if (!ConfigHolder.isHatchEnabled("debugParts")) return;
         DEBUG_ENERGY_HATCH = REGISTRATE
-                .machine("debug_energy_hatch", holder -> new DebugEnergyHatchPartMachine(holder, 2))
+                .machine("debug_energy_hatch", holder -> new DebugEnergyHatchPartMachine(holder, false))
                 .langValue("Debug Energy Hatch")
                 .tier(GTValues.MAX)
                 .rotationState(RotationState.ALL)
@@ -389,7 +389,7 @@ public class GTNAMachines2 {
                         Component.translatable("gtceu.part_sharing.enabled"))
                 .register();
         DEBUG_LASER_HATCH = REGISTRATE
-                .machine("debug_laser_hatch", holder -> new DebugEnergyHatchPartMachine(holder, 4096))
+                .machine("debug_laser_hatch", holder -> new DebugEnergyHatchPartMachine(holder, true))
                 .langValue("Debug Laser Target Hatch")
                 .tier(GTValues.MAX)
                 .rotationState(RotationState.ALL)
